@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SearchForm from '../cmps/SearchForm';
 // import { connect } from 'react-redux';
 
 // import { loadReviews, addReview } from '../actions/ReviewActions.js';
@@ -16,6 +17,7 @@ export default class Home extends Component {
     return (
       <div className="home">
         <h1>Welcome Home</h1>
+        <SearchForm></SearchForm>
       </div>
     );
   }
