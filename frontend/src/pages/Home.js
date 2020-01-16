@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import SearchForm from '../cmps/SearchForm';
 import backgroundImage from '../assets/img/bgc.jpg'
-import Logo from '../assets/img/turtle3.png'
+import HouseList from '../cmps/HouseList';
+import NavBar from '../cmps/NavBar';
+
 // import { connect } from 'react-redux';
 
 // import { loadReviews, addReview } from '../actions/ReviewActions.js';
@@ -18,15 +20,10 @@ export default class Home extends Component {
   render() {
     return (
       <div className="home">
+        <NavBar></NavBar>
         <img className="index-cover" src={backgroundImage} />
-        <img className="logo" src={Logo} style={{
-          'position': 'absolute',
-          'width': '80px',
-          'top': '10px',
-          'left': '10px',
-        }} />
-        <h1>Welcome Home</h1>
         <SearchForm></SearchForm>
+        <HouseList></HouseList>
       </div>
     );
   }

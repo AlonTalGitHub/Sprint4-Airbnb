@@ -28,8 +28,9 @@ class SearchForm extends Component {
 
     render() {
         // const [startDate, setStartDate] = useState(null);
-        return <div className="search-form flex column">
+        return <div className="search-form flex column space-between">
             {/* <form> */}
+            <h2>Feel At Home, Wherever You Go</h2>
             <input className="form-loc" type="text" name="location" placeholder="Where To Go?"></input>
             <div className="form-cap flex space-between align-center">
                 <span>How Many People?</span>
@@ -40,7 +41,7 @@ class SearchForm extends Component {
                 </span>
             </div>
             
-                <DateRangePicker
+                {/* <DateRangePicker
                     startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                     startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
                     endDate={this.state.endDate} // momentPropTypes.momentObj or null,
@@ -49,7 +50,7 @@ class SearchForm extends Component {
                     focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                     onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
                 />
-                
+                 */}
             
             {/* <input type="number" placeholder="How Many?"></input> */}
             <Link onClick={this.handleClick} className="form-btn pointer flex align-center justify-center" to="/house">Search</Link>
