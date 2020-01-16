@@ -122,9 +122,9 @@ class HouseList extends Component {
 
     render() {
         return (
-            <section className="houselist-container">
-                <h2>Houses List</h2>
-                <ul>
+            <section className="house-container">
+                <h2 className="house-main-head">Houses List</h2>
+                <ul className="house-list clean-list">
                     {this.houses.map(house => (
                         <li key={house._id}>
                             <HousePreview house={house} />

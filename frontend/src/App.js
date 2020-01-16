@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Switch, Route} from 'react-router';
 import { Link } from 'react-router-dom'
 import history from './history';
-import '../src/assets/styles/App.css';
+import '../src/assets/styles/main.css';
 
 import Home from './pages/Home.js';
 // import Login from './pages/Login.js';
