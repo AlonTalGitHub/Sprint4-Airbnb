@@ -6,7 +6,14 @@ export default function HousePreview({ house }) {
     return (
         <Link to={`/house/${house._id}`}>
             <section className="house-preview-container">
-                <img className="house-preview-image" src={house.imgs[0]} alt="" />
+                <div className="house-preview-image-container">
+                    <img className="house-preview-image" src={house.imgs[0]} alt="" />
+                    {/* <div className="house-preview-add-to-favs-btn">
+                    <svg viewBox="0 0 24 24" fill="red" fill-opacity="1" stroke="#222222" stroke-width="1.4"
+                        focusable="false" aria-hidden="true" role="presentation" stroke-linecap="round"
+                        stroke-linejoin="round"><path d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6" stroke-linejoin="round"></path></svg>
+                </div> */}
+                </div>
                 <div className="house-preview-details">
                     <div className="house-preview-first-line-container">
                         <span className="house-preview-first-line-superhost">SUPERHOST</span>

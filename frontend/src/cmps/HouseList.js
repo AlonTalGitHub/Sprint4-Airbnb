@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import { withRouter } from "react-router";
 import HousePreview from "./HousePreview";
+import NavBar from "./NavBar";
 
 class HouseList extends Component {
     houses = [
@@ -120,10 +121,12 @@ class HouseList extends Component {
         }
     ]
 
+    // style = {backgroundColor:'red', position:'fixed'}
     render() {
         return (
             <section className="house-container">
-                <h2 className="house-main-head">Houses List</h2>
+                {/* <NavBar style={this.style} class='banana'></NavBar> */}
+                {/* <h2 className="house-main-head">Houses List</h2> */}
                 <ul className="house-list clean-list">
                     {this.houses.map(house => (
                         <li key={house._id}>
