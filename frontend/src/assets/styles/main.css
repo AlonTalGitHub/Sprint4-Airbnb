@@ -14,12 +14,12 @@ span.house-preview-second-line-container { font-family: Circular, -apple-system,
 .house-preview-third-line-cost { border: 0px !important; height: 1px !important; padding: 0px !important; position: absolute !important; white-space: nowrap !important; width: 1px !important; box-sizing: border-box; font-weight: 800 !important; color: rgb(34, 34, 34) !important; font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important; font-weight: 400 !important; font-size: 16px !important; line-height: 20px !important; } 
 span.house-preview-third-line-cost-part-one { font-weight: 600 !important; } 
 span.house-preview-third-line-cost-part-two { font-weight: 400 !important; } 
-.house-preview-rate-star{height: 12px; width: 12px; fill:#3ccc06;}
-.house-preview-details{margin-left:0px}
+.house-preview-rate-star { height: 12px; width: 12px; fill:#3ccc06; } 
+.house-preview-details { margin-left:0px } 
 .house-preview-third-line-total-cost { padding-top: 27px; color: #717171 !important; font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important; font-weight: 400 !important; font-size: 14px !important; line-height: 18px !important; } 
-
-@media only screen and (min-width: 745px) {
-  img.house-preview-image {max-width:300px;}
-  .house-preview-details{margin-left:20px}
-
+.house-preview-add-to-favs-btn{height: 16px;width: 16px;display: block;overflow: visible;}
+@media only screen and (min-width: 745px) { img.house-preview-image { max-width:300px; } 
+ .house-preview-details { margin-left:20px } 
+ .house-preview-third-line-container { margin-top: 65px; position: absolute; left: 85%; } 
+ .house-preview-first-line-rate-container{position: absolute; left: 85%; }
 }
