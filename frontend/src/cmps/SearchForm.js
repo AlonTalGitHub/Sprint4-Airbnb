@@ -40,7 +40,7 @@ class SearchForm extends Component {
                 </span>
             </div>
             
-                <DateRangePicker
+                {/* <DateRangePicker
                     startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                     startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
                     endDate={this.state.endDate} // momentPropTypes.momentObj or null,
@@ -49,7 +49,7 @@ class SearchForm extends Component {
                     focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                     onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
                 />
-                
+                 */}
             
             {/* <input type="number" placeholder="How Many?"></input> */}
             <Link onClick={this.handleClick} className="form-btn pointer flex align-center justify-center" to="/house">Search</Link>

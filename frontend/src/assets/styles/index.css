@@ -12,6 +12,12 @@ body {
     monospace;
 } */
 
+.main-navbar{
+  width:100%;
+  position: fixed;
+  
+}
+
 .form-loc{
   border-radius: 5px;
   border-style: none;
@@ -21,10 +27,10 @@ body {
 
 .search-form{
   margin-left: 50px;
-  width: 500px;
+  width: 300px;
   border: 1px solid black;
   border-radius: 5px;
-  height: 300px;
+  height: 200px;
   padding: 10px;
   font-size: 15px;
   z-index: 1;

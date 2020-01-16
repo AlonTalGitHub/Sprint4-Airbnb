@@ -9,14 +9,16 @@ import Home from './pages/Home.js';
 // import About from './pages/About.js';
 import HousePage from './pages/HousePage';
 import HouseDetails from './pages/HouseDetails';
+import NavBar from './cmps/NavBar';
 
 function App() {
   return (
     <div className="App"> 
       <Router history={history}>
-        <nav>
+        {/* <nav>
           <Link to="/about">About</Link>
-        </nav>
+        </nav> */}
+        <NavBar></NavBar>        
         <Switch>
           <Route path="/" component={Home} exact/>
           {/* <Route path="/about" component={About} exact/>
