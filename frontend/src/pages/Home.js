@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 // import { loadReviews, addReview } from '../actions/ReviewActions.js';
 // import { loadUsers } from '../actions/UserActions.js';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class Home extends Component {
   state = {};
@@ -16,6 +16,7 @@ export default class Home extends Component {
     return (
       <div className="home">
         <h1>Welcome Home</h1>
+        <Link to="/house">Top Rated</Link>
       </div>
     );
   }
