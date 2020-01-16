@@ -5,7 +5,17 @@ import React, { Component } from 'react';
 export default class HouseDetails extends Component {
 
     render() {
-        return <h2>House Details</h2>
+        return (
+            <section className="housedetails-container">
+                <ul>
+                    {this.houses.map(house => (
+                        <li key={house._id}>
+                            <HousePreview house={house} />
+                        </li>
+                    ))}
+                </ul>
+            </section>
+        )
     }
 }
 
