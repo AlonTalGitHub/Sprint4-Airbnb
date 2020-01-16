@@ -28,8 +28,9 @@ class SearchForm extends Component {
 
     render() {
         // const [startDate, setStartDate] = useState(null);
-        return <div className="search-form flex column">
+        return <div className="search-form flex column space-between">
             {/* <form> */}
+            <h2>Feel At Home, Wherever You Go</h2>
             <input className="form-loc" type="text" name="location" placeholder="Where To Go?"></input>
             <div className="form-cap flex space-between align-center">
                 <span>How Many People?</span>

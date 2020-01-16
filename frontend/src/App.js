@@ -16,9 +16,10 @@ function App() {
     <div className="App"> 
       <Router history={history}>
         {/* <nav>
+        <nav className="main-nav">
           <Link to="/about">About</Link>
         </nav> */}
-        <NavBar></NavBar>        
+        {/* <NavBar></NavBar>         */}
         <Switch>
           <Route path="/" component={Home} exact/>
           {/* <Route path="/about" component={About} exact/>
