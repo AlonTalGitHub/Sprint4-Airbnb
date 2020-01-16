@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App"> 
       <Router history={history}>
-        <nav>
+        <nav className="main-nav">
           <Link to="/about">About</Link>
         </nav>
         <Switch>
