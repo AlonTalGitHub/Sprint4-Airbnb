@@ -8,11 +8,28 @@ export default function HousePreview({ house }) {
             <section className="house-preview-container">
                 <div className="house-preview-image-container">
                     <img className="house-preview-image" src={house.imgs[0]} alt="" />
-                    {/* <div className="house-preview-add-to-favs-btn">
-                    <svg viewBox="0 0 24 24" fill="red" fill-opacity="1" stroke="#222222" stroke-width="1.4"
-                        focusable="false" aria-hidden="true" role="presentation" stroke-linecap="round"
-                        stroke-linejoin="round"><path d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6" stroke-linejoin="round"></path></svg>
-                </div> */}
+                    <div className="house-preview-btn-container">
+                        <div className="house-preview-btn">
+                        <div className="house-preview-heart-container">
+                            <svg className="house-preview-heart" viewBox="0 0 24 24" fill="white" fill-opacity="1" stroke="#222222" stroke-width="1.4"
+                                focusable="false" aria-hidden="true" role="presentation" stroke-linecap="round"
+                                stroke-linejoin="round"><path d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6" stroke-linejoin="round"></path></svg>
+                        </div>
+                        </div>
+                        <div className="house-preview-btn">
+                            <div className="house-preview-btn-prev">
+                            <svg viewBox="0 0 16 16" role="presentation" aria-hidden="true" focusable="false" 
+                            style={{'height': '10px','width': '10px','display':'block','fill': 'rgb(34, 34, 34)','position':'absolute','left':'30%','top':'32%'}}>
+                            <path d="m10.8 16c-.4 0-.7-.1-.9-.4l-6.8-6.7c-.5-.5-.5-1.3 0-1.8l6.8-6.7c.5-.5 1.2-.5 1.7 0s .5 1.2 0 1.7l-5.8 5.9 5.8 5.9c.5.5.5 1.2 0 1.7-.2.3-.5.4-.8.4"></path></svg>
+                            </div>
+                            <div className="house-preview-btn-next">
+                            <svg viewBox="0 0 16 16" role="presentation" aria-hidden="true" focusable="false" style={{'height': '10px','width': '10px','display':'block','fill': 'rgb(34, 34, 34)','position':'absolute','left':'30%','top':'32%'}}><path d="m5.3 16c .3 0 .6-.1.8-.4l6.8-6.7c.5-.5.5-1.3 0-1.8l-6.8-6.7c-.5-.5-1.2-.5-1.7 0s-.5 1.2 0 1.7l5.8 5.9-5.8 5.9c-.5.5-.5 1.2 0 1.7.2.3.5.4.9.4"></path></svg>
+                            </div>
+                        </div>
+                        <div className="house-preview-btn"></div>
+                    </div>
+
+
                 </div>
                 <div className="house-preview-details">
                     <div className="house-preview-first-line-container">
