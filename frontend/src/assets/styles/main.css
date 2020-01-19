@@ -1,4 +1,3 @@
-
 ul.house-list.clean-list { list-style-type:none; padding-left: 0 } 
 .house-main-head { text-align: center; } 
 .house-preview-main-head { text-align: center; } 
@@ -6,7 +5,7 @@ ul.house-list.clean-list { list-style-type:none; padding-left: 0 }
 .house-preview-first-line-container { margin-top: 12px; margin-bottom: 6px; display:flex; flex-direction: row; flex-wrap:nowrap; } 
 span.house-preview-first-line-superhost { background-color: #FFFFFF !important; border-radius: 4px !important; border: solid 1px #222222 !important; color: #222222 !important; display: inline-block !important; font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important; font-weight: 600 !important; text-transform: uppercase !important; text-align: center !important; padding-top: 1px !important; padding-bottom: 1px !important; padding-left: 5px !important; padding-right: 5px !important; font-size: 12px !important; line-height: 16px !important; } 
 .house-preview-first-line-tag { color: #717171 !important; -webkit-flex: 1 !important; -ms-flex: 1 1 0% !important; flex: 1 !important; line-height: 20px !important; max-height: 20px !important; overflow: hidden !important; text-overflow: ellipsis !important; display: -webkit-box !important; -webkit-line-clamp: 1 !important; -webkit-box-orient: vertical !important; -webkit-animation-duration: 300ms !important; animation-duration: 300ms !important; -webkit-animation-name: keyframe_18jn58a !important; animation-name: keyframe_18jn58a !important; -webkit-animation-timing-function: ease-in-out !important; animation-timing-function: ease-in-out !important; margin-left: 6px !important; } 
-img.house-preview-image { width:100%; height:auto; border-radius: 3px !important; } 
+img.house-preview-image { width:100%; height:auto; border-radius: 3px !important; grid-column: 1/4; grid-row: 1/4; } 
 .house-preview-first-line-rate-score { color: #222222 !important; padding-left: 2px !important; font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important; font-weight: 400 !important; font-size: 14px !important; line-height: 18px !important; } 
 .house-container { padding-left: 24px !important; padding-right: 24px !important; max-width: none !important; } 
 span.house-preview-second-line-container { font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important; font-weight: 400 !important; color: rgb(34, 34, 34) !important; font-size: 16px !important; line-height: 20px !important; max-height: 20px !important; text-overflow: ellipsis !important; display: -webkit-box !important; -webkit-line-clamp: 1 !important; -webkit-box-orient: vertical !important; overflow: hidden !important; } 
@@ -15,11 +14,29 @@ span.house-preview-second-line-container { font-family: Circular, -apple-system,
 span.house-preview-third-line-cost-part-one { font-weight: 600 !important; } 
 span.house-preview-third-line-cost-part-two { font-weight: 400 !important; } 
 .house-preview-rate-star { height: 12px; width: 12px; fill:#3ccc06; } 
-.house-preview-details { margin-left:0px } 
+.house-preview-details { margin-left:0px; } 
 .house-preview-third-line-total-cost { padding-top: 27px; color: #717171 !important; font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important; font-weight: 400 !important; font-size: 14px !important; line-height: 18px !important; } 
-.house-preview-add-to-favs-btn{height: 16px;width: 16px;display: block;overflow: visible;}
-@media only screen and (min-width: 745px) { img.house-preview-image { max-width:300px; } 
+.house-preview-add-to-favs-btn { height: 16px; width: 16px; display: block; overflow: visible; } 
+.house-preview-image-container { position:relative; } 
+.house-preview-btn-container { width: 100%; height: 100%; position: absolute; left: 0; top: 0; } 
+.house-preview-heart-container { top: 0%; left: 0%; position: absolute; width: 30px; height: 30px; border-radius: 50%; opacity: 0.5; border: 1px solid black; background-color: white; } 
+ .house-preview-heart { margin:5px; } 
+ .house-preview-add-to-favs-btn:hover { transform:scale(1.1); opacity:1; } 
+ .house-preview-image-next { grid-column: 3/4; grid-row: 2/3; margin-left:80%; margin-top:20%; border-radius: 50% !important; border: 0px !important; outline: 0px !important; opacity:0.5; padding: 0px !important; color: #222222 !important; background-color: rgba(255, 255, 255, 0.9) !important; cursor: pointer !important; border-style: solid !important; border-width: 1px !important; background-clip: padding-box !important; border-color: rgba(0, 0, 0, 0.08) !important; box-shadow: 0px 0px 0px 1px transparent, 0px 0px 0px 4px transparent, 0px 1px 2px rgba(0, 0, 0, 0.18) !important; width: 32px !important; height: 32px !important; } 
+ .house-preview-btn { flex-grow:1; height: 33.33%; position: relative; } 
+ .house-preview-btn-prev { top: calc(50% - 15px); left: 0%; position: relative; width: 30px; height: 30px; border-radius: 50%; opacity: 0.5; border: 1px solid black; background-color: white; } 
+ .house-preview-btn-next { top: calc(50% - 15px); left:calc(100% - 30px); position: absolute; width: 30px; height: 30px; border-radius: 50%; opacity: 0.5; border: 1px solid black; background-color: white; } 
+ @media only screen and (min-width: 745px) { img.house-preview-image { max-width:300px; } 
  .house-preview-details { margin-left:20px } 
  .house-preview-third-line-container { margin-top: 65px; position: absolute; left: 85%; } 
- .house-preview-first-line-rate-container{position: absolute; left: 85%; }
-}
+ .house-preview-first-line-rate-container { position: absolute; left: 85%; } 
+ .house-preview-image-container { max-width:300px; } 
+ }
+ @media only screen and (max-width: 430px){
+ .house-preview-add-to-favs-btn { } 
+ .house-preview-image-next { } 
+ .house-preview-heart-container {top: 0%; left: calc(100% - 30px); position: absolute;} 
+ }
+ @media only screen and (min-width: 430px){
+ .house-preview-add-to-favs-btn { } 
+ }
