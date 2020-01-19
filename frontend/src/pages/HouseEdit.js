@@ -23,9 +23,12 @@ class HouseEdit extends Component {
             imgs: [],
             title: '',
             description: '',
-            capacity: 1
+            capacity: 1,
+            price: ''
+
         },
-        isModalShown: false
+        isModalShown: false,
+        isUploading:false
 
     }
 
@@ -43,13 +46,13 @@ class HouseEdit extends Component {
             // debugger            
             console.log(resFiles)
             const newHouse = { ...this.state.newHouse }
-            resFiles.forEach(file => {if (file.url) newHouse.imgs.push(file.url) })
+            resFiles.forEach(file => { if (file.url) newHouse.imgs.push(file.url) })
             // newHouse.imgs=uploadedImgs
             this.setState({ newHouse }, () => console.log(this.state))
 
         } catch (err) {
             throw err
-        }     
+        }
 
 
     }
@@ -59,7 +62,7 @@ class HouseEdit extends Component {
         const key = ev.target.name
         let value = ev.target.value
         console.log(ev.target.type)
-        if (ev.target.name === 'capacity') value = parseInt(value, 0)
+        if (ev.target.name === 'capacity' || ev.target.name === 'price') value = parseInt(value, 0)
         newHouse[key] = value
         this.setState({ newHouse }, () => console.log(this.state))
     }
@@ -93,13 +96,14 @@ class HouseEdit extends Component {
     }
 
     render() {
-        const { newHouse, isModalShown } = this.state
+        const { newHouse, isModalShown,isUploading } = this.state
         return <React.Fragment>
             <NavBar style={{ "position": "fixed", "top": "0px", "backgroundColor": "lightblue" }}></NavBar>
-           <form className="edit-form flex column" onSubmit={this.onAddHouse}>
+            <form className="edit-form flex column" onSubmit={this.onAddHouse}>
                 <input required name="country" onChange={this.onAddressChange} value={newHouse.address.country} type="text" placeholder="Country"></input>
                 <input required name="title" onChange={this.onInputChange} value={newHouse.title} type="text" placeholder="House Title"></input>
                 <input required name="description" onChange={this.onInputChange} value={newHouse.description} type="text" placeholder="Description"></input>
+                <input required name="price" onChange={this.onInputChange} value={newHouse.price} type="text" placeholder="Price per night"></input>
                 <label>How many people can stay in your property?</label>
                 <select type="number" name="capacity" onChange={this.onInputChange} >
                     <option value={1}>1 Guest</option>
@@ -113,17 +117,22 @@ class HouseEdit extends Component {
                 </select>
 
                 {/* onChange={this.onInputChange} */}
-
-                <input required onChange={this.upload} type="file" multiple></input>
+                <label for="file-upload" class="custom-file-upload">
+                     Upload Images</label>
+                     {/* <span className={isUploading?'uploading'}></span> */}
+                <input id="file-upload" required onChange={this.upload} type="file" multiple></input>
                 <button className="form-btn pointer">Submit</button>
-                <div className={isModalShown ? 'modal-shown flex column space-betwwen' : 'modal-hidden'}>
-                    {/* <div className='modal-shown flex column space-between'> */}
-                    <span>Congardulations!</span>
-                    <span>Your property is on TurtleHouse</span>
-                    <button onClick={this.onBackClick} className="form-btn pointer">Back To HomePage</button>
-                </div>
+
             </form>
-            
+            <div className={isModalShown ? 'modal-shown flex column space-betwwen' : 'modal-hidden'}>
+                {/* <div className='modal-shown flex column space-between'> */}
+                <span>Congardulations!</span>
+                <span>Your property is on TurtleHouse</span>
+                <button onClick={this.onBackClick} className="form-btn pointer">Back To HomePage</button>
+            </div>
+
+            <div className={isModalShown ? 'block-screen' : 'block-screen-hidden'}></div>
+
         </React.Fragment>
 
     }
