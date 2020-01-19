@@ -8,7 +8,7 @@ span.house-preview-first-line-superhost { background-color: #FFFFFF !important; 
 img.house-preview-image { width:100%; height:auto; border-radius: 3px !important; grid-column: 1/4; grid-row: 1/4; } 
 .house-preview-first-line-rate-score { color: #222222 !important; padding-left: 2px !important; font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important; font-weight: 400 !important; font-size: 14px !important; line-height: 18px !important; } 
 .house-container { padding-left: 24px !important; padding-right: 24px !important; max-width: none !important; } 
-span.house-preview-second-line-container { font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important; font-weight: 400 !important; color: rgb(34, 34, 34) !important; font-size: 16px !important; line-height: 20px !important; max-height: 20px !important; text-overflow: ellipsis !important; display: -webkit-box !important; -webkit-line-clamp: 1 !important; -webkit-box-orient: vertical !important; overflow: hidden !important; } 
+span.house-preview-second-line-container {  overflow: hidden !important; text-overflow: ellipsis !important;font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important; font-weight: 400 !important; color: rgb(34, 34, 34) !important; font-size: 16px !important; line-height: 20px !important; max-height: 20px !important; text-overflow: ellipsis !important; display: -webkit-box !important; -webkit-line-clamp: 1 !important; -webkit-box-orient: vertical !important; overflow: hidden !important; } 
 .house-preview-third-line-container { margin-top: 4px; margin-bottom: 0px; box-sizing: border-box; display: block; white-space: normal !important; } 
 .house-preview-third-line-cost { border: 0px !important; height: 1px !important; padding: 0px !important; position: absolute !important; white-space: nowrap !important; width: 1px !important; box-sizing: border-box; font-weight: 800 !important; color: rgb(34, 34, 34) !important; font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important; font-weight: 400 !important; font-size: 16px !important; line-height: 20px !important; } 
 span.house-preview-third-line-cost-part-one { font-weight: 600 !important; } 
@@ -18,7 +18,8 @@ span.house-preview-third-line-cost-part-two { font-weight: 400 !important; }
 .house-preview-third-line-total-cost { padding-top: 27px; color: #717171 !important; font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important; font-weight: 400 !important; font-size: 14px !important; line-height: 18px !important; } 
 .house-preview-add-to-favs-btn { height: 16px; width: 16px; display: block; overflow: visible; } 
 .house-preview-image-container { position:relative; } 
-.house-preview-btn-container { width: 100%; height: 100%; position: absolute; left: 0; top: 0; } 
+.house-preview-btn-container { opacity: 0; width: 100%; height: 100%; position: absolute; left: 0; top: 0; } 
+.house-preview-btn-container:hover { opacity: 1; transition-timing-function: ease-in; transition: 0.2s; } 
 .house-preview-heart-container { top: 0%; left: 0%; position: absolute; width: 30px; height: 30px; border-radius: 50%; opacity: 0.5; border: 1px solid black; background-color: white; } 
  .house-preview-heart { margin:5px; } 
  .house-preview-add-to-favs-btn:hover { transform:scale(1.1); opacity:1; } 
@@ -35,7 +36,7 @@ span.house-preview-third-line-cost-part-two { font-weight: 400 !important; }
  @media only screen and (max-width: 430px){
  .house-preview-add-to-favs-btn { } 
  .house-preview-image-next { } 
- .house-preview-heart-container {top: 0%; left: calc(100% - 30px); position: absolute;} 
+ .house-preview-heart-container { top: 0%; left: calc(100% - 30px); position: absolute; } 
  }
  @media only screen and (min-width: 430px){
  .house-preview-add-to-favs-btn { } 
