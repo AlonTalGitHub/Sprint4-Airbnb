@@ -1,56 +1,216 @@
 {
-    "house": [
-        {
-            "_id": "0p9o8i",
-            "title": "House on the Lake",
-            "description": "Central location and nice view",
-            "owner": {
-                "_id": "0987",
-                "fullName": "Yael Shenker",
-                "imgURL": "https://a0.muscache.com/im/pictures/user/e23d9c03-0de7-46f9-ba5a-c62a6358ff34.jpg?aki_policy=profile_x_medium"
-            },
-            "address": {
-                "country": "Spain",
-                "coords": {
-                    "lat": 0,
-                    "lng": 0
-                }
-            },
-            "imgs": [
-                "https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=xx_large",
-                "https://a0.muscache.com/im/pictures/beb041ce-a69f-4be0-988d-1305d351e3d1.jpg?aki_policy=large",
-                "https://a0.muscache.com/im/pictures/b87c9f56-bd6e-4cfc-b1af-5c122c5c5066.jpg?aki_policy=large",
-                "https://a0.muscache.com/im/pictures/a52deab7-1485-4d75-b871-b468b3f4a08d.jpg?aki_policy=large",
-                "https://a0.muscache.com/im/pictures/f3259994-cf98-4c4a-a532-c1ac95e65477.jpg?aki_policy=large"
-            ],
-            "capacity": 4,
-            "price": 100,
-            "reviews": [
-                {
-                    "byUser": {
-                        "_id": "1234",
-                        "fullName": "shay rosenthal",
-                        "img": "http://img"
-                    },
-                    "txt": "Amazing place",
-                    "rate": 4,
-                    "createdAt": "2020-01-15T07:51:18.138Z"
-                }
-            ]
+  "house": [
+    {
+      "_id": "0p9o8i",
+      "title": "House on the Lake",
+      "description": "Central location and nice view",
+      "owner": {
+        "_id": "0987",
+        "fullName": "Yael Shenker",
+        "imgURL": "https://a0.muscache.com/im/pictures/user/e23d9c03-0de7-46f9-ba5a-c62a6358ff34.jpg?aki_policy=profile_x_medium"
+      },
+      "address": {
+        "country": "Spain",
+        "coords": {
+          "lat": 0,
+          "lng": 0
         }
-    ],
-    "user": [
+      },
+      "imgs": [
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255992/Tutrtle%20house/Outside/blue-and-gray-concrete-house-with-attic-during-twilight-186077_mttim1.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/apartment-bed-bedroom-chair-271624_mldlej.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255612/Tutrtle%20house/livingroom/flat-screen-tv-1571458_jvdmj5.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/apartment-blinds-cabinets-chairs-349749_gycx19.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/oval-mirror-near-toilet-bowl-1910472_dognwb.jpg"
+      ],
+      "capacity": 2,
+      "price": 100,
+      "reviews": [
         {
+          "byUser": {
             "_id": "1234",
-            "fullName": "Alon tal",
-            "userName": "alontal@gmail.com",
-            "password": "1q2w3e",
-            "isHost": false,
-            "isAdmin": false,
-            "imgURL": "http://some-img",
-            "houses": [],
-            "favorites": [],
-            "reserved":[]
-          }
-    ]
+            "fullName": "shay rosenthal",
+            "img": "http://img"
+          },
+          "txt": "Amazing place",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        }
+      ]
+    },
+    {
+      "_id": "ahy546",
+      "title": "Near The Beach",
+      "description": "5 minutes walking to the beach",
+      "owner": {
+        "_id": "0987",
+        "fullName": "Yael Shenker",
+        "imgURL": "https://a0.muscache.com/im/pictures/user/e23d9c03-0de7-46f9-ba5a-c62a6358ff34.jpg?aki_policy=profile_x_medium"
+      },
+      "address": {
+        "country": "Portugal",
+        "coords": {
+          "lat": 0,
+          "lng": 0
+        }
+      },
+      "imgs": [
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255992/Tutrtle%20house/Outside/architecture-bungalow-country-countryside-463996_aanoiy.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/black-flat-screen-tv-turned-off-210265_v9uw9d.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255612/Tutrtle%20house/livingroom/photo-of-living-room-1457842_aaaqtv.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/chopping-boards-near-oven-under-hood-2062426_updrij.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/bathroom-cabinet-candles-faucet-342800_xrhbha.jpg"
+      ],
+      "capacity": 4,
+      "price": 100,
+      "reviews": [
+        {
+          "byUser": {
+            "_id": "1234",
+            "fullName": "shay rosenthal",
+            "img": "http://img"
+          },
+          "txt": "Amazing place",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        }
+      ]
+    },
+    {
+      "_id": "zdew6t3",
+      "title": "Dream In Toscana",
+      "description": "Quiet and peacefull house for a romantic vaction",
+      "owner": {
+        "_id": "0987",
+        "fullName": "Yael Shenker",
+        "imgURL": "https://a0.muscache.com/im/pictures/user/e23d9c03-0de7-46f9-ba5a-c62a6358ff34.jpg?aki_policy=profile_x_medium"
+      },
+      "address": {
+        "country": "Italy",
+        "coords": {
+          "lat": 0,
+          "lng": 0
+        }
+      },
+      "imgs": [
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255992/Tutrtle%20house/Outside/apartment-architecture-balcony-building-347141_tq0cyg.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/white-wooden-shelf-beside-bed-2062431_xxudde.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255613/Tutrtle%20house/livingroom/brown-wooden-center-table-584399_x1hbij.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/white-wooden-kitchen-cabinet-1599791_a9dmt4.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/white-bathroom-interior-1454804_wv7xdq.jpg"
+      ],
+      "capacity": 6,
+      "price": 100,
+      "reviews": [
+        {
+          "byUser": {
+            "_id": "1234",
+            "fullName": "shay rosenthal",
+            "img": "http://img"
+          },
+          "txt": "Amazing place",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        }
+      ]
+    },
+    {
+      "address": {
+        "country": "England"
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579347113/bathroom-cabinet-candles-faucet-342800_fhlovh.jpg"
+      ],
+      "title": "Central London house",
+      "description": "Cozy flat 5 minutes from Oxford str",
+      "capacity": 3,
+      "_id": "xLbLNBW"
+    },
+    {
+      "address": {
+        "country": "England"
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579348939/apartment-architecture-balcony-building-347141_jom7n7.jpg"
+      ],
+      "title": "The best house In London",
+      "description": "Big house near restaurants and theatres",
+      "capacity": 5,
+      "_id": "OwarXBM"
+    },
+    {
+      "address": {
+        "country": "Portugal"
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579361241/architecture-bungalow-country-countryside-463996_fjlprs.jpg"
+      ],
+      "title": "Country side house",
+      "description": "quiet place",
+      "capacity": 3,
+      "_id": "TxIbxKj"
+    },
+    {
+      "address": {
+        "country": "Germany"
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579361970/photo-of-bedroom-1454806_hssl6s.jpg"
+      ],
+      "title": "Cool house in Berlin",
+      "description": "The most hip neighborhood in berlin",
+      "capacity": 2,
+      "_id": "uaO7QdJ"
+    },
+    {
+      "address": {
+        "country": "Germany"
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579363966/apartment-blinds-cabinets-chairs-349749_vplwix.jpg"
+      ],
+      "title": "The best house In Munich",
+      "description": "Quiet and central",
+      "capacity": 2,
+      "_id": "en2OluO"
+    },
+    {
+      "address": {
+        "country": "Germany"
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579363966/apartment-blinds-cabinets-chairs-349749_vplwix.jpg"
+      ],
+      "title": "The best house In Munich",
+      "description": "Quiet and central",
+      "capacity": 2,
+      "_id": "LZewyoD"
+    },
+    {
+      "address": {
+        "country": "Israel"
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579364666/apartment-bed-bedroom-chair-271624_vsfbgt.jpg"
+      ],
+      "title": "Nice flat in Tel Aviv",
+      "description": "The flat is located 3 min fron the beach",
+      "capacity": 2,
+      "_id": "-5Glkz0"
+    }
+  ],
+  "user": [
+    {
+      "_id": "1234",
+      "fullName": "Alon tal",
+      "userName": "alontal@gmail.com",
+      "password": "1q2w3e",
+      "isHost": false,
+      "isAdmin": false,
+      "imgURL": "http://some-img",
+      "houses": [],
+      "favorites": [],
+      "reserved": []
+    }
+  ]
 }

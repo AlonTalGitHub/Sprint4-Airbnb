@@ -70,8 +70,10 @@ export default class HousePreview extends Component {
                                 <span className="house-preview-first-line-rate-score" >4.92</span>
                             </div>
                         </div>
-                        <span className="house-preview-second-line-container">
-                            Wandering Trout Crafty Ales
+                        {/* <span className="house-preview-second-line-container">
+                            Wandering Trout Crafty Ales */}
+                    <span className="house-preview-second-line-container">
+                        {this.props.house.title}
                 </span>
                         <div className="house-preview-third-line-container">
                             <div className="house-preview-third-line-cost">

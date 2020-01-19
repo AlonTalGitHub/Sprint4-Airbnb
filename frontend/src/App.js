@@ -5,6 +5,8 @@ import history from './history';
 import '../src/assets/styles/main.css';
 
 import Home from './pages/Home.js';
+import HouseEdit from './pages/HouseEdit'
+
 // import Login from './pages/Login.js';
 // import About from './pages/About.js';
 import HousePage from './pages/HousePage';
@@ -26,6 +28,7 @@ function App() {
           <Route path="/login" component={Login} exact/> */}
           <Route path="/house" component={HousePage} exact/>
           <Route path="/house/:id" component={HouseDetails} exact/>
+          <Route path="/edit" component={HouseEdit} exact/>
         </Switch>
       </Router>
     </div>

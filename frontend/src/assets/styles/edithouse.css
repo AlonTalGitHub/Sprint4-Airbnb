@@ -1,0 +1,63 @@
+.edit-form {
+    margin-left: 50px;
+    width: 300px;
+    border-radius: 5px;
+    height: 280px;
+    padding: 10px;
+    z-index: 1;
+    color: gray;
+    background-color: white;
+    margin-top: 100px;
+}
+
+.edit-form>*:not(:last-child) {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-style: none;
+    font-size: 14px;
+}
+
+.edit-form>:nth-child(-n+3) {
+    border: 1px solid grey;
+}
+
+.edit-form>* {
+    padding: 5px
+}
+
+.edit-form>:nth-child(4)>:nth-child(1) {
+    margin-top: 5px;
+    width: 100px;
+    border-radius: 5px;
+    height: 20px;
+}
+
+.modal-shown {
+    /* visibility: visible; */
+    opacity: 1;
+    transition:opacity 1000ms;
+    display: flex;
+    position: absolute;
+    z-index: 5;
+    background-color: white;
+    width: 400px;
+    height: 330px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    text-align: center;    
+    top: 90px;
+    padding: 30px;
+    left: calc(50% - 150px);
+    border: 1px solid gray;    
+}
+.modal-hidden {
+    opacity: 0;
+    visibility: hidden;   
+
+}
+
+.form-btn{
+    align-self: center;
+    width: fit-content;
+    padding: 5px;
+}
