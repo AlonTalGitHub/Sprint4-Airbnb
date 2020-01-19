@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import ReviewReducer from './ReviewReducer'
+import HouseReducer from './HouseReducer'
 import UserReducer from './UserReducer'
 import SystemReducer from './SystemReducer';
 
 const rootReducer = combineReducers({
+  house: HouseReducer,
   system: SystemReducer,
-  review: ReviewReducer,
   user: UserReducer
 })
 

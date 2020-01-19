@@ -24,7 +24,7 @@ export default function HousePreview({ house }) {
                         </div>
                     </div>
                     <span className="house-preview-second-line-container">
-                        Wandering Trout Crafty Ales
+                        {house.title}
                 </span>
                     <div className="house-preview-third-line-container">
                         <div className="house-preview-third-line-cost">

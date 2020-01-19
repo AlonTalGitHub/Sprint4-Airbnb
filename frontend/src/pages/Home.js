@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { loadHouses, setFilter } from '../actions/HouseActions'
+
 import SearchForm from '../cmps/SearchForm';
 import backgroundImage from '../assets/img/bgc.jpg'
 import HouseList from '../cmps/HouseList';
@@ -10,10 +13,30 @@ import NavBar from '../cmps/NavBar';
 // import { loadUsers } from '../actions/UserActions.js';
 import { Link } from 'react-router-dom';
 
-export default class Home extends Component {
+class Home extends Component {
   state = {};
 
-  componentDidMount() { }
+  componentDidMount() { 
+    console.log('home', this.props.filterBy)
+    // debugger
+    this.load()
+
+  }
+
+  load= async()=>{
+    // await this.props.setFilter({location:'',numOfperson:1})
+    // debugger
+    this.props.loadHouses(this.props.filterBy)
+
+  }
+
+
+  // getBestByCountry = (country) => {
+  //   this.props.houses
+  //   .filter(house => house.country === country)
+  //   .filter(house => house.rating > 7)
+  // }
+  
 
   handleChange = ev => { };
 
@@ -23,8 +46,21 @@ export default class Home extends Component {
         <NavBar></NavBar>
         <img className="index-cover" src={backgroundImage} />
         <SearchForm></SearchForm>
-        <HouseList></HouseList>
+       {this.props.houses.length&&<HouseList houses={this.props.houses}></HouseList>} 
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+      houses: state.house.houses,
+      filterBy: state.house.filterBy
+  };
+};
+const mapDispatchToProps = {
+  setFilter,
+  loadHouses
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

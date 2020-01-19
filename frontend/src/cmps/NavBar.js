@@ -16,6 +16,7 @@ class NavBar extends Component {
 
 
             <ul className="nav-links flex space-between align-center">
+                <li><Link to='/edit' className="nav-link">Host</Link></li>
                 <li><Link className="nav-link">About</Link></li>
                 <li><Link className="nav-link">Login/SignUp</Link></li>
             </ul>
