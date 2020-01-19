@@ -2,7 +2,8 @@ import React, { Component } from "react";
 // import { withRouter } from "react-router";
 import HousePreview from "./HousePreview";
 import NavBar from "./NavBar";
-
+import image1 from "../assets/img/crap1.jpg";
+import image2 from "../assets/img/crap2.jpg";
 class HouseList extends Component {
     houses = [
         {
@@ -23,10 +24,8 @@ class HouseList extends Component {
             },
             "imgs": [
                 "https://a0.muscache.com/im/pictures/41671788/112cfec6_original.jpg?aki_policy=xx_large",
-                "https://a0.muscache.com/im/pictures/beb041ce-a69f-4be0-988d-1305d351e3d1.jpg?aki_policy=large",
-                "https://a0.muscache.com/im/pictures/b87c9f56-bd6e-4cfc-b1af-5c122c5c5066.jpg?aki_policy=large",
-                "https://a0.muscache.com/im/pictures/a52deab7-1485-4d75-b871-b468b3f4a08d.jpg?aki_policy=large",
-                "https://a0.muscache.com/im/pictures/f3259994-cf98-4c4a-a532-c1ac95e65477.jpg?aki_policy=large"
+                "https://specials-images.forbesimg.com/imageserve/1026205392/960x0.jpg?fit=scale",
+                "https://si.wsj.net/public/resources/images/B3-DM067_RIGHTS_IM_20190319162958.jpg"
             ],
             "capacity": 4,
             "price": 100,
