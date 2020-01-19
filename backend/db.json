@@ -197,6 +197,38 @@
       "description": "The flat is located 3 min fron the beach",
       "capacity": 2,
       "_id": "-5Glkz0"
+    },
+    {
+      "address": {
+        "country": "Denmark"
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579449164/oval-mirror-near-toilet-bowl-1910472_wjbqb1.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579449163/white-bathroom-interior-1454804_o2v3be.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579449163/white-wooden-kitchen-cabinet-1599791_ezuxbu.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579449164/chopping-boards-near-oven-under-hood-2062426_bprsbw.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579449163/apartment-blinds-cabinets-chairs-349749_tvsuvq.jpg"
+      ],
+      "title": "Copenhagen love shack",
+      "description": "Your home in Copenhagen",
+      "capacity": 4,
+      "_id": "jDsN7sA"
+    },
+    {
+      "address": {
+        "country": "Sweden"
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579449334/white-bathroom-interior-1454804_djppkk.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579449334/white-wooden-kitchen-cabinet-1599791_gefugq.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579449334/chopping-boards-near-oven-under-hood-2062426_n94dtk.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579449334/apartment-blinds-cabinets-chairs-349749_ox4fyx.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579449334/flat-screen-tv-1571458_yijv7h.jpg"
+      ],
+      "title": "Romantic flat with balcony",
+      "description": "The best location",
+      "capacity": 2,
+      "_id": "dTA6d4F"
     }
   ],
   "user": [

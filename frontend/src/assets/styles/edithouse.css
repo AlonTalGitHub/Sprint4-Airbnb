@@ -17,7 +17,7 @@
     font-size: 14px;
 }
 
-.edit-form>:nth-child(-n+3) {
+.edit-form>:nth-child(-n+4) {
     border: 1px solid grey;
 }
 
@@ -32,13 +32,17 @@
     height: 20px;
 }
 
+#file-upload{
+    visibility: hidden;
+}
+
 .modal-shown {
     /* visibility: visible; */
     opacity: 1;
     transition:opacity 1000ms;
     display: flex;
     position: absolute;
-    z-index: 5;
+    z-index: 6;
     background-color: white;
     width: 400px;
     height: 330px;
@@ -47,7 +51,7 @@
     text-align: center;    
     top: 90px;
     padding: 30px;
-    left: calc(50% - 150px);
+    left: calc(50% - 200px);
     border: 1px solid gray;    
 }
 .modal-hidden {
@@ -60,4 +64,20 @@
     align-self: center;
     width: fit-content;
     padding: 5px;
+}
+
+.block-screen{
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    background-color: gray;
+    opacity: 0.3;
+    z-index: 5;
+    position: fixed;
+    left: 0px;    
+    top: 0px;
+}
+
+.block-screen-hidden{
+    display: none;
 }
