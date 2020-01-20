@@ -42,6 +42,20 @@ export function addHouse(house){
   };
 }
 
+export function deleteHouse(houseId) {
+  return async (dispatch) => {
+      try {
+          await HouseService.remove(houseId)
+          console.log('house delete action')
+          dispatch(_deleteHouse(houseId))
+      }
+      catch(err){
+          console.log(err)
+      }
+
+  }
+}
+
 // export function addReview(review) {
 //   return async dispatch => {
 //     try {
@@ -70,5 +84,12 @@ function _addHouse(house) {
   return {
     type: 'HOUSE_ADD',
     house
+  };
+}
+
+function _deleteHouse(houseId){
+  return {
+    type: 'HOUSE_REMOVE',
+    houseId
   };
 }

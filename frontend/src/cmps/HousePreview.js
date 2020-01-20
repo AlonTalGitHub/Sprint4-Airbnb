@@ -10,49 +10,58 @@ let prev_next_btn_style = { 'height': '10px', 'width': '10px', 'display': 'block
 let idx = 0;
 //crappyImages[idx]
 export default class HousePreview extends Component {
-    
-    state={imgIdx:0,
-        isFav:false}
-    loadImage=(ev,diff)=>{
+
+    state = {
+        imgIdx: 0,
+        isFav: false
+    }
+    loadImage = (ev, diff) => {
         ev.preventDefault();
         // let diff=ev.target.attributes.getAttribute('diff');
-        console.log('diff is',diff)
-        var imgLen=this.props.house.imgs.length;
-        console.log('imgLen is',imgLen)
-        var currIdx=this.state.imgIdx;
-        console.log('currIdx is',currIdx)
-        if(currIdx+diff>=imgLen) return this.setState({...this.state,imgIdx:0});
-        else if (currIdx+diff<0) return this.setState({...this.state,imgIdx:imgLen-1});
-        else return this.setState({...this.state,imgIdx:currIdx+diff}) 
+        console.log('diff is', diff)
+        var imgLen = this.props.house.imgs.length;
+        console.log('imgLen is', imgLen)
+        var currIdx = this.state.imgIdx;
+        console.log('currIdx is', currIdx)
+        if (currIdx + diff >= imgLen) return this.setState({ ...this.state, imgIdx: 0 });
+        else if (currIdx + diff < 0) return this.setState({ ...this.state, imgIdx: imgLen - 1 });
+        else return this.setState({ ...this.state, imgIdx: currIdx + diff })
     }
-    onFavClick=(event)=>{
+    onFavClick = (event) => {
         event.preventDefault();
         console.log(event.target)
         console.log(this.props.house)
-        this.setState({...this.state,isFav:!this.state.isFav}) 
+        this.setState({ ...this.state, isFav: !this.state.isFav })
+    }
+
+    handleDelete = (ev) => {
+        ev.preventDefault()
+        const { house } = this.props        
+        this.props.onDeleteHouse(house._id)
+
     }
     render() {
         console.log(this.state)
         return (
             // '+this.props.house._id
-            <Link to={"/house"+this.props.house._id}>
+            <Link to={"/house/" + this.props.house._id}>
                 <section className="house-preview-container">
                     <div className="house-preview-image-container">
                         <img className="house-preview-image" src={this.props.house.imgs[this.state.imgIdx]} alt="" />
                         <div className="house-preview-btn-container">
                             <div className="house-preview-btn" onClick={this.onFavClick}>
                                 <div className="house-preview-heart-container" >
-                                    <svg className="house-preview-heart" viewBox="0 0 24 24" fill={(this.state.isFav===false)? "white" :"red"} fillOpacity="1" stroke="#222222" strokeWidth="1.4"
+                                    <svg className="house-preview-heart" viewBox="0 0 24 24" fill={(this.state.isFav === false) ? "white" : "red"} fillOpacity="1" stroke="#222222" strokeWidth="1.4"
                                         focusable="false" aria-hidden="true" role="presentation" strokeLinecap="round"
                                         strokeLinejoin="round"><path d="m17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8-1.6-1.6-3.8-3.2-6.2-2.7-1.5.2-2.9 1.2-3.6 2.6-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6" strokeLinejoin="round"></path></svg>
                                 </div>
                             </div>
                             <div className="house-preview-btn">
-                                <div className="house-preview-btn-prev" onClick={(ev)=>this.loadImage(ev,-1)}>
+                                <div className="house-preview-btn-prev" onClick={(ev) => this.loadImage(ev, -1)}>
                                     <svg viewBox="0 0 16 16" role="presentation" aria-hidden="true" focusable="false" style={prev_next_btn_style}>
                                         <path d="m10.8 16c-.4 0-.7-.1-.9-.4l-6.8-6.7c-.5-.5-.5-1.3 0-1.8l6.8-6.7c.5-.5 1.2-.5 1.7 0s .5 1.2 0 1.7l-5.8 5.9 5.8 5.9c.5.5.5 1.2 0 1.7-.2.3-.5.4-.8.4"></path></svg>
                                 </div>
-                                <div className="house-preview-btn-next" onClick={(ev)=>this.loadImage(ev,1)} >
+                                <div className="house-preview-btn-next" onClick={(ev) => this.loadImage(ev, 1)} >
                                     <svg viewBox="0 0 16 16" role="presentation" aria-hidden="true" focusable="false" style={prev_next_btn_style}>
                                         <path d="m5.3 16c .3 0 .6-.1.8-.4l6.8-6.7c.5-.5.5-1.3 0-1.8l-6.8-6.7c-.5-.5-1.2-.5-1.7 0s-.5 1.2 0 1.7l5.8 5.9-5.8 5.9c-.5.5-.5 1.2 0 1.7.2.3.5.4.9.4"></path></svg>
                                 </div>
@@ -72,9 +81,9 @@ export default class HousePreview extends Component {
                         </div>
                         {/* <span className="house-preview-second-line-container">
                             Wandering Trout Crafty Ales */}
-                    <span className="house-preview-second-line-container">
-                        {this.props.house.title}
-                </span>
+                        <span className="house-preview-second-line-container">
+                            {this.props.house.title}
+                        </span>
                         <div className="house-preview-third-line-container">
                             <div className="house-preview-third-line-cost">
                                 <span className="house-preview-third-line-cost-part-one">₪406</span>
@@ -82,6 +91,7 @@ export default class HousePreview extends Component {
                             <div className="house-preview-third-line-total-cost"><span>₪1,376 total</span></div>
                         </div>
                     </div>
+                    <button onClick={this.handleDelete}>Delete</button>
                 </section>
             </Link>
         )

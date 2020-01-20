@@ -30,7 +30,7 @@ async function ajax(endpoint, method='get', data=null , dispatch) {
     console.log('ajax',data)
     try {
         const res = await axios({
-            url: `${BASE_URL}${endpoint}?address.country_like=${data.location}&capacity_gte=${data.numOfperson}`,
+            url: `${BASE_URL}${endpoint}`,
             method,
             data
         })
