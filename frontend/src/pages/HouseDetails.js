@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { connect } from 'react-redux';
-
+import ChatBox from '../cmps/ChatBox'
 import '../assets/styles/housedetails.css'
 
 
@@ -57,6 +57,7 @@ export default class HouseDetails extends Component {
                         <img key={4} className="img img-5" src={this.house.imgs[4]} alt="" />
                     </div>
                 </div>
+                {/* <ChatBox house={this.house}></ChatBox> */}
             </section>
 
         )

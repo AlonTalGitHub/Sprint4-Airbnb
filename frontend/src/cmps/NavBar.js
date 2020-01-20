@@ -8,18 +8,14 @@ class NavBar extends Component {
         return <div style={this.props.style} className={`main-navbar flex space-between`}>
         {/* return <div className={`main-navbar flex space-between ${this.props.class}`}> */}
             <Link to="/">
-            <img className="logo" src={Logo} style={{
-                'width': '80px'
-
-            }} />            
+                <img className="logo" src={Logo} style={{
+                    'width': '80px'
+                }} />            
             </Link>
-
-
             <ul className="nav-links flex space-between align-center">
                 <li><Link className="nav-link">About</Link></li>
                 <li><Link className="nav-link">Login/SignUp</Link></li>
             </ul>
-
         </div>
     }
 
