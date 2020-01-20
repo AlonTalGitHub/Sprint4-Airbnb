@@ -229,6 +229,19 @@
       "description": "The best location",
       "capacity": 2,
       "_id": "dTA6d4F"
+    },
+    {
+      "address": {
+        "country": "England"
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579459669/royal-guard-standing-near-lamp-post-1427581_ejag3b.jpg"
+      ],
+      "title": "house of lords",
+      "description": "nice house",
+      "capacity": 1,
+      "price": 100,
+      "_id": "3__Te_o"
     }
   ],
   "user": [

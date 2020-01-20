@@ -1,0 +1,49 @@
+Mon, 13 Jan 2020 11:16:58 GMT - Info - Server is running on port: 3000
+Mon, 13 Jan 2020 11:17:11 GMT - Info - Server is running on port: 3000
+Mon, 13 Jan 2020 11:21:30 GMT - Info - Server is running on port: 3000
+Mon, 13 Jan 2020 11:21:41 GMT - Info - Server is running on port: 3000
+Mon, 13 Jan 2020 11:22:17 GMT - Info - Server is running on port: 3000
+Mon, 13 Jan 2020 11:22:35 GMT - Info - Server is running on port: 3000
+Mon, 13 Jan 2020 11:22:46 GMT - Info - Server is running on port: 3000
+Tue, 14 Jan 2020 07:13:19 GMT - Info - Server is running on port: 3030
+Tue, 14 Jan 2020 07:13:39 GMT - Error - Cannot get reviews
+Tue, 14 Jan 2020 07:15:23 GMT - Error - Cannot get reviews
+Tue, 14 Jan 2020 07:15:46 GMT - Error - Cannot get reviews
+Tue, 14 Jan 2020 07:16:05 GMT - Info - Server is running on port: 3030
+Tue, 14 Jan 2020 07:16:09 GMT - Error - Cannot get reviews
+Tue, 14 Jan 2020 07:16:29 GMT - Error - Cannot get reviews
+Tue, 14 Jan 2020 07:18:13 GMT - Error - Cannot get reviews
+Tue, 14 Jan 2020 07:32:53 GMT - Error - Cannot get reviews
+Tue, 14 Jan 2020 07:33:17 GMT - Debug - auth.service - login with email: v
+Tue, 14 Jan 2020 07:33:18 GMT - Error - Cannot get reviews
+Tue, 14 Jan 2020 07:33:23 GMT - Error - Cannot get reviews
+Tue, 14 Jan 2020 07:35:26 GMT - Debug - v, v, v
+Tue, 14 Jan 2020 07:35:26 GMT - Debug - auth.service - signup with email: v, username: v
+Tue, 14 Jan 2020 07:35:27 GMT - Debug - auth.route - new account created: {"email":"v","password":"$2b$10$FtA/XOVg6Huj8PYhLHraQuaNG0lxg9gt2S8chBYtfkqPldrlu7DbG","username":"v","_id":"5e1d6f3f30820335201a26af"}
+Tue, 14 Jan 2020 07:35:27 GMT - Debug - auth.service - login with email: v
+Tue, 14 Jan 2020 07:35:41 GMT - Debug - auth.service - login with email: v
+Tue, 14 Jan 2020 07:35:49 GMT - Error - Cannot get reviews
+Tue, 14 Jan 2020 07:37:19 GMT - Info - Server is running on port: 3030
+Tue, 14 Jan 2020 07:37:25 GMT - Error - Cannot get reviews
+Tue, 14 Jan 2020 07:37:28 GMT - Error - Cannot get reviews
+Tue, 14 Jan 2020 07:38:43 GMT - Error - Cannot get reviews
+Tue, 14 Jan 2020 07:39:10 GMT - Error - Cannot get reviews
+Tue, 14 Jan 2020 07:39:50 GMT - Info - Server is running on port: 3030
+Tue, 14 Jan 2020 07:41:44 GMT - Info - Server is running on port: 3030
+Tue, 14 Jan 2020 07:42:07 GMT - Debug - auth.service - login with email: v
+Tue, 14 Jan 2020 07:47:41 GMT - Info - Server is running on port: 3030
+Tue, 14 Jan 2020 07:48:09 GMT - Debug - auth.service - login with email: v
+Tue, 14 Jan 2020 07:52:16 GMT - Info - Server is running on port: 3030
+Tue, 14 Jan 2020 07:56:09 GMT - Debug - auth.service - login with email: v
+Tue, 14 Jan 2020 08:07:18 GMT - Debug - auth.service - login with email: v
+Tue, 14 Jan 2020 08:11:13 GMT - Debug - auth.service - login with email: v
+Tue, 14 Jan 2020 08:26:02 GMT - Info - Server is running on port: 3030
+Tue, 14 Jan 2020 08:26:39 GMT - Info - Server is running on port: 3030
+Tue, 14 Jan 2020 11:47:05 GMT - Info - Server is running on port: 3030
+Tue, 14 Jan 2020 11:47:27 GMT - Info - Server is running on port: 3030
+Tue, 14 Jan 2020 11:49:50 GMT - Info - Server is running on port: 3030
+Tue, 14 Jan 2020 11:53:59 GMT - Debug - canov19, CaNov19, 1
+Tue, 14 Jan 2020 11:53:59 GMT - Debug - auth.service - signup with email: canov19, username: CaNov19
+Tue, 14 Jan 2020 11:53:59 GMT - Debug - auth.route - new account created: {"email":"canov19","password":"$2b$10$0p9ZIPwVpcFILivaKnAT8OxQF2x2VsueXLzBun6uUc/zowTZJpT2S","username":"CaNov19","_id":"5e1dabd709367a5de4707923"}
+Tue, 14 Jan 2020 11:53:59 GMT - Debug - auth.service - login with email: canov19
+Tue, 14 Jan 2020 12:12:16 GMT - Debug - auth.service - login with email: v
