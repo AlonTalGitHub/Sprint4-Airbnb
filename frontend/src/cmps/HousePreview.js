@@ -11,9 +11,12 @@ let idx = 0;
 //crappyImages[idx]
 export default class HousePreview extends Component {
     
-    state={imgIdx:0,
-        isFav:false}
-    loadImage=(ev,diff)=>{
+    state={
+        imgIdx:0,
+        isFav:false
+    }
+
+    loadImage= (ev,diff) => {
         ev.preventDefault();
         // let diff=ev.target.attributes.getAttribute('diff');
         console.log('diff is',diff)
@@ -25,17 +28,19 @@ export default class HousePreview extends Component {
         else if (currIdx+diff<0) return this.setState({...this.state,imgIdx:imgLen-1});
         else return this.setState({...this.state,imgIdx:currIdx+diff}) 
     }
+
     onFavClick=(event)=>{
         event.preventDefault();
         console.log(event.target)
         console.log(this.props.house)
         this.setState({...this.state,isFav:!this.state.isFav}) 
     }
+
     render() {
         console.log(this.state)
         return (
             // '+this.props.house._id
-            <Link to={"/house"+this.props.house._id}>
+            <Link to={"/house/"+this.props.house._id}>
                 <section className="house-preview-container">
                     <div className="house-preview-image-container">
                         <img className="house-preview-image" src={this.props.house.imgs[this.state.imgIdx]} alt="" />
