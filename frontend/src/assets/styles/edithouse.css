@@ -17,6 +17,10 @@
     font-size: 14px;
 }
 
+.edit-form>*:not(:nth-child(5)):not(:nth-child(9)){
+    border: 1px solid grey;
+}
+
 .edit-form>:nth-child(-n+4) {
     border: 1px solid grey;
 }
@@ -33,7 +37,11 @@
 }
 
 #file-upload{
-    visibility: hidden;
+    display: none;
+}
+
+.success{
+    color: #ff5a5f; 
 }
 
 .modal-shown {
