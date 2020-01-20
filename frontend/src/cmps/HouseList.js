@@ -2,8 +2,7 @@ import React, { Component } from "react";
 // import { withRouter } from "react-router";
 import HousePreview from "./HousePreview";
 import NavBar from "./NavBar";
-import image1 from "../assets/img/crap1.jpg";
-import image2 from "../assets/img/crap2.jpg";
+
 class HouseList extends Component {
     // houses = [
     //     {
@@ -122,6 +121,11 @@ class HouseList extends Component {
     //     }
     // ]
 
+    loadHouse=()=>{
+
+
+    }
+
     style = { backgroundColor: 'red', position: 'fixed' }
     render() {
         const {houses}=this.props
@@ -133,7 +137,7 @@ class HouseList extends Component {
                 <ul className="house-list clean-list">
                     {houses.map(house => (
                         <li key={house._id}>
-                            <HousePreview house={house} />
+                            <HousePreview onDeleteHouse={this.props.onDeleteHouse}  house={house} />
                         </li>
                     ))}
                 </ul>

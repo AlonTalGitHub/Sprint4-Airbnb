@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom'
 
 import { connect } from 'react-redux';
-import { loadHouses, setFilter, filterHouses } from '../actions/HouseActions'
+import { loadHouses, setFilter, filterHouses,deleteHouse} from '../actions/HouseActions'
 import HouseList from '../cmps/HouseList'
 import NavBar from '../cmps/NavBar';
 
@@ -27,15 +27,21 @@ class HousePage extends Component {
         console.log(this.props.filterBy)
     }
 
+    onDeleteHouse=(houseId)=>{
+        this.props.deleteHouse(houseId)
+    }
+
 
 
     render() {
         const [house] = this.props.houses
+        console.log(house)
+        // const {houses} = this.props //
         return (
             <div>
                 <NavBar style={{ "position": "fixed", "top": "0px", "backgroundColor": "lightblue" }}></NavBar>
-                {(house) && <HouseList houses={this.props.houses}
-                 style={{ "marginTop": "100px" }}></HouseList>}
+                {(house) && <HouseList onDeleteHouse={this.onDeleteHouse} houses={this.props.houses}
+                 style={{ "marginTop": "100px" }}></HouseList>}                 
             </div>
         )
     }
@@ -51,7 +57,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     loadHouses,
     filterHouses,
-    setFilter
+    setFilter,
+    deleteHouse
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HousePage)

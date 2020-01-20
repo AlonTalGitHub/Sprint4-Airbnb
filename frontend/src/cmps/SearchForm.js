@@ -70,7 +70,7 @@ class SearchForm extends Component {
                  */}
 
             {/* <Link onClick={this.handleClick} className="form-btn pointer flex align-center justify-center" to="/house">Search</Link> */}
-            <Link to="/house">
+            <Link className="align-self" to="/house">
                 <button onClick={this.onSearch} className="form-btn pointer flex align-center justify-center">Search</button>
             </Link>
             {/* <button className="form-btn pointer" >Search</button> */}

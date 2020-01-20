@@ -10,14 +10,15 @@ import HttpService from './HttpService'
 
 export default {
     query,
-    add
+    add,
+    get,
     // save,
-    // remove,
+    remove,
     // get
 }
 
 function query(filter) {
-    return HttpService.get('house', filter)
+    return HttpService.get(`house?address.country_like=${filter.location}&capacity_gte=${filter.numOfperson}`, filter)
 
 }
 
@@ -25,6 +26,11 @@ async function add(house) {
     const addedHouse  = await HttpService.post(`house`, house);
     return  addedHouse
   }
+
+//   function getToyById(houseId) {
+//     return Axios.get(`${TOY_URL}${toyId}`)
+//         .then(res => res.data);
+// }
 
 // function query() {
 //     return StorageService.query('house')
@@ -34,13 +40,13 @@ async function add(house) {
 //         })
 // }
 
-// function get(id) {
-//     return StorageService.get('house', id)
-// }
+function get(id) {
+    return HttpService.get(`house/${id}`)
+}
 
-// function remove(id) {
-//     return StorageService.remove('house', id)
-// }
+function remove(id) {
+    return HttpService.delete(`house/${id}`, id)
+}
 
 // function save(house) {
 //     if (house._id) {

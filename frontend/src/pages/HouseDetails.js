@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 // import ChatBox from '../cmps/ChatBox'
 import NavBar from '../cmps/NavBar'
 import '../assets/styles/housedetails.css';
+import HouseService from '../services/HouseService'
 
 
 
 export default class HouseDetails extends Component {
+    state = {
+        house: null
+    }
 
+    componentDidMount() {
+        const houseId = this.props.match.params.id;
+        console.log(houseId)
+        this.loadHouse(houseId)
+    }
+
+    loadHouse = async (houseId) => {
+        const house = await HouseService.get(houseId)
+        this.setState({ house })
+
+    }
     render() {
         const { house } = this.state
         return (
