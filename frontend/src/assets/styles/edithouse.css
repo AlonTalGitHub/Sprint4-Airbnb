@@ -1,0 +1,91 @@
+.edit-form {
+    margin-left: 50px;
+    width: 300px;
+    border-radius: 5px;
+    height: 280px;
+    padding: 10px;
+    z-index: 1;
+    color: gray;
+    background-color: white;
+    margin-top: 100px;
+}
+
+.edit-form>*:not(:last-child) {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-style: none;
+    font-size: 14px;
+}
+
+.edit-form>*:not(:nth-child(5)):not(:nth-child(9)){
+    border: 1px solid grey;
+}
+
+.edit-form>:nth-child(-n+4) {
+    border: 1px solid grey;
+}
+
+.edit-form>* {
+    padding: 5px
+}
+
+.edit-form>:nth-child(4)>:nth-child(1) {
+    margin-top: 5px;
+    width: 100px;
+    border-radius: 5px;
+    height: 20px;
+}
+
+#file-upload{
+    display: none;
+}
+
+.success{
+    color: #ff5a5f; 
+}
+
+.modal-shown {
+    /* visibility: visible; */
+    opacity: 1;
+    transition:opacity 1000ms;
+    display: flex;
+    position: absolute;
+    z-index: 6;
+    background-color: white;
+    width: 400px;
+    height: 330px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    text-align: center;    
+    top: 90px;
+    padding: 30px;
+    left: calc(50% - 200px);
+    border: 1px solid gray;    
+}
+.modal-hidden {
+    opacity: 0;
+    visibility: hidden;   
+
+}
+
+.form-btn{
+    align-self: center;
+    width: fit-content;
+    padding: 5px;
+}
+
+.block-screen{
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    background-color: gray;
+    opacity: 0.3;
+    z-index: 5;
+    position: fixed;
+    left: 0px;    
+    top: 0px;
+}
+
+.block-screen-hidden{
+    display: none;
+}

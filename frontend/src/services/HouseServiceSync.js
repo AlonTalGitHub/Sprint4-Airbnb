@@ -127,24 +127,24 @@ function query() {
 }
 
 function get(id) {
-    return testHouses.find(car =>car._id === id)
+    return testHouses.find(house =>house._id === id)
 }
 
 function remove(id) {
-    const idx = testHouses.findIndex(car =>car._id === id)
+    const idx = testHouses.findIndex(house =>house._id === id)
     testHouses.splice(idx, 1)
 }
 
-function save(car) {
-    if (car._id) {
-        const idx = testHouses.findIndex(car =>car._id === car.id)
-        testHouses.splice(idx, 1, car)
+function save(house) {
+    if (house._id) {
+        const idx = testHouses.findIndex(house =>house._id === house.id)
+        testHouses.splice(idx, 1, house)
 
     } else {
-        car._id = _makeId()
-        testHouses.push(car)
+        house._id = _makeId()
+        testHouses.push(house)
     }
-    return car;
+    return house;
 }
 
 function _makeId(length = 5) {

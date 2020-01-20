@@ -1,37 +1,54 @@
-import StorageService from "./StorageService"
+import axios from 'axios';
+import HttpService from './HttpService'
+// import StorageService from "./StorageService"
+
+
+// const BASE_URL = (process.env.NODE_ENV !== 'development') ? '/api/house/'
+//     : '//localhost:3000/house/';
 
 
 
 export default {
     query,
-    save,
-    remove,
-    get
+    add
+    // save,
+    // remove,
+    // get
 }
 
-function query() {
-    return StorageService.query('house')
-        .then(houses => {
-            if (houses.length === 0) return StorageService.postMany('house', testHouses)
-            return houses
-        })
+function query(filter) {
+    return HttpService.get('house', filter)
+
 }
 
-function get(id) {
-    return StorageService.get('house', id)
-}
+async function add(house) {
+    const addedHouse  = await HttpService.post(`house`, house);
+    return  addedHouse
+  }
 
-function remove(id) {
-    return StorageService.remove('house', id)
-}
+// function query() {
+//     return StorageService.query('house')
+//         .then(houses => {
+//             if (houses.length === 0) return StorageService.postMany('house', testHouses)
+//             return houses
+//         })
+// }
 
-function save(house) {
-    if (house._id) {
-        return StorageService.put('house', house)
-    } else {
-        return StorageService.post('house', house)
-    }
-}
+// function get(id) {
+//     return StorageService.get('house', id)
+// }
+
+// function remove(id) {
+//     return StorageService.remove('house', id)
+// }
+
+// function save(house) {
+//     if (house._id) {
+//         return StorageService.put('house', house)
+//     } else {
+//         return StorageService.post('house', house)
+//     }
+// }
 
 const testHouses = [
     {

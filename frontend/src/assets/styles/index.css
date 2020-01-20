@@ -92,6 +92,7 @@ monospace; } */
   align-self: flex-end;
   text-decoration: none;
   text-align: center;
+  font-size: 1rem;
 }
 
 .form-btn:hover {
@@ -115,10 +116,6 @@ monospace; } */
   color: white;
 }
 
-.search-form>*:not(:nth-child(3)) {
-  /* height: 32px; */
-  /* padding:5px; */
-}
 
 /* helpers */
 
