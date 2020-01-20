@@ -20,7 +20,7 @@ body {
   z-index: 5;
   height: 80px;
   text-decoration: none;
-  border-bottom: 1px solid white;
+  /* border-bottom: 1px solid white; */
   padding: 10px;
 }
 

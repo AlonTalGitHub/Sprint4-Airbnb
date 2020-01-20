@@ -2,9 +2,6 @@ import React, { Component } from "react";
 // import { withRouter } from "react-router";
 import HousePreview from "./HousePreview";
 import NavBar from "./NavBar";
-import image1 from "../assets/img/crap1.jpg";
-import image2 from "../assets/img/crap2.jpg";
-
 
 class HouseList extends Component {
     // houses = [
