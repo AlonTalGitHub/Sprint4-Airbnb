@@ -28,7 +28,7 @@ class HouseEdit extends Component {
 
         },
         isModalShown: false,
-        isUploading:false
+        uploadStatus: null
 
     }
 
@@ -41,14 +41,17 @@ class HouseEdit extends Component {
         }
         files.splice(-2)
         try {
+            this.setState({ uploadStatus: 'uploading' }, () => console.log(this.state))
+
             let filePrms = files.map(file => uploadImg(file))
             let resFiles = await Promise.all(filePrms)
-            // debugger            
+
             console.log(resFiles)
             const newHouse = { ...this.state.newHouse }
             resFiles.forEach(file => { if (file.url) newHouse.imgs.push(file.url) })
             // newHouse.imgs=uploadedImgs
             this.setState({ newHouse }, () => console.log(this.state))
+            this.setState({ uploadStatus: 'success' }, () => console.log(this.state))
 
         } catch (err) {
             throw err
@@ -95,8 +98,14 @@ class HouseEdit extends Component {
         this.state.isModalShown && this.props.history.push('/house')
     }
 
+    displayUpload = () => {
+        const { uploadStatus } = this.state
+        if (uploadStatus === 'uploading') return 'Uploading...'
+        else if (uploadStatus === 'success') return 'Success!'
+    }
+
     render() {
-        const { newHouse, isModalShown,isUploading } = this.state
+        const { newHouse, isModalShown, uploadStatus } = this.state
         return <React.Fragment>
             <NavBar style={{ "position": "fixed", "top": "0px", "backgroundColor": "lightblue" }}></NavBar>
             <form className="edit-form flex column" onSubmit={this.onAddHouse}>
@@ -105,7 +114,7 @@ class HouseEdit extends Component {
                 <input required name="description" onChange={this.onInputChange} value={newHouse.description} type="text" placeholder="Description"></input>
                 <input required name="price" onChange={this.onInputChange} value={newHouse.price} type="text" placeholder="Price per night"></input>
                 <label>How many people can stay in your property?</label>
-                <select type="number" name="capacity" onChange={this.onInputChange} >
+                <select className="cap-select" type="number" name="capacity" onChange={this.onInputChange} >
                     <option value={1}>1 Guest</option>
                     <option value={2}>2 Guests</option>
                     <option value={3}>3 Guests</option>
@@ -117,9 +126,13 @@ class HouseEdit extends Component {
                 </select>
 
                 {/* onChange={this.onInputChange} */}
-                <label for="file-upload" class="custom-file-upload">
-                     Upload Images</label>
-                     {/* <span className={isUploading?'uploading'}></span> */}
+                <div className="img-upload flex space-between">
+                    <label htmlFor="file-upload" className="custom-file-upload">
+                        Upload Images</label>
+                    <span className={(uploadStatus==='success')&&"success"}>
+                        {this.displayUpload()}
+                    </span>
+                </div>
                 <input id="file-upload" required onChange={this.upload} type="file" multiple></input>
                 <button className="form-btn pointer">Submit</button>
 
