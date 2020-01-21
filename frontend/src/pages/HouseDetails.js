@@ -28,18 +28,24 @@ export default class HouseDetails extends Component {
         return (
             <React.Fragment>
                 <NavBar style={{ "position": "fixed", "top": "0px", "backgroundColor": "lightblue" }}></NavBar>
-                <section className="housedetails-container">
+                {(house)&&<section className="housedetails-container">
                     <div className="images-container">
-                        {(house)&&<div className="gallery">
+                        <div className="gallery">
                             <img key={1} className="img img-1" src={house.imgs[0]} alt="" />
                             <img key={2} className="img img-2" src={house.imgs[1]} alt="" />
                             <img key={3} className="img img-3" src={house.imgs[2]} alt="" />
                             <img key={4} className="img img-4" src={house.imgs[3]} alt="" />
                             <img key={5} className="img img-5" src={house.imgs[4]} alt="" />
-                        </div>}
+                        </div>
+                    </div>
+                    <div className="main-content-container">
+                        <span className="house-title span-line-break">{ house.title }</span>
+                        <span className="house-header span-line-break">{ house.address.country }</span>
+                        <span className="house-header span-line-break">Description</span>
+                        <span className="house-content span-line-break">{ house.description }</span>
                     </div>
                     {/* <ChatBox house={this.house}></ChatBox> */}
-                </section>
+                </section>}
             </React.Fragment>
         )
     }
