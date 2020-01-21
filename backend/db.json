@@ -3,7 +3,7 @@
     {
       "_id": "0p9o8i",
       "title": "House on the Lake",
-      "description": "Central location and nice view",
+      "description": "Spend a unforgettable holiday in the enchanting surroundings of the town of Cisternino (reachable from the near airports of Bari and Brindisi). Trullo Edera offers a heaven of peace and tranquillity, set in an elevated position with a stunning view. Its the perfect place if you like nature. You can stay under an olive tree reading a good book, you can have a walk in the small country streets or go to the nearest beaches. You can even easily visit any of the sights in Apulia such as the caves of Castellana, the trulli of Alberobello, the baroque cities of Lecce and Martina Franca, the excavations of Egnazia, the zoosafari of Fasano, Castel del Monte with Frederick's castle, Grottaglie famous for its ceramics, Taranto, Brindisi and Lecce museums. Prices vary on period and are to be considered included: in-outcoming cleanings, towels, sheets, water, gas, electricity.",
       "owner": {
         "_id": "0987",
         "fullName": "Yael Shenker",
@@ -24,8 +24,8 @@
         "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579613457/blue-and-gray-concrete-house-with-attic-during-twilight-186077_wx3xq6.jpg",
         "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579613562/black-flat-screen-tv-turned-off-210265_alzyj0.jpg"
       ],
-      "capacity": 8,
-      "price": 109,
+      "capacity": 2,
+      "price": 170,
       "reviews": [
         {
           "byUser": {
@@ -63,7 +63,7 @@
         "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/bathroom-cabinet-candles-faucet-342800_xrhbha.jpg"
       ],
       "capacity": 4,
-      "price": 100,
+      "price": 90,
       "reviews": [
         {
           "byUser": {
@@ -116,27 +116,49 @@
       ]
     },
     {
+      "_id": "xLbLNBW",
       "address": {
         "country": "England"
       },
       "imgs": [
-        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579347113/bathroom-cabinet-candles-faucet-342800_fhlovh.jpg"
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579347113/bathroom-cabinet-candles-faucet-342800_fhlovh.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/white-wooden-shelf-beside-bed-2062431_xxudde.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255613/Tutrtle%20house/livingroom/brown-wooden-center-table-584399_x1hbij.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/white-wooden-kitchen-cabinet-1599791_a9dmt4.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/white-bathroom-interior-1454804_wv7xdq.jpg"
       ],
       "title": "Central London house",
       "description": "Cozy flat 5 minutes from Oxford str",
       "capacity": 3,
-      "_id": "xLbLNBW"
+      "price": 100,
+      "reviews": [
+        {
+          "byUser": {
+            "_id": "1234",
+            "fullName": "shay rosenthal",
+            "img": "http://img"
+          },
+          "txt": "Amazing place",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        }
+      ]
     },
     {
       "address": {
         "country": "Portugal"
       },
       "imgs": [
-        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579361241/architecture-bungalow-country-countryside-463996_fjlprs.jpg"
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579361241/architecture-bungalow-country-countryside-463996_fjlprs.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/white-wooden-shelf-beside-bed-2062431_xxudde.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255613/Tutrtle%20house/livingroom/brown-wooden-center-table-584399_x1hbij.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/white-wooden-kitchen-cabinet-1599791_a9dmt4.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/white-bathroom-interior-1454804_wv7xdq.jpg"
       ],
       "title": "Country side house",
       "description": "quiet place",
       "capacity": 3,
+      "price": 130,
       "_id": "TxIbxKj"
     },
     {
@@ -144,11 +166,16 @@
         "country": "Germany"
       },
       "imgs": [
-        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579361970/photo-of-bedroom-1454806_hssl6s.jpg"
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579361970/photo-of-bedroom-1454806_hssl6s.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/white-wooden-shelf-beside-bed-2062431_xxudde.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255613/Tutrtle%20house/livingroom/brown-wooden-center-table-584399_x1hbij.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/white-wooden-kitchen-cabinet-1599791_a9dmt4.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/white-bathroom-interior-1454804_wv7xdq.jpg"
       ],
       "title": "Cool house in Berlin",
       "description": "The most hip neighborhood in berlin",
       "capacity": 2,
+      "price": 180,
       "_id": "uaO7QdJ"
     },
     {
@@ -156,11 +183,16 @@
         "country": "Germany"
       },
       "imgs": [
-        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579363966/apartment-blinds-cabinets-chairs-349749_vplwix.jpg"
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579363966/apartment-blinds-cabinets-chairs-349749_vplwix.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/white-wooden-shelf-beside-bed-2062431_xxudde.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255613/Tutrtle%20house/livingroom/brown-wooden-center-table-584399_x1hbij.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/white-wooden-kitchen-cabinet-1599791_a9dmt4.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/white-bathroom-interior-1454804_wv7xdq.jpg"
       ],
       "title": "The best house In Munich",
       "description": "Quiet and central",
       "capacity": 2,
+      "price": 122,
       "_id": "en2OluO"
     },
     {
@@ -168,11 +200,16 @@
         "country": "Germany"
       },
       "imgs": [
-        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579363966/apartment-blinds-cabinets-chairs-349749_vplwix.jpg"
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579363966/apartment-blinds-cabinets-chairs-349749_vplwix.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/white-wooden-shelf-beside-bed-2062431_xxudde.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255613/Tutrtle%20house/livingroom/brown-wooden-center-table-584399_x1hbij.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/white-wooden-kitchen-cabinet-1599791_a9dmt4.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/white-bathroom-interior-1454804_wv7xdq.jpg"
       ],
       "title": "The best house In Munich2",
       "description": "Quiet and central",
       "capacity": 2,
+      "price": 100,
       "_id": "LZewyoD"
     },
     {
@@ -180,11 +217,16 @@
         "country": "Israel"
       },
       "imgs": [
-        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579364666/apartment-bed-bedroom-chair-271624_vsfbgt.jpg"
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579364666/apartment-bed-bedroom-chair-271624_vsfbgt.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/white-wooden-shelf-beside-bed-2062431_xxudde.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255613/Tutrtle%20house/livingroom/brown-wooden-center-table-584399_x1hbij.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/white-wooden-kitchen-cabinet-1599791_a9dmt4.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/white-bathroom-interior-1454804_wv7xdq.jpg"
       ],
       "title": "Nice flat in Tel Aviv",
       "description": "The flat is located 3 min fron the beach",
       "capacity": 2,
+      "price": 100,
       "_id": "-5Glkz0"
     },
     {
@@ -201,6 +243,7 @@
       "title": "Romantic flat with balcony",
       "description": "The best location",
       "capacity": 2,
+      "price": 220,
       "_id": "dTA6d4F"
     },
     {
