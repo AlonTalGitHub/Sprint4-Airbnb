@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import NavBar from '../cmps/NavBar'
 import '../assets/styles/housedetails.css';
 import HouseService from '../services/HouseService'
-
+import ReserveHouse from '../cmps/ReserveHouse.js'
 
 
 export default class HouseDetails extends Component {
@@ -23,6 +23,7 @@ export default class HouseDetails extends Component {
         this.setState({ house })
 
     }
+    
     render() {
         const { house } = this.state
         return (
@@ -39,6 +40,7 @@ export default class HouseDetails extends Component {
                         </div>}
                     </div>
                     {/* <ChatBox house={this.house}></ChatBox> */}
+                    <ReserveHouse house={house}/>
                 </section>
             </React.Fragment>
         )
