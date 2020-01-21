@@ -9,10 +9,9 @@ import HttpService from './HttpService'
 
 
 export default {
-    query,
-    add,
+    query,    
     get,
-    // save,
+    save,
     remove,
     // get
 }
@@ -22,8 +21,9 @@ function query(filter) {
 
 }
 
-async function add(house) {
-    const addedHouse  = await HttpService.post(`house`, house);
+async function save(house) {
+    const addedHouse  = house._id? await HttpService.put(`house/${house._id}`, house) : await HttpService.post(`house`, house);
+    console.log(addedHouse)
     return  addedHouse
   }
 

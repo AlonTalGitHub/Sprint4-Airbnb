@@ -16,7 +16,14 @@ export default function (state = initialState, action = {}) {
       // newFilter=action.filter
       return { ...state, filterBy: { ...state.filterBy, ...action.filter } };
     case 'HOUSE_ADD':
+      console.log('add', action.house)
       return { ...state, houses: [...state.houses, action.house] };
+    case 'HOUSE_UPDATE':
+      console.log('update', action.house)
+      return {
+        ...state, houses: state.houses.map(house =>
+          house._id === action.house._id ? action.house : house)
+      };
     case 'HOUSE_REMOVE':
       return { ...state, houses: state.houses.filter(house => house._id !== action.houseId) }
     case 'REVIEW_UPDATE':

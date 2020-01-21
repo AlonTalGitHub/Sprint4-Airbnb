@@ -7,7 +7,7 @@ export function loadHouses(filter) {
       const houses = await HouseService.query(filter);
       console.log(houses)
       dispatch(setHouses(houses));
-      
+
     } catch (err) {
       console.log('HouseActions: err in loadHouses', err);
     }
@@ -15,11 +15,11 @@ export function loadHouses(filter) {
 }
 
 export function filterHouses(filter) {
-    return async (dispatch) => {
-      dispatch(_setFilter(filter))
-      const houses = await HouseService.query(filter);
-      dispatch(setHouses(houses))
-    }
+  return async (dispatch) => {
+    dispatch(_setFilter(filter))
+    const houses = await HouseService.query(filter);
+    dispatch(setHouses(houses))
+  }
 }
 
 export function setFilter(filter) {
@@ -29,13 +29,12 @@ export function setFilter(filter) {
   };
 }
 
-export function addHouse(house){
+export function saveHouse(house) {
   return async dispatch => {
     try {
-      const addedHouse = await HouseService.add(house);
-      console.log('action add house',addedHouse)
-      dispatch(_addHouse(addedHouse));
-
+      const addedHouse = await HouseService.save(house);
+      console.log('action add house', addedHouse)
+      house._id ? dispatch(_updateHouse(addedHouse)) : dispatch(_addHouse(addedHouse));
     } catch (err) {
       console.log('HouseActions: err in addHouse', err);
     }
@@ -44,14 +43,14 @@ export function addHouse(house){
 
 export function deleteHouse(houseId) {
   return async (dispatch) => {
-      try {
-          await HouseService.remove(houseId)
-          console.log('house delete action')
-          dispatch(_deleteHouse(houseId))
-      }
-      catch(err){
-          console.log(err)
-      }
+    try {
+      await HouseService.remove(houseId)
+      console.log('house delete action')
+      dispatch(_deleteHouse(houseId))
+    }
+    catch (err) {
+      console.log(err)
+    }
 
   }
 }
@@ -87,7 +86,15 @@ function _addHouse(house) {
   };
 }
 
-function _deleteHouse(houseId){
+function _updateHouse(house) {
+  return {
+    type: 'HOUSE_UPDATE',
+    house
+  };
+
+}
+
+function _deleteHouse(houseId) {
   return {
     type: 'HOUSE_REMOVE',
     houseId
