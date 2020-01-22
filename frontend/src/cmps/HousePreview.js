@@ -1,14 +1,9 @@
-// import React from "react";
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-// import image1 from "../assets/img/crap1.jpg";
-// import image2 from "../assets/img/crap2.jpg";
-//({ house })
-//this.props.house.imgs[0],
-// let crappyImages = [image1, image2]
+
 let prev_next_btn_style = { 'height': '10px', 'width': '10px', 'display': 'block', 'fill': 'rgb(34, 34, 34)', 'position': 'absolute', 'left': '30%', 'top': '32%' }
-let idx = 0;
-//crappyImages[idx]
+
+
 export default class HousePreview extends Component {
     state = {
         imgIdx: 0,
@@ -16,7 +11,6 @@ export default class HousePreview extends Component {
     }
     loadImage = (ev, diff) => {
         ev.preventDefault();
-        // let diff=ev.target.attributes.getAttribute('diff');
         console.log('diff is', diff)
         var imgLen = this.props.house.imgs.length;
         console.log('imgLen is', imgLen)
@@ -34,11 +28,11 @@ export default class HousePreview extends Component {
         this.setState({ ...this.state, isFav: !this.state.isFav })
     }
 
-    handleDelete=(ev)=>{
-        ev.preventDefault()
-        this.props.onDeleteHouse(this.props.house._id)
+    // handleDelete=(ev)=>{
+    //     ev.preventDefault()
+    //     this.props.onDeleteHouse(this.props.house._id)
 
-    }
+    // }
 
     render() {
         console.log(this.state)
@@ -68,11 +62,11 @@ export default class HousePreview extends Component {
                             </div>
                             <div className="house-preview-btn">
                                 <div className="house-preview-pagination-container">
-                                    {this.props.house.imgs.map((img,index) => {
-                                        if(index!==this.state.imgIdx) return <div className="house-preview-pagination-circle"></div>
+                                    {this.props.house.imgs.map((img, index) => {
+                                        if (index !== this.state.imgIdx) return <div className="house-preview-pagination-circle"></div>
                                         else return <div className="house-preview-pagination-circle-currimg"></div>
-                                        }
-                                        )}
+                                    }
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -97,7 +91,7 @@ export default class HousePreview extends Component {
                             <div className="house-preview-third-line-total-cost"><span>₪1,376 total</span></div>
                         </div>
                     </div>
-                    <button onClick={this.handleDelete}>Delete</button>
+                    {/* <button onClick={this.handleDelete}>Delete</button> */}
                 </section>
             </Link>
         )

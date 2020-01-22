@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadHouses, setFilter } from '../actions/HouseActions'
+import {setFilter, filterHouses} from '../actions/HouseActions'
 
 import SearchForm from '../cmps/SearchForm';
 import backgroundImage from '../assets/img/bgc.jpg'
@@ -20,14 +20,14 @@ class Home extends Component {
     console.log('home', this.props.filterBy)
     // debugger
     this.load()
-
+    
   }
-
+  
   load= async()=>{
     // await this.props.setFilter({location:'',numOfperson:1})
     // debugger
-    this.props.loadHouses(this.props.filterBy)
-
+    this.props.filterHouses({ location: '', numOfperson: 1 })
+    
   }
 
 
@@ -60,7 +60,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = {
   setFilter,
-  loadHouses
+  // loadHouses,
+  filterHouses
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
