@@ -14,15 +14,16 @@ class SearchForm extends Component {
     state = {
         filterBy: {
             numOfperson: 1,
-            location: ''
+            location: '',
+            nightsNum:1
         },
         startDate: null,
         endDate: null
     }
 
-    onChangeCap = (diff) => {
-        if (this.state.filterBy.numOfperson === 1 && diff === -1) return
-        this.setState(prevState => prevState.filterBy.numOfperson += diff)
+    onChangeCap = (diff,key) => {
+        if (this.state.filterBy[key] === 1 && diff === -1) return
+        this.setState(prevState => prevState.filterBy[key] += diff,()=>console.log(this.state))
     }
 
     onChange = (ev) => {
@@ -52,19 +53,19 @@ class SearchForm extends Component {
             <div className="form-cap flex space-between align-center">
                 <span>How Many People?</span>
                 <span className="form-cap-control flex space-between">
-                    <button onClick={() => this.onChangeCap(1)} className="form-num-btn pointer" name="numOfperson">+</button>
+                    <button onClick={() => this.onChangeCap(1,'numOfperson')} className="form-num-btn pointer" name="numOfperson">+</button>
                     <span className="form-cap-num">{this.state.filterBy.numOfperson}</span>
-                    <button onClick={() => this.onChangeCap(-1)} className="form-num-btn pointer" name="numOfperson">-</button>
+                    <button onClick={() => this.onChangeCap(-1,'numOfperson')} className="form-num-btn pointer" name="numOfperson">-</button>
                 </span>                
             </div>
-            {/* <div className="form-cap flex space-between align-center">
+            <div className="form-cap flex space-between align-center">
                 <span>How Many nights?</span>
                 <span className="form-cap-control flex space-between">
-                    <button onClick={() => this.onChangeCap(1,'nights')} className="form-num-btn pointer" name="nights">+</button>
-                    <span className="form-cap-num">{this.state.filterBy.nights}</span>
-                    <button onClick={() => this.onChangeCap(-1,'nights')} className="form-num-btn pointer" name="nights">-</button>
+                    <button onClick={() => this.onChangeCap(1,'nightsNum')} className="form-num-btn pointer" name="nights">+</button>
+                    <span className="form-cap-num">{this.state.filterBy.nightsNum}</span>
+                    <button onClick={() => this.onChangeCap(-1,'nightsNum')} className="form-num-btn pointer" name="nights">-</button>
                 </span>                
-            </div> */}
+            </div>
 
             {/* <DateRangePicker
                     startDate={this.state.startDate} // momentPropTypes.momentObj or null,
