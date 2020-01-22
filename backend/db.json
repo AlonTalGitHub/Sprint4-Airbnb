@@ -197,23 +197,6 @@
     },
     {
       "address": {
-        "country": "Germany"
-      },
-      "imgs": [
-        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579363966/apartment-blinds-cabinets-chairs-349749_vplwix.jpg",
-        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/white-wooden-shelf-beside-bed-2062431_xxudde.jpg",
-        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255613/Tutrtle%20house/livingroom/brown-wooden-center-table-584399_x1hbij.jpg",
-        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/white-wooden-kitchen-cabinet-1599791_a9dmt4.jpg",
-        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/white-bathroom-interior-1454804_wv7xdq.jpg"
-      ],
-      "title": "The best house In Munich2",
-      "description": "Quiet and central",
-      "capacity": 2,
-      "price": 100,
-      "_id": "LZewyoD"
-    },
-    {
-      "address": {
         "country": "Israel"
       },
       "imgs": [
@@ -248,20 +231,23 @@
     },
     {
       "address": {
-        "country": "Brazil"
+        "country": "Israel",
+        "coords": {
+          "lat": 32.08088,
+          "lng": 34.78057
+        }
       },
       "imgs": [
-        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579559001/bathroom-cabinet-candles-faucet-342800_uxjiu6.jpg",
-        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579559001/oval-mirror-near-toilet-bowl-1910472_akt2fx.jpg",
-        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579559001/white-bathroom-interior-1454804_ldvvue.jpg",
-        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579559002/white-wooden-kitchen-cabinet-1599791_fxrdsp.jpg",
-        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579559002/chopping-boards-near-oven-under-hood-2062426_ts1boa.jpg"
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579639256/apartment-architecture-balcony-building-347141_ol1zud.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579639257/architecture-bungalow-country-countryside-463996_labicf.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579639256/blue-and-gray-concrete-house-with-attic-during-twilight-186077_glwlws.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579639256/bathroom-cabinet-candles-faucet-342800_psxakt.jpg"
       ],
-      "title": "Luxury House in Rio",
-      "description": "Live in a dream",
-      "capacity": 4,
-      "price": 250,
-      "_id": "hl_1EJm"
+      "title": "Tel Aviv Best Appartment",
+      "description": "Your home in Tel Aviv",
+      "capacity": 2,
+      "price": 130,
+      "_id": "vpsmSL4"
     }
   ],
   "user": [

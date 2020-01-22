@@ -29,11 +29,11 @@ export default class HousePreview extends Component {
         this.setState({ isFav: !this.state.isFav })
     }
 
-    handleDelete = (ev) => {
-        ev.preventDefault()
-        this.props.onDeleteHouse(this.props.house._id)
+    // handleDelete=(ev)=>{
+    //     ev.preventDefault()
+    //     this.props.onDeleteHouse(this.props.house._id)
 
-    }
+    // }
 
     render() {
         console.log(this.state)
@@ -92,7 +92,7 @@ export default class HousePreview extends Component {
                             <div className="house-preview-third-line-total-cost"><span>₪{this.props.house.price} total</span></div>
                         </div>
                     </div>
-                    <button onClick={this.handleDelete}>Delete</button>
+                    {/* <button onClick={this.handleDelete}>Delete</button> */}
                 </section>
             </Link>
         )
