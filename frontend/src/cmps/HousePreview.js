@@ -89,7 +89,7 @@ export default class HousePreview extends Component {
                             <div className="house-preview-third-line-cost">
                                 <span className="house-preview-third-line-cost-part-one">₪{this.props.house.price}</span>
                                 <span className="house-preview-third-line-cost-part-two">/night</span></div>
-                            <div className="house-preview-third-line-total-cost"><span>₪{this.props.house.price} total</span></div>
+                            {/* <div className="house-preview-third-line-total-cost"><span>₪{this.props.house.price} total</span></div> */}
                         </div>
                     </div>
                     {/* <button onClick={this.handleDelete}>Delete</button> */}
