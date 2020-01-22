@@ -13,6 +13,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import { connect } from 'react-redux';
 import { setFilter } from '../actions/HouseActions'
+import { saveOrder} from '../actions/OrderActions'
 import '../assets/styles/index.css'
 import Order from "../services/Order.js";
 import localStorageService from "../services/localStorageService";
@@ -49,12 +50,34 @@ class ReserveHouse extends Component {
     onSearch = () => {
         this.props.setFilter(this.state.filterBy)
     }
-    onReserve=(ev)=>{
+    onReserve = async (ev) => {
         ev.preventDefault();
-        let houseOrder = new Order(this.props.house._id,123456,this.state.filterBy.numOfperson);
-        localStorageService.store('order',houseOrder)
+        let houseOrder = new Order(this.props.house._id, 1234, this.state.filterBy.numOfperson);
+        localStorageService.store('order', houseOrder)
+        ///////////////////////////////////////////////
+        try {
+            await this.props.saveOrder(houseOrder)
+            console.log('new order reserved')
+        }
+        catch{
+            console.log('add house failed')
+        }
+
+
+        ///////////////////////////////////////////////
         alert('תודה כפרה');
     }
+
+    // onSaveHouse = async (ev) => {
+    //     ev.preventDefault()
+    //     try {
+    //         await this.props.saveHouse(this.state.newHouse)
+    //         this.setState({ isModalShown: true })
+    //     }
+    //     catch{
+    //         console.log('add house failed')
+    //     }
+    // }
 
     render() {
         // const [startDate, setStartDate] = useState(null);
@@ -100,7 +123,8 @@ const mapStateToProps = state => {
     };
 };
 const mapDispatchToProps = {
-    setFilter
+    // setFilter
+    saveOrder
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReserveHouse)
