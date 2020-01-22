@@ -137,7 +137,7 @@ class HouseList extends Component {
                 <ul className="house-list clean-list">
                     {houses.map(house => (
                         <li key={house._id}>
-                            <HousePreview onDeleteHouse={this.props.onDeleteHouse}  house={house} />
+                            <HousePreview onDeleteHouse={this.props.onDeleteHouse}  house={house} filterBy={this.props.filterBy}  />
                         </li>
                     ))}
                 </ul>

@@ -26,7 +26,7 @@ class Home extends Component {
   load= async()=>{
     // await this.props.setFilter({location:'',numOfperson:1})
     // debugger
-    this.props.filterHouses({ location: '', numOfperson: 1 })
+    this.props.filterHouses({ location: '', numOfperson: 1, nightsNum: 1})
     
   }
 

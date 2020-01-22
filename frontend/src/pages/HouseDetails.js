@@ -79,6 +79,8 @@ class HouseDetails extends Component {
 }
 
 
+
+
 const mapDispatchToProps = {
     deleteHouse,
     filterHouses
