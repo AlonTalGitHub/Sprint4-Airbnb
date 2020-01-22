@@ -60,7 +60,7 @@ class HouseDetails extends Component {
                         <span className="house-header span-line-break">{house.address.country}</span>
                         <span className="house-header span-line-break">Description</span>
                         <span className="house-content span-line-break">{house.description}</span>
-                        <div className="details-button-container">
+                        <div className="details-button-container flex space-between">
                             <Link to={`/house/edit/${house._id}`} >
                                 <button className="form-btn pointer">Edit House</button>
                             </Link>
