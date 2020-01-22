@@ -66,11 +66,10 @@ class HouseDetails extends Component {
                             </Link>
                             <button onClick={this.handleDelete} className="form-btn pointer">Delete House</button>
                         </div>
-                        <span className="house-content span-line-break">{ house.description }</span>
-                        <ReviewList reviews={ house.reviews}/>
+                        {/* <ReviewList reviews={ house.reviews}/> */}
+                        <ReserveHouse house={house} />
                     </div>
                     {/* <ChatBox house={this.house}></ChatBox> */}
-                    <ReserveHouse house={house} />
 
                 </section>}
             </React.Fragment>
