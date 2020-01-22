@@ -47,7 +47,7 @@ class SearchForm extends Component {
         // const [startDate, setStartDate] = useState(null);
         return <div className="search-form flex column space-between">
             {/* <form> */}
-            <h2>Feel At Home, Wherever You Go</h2>
+            <h2>Book with Turtle House and feel At Home, Wherever You Go</h2>
             <input onChange={this.onChange} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder="Where To Go?"></input>
             <div className="form-cap flex space-between align-center">
                 <span>How Many People?</span>

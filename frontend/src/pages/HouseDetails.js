@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { deleteHouse, filterHouses } from '../actions/HouseActions'
 import { connect } from 'react-redux';
 // import { connect } from 'react-redux';
-// import ChatBox from '../cmps/ChatBox'
-import NavBar from '../cmps/NavBar'
-import '../assets/styles/housedetails.css';
+
 import HouseService from '../services/HouseService'
+
+import NavBar from '../cmps/NavBar'
+// import ChatBox from '../cmps/ChatBox'
 import ReserveHouse from '../cmps/ReserveHouse.js'
 import { Link } from 'react-router-dom';
+import ReviewList from '../cmps/ReviewList'
+
+import '../assets/styles/housedetails.css';
 
 
 class HouseDetails extends Component {
@@ -62,6 +66,8 @@ class HouseDetails extends Component {
                             </Link>
                             <button onClick={this.handleDelete} className="form-btn pointer">Delete House</button>
                         </div>
+                        <span className="house-content span-line-break">{ house.description }</span>
+                        <ReviewList reviews={ house.reviews}/>
                     </div>
                     {/* <ChatBox house={this.house}></ChatBox> */}
                     <ReserveHouse house={house} />
