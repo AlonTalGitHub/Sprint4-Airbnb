@@ -248,6 +248,25 @@
       "capacity": 2,
       "price": 130,
       "_id": "vpsmSL4"
+    },
+    {
+      "address": {
+        "country": "Israel",
+        "coords": {
+          "lat": 32.08088,
+          "lng": 34.78057
+        }
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579687773/oval-mirror-near-toilet-bowl-1910472_udqqdo.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579687773/white-bathroom-interior-1454804_n9muyg.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579687773/white-wooden-kitchen-cabinet-1599791_ugpqlu.jpg"
+      ],
+      "title": "TLV",
+      "description": "quiet place",
+      "capacity": 2,
+      "price": 34343,
+      "_id": "X5BHDX_"
     }
   ],
   "user": [

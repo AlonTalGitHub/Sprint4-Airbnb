@@ -52,11 +52,19 @@ class SearchForm extends Component {
             <div className="form-cap flex space-between align-center">
                 <span>How Many People?</span>
                 <span className="form-cap-control flex space-between">
-                    <button onClick={() => this.onChangeCap(1)} className="form-num-btn pointer">+</button>
+                    <button onClick={() => this.onChangeCap(1)} className="form-num-btn pointer" name="numOfperson">+</button>
                     <span className="form-cap-num">{this.state.filterBy.numOfperson}</span>
-                    <button onClick={() => this.onChangeCap(-1)} className="form-num-btn pointer">-</button>
-                </span>
+                    <button onClick={() => this.onChangeCap(-1)} className="form-num-btn pointer" name="numOfperson">-</button>
+                </span>                
             </div>
+            {/* <div className="form-cap flex space-between align-center">
+                <span>How Many nights?</span>
+                <span className="form-cap-control flex space-between">
+                    <button onClick={() => this.onChangeCap(1,'nights')} className="form-num-btn pointer" name="nights">+</button>
+                    <span className="form-cap-num">{this.state.filterBy.nights}</span>
+                    <button onClick={() => this.onChangeCap(-1,'nights')} className="form-num-btn pointer" name="nights">-</button>
+                </span>                
+            </div> */}
 
             {/* <DateRangePicker
                     startDate={this.state.startDate} // momentPropTypes.momentObj or null,
