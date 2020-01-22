@@ -22,7 +22,7 @@ loadUser=async()=>{
     }   
 }
     render() {
-        return <div style={this.props.style} className={`main-navbar flex space-between`}>
+        return (<div style={this.props.style} className="main-navbar flex space-between">
             {/* return <div className={`main-navbar flex space-between ${this.props.class}`}> */}
             <Link to="/">
                 <img className="logo" src={Logo} style={{
@@ -30,7 +30,7 @@ loadUser=async()=>{
                 }} />
             </Link>
             <ul className="nav-links flex space-between align-center">
-                <li className="nav-item"><Link className="nav-link">About</Link></li>
+                <li className="nav-item"><Link to="/About" className="nav-link">About</Link></li>
                 <li className="nav-item"><Link to="/house/edit" className="nav-link" >Host</Link></li>
                 <li className="nav-item"><Link className="nav-link">Reserved</Link></li>
                 <li className="nav-item"><Link className="nav-link">Favorites</Link></li>
@@ -44,7 +44,7 @@ loadUser=async()=>{
                     </li>
             </ul>
 
-        </div>
+        </div>)
     }
 
 
