@@ -65,7 +65,7 @@ class ReserveHouse extends Component {
 
 
         ///////////////////////////////////////////////
-        alert('תודה כפרה');
+        alert('order reserved');
     }
 
     // onSaveHouse = async (ev) => {
