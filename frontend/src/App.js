@@ -27,8 +27,10 @@ function App() {
           {/* <Route path="/about" component={About} exact/>
           <Route path="/login" component={Login} exact/> */}
           <Route path="/house" component={HousePage} exact/>
+          <Route path="/house/edit" component={HouseEdit} exact/>
+          <Route path="/house/edit/:id" component={HouseEdit} exact/>
           <Route path="/house/:id" component={HouseDetails} exact/>
-          <Route path="/edit" component={HouseEdit} exact/>
+          {/* <Route path="house/edit:id" component={HouseEdit} exact/> */}
         </Switch>
       </Router>
     </div>

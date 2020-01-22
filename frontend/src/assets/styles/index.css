@@ -149,6 +149,10 @@ monospace; } */
   align-self: flex-end;
 }
 
+.wrap{
+  flex-wrap: wrap;
+}
+
 /*remove later*/
 
 input#your_unique_end_date_id {

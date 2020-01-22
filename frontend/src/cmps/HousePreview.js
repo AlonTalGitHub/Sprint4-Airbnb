@@ -34,6 +34,12 @@ export default class HousePreview extends Component {
         this.setState({ ...this.state, isFav: !this.state.isFav })
     }
 
+    handleDelete=(ev)=>{
+        ev.preventDefault()
+        this.props.onDeleteHouse(this.props.house._id)
+
+    }
+
     render() {
         console.log(this.state)
         return (
