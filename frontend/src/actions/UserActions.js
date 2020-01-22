@@ -31,6 +31,18 @@ export function removeUser(userId) {
   };
 }
 // THUNK
+export function getUserById(userId) {
+  return async dispatch => {
+    try {
+     let user= await UserService.getUserById(userId);
+     console.log('userActions',user)
+      dispatch(_loadUser(user));
+    } catch (err) {
+      console.log('UserActions: err in removeUser', err);
+    }
+  };
+}
+// THUNK
 export function login(userCreds) {
   return async dispatch => {
     const user = await UserService.login(userCreds);
@@ -67,5 +79,11 @@ function _removeUser(userId) {
   return {
     type: 'USER_REMOVE',
     userId
+  };
+}
+function _loadUser(user) {
+  return {
+    type: 'USER_LOAD',
+    user
   };
 }

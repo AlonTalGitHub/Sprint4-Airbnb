@@ -14,6 +14,7 @@ import 'react-dates/initialize';
 import { connect } from 'react-redux';
 import { setFilter } from '../actions/HouseActions'
 import { saveOrder} from '../actions/OrderActions'
+import { getUserById} from '../actions/UserActions'
 import '../assets/styles/index.css'
 import Order from "../services/Order.js";
 import localStorageService from "../services/localStorageService";
@@ -25,12 +26,18 @@ class ReserveHouse extends Component {
             location: ''
         },
         startDate: null,
-        endDate: null
+        endDate: null,
+        
     }
 
-    onChangeCap = (diff) => {
+    onChangeCap = async (diff) => {
         if (this.state.filterBy.numOfperson === 1 && diff === -1) return
         this.setState(prevState => prevState.filterBy.numOfperson += diff)
+                // ////////////////////////////////////////////////
+                // await this.props.getUserById('1234')
+                // const users=this.props.users
+                // console.log('\nturlak turlak turlak\n',users,'\nturlak turlak turlak\n')
+                // ///////////////////////////////////////////////
     }
 
     onChange = (ev) => {
@@ -54,15 +61,26 @@ class ReserveHouse extends Component {
         ev.preventDefault();
         let houseOrder = new Order(this.props.house._id, 1234, this.state.filterBy.numOfperson);
         localStorageService.store('order', houseOrder)
+        ////////////////////////////////////////////////
+
+        // console.log('\nturlak turlak turlak\n',user,'\nturlak turlak turlak\n')
         ///////////////////////////////////////////////
         try {
-            await this.props.saveOrder(houseOrder)
+            await this.props.getUserById('1234');
+            const user=this.props.loggedInUser;
+            
+            // user.reserved.push(houseOrder)
+            console.log('before sending',user)
+            user.reserved.push(houseOrder)
+            console.log('before sending+push',user)
+            await this.props.saveOrder(user)
             console.log('new order reserved')
+            alert('Order reserved');
         }
         catch{
             console.log('add house failed')
         }        
-        alert('Order reserved');
+       
     }
 
     // onSaveHouse = async (ev) => {
@@ -116,12 +134,14 @@ class ReserveHouse extends Component {
 
 const mapStateToProps = state => {
     return {
-        filterBy: state.house.filterBy
+        filterBy: state.house.filterBy,
+        loggedInUser:state.user.users
     };
 };
 const mapDispatchToProps = {
     // setFilter
-    saveOrder
+    saveOrder,
+    getUserById
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReserveHouse)
