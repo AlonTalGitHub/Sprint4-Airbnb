@@ -1,31 +1,18 @@
 import HouseService from '../services/HouseService';
 
-export function loadHouses(filter) {
-  console.log('load houses', filter)
-  return async dispatch => {
-    try {
-      const houses = await HouseService.query(filter);
-      console.log(houses)
-      dispatch(setHouses(houses));
-
-    } catch (err) {
-      console.log('HouseActions: err in loadHouses', err);
-    }
-  };
-}
 
 export function filterHouses(filter) {
   return async (dispatch) => {
     dispatch(_setFilter(filter))
     const houses = await HouseService.query(filter);
-    dispatch(setHouses(houses))
+    dispatch(_setHouses(houses))
   }
 }
 
 export function setFilter(filter) {
   return dispatch => {
     dispatch(_setFilter(filter));
-
+    
   };
 }
 
@@ -51,22 +38,12 @@ export function deleteHouse(houseId) {
     catch (err) {
       console.log(err)
     }
-
+    
   }
 }
 
-// export function addReview(review) {
-//   return async dispatch => {
-//     try {
-//       const addedReview = await ReviewService.add(review);
-//       dispatch(_addReview(addedReview));
-//     } catch (err) {
-//       console.log('ReviewActions: err in addReview', err);
-//     }
-//   };
-// }
-
-function setHouses(houses) {
+        
+function _setHouses(houses) {
   return {
     type: 'SET_HOUSES',
     houses
@@ -91,7 +68,7 @@ function _updateHouse(house) {
     type: 'HOUSE_UPDATE',
     house
   };
-
+  
 }
 
 function _deleteHouse(houseId) {
@@ -100,3 +77,17 @@ function _deleteHouse(houseId) {
     houseId
   };
 }
+
+// export function loadHouses(filter) {
+//   console.log('load houses', filter)
+//   return async dispatch => {
+//     try {
+//       const houses = await HouseService.query(filter);
+//       console.log(houses)
+//       dispatch(setHouses(houses));
+
+//     } catch (err) {
+//       console.log('HouseActions: err in loadHouses', err);
+//     }
+//   };
+// }
