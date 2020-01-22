@@ -26,6 +26,7 @@
       ],
       "capacity": 2,
       "price": 170,
+      "rating": 4.21,
       "reviews": [
         {
           "byUser": {
@@ -64,6 +65,7 @@
       ],
       "capacity": 4,
       "price": 90,
+      "rating": 4.22,
       "reviews": [
         {
           "byUser": {
@@ -102,6 +104,7 @@
       ],
       "capacity": 6,
       "price": 100,
+      "rating": 4.77,
       "reviews": [
         {
           "byUser": {
@@ -131,6 +134,7 @@
       "description": "Cozy flat 5 minutes from Oxford str",
       "capacity": 3,
       "price": 100,
+      "rating": 4.56,
       "reviews": [
         {
           "byUser": {
@@ -159,6 +163,7 @@
       "description": "quiet place",
       "capacity": 3,
       "price": 130,
+      "rating": 4.38,
       "_id": "TxIbxKj"
     },
     {
@@ -176,6 +181,7 @@
       "description": "The most hip neighborhood in berlin",
       "capacity": 2,
       "price": 180,
+      "rating": 4.67,
       "_id": "uaO7QdJ"
     },
     {
@@ -193,6 +199,7 @@
       "description": "Quiet and central",
       "capacity": 2,
       "price": 122,
+      "rating": 4.87,
       "_id": "en2OluO"
     },
     {
@@ -210,6 +217,7 @@
       "description": "The flat is located 3 min fron the beach",
       "capacity": 2,
       "price": 100,
+      "rating": 4.85,
       "_id": "-5Glkz0"
     },
     {
@@ -227,6 +235,7 @@
       "description": "The best location",
       "capacity": 2,
       "price": 220,
+      "rating": 4.90,
       "_id": "dTA6d4F"
     },
     {
@@ -247,6 +256,7 @@
       "description": "Your home in Tel Aviv",
       "capacity": 2,
       "price": 130,
+      "rating": 4.78,
       "_id": "vpsmSL4"
     },
     {

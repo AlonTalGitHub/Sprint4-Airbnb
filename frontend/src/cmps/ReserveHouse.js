@@ -61,11 +61,8 @@ class ReserveHouse extends Component {
         }
         catch{
             console.log('add house failed')
-        }
-
-
-        ///////////////////////////////////////////////
-        alert('Thanks!');
+        }        
+        alert('Order reserved');
     }
 
     // onSaveHouse = async (ev) => {
