@@ -6,11 +6,17 @@
     box-sizing: border-box; 
 }
 
+.parting-line {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
 .span-line-break {
     display: block}
 
 .main-content-container {
-    max-width: 800px;
+    max-width: 650px;
     margin: 0 auto;
     padding-left: 10px;
     padding-right: 10px;
@@ -20,7 +26,7 @@
     margin: 0px;
     word-wrap: break-word;
     font-size: 32px;
-    font-weight: 800;
+    font-weight: 500;
     line-height: 1.5em;
     color: #484848;
     padding-top: 6px;

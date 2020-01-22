@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 // import { connect } from 'react-redux';
-// import ChatBox from '../cmps/ChatBox'
-import NavBar from '../cmps/NavBar'
-import '../assets/styles/housedetails.css';
+
 import HouseService from '../services/HouseService'
+
+import NavBar from '../cmps/NavBar'
+// import ChatBox from '../cmps/ChatBox'
 import ReserveHouse from '../cmps/ReserveHouse.js'
+import ReviewList from '../cmps/ReviewList'
+
+import '../assets/styles/housedetails.css';
 
 
 export default class HouseDetails extends Component {
@@ -44,6 +48,7 @@ export default class HouseDetails extends Component {
                         <span className="house-header span-line-break">{ house.address.country }</span>
                         <span className="house-header span-line-break">Description</span>
                         <span className="house-content span-line-break">{ house.description }</span>
+                        <ReviewList reviews={ house.reviews}/>
                     </div>
                     {/* <ChatBox house={this.house}></ChatBox> */}
                     <ReserveHouse house={house}/>
