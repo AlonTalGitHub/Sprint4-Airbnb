@@ -54,7 +54,7 @@
 .gallery {
     display: grid;
     grid-template-columns: repeat(4, minmax(200px, 1fr));
-    grid-template-rows: repeat(2, 295px);
+    grid-template-rows: repeat(2, 30vh);
     gap: 2px;
     margin-bottom: 30px;
     /* grid-auto-rows: 200px; */

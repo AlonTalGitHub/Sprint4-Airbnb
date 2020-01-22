@@ -16,16 +16,17 @@ export default class HousePreview extends Component {
         console.log('imgLen is', imgLen)
         var currIdx = this.state.imgIdx;
         console.log('currIdx is', currIdx)
-        if (currIdx + diff >= imgLen) return this.setState({ ...this.state, imgIdx: 0 });
-        else if (currIdx + diff < 0) return this.setState({ ...this.state, imgIdx: imgLen - 1 });
-        else return this.setState({ ...this.state, imgIdx: currIdx + diff })
+        if (currIdx + diff >= imgLen) return this.setState({imgIdx: 0 });
+        else if (currIdx + diff < 0) return this.setState({  imgIdx: imgLen - 1 });
+        else return this.setState({imgIdx: currIdx + diff })
     }
     onFavClick = (event) => {
         event.preventDefault();
         event.stopPropagation();
         console.log(event.target)
         console.log(this.props.house)
-        this.setState({ ...this.state, isFav: !this.state.isFav })
+        // this.setState({ ...this.state, isFav: !this.state.isFav })
+        this.setState({ isFav: !this.state.isFav })
     }
 
     handleDelete = (ev) => {
@@ -86,9 +87,9 @@ export default class HousePreview extends Component {
                         </span>
                         <div className="house-preview-third-line-container">
                             <div className="house-preview-third-line-cost">
-                                <span className="house-preview-third-line-cost-part-one">₪406</span>
+                                <span className="house-preview-third-line-cost-part-one">₪{this.props.house.price}</span>
                                 <span className="house-preview-third-line-cost-part-two">/night</span></div>
-                            <div className="house-preview-third-line-total-cost"><span>₪1,376 total</span></div>
+                            <div className="house-preview-third-line-total-cost"><span>₪{this.props.house.price} total</span></div>
                         </div>
                     </div>
                     <button onClick={this.handleDelete}>Delete</button>
