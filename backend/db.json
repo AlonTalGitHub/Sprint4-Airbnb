@@ -275,7 +275,11 @@
       "imgURL": "http://some-img",
       "houses": [],
       "favorites": [],
-      "reserved": []
+      "reserved": [
+        {
+          "blah": "hi"
+        }
+      ]
     }
   ]
 }
