@@ -4,9 +4,9 @@
         "createdAt": 1579089879043,
         "byUser":{
             "_id": "1234"
-
         },
         "HouseId": "qwer",
+        "numOfPeople":"",
         "startDate": "",
         "endDate": ""
     }
