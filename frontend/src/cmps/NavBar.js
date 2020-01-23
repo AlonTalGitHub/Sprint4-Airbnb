@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Logo from '../assets/img/turtle3.png'
 import { getUserById} from '../actions/UserActions'
 import userProfileImg from "../assets/img/user_prof_img.png";
+import SearchBar from "./SearchBar";
 class NavBar extends Component {
     state={
         user:''
@@ -29,6 +30,7 @@ loadUser=async()=>{
                     'width': '80px'
                 }} />
             </Link>
+            <SearchBar></SearchBar>
             <ul className="nav-links flex space-between align-center">
                 <li className="nav-item"><Link to="/About" className="nav-link">About</Link></li>
                 <li className="nav-item"><Link to="/house/edit" className="nav-link" >Host</Link></li>

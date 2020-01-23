@@ -10,21 +10,16 @@ export default class HousePreview extends Component {
         isFav: false
     }
     loadImage = (ev, diff) => {
-        ev.preventDefault();
-        console.log('diff is', diff)
-        var imgLen = this.props.house.imgs.length;
-        console.log('imgLen is', imgLen)
-        var currIdx = this.state.imgIdx;
-        console.log('currIdx is', currIdx)
+        ev.preventDefault();        
+        var imgLen = this.props.house.imgs.length;        
+        var currIdx = this.state.imgIdx;        
         if (currIdx + diff >= imgLen) return this.setState({imgIdx: 0 });
         else if (currIdx + diff < 0) return this.setState({  imgIdx: imgLen - 1 });
         else return this.setState({imgIdx: currIdx + diff })
     }
     onFavClick = (event) => {
         event.preventDefault();
-        event.stopPropagation();
-        console.log(event.target)
-        console.log(this.props.house)
+        event.stopPropagation();        
         // this.setState({ ...this.state, isFav: !this.state.isFav })
         this.setState({ isFav: !this.state.isFav })
     }
@@ -35,8 +30,7 @@ export default class HousePreview extends Component {
 
     // }
 
-    render() {
-        console.log(this.state)
+    render() {        
         return (
             // '+this.props.house._id
             <Link to={"/house/" + this.props.house._id}>
