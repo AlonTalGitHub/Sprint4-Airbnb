@@ -9,7 +9,6 @@ import NavBar from '../cmps/NavBar';
 
 
 class HousePage extends Component {
-
     componentDidMount() {
         console.log("did mount house page")
         this.props.filterHouses(this.props.filterBy)

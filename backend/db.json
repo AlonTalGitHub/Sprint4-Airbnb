@@ -3,7 +3,7 @@
     {
       "_id": "0p9o8i",
       "title": "House on the Lake",
-      "description": "Spend a unforgettable holiday in the enchanting surroundings of the town of Cisternino (reachable from the near airports of Bari and Brindisi). Trullo Edera offers a heaven of peace and tranquillity, set in an elevated position with a stunning view. Its the perfect place if you like nature. You can stay under an olive tree reading a good book, you can have a walk in the small country streets or go to the nearest beaches. You can even easily visit any of the sights in Apulia such as the caves of Castellana, the trulli of Alberobello, the baroque cities of Lecce and Martina Franca, the excavations of Egnazia, the zoosafari of Fasano, Castel del Monte with Frederick's castle, Grottaglie famous for its ceramics, Taranto, Brindisi and Lecce museums. Prices vary on period and are to be considered included: in-outcoming cleanings, towels, sheets, water, gas, electricity.",
+      "description": "Spend an unforgettable holiday in the enchanting surroundings of the town of Cisternino (reachable from the near airports of Bari and Brindisi). Trullo Edera offers a heaven of peace and tranquillity, set in an elevated position with a stunning view. Its the perfect place if you like nature. You can stay under an olive tree reading a good book, you can have a walk in the small country streets or go to the nearest beaches. You can even easily visit any of the sights in Apulia such as the caves of Castellana, the trulli of Alberobello, the baroque cities of Lecce and Martina Franca, the excavations of Egnazia, the zoosafari of Fasano, Castel del Monte with Frederick's castle, Grottaglie famous for its ceramics, Taranto, Brindisi and Lecce museums. Prices vary on period and are to be considered included: in-outcoming cleanings, towels, sheets, water, gas, electricity.",
       "owner": {
         "_id": "0987",
         "fullName": "Yael Shenker",
@@ -12,8 +12,8 @@
       "address": {
         "country": "Spain",
         "coords": {
-          "lat": 0,
-          "lng": 0
+          "lat": 41.3888,
+          "lng": 2.159
         }
       },
       "imgs": [
@@ -22,10 +22,11 @@
         "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/oval-mirror-near-toilet-bowl-1910472_dognwb.jpg",
         "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579558662/white-wooden-shelf-beside-bed-2062431_nrtib1.jpg",
         "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579613457/blue-and-gray-concrete-house-with-attic-during-twilight-186077_wx3xq6.jpg",
-        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579613562/black-flat-screen-tv-turned-off-210265_alzyj0.jpg"
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579613562/black-flat-screen-tv-turned-off-210265_alzyj0.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579723480/bathroom-cabinet-candles-faucet-342800_qnixr3.jpg"
       ],
-      "capacity": 2,
-      "price": 170,
+      "capacity": 4,
+      "price": 175,
       "rating": 4.21,
       "reviews": [
         {
@@ -235,7 +236,7 @@
       "description": "The best location",
       "capacity": 2,
       "price": 220,
-      "rating": 4.90,
+      "rating": 4.9,
       "_id": "dTA6d4F"
     },
     {
@@ -277,6 +278,32 @@
       "capacity": 2,
       "price": 34343,
       "_id": "X5BHDX_"
+    },
+    {
+      "address": {
+        "country": "England",
+        "coords": {
+          "lat": 51.5158263,
+          "lng": -0.1367755
+        }
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579728026/white-bathroom-interior-1454804_ry0wex.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579728026/white-wooden-kitchen-cabinet-1599791_kzjoqd.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579728032/flat-screen-tv-1571458_gtl3ys.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579728584/photo-of-bedroom-1454806_duxbi4.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579729389/white-wooden-shelf-beside-bed-2062431_viiymt.jpg"
+      ],
+      "title": "London center penthouse",
+      "description": "Enjoy an unforgettable vaction in central London",
+      "capacity": 3,
+      "price": 125,
+      "owner": {
+        "_id": "0987",
+        "fullName": "Yael Shenker",
+        "imgURL": "https://a0.muscache.com/im/pictures/user/e23d9c03-0de7-46f9-ba5a-c62a6358ff34.jpg?aki_policy=profile_x_medium"
+      },
+      "_id": "vaMUKqy"
     }
   ],
   "user": [
@@ -290,11 +317,7 @@
       "imgURL": "http://some-img",
       "houses": [],
       "favorites": [],
-      "reserved": [
-        {
-          "blah": "hi"
-        }
-      ]
+      "reserved": []
     }
   ]
 }

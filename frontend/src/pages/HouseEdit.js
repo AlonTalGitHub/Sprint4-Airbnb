@@ -12,20 +12,19 @@ import NavBar from "../cmps/NavBar";
 import Axios from "axios";
 
 class HouseEdit extends Component {
-    
 
     state = {
         newHouse: {
             address: {
                 country: '',
                 coords: null
-                // address: ''
             },
             imgs: [],
             title: '',
             description: '',
             capacity: 1,
-            price: ''
+            price: '',
+            addressInput: ''
         },
         isModalShown: false,
         uploadStatus: null,
@@ -36,10 +35,14 @@ class HouseEdit extends Component {
         const { id } = this.props.match.params
         if (!id) return
         this.getHouse(id)
+
     }
 
     getHouse = async (id) => {
         const newHouse = await HouseService.get(id)
+        console.log(newHouse.address.coords)
+        const addressInput = await this.getAddress(newHouse.address.coords)
+        newHouse.addressInput = addressInput
         this.setState({ newHouse }, () => console.log(this.state))
     }
 
@@ -73,10 +76,9 @@ class HouseEdit extends Component {
         const newHouse = { ...this.state.newHouse }
         const key = ev.target.name
         let value = ev.target.value
-        console.log(ev.target.type)
         if (ev.target.name === 'capacity' || ev.target.name === 'price') value = parseInt(value, 0)
         newHouse[key] = value
-        this.setState({ newHouse }, () => console.log(this.state))
+        this.setState({ newHouse })
     }
 
     onAddressChange = (ev) => {
@@ -89,10 +91,21 @@ class HouseEdit extends Component {
         this.setState({ newHouse }, () => console.log(this.state))
     }
 
+    owner = {
+        _id: "0987",
+        fullName: "Yael Shenker",
+        imgURL: "https://a0.muscache.com/im/pictures/user/e23d9c03-0de7-46f9-ba5a-c62a6358ff34.jpg?aki_policy=profile_x_medium"
+    }
+
     onSaveHouse = async (ev) => {
         ev.preventDefault();
+        const owner = this.owner
         try {
-            await this.props.saveHouse(this.state.newHouse)
+            await this.checkAddress()
+            const newHouse = { ...this.state.newHouse, owner }
+            delete newHouse.addressInput
+            console.log(this.state)
+            await this.props.saveHouse(newHouse)
             this.setState({ isModalShown: true })
         }
         catch{
@@ -101,7 +114,7 @@ class HouseEdit extends Component {
     }
 
     onBackClick = () => {
-        this.state.isModalShown && this.props.history.push('/house')
+        this.state.isModalShown && this.props.history.push('/')
     }
 
     displayUpload = () => {
@@ -109,13 +122,13 @@ class HouseEdit extends Component {
         if (uploadStatus === 'uploading') return 'Uploading...'
         else if (uploadStatus === 'success') return 'Success!'
     }
+
     deleteImg = (idx) => {
         const imgs = this.state.newHouse.imgs.filter((img, i) => {
             if (idx !== i) return img
         })
         const newHouse = { ...this.state.newHouse }
         newHouse.imgs = imgs
-
         this.setState({ newHouse }, () => console.log(this.state.newHouse))
     }
 
@@ -135,8 +148,9 @@ class HouseEdit extends Component {
     }
 
     checkAddress = async (ev) => {
-        ev.preventDefault()
-        let addressInput = this.refs.address.value
+        // ev.preventDefault()
+        // let addressInput = this.refs.address.value
+        let addressInput = this.state.newHouse.addressInput
         addressInput = this.state.newHouse.address.country + ' ' + addressInput
         try {
             const res = await Axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${addressInput}&key=029b29b812cb4bfea627a8b82b6b92c4`)
@@ -152,6 +166,28 @@ class HouseEdit extends Component {
 
     }
 
+    createOptions = () => {
+        const options = []
+        for (let i = 1; i < 9; i++) {
+            const str = (i === 1) ? `${i} person` : `${i} persons`
+            options.push(<option value={i}>{str}</option>)
+        }
+        return options
+    }
+
+    getAddress = async (coords) => {
+        // const { coords } = this.state.newHouse.address
+        console.log(coords)
+        if (!coords) return
+        const res = await Axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${coords.lat}+${coords.lng}&key=029b29b812cb4bfea627a8b82b6b92c4`)
+        console.log(res.data.results)
+        const addressInput = res.data.results[0].formatted
+        console.log(addressInput)
+        return addressInput
+
+
+    }
+
     render() {
         const { newHouse, isModalShown, uploadStatus } = this.state
         const { id } = this.props.match.params
@@ -159,29 +195,21 @@ class HouseEdit extends Component {
             <NavBar style={{ "position": "fixed", "top": "0px", "backgroundColor": "lightblue" }}></NavBar>
             <form className="edit-form flex column" onSubmit={this.onSaveHouse}>
                 <input required name="country" onChange={this.onAddressChange} value={newHouse.address.country} type="text" placeholder="Country"></input>
-                <input ref="address" required name="address" type="text" placeholder="Address"></input>
-                {/* value={newHouse.address.address} */}
-                {/* onChange={this.onAddressChange}  */}
-                <button onClick={this.checkAddress}>check address</button>
+                <input required ref="address" onChange={this.onInputChange} name="addressInput" type="text" placeholder="Address" value={this.state.newHouse.addressInput}></input>
+                {/* <button onClick={this.checkAddress}>check address</button> */}
                 <input required name="title" onChange={this.onInputChange} value={newHouse.title} type="text" placeholder="House Title"></input>
-                <input required name="description" onChange={this.onInputChange} value={newHouse.description} type="text" placeholder="Description"></input>
+                <textarea required name="description" onChange={this.onInputChange} value={newHouse.description} type="text" placeholder="Description"></textarea>
                 <input required name="price" onChange={this.onInputChange} value={newHouse.price} type="text" placeholder="Price per night"></input>
                 <label>How many people can stay in your property?</label>
                 <select className="cap-select" type="number" name="capacity" onChange={this.onInputChange} >
-                    <option value={1}>1 Guest</option>
-                    <option value={2}>2 Guests</option>
-                    <option value={3}>3 Guests</option>
-                    <option value={4}>4 Guests</option>
-                    <option value={5}>5 Guests</option>
-                    <option value={6}>6 Guests</option>
-                    <option value={7}>7 Guests</option>
-                    <option value={8}>8 Guests</option>
+                    {this.createOptions()}
                 </select>
 
                 {/* onChange={this.onInputChange} */}
                 <div className="img-upload flex space-between">
-                    <label htmlFor="file-upload" className="custom-file-upload">
-                        Upload Images</label>
+                    <label htmlFor="file-upload" className="upload form-btn pointer flex align-center">
+                        Upload Images
+                        </label>
                     <span className={(uploadStatus === 'success') && "success"}>
                         {this.displayUpload()}
                     </span>
@@ -191,16 +219,15 @@ class HouseEdit extends Component {
                 <button className="form-btn pointer">Submit</button>
 
             </form>
-
-
-            <div className={isModalShown ? 'modal-shown flex column space-betwwen' : 'modal-hidden'}>
+            {/* <div classname ={`bananana lol weepee ${isModalShown? 'banana':none}`}></div> */}
+            {/* need to fix the line below  */}
+            <div className={(isModalShown) ? 'modal-shown flex column space-betwwen' : 'modal-hidden'}>
                 {/* <div className='modal-shown flex column space-between'> */}
                 <span>Congardulations!</span>
                 <span>Your property is on TurtleHouse</span>
                 <button onClick={this.onBackClick} className="form-btn pointer">Back To HomePage</button>
 
             </div>
-
             <div className={isModalShown ? 'block-screen' : 'block-screen-hidden'}></div>
 
         </React.Fragment>
