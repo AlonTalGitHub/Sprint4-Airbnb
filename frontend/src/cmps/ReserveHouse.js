@@ -13,7 +13,8 @@ import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import { connect } from 'react-redux';
 import { setFilter } from '../actions/HouseActions'
-import { saveOrder} from '../actions/OrderActions'
+import { saveOrder } from '../actions/OrderActions'
+import { getUserById } from '../actions/UserActions'
 import '../assets/styles/index.css'
 import Order from "../services/Order.js";
 import localStorageService from "../services/localStorageService";
@@ -25,12 +26,18 @@ class ReserveHouse extends Component {
             location: ''
         },
         startDate: null,
-        endDate: null
+        endDate: null,
+
     }
 
-    onChangeCap = (diff) => {
+    onChangeCap = async (diff) => {
         if (this.state.filterBy.numOfperson === 1 && diff === -1) return
         this.setState(prevState => prevState.filterBy.numOfperson += diff)
+        // ////////////////////////////////////////////////
+        // await this.props.getUserById('1234')
+        // const users=this.props.users
+        // console.log('\nturlak turlak turlak\n',users,'\nturlak turlak turlak\n')
+        // ///////////////////////////////////////////////
     }
 
     onChange = (ev) => {
@@ -54,15 +61,26 @@ class ReserveHouse extends Component {
         ev.preventDefault();
         let houseOrder = new Order(this.props.house._id, 1234, this.state.filterBy.numOfperson);
         localStorageService.store('order', houseOrder)
+        ////////////////////////////////////////////////
+
+        // console.log('\nturlak turlak turlak\n',user,'\nturlak turlak turlak\n')
         ///////////////////////////////////////////////
         try {
-            await this.props.saveOrder(houseOrder)
+            await this.props.getUserById('1234');
+            const user = this.props.loggedInUser;
+
+            // user.reserved.push(houseOrder)
+            console.log('before sending', user)
+            user.reserved.push(houseOrder)
+            console.log('before sending+push', user)
+            await this.props.saveOrder(user)
             console.log('new order reserved')
+            alert('Order reserved');
         }
         catch{
             console.log('add house failed')
-        }        
-        alert('Order reserved');
+        }
+
     }
 
     // onSaveHouse = async (ev) => {
@@ -76,7 +94,7 @@ class ReserveHouse extends Component {
     //     }
     // }
     addReserveClass = () => {
-        if(!this.props.detailsPage) {
+        if (!this.props.detailsPage) {
             return "search-form flex column space-between"
         }
         else {
@@ -86,50 +104,59 @@ class ReserveHouse extends Component {
 
     render() {
         // const [startDate, setStartDate] = useState(null);
+        const { house } = this.props;
         return (
-            <div className={ this.addReserveClass() }>
-                {/* <form> */}
-                {/* <h2>Feel At Home, Wherever You Go</h2>
-            <input onChange={this.onChange} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder="Where To Go?"></input>
-            <div className="form-cap flex space-between align-center"> */}
-                <span>How Many People?</span>
-                <span className="form-cap-control flex space-between"></span>
-                <button onClick={() => this.onChangeCap(1)} className="form-num-btn pointer">+</button>
-                <span className="form-cap-num">{this.state.filterBy.numOfperson}</span>
-                <button onClick={() => this.onChangeCap(-1)} className="form-num-btn pointer">-</button>
-                {/* </span> */}
-                {/* </div> */}
+            <div className={this.addReserveClass()}>
+                <h4>Reserve now</h4>
+                <input onChange={this.onChange} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder={house.address.country + " | " + house.title}></input>
+                <div className="form-cap flex space-between align-center">
+                    <span>How Many People?</span>
+                    <span className="form-cap-control flex space-between">
+                        <button onClick={() => this.onChangeCap(1)} className="form-num-btn pointer" name="numOfperson">+</button>
+                        <span className="form-cap-num">{this.state.filterBy.numOfperson}</span>
+                        <button onClick={() => this.onChangeCap(-1)} className="form-num-btn pointer" name="numOfperson">-</button>
+                    </span>
+                </div>
 
-                {/* <DateRangePicker
-                    startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                    startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                    endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                    endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                    onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                    focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                    onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                />
-                 */}
-
-                {/* <Link onClick={this.handleClick} className="form-btn pointer flex align-center justify-center" to="/house">Search</Link> */}
                 <Link to="/house">
                     <button onClick={this.onReserve} className="form-btn pointer flex align-center justify-center">RESERVE</button>
                 </Link>
-                {/* <button className="form-btn pointer" >Search</button> */}
-                {/* </form> */}
             </div>)
 
-    }
+}
 }
 
 const mapStateToProps = state => {
     return {
-        filterBy: state.house.filterBy
+        filterBy: state.house.filterBy,
+        loggedInUser: state.user.users
     };
 };
 const mapDispatchToProps = {
     // setFilter
-    saveOrder
+    saveOrder,
+    getUserById
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReserveHouse)
+
+
+
+
+
+
+
+
+
+
+
+{/* <DateRangePicker
+    startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+    startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+    endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+    endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+    onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+    focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+    onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+/>
+ */}

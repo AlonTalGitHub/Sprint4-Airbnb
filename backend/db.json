@@ -235,7 +235,7 @@
       "description": "The best location",
       "capacity": 2,
       "price": 220,
-      "rating": 4.90,
+      "rating": 4.9,
       "_id": "dTA6d4F"
     },
     {
@@ -292,7 +292,20 @@
       "favorites": [],
       "reserved": [
         {
-          "blah": "hi"
+          "houseId": "ahy546",
+          "byUser": {
+            "_id": 1234
+          },
+          "numOfPeople": 4,
+          "createdAt": 1579725661272
+        },
+        {
+          "houseId": "ahy546",
+          "byUser": {
+            "_id": 1234
+          },
+          "numOfPeople": 2,
+          "createdAt": 1579725691112
         }
       ]
     }
