@@ -48,7 +48,6 @@ class HouseEdit extends Component {
 
     upload = async (ev) => {
         const fileMap = ev.target.files
-        console.log(fileMap)
         var files = []
         for (const key in fileMap) {
             files.push(fileMap[key])
@@ -58,7 +57,6 @@ class HouseEdit extends Component {
             this.setState({ uploadStatus: 'uploading' })
             let filePrms = files.map(file => uploadImg(file))
             let resFiles = await Promise.all(filePrms)
-            console.log(resFiles)
             const newHouse = { ...this.state.newHouse }
             resFiles.forEach(file => { if (file.url) newHouse.imgs.push(file.url) })
             // newHouse.imgs=uploadedImgs
@@ -104,7 +102,6 @@ class HouseEdit extends Component {
             await this.checkAddress()
             const newHouse = { ...this.state.newHouse, owner }
             delete newHouse.addressInput
-            console.log(this.state)
             await this.props.saveHouse(newHouse)
             this.setState({ isModalShown: true })
         }
@@ -170,7 +167,8 @@ class HouseEdit extends Component {
         const options = []
         for (let i = 1; i < 9; i++) {
             const str = (i === 1) ? `${i} person` : `${i} persons`
-            options.push(<option value={i}>{str}</option>)
+            // const isSelected=(i===this.state.newHouse.capacity)? selected : ''
+            options.push(<option selected={(i === this.state.newHouse.capacity) ? true : false} value={i}>{str}</option>)
         }
         return options
     }
@@ -201,7 +199,7 @@ class HouseEdit extends Component {
                 <textarea required name="description" onChange={this.onInputChange} value={newHouse.description} type="text" placeholder="Description"></textarea>
                 <input required name="price" onChange={this.onInputChange} value={newHouse.price} type="text" placeholder="Price per night"></input>
                 <label>How many people can stay in your property?</label>
-                <select className="cap-select" type="number" name="capacity" onChange={this.onInputChange} >
+                <select className="cap-select" type="number" name="capacity" onChange={this.onInputChange}>
                     {this.createOptions()}
                 </select>
 
@@ -214,7 +212,7 @@ class HouseEdit extends Component {
                         {this.displayUpload()}
                     </span>
                 </div>
-                <input id="file-upload" required onChange={this.upload} type="file" multiple></input>
+                <input id="file-upload" required={(id) ? false : true} onChange={this.upload} type="file" multiple></input>
                 {<div className="flex wrap">{this.dispalyImg()}</div>}
                 <button className="form-btn pointer">Submit</button>
 

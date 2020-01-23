@@ -12,8 +12,8 @@
       "address": {
         "country": "Spain",
         "coords": {
-          "lat": 41.3888,
-          "lng": 2.159
+          "lat": 41.38879,
+          "lng": 2.15899
         }
       },
       "imgs": [
@@ -23,9 +23,9 @@
         "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579558662/white-wooden-shelf-beside-bed-2062431_nrtib1.jpg",
         "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579613457/blue-and-gray-concrete-house-with-attic-during-twilight-186077_wx3xq6.jpg",
         "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579613562/black-flat-screen-tv-turned-off-210265_alzyj0.jpg",
-        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579723480/bathroom-cabinet-candles-faucet-342800_qnixr3.jpg"
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579769779/bathroom-cabinet-candles-faucet-342800_vzuiwq.jpg"
       ],
-      "capacity": 4,
+      "capacity": 3,
       "price": 175,
       "rating": 4.21,
       "reviews": [
@@ -317,7 +317,24 @@
       "imgURL": "http://some-img",
       "houses": [],
       "favorites": [],
-      "reserved": []
+      "reserved": [
+        {
+          "houseId": "ahy546",
+          "byUser": {
+            "_id": 1234
+          },
+          "numOfPeople": 4,
+          "createdAt": 1579725661272
+        },
+        {
+          "houseId": "ahy546",
+          "byUser": {
+            "_id": 1234
+          },
+          "numOfPeople": 2,
+          "createdAt": 1579725691112
+        }
+      ]
     }
   ]
 }

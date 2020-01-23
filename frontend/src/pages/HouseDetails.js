@@ -67,7 +67,7 @@ class HouseDetails extends Component {
                             <button onClick={this.handleDelete} className="form-btn pointer">Delete House</button>
                         </div>
                         {/* <ReviewList reviews={ house.reviews}/> */}
-                        <ReserveHouse house={house} />
+                        <ReserveHouse house={house}/>
                     </div>
                     {/* <ChatBox house={this.house}></ChatBox> */}
 

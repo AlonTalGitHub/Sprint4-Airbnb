@@ -1,16 +1,16 @@
 import axios from 'axios';
 import HttpService from './HttpService'
-// import StorageService from "./StorageService"
+import StorageService from "./StorageService"
 
 
-// const BASE_URL = (process.env.NODE_ENV !== 'development') ? '/api/house/'
-//     : '//localhost:3000/house/';
+const BASE_URL = (process.env.NODE_ENV !== 'development') ? '/api/house/'
+    : '//localhost:3000/house/';
 
 
 
 export default {
     // query,    
-    // get,
+    getUserById,
     save_order,
     // remove,
     // get
@@ -22,16 +22,16 @@ export default {
 // }
 
 async function save_order(order) {
-    const addedOrder = await HttpService.post(`order`, order);
+    const addedOrder = await HttpService.put(`user/1234/`, order);
     console.log(addedOrder)
     return addedOrder;
   }
 
+  function getUserById(id) {
+      console.log('harta barta',id);
+    return HttpService.get(`user/${id}`)
+}
 
-//   function getToyById(houseId) {
-//     return Axios.get(`${TOY_URL}${toyId}`)
-//         .then(res => res.data);
-// }
 
 // function query() {
 //     return StorageService.query('house')
