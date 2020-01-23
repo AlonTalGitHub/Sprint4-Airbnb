@@ -85,13 +85,11 @@ monospace; } */
 }
 
 .search-form {
-  /*shay */
   position: absolute;
   top: 120px;
-  /*/////*/
   margin-left: 50px;
   width: 300px;
-  border: 1px solid black;
+  border: 1px solid rgb(48, 48, 48);
   border-radius: 5px;
   height: 280px;
   padding: 10px;
