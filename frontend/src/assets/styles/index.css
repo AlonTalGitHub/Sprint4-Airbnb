@@ -1,6 +1,19 @@
+/*nice color: #80a381*/
+@font-face {
+  font-family: 'Roboto';
+  src: url(../fonts/Roboto/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'RobotoBold';
+  src: url(../fonts/Roboto/Roboto-Bold.ttf);
+}
+
+
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-decoration: none;
@@ -101,6 +114,21 @@ monospace; } */
 
 .search-form>* {
   margin-bottom: 10px;
+}
+
+.search-form::before {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 5px 5px 0 0;
+  /* background-color: #fff; */
+  height: 60px;
+  bottom: -77px;
+  z-index: 11;
+  width: 100%;
+  left: 0;
+  opacity: .2;
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
 }
 
 .form-cap {

@@ -84,6 +84,11 @@ async function add(order) {
 //     return criteria;
 // }
 
+async function bringMeAdmin(){
+    const collection = await dbService.getCollection('user')
+    console.log('user.service DBfetch',collection)
+    return collection;
+}
 module.exports = {
     // query,
     // remove,
