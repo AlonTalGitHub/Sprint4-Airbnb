@@ -75,11 +75,19 @@ class ReserveHouse extends Component {
     //         console.log('add house failed')
     //     }
     // }
+    addReserveClass = () => {
+        if(!this.props.detailsPage) {
+            return "search-form flex column space-between"
+        }
+        else {
+            return "search-form flex column space-between reserve-form"
+        }
+    }
 
     render() {
         // const [startDate, setStartDate] = useState(null);
         return (
-            <div className="search-form flex column space-between">
+            <div className={ this.addReserveClass() }>
                 {/* <form> */}
                 {/* <h2>Feel At Home, Wherever You Go</h2>
             <input onChange={this.onChange} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder="Where To Go?"></input>
