@@ -23,7 +23,8 @@ class HousePage extends Component {
         this.props.deleteHouse(houseId)
     }
 
-
+//#484848
+//style={{ "position": "fixed", "top": "0px", "backgroundColor": "white","color":"rgb(34, 34, 34)" }}
 
     render() {
         const [house] = this.props.houses
@@ -31,7 +32,7 @@ class HousePage extends Component {
              //"backgroundColor": "lightbue"
         return (
             <div>
-                <NavBar style={{ "position": "fixed", "top": "0px", "backgroundColor": "#0c670c" }}></NavBar>
+                <NavBar caller={"housepage"}></NavBar>
                 {(house) && <HouseList onDeleteHouse={this.onDeleteHouse} houses={this.props.houses}
                    filterBy={this.props.filterBy} style={{ "marginTop": "100px" }}></HouseList>}
             </div>

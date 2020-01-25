@@ -29,12 +29,13 @@ span.house-preview-third-line-cost-part-two { font-weight: 400 !important; }
  .house-preview-btn { flex-grow:1; height: 33.33%; position: relative; } 
  .house-preview-btn-prev { top: calc(50% - 15px); left: 0%; position: relative; width: 30px; height: 30px; border-radius: 50%; opacity: 0.5; background-color: white; } 
  .house-preview-btn-next { top: calc(50% - 15px); left:calc(100% - 30px); position: absolute; width: 30px; height: 30px; border-radius: 50%; opacity: 0.5; background-color: white; } 
- .house-preview-pagination-circle { padding: 3px; margin: 1px; width: 10px; height: 10px; border-radius: 50%; opacity: 0.5; background-color: white; } 
- .house-preview-pagination-circle-currimg { margin: -2px; padding: 5px; width: 15px; height: 15px; border-radius: 50%; opacity: 0.5; background-color: #3ccc06; } 
- .house-preview-pagination-container { bottom: 20%; position: absolute; left: 37%; } 
+ .house-preview-pagination-circle { margin-left:20px; padding: 3px; width: 10px; height: 10px; border-radius: 50%; opacity: 0.5; background-color: white; } 
+ .house-preview-pagination-circle-currimg { margin: -2px; padding: 5px; width: 15px; height: 15px; border-radius: 50%; opacity: 0.8; } /*background-color: #3ccc06; border:2px solid green*/
+ .house-preview-pagination-container { bottom: 20%; position: absolute; left: 25%; } 
+ .house-preview-pagination-turtle { position: absolute;top: -5px; margin-left: 5px; width: 13%; height: auto; opacity:1; } 
  ul.house-list.clean-list>* { position: relative; } 
  .house-preview-pagination-container { display:flex; wrap:nowrap; bottom: 20%; position: absolute; } 
- @media only screen and (min-width: 745px) {img.house-preview-image { max-width:300px; } 
+ @media only screen and (min-width: 745px) { img.house-preview-image { max-width:300px; } 
  ul.house-list.clean-list { display:grid; grid-template-columns: 1fr 1fr 1fr; gap:20px; } 
  ul.house-list.clean-list>* { position: relative; } 
  .house-preview-details { } 

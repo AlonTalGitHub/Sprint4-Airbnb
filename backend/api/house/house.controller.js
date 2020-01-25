@@ -1,5 +1,6 @@
 // const logger = require('../../services/logger.service')
 const houseService = require('./house.service')
+const ObjectId = require('mongodb').ObjectId
  
 // TODO: needs error handling! try, catch
 
@@ -14,7 +15,17 @@ async function getHouses(req, res) {
         
     }
 }
-
+async function getHouse(req,res){
+    try {
+        const house = await houseService.query({"_id":ObjectId(req.params.id)})
+        res.send(house)
+    } catch (err) {
+        // logger.error('Cannot get houses', err);
+        console.log('Cannot get houses', err);
+        res.status(500).send({ error: 'cannot get house' })
+        
+    }
+}
 async function deleteHouse(req, res) {
     await houseService.remove(req.params.id)
     res.end()
@@ -33,5 +44,6 @@ async function addHouse(req, res) {
 module.exports = {
     getHouses,
     deleteHouse,
-    addHouse
+    addHouse,
+    getHouse
 }

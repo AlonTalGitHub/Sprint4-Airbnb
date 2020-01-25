@@ -31,9 +31,10 @@ class HouseDetails extends Component {
     }
 
     loadHouse = async (houseId) => {
-        const house = await HouseService.get(houseId)
+        const houses = await HouseService.get(houseId)
+        console.log('house details page',houses)
+        const house=houses[0];
         this.setState({ house })
-
     }
 
     handleDelete = async () => {

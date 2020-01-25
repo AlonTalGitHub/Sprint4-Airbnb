@@ -49,7 +49,7 @@ async function save(house) {
 // }
 
 function get(id) {
-    return HttpService.get(`house/${id}`)
+    return HttpService.get(`/house/${id}`)
 }
 
 function remove(id) {

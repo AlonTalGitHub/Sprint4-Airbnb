@@ -18,6 +18,7 @@ class Home extends Component {
 
   componentDidMount() { 
     console.log('home', this.props.filterBy)
+    console.log('welcome back to turtle house user : ',this.props.loggedInUser)
     // debugger
     this.load()
     
@@ -43,7 +44,7 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-        <NavBar></NavBar>
+        <NavBar caller={"home"}></NavBar>
         <img className="index-cover" src={backgroundImage} />
         <SearchForm></SearchForm>
         <button>blah</button>
@@ -56,7 +57,9 @@ class Home extends Component {
 const mapStateToProps = state => {
   return {
       houses: state.house.houses,
-      filterBy: state.house.filterBy
+      filterBy: state.house.filterBy,
+      loggedInUser: state.user.loggedInUser,
+      isLoading: state.system.isLoading
   };
 };
 const mapDispatchToProps = {
@@ -64,5 +67,4 @@ const mapDispatchToProps = {
   // loadHouses,
   filterHouses
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

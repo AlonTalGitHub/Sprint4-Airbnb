@@ -6,7 +6,6 @@ async function query(filterBy = {}) {
     try {
         const collection = await dbService.getCollection('house')
         const houses = await collection.find(criteria).toArray();
-        // houses.forEach(house => delete house.password);
         return houses
     } catch (err) {
         console.log('ERROR: cannot find houses')
@@ -39,7 +38,10 @@ async function add(house) {
 }
 
 function _buildCriteria(filterBy) {
-    const criteria = {};
+    const criteria = {}
+    if (filterBy._id) {
+        criteria._id = filterBy._id
+    }
     return criteria;
 }
 
@@ -83,7 +85,7 @@ module.exports = {
     //                 $unwind: '$aboutHouse'
     //             }
     //         ]).toArray()
-    
+
     //         houses = houses.map(house => {
     //             house.byHouse = { _id: house.byHouse._id, housename: house.byHouse.housename }
     //             house.aboutHouse = { _id: house.aboutHouse._id, housename: house.aboutHouse.housename }
@@ -91,7 +93,7 @@ module.exports = {
     //             delete house.aboutHouseId;
     //             return house;
     //         })
-    
+
     //         return houses
     //     } catch (err) {
     //         console.log('ERROR: cannot find houses')
