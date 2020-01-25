@@ -5,7 +5,8 @@ export function filterHouses(filter) {
   console.log(filter)
   return async (dispatch) => {
     dispatch(_setFilter(filter))
-    const houses = await HouseService.query(filter);
+    // const houses = await HouseService.query(filter);
+    const houses = await HouseService.getHouses();
     dispatch(_setHouses(houses))
   }
 }

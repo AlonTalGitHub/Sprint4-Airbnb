@@ -9,19 +9,19 @@ class NavBar extends Component {
     state={
         user:''
     }
-loadUser=async()=>{
-    try {
-        await this.props.getUserById('1234');
-        const user=this.props.loggedInUser;
-        console.log('user shmuser\n',user)
-        // document.querySelector('ul.nav-links').innerHTML+=`<li className="nav-item"><Link className="nav-link"><div className="nav-item-user-img-container"></div></Link></li>`
-        this.setState({...this.state,user})
-        console.log('new state',this.state)
-    }
-    catch{
-        console.log('add house failed')
-    }   
-}
+// loadUser=async()=>{
+//     try {
+//         await this.props.getUserByTurlak();
+//         const user=this.props.loggedInUser;
+//         console.log('user shmuser\n',user)
+//         // document.querySelector('ul.nav-links').innerHTML+=`<li className="nav-item"><Link className="nav-link"><div className="nav-item-user-img-container"></div></Link></li>`
+//         this.setState({...this.state,user})
+//         console.log('new state',this.state)
+//     }
+//     catch{
+//         console.log('add house failed')
+//     }   
+// }
     render() {
         return (<div style={this.props.style} className="main-navbar flex space-between">
             {/* return <div className={`main-navbar flex space-between ${this.props.class}`}> */}
@@ -36,7 +36,7 @@ loadUser=async()=>{
                 <li className="nav-item"><Link to="/house/edit" className="nav-link" >Host</Link></li>
                 <li className="nav-item"><Link className="nav-link">Reserved</Link></li>
                 <li className="nav-item"><Link className="nav-link">Favorites</Link></li>
-                <li className="nav-item"><Link className="nav-link" onClick={this.loadUser}>Login/SignUp</Link></li>
+                <li className="nav-item"><Link to="/login" className="nav-link">Login/SignUp</Link></li>
                 <li className="nav-item"><Link className="nav-link">
                     <div className={this.state.user? "nav-item-user-img-container visible" :"nav-item-user-img-container"}>
                         <img src= {userProfileImg} className="nav-item-user-img"/>

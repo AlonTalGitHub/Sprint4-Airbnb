@@ -1,6 +1,6 @@
 // const logger = require('../../services/logger.service')
 const userService = require('./user.service')
- 
+
 // TODO: needs error handling! try, catch
 
 // async function getHouses(req, res) {
@@ -10,7 +10,7 @@ const userService = require('./user.service')
 //     } catch (err) {
 //         logger.error('Cannot get houses', err);
 //         res.status(500).send({ error: 'cannot get houses' })
-        
+
 //     }
 // }
 
@@ -18,19 +18,85 @@ const userService = require('./user.service')
 //     await houseService.remove(req.params.id)
 //     res.end()
 // }
+// async function turlak(req, res) {
+//     // var reqTurlak=req.body
+//     try {
+//         const resTurlak = await userService.bringMeAdmin();
+//         res.send(resTurlak)
+//     } catch (err) {
 
-async function addOrder(req, res) {
-    var order = req.body;
-    // house.byUserId = req.session.user._id;
-    addedOrder = await userService.add(order)
-    // house.byUser = req.session.user;
-    // TODO - need to find aboutUser
-    // house.aboutUser = {} 
-    res.send(addedOrder)
+//         console.log('kaka ba leben', err)
+//     }
+
+// }
+// async function addOrder(req, res) {
+//     var order = req.body;
+//     // house.byUserId = req.session.user._id;
+//     var addedOrder = await userService.add(order)
+//     // house.byUser = req.session.user;
+//     // TODO - need to find aboutUser
+//     // house.aboutUser = {} 
+//     res.send(addedOrder)
+// }
+
+// module.exports = {
+//     // getHouses,
+//     // deleteHouse,
+//     addOrder,
+//     turlak
+// }
+
+
+async function getUser(req, res) {
+    try {
+        const user = await userService.getById(req.params.id)
+        res.send(user)
+    }
+    catch (err) {
+        console.log('backend user.controller err:')
+        throw err
+    }
+}
+
+async function getUsers(req, res) {
+    try {
+        console.log(req.query);
+        const users = await userService.query(req.query)
+        res.send(users)
+    }
+    catch (err) {
+        console.log('backend user.controller err:', err)
+        throw err
+    }
+}
+
+async function deleteUser(req, res) {
+    try {
+        await userService.remove(req.params.id)
+        res.end()
+    }
+    catch (err) {
+        console.log('backend user.controller err:', err)
+        throw err
+    }
+
+}
+
+async function updateUser(req, res) {
+    try {
+        const user = req.body;
+        await userService.update(user)
+        res.send(user)
+    }
+    catch (err) {
+        console.log('backend user.controller err:', err)
+        throw err
+    }
 }
 
 module.exports = {
-    // getHouses,
-    // deleteHouse,
-    addOrder
+    getUser,
+    getUsers,
+    deleteUser,
+    updateUser
 }

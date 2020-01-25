@@ -46,6 +46,7 @@ class Home extends Component {
         <NavBar></NavBar>
         <img className="index-cover" src={backgroundImage} />
         <SearchForm></SearchForm>
+        <button>blah</button>
        {this.props.houses.length&&<HouseList houses={this.props.houses}></HouseList>} 
       </div>
     );

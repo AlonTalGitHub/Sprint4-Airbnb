@@ -13,7 +13,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import { connect } from 'react-redux';
 import { setFilter } from '../actions/HouseActions'
-import { saveOrder } from '../actions/OrderActions'
+// import { saveOrder } from '../actions/OrderActions'
 import { getUserById } from '../actions/UserActions'
 import '../assets/styles/index.css'
 import Order from "../services/Order.js";
@@ -134,7 +134,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = {
     // setFilter
-    saveOrder,
+    // saveOrder,
     getUserById
 };
 

@@ -126,7 +126,15 @@ class HouseList extends Component {
 
     }
 
-    style = { backgroundColor: 'red', position: 'fixed' }
+    // style = { backgroundColor: 'red', position: 'fixed' }
+
+
+    //////////////////////////////////////////////////////////////
+    //housePreview attr: filterBy={this.props.filterBy},onDeleteHouse={this.props.onDeleteHouse} 
+    //////////////////////////////////////////////////////////////
+
+
+
     render() {
         const {houses}=this.props
         return (
@@ -137,7 +145,7 @@ class HouseList extends Component {
                 <ul className="house-list clean-list">
                     {houses.map(house => (
                         <li key={house._id}>
-                            <HousePreview onDeleteHouse={this.props.onDeleteHouse}  house={house} filterBy={this.props.filterBy}  />
+                            <HousePreview house={house}/> 
                         </li>
                     ))}
                 </ul>

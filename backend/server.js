@@ -7,11 +7,12 @@ const session = require('express-session')
 
 const app = express()
 const http = require('http').createServer(app);
-// const io = require('socket.io')(http);
+const io = require('socket.io')(http);
 
-// const authRoutes = require('./api/auth/auth.routes')
+const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
-// const reviewRoutes = require('./api/review/review.routes')
+const orderRoutes = require('./api/order/order.routes')
+const houseRoutes = require('./api/house/house.routes')
 // const connectSockets = require('./api/socket/socket.routes')
 
 
@@ -35,16 +36,16 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // routes
-// app.use('/api/auth', authRoutes)
+app.use('/api/auth', authRoutes)
+app.use('/api/house', houseRoutes)
 app.use('/api/user', userRoutes)
-// app.use('/api/review', reviewRoutes)
+app.use('/api/order', orderRoutes)
 // connectSockets(io)
 
 
 
 // const logger = require('./services/logger.service')
  const port = process.env.PORT || 3030;
-// http.listen(port, () => {
-//     logger.info('Server is running on port: ' + port)
-// });
-console.log(('Server is running on port: ' + port))
+http.listen(port, () => {
+    console.log('Server is running on port: ' + port)
+});

@@ -43,6 +43,18 @@ export function getUserById(userId) {
   };
 }
 // THUNK
+// export function getUserByTurlak() {
+//   return async dispatch => {
+//     try {
+//      let user= await UserService.getUserByTurlak();
+//      console.log('userActions',user)
+//       dispatch(_loadUser(user));
+//     } catch (err) {
+//       console.log('UserActions: err in turlakking User', err);
+//     }
+//   };
+// }
+// THUNK
 export function login(userCreds) {
   return async dispatch => {
     const user = await UserService.login(userCreds);
