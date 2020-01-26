@@ -1,10 +1,13 @@
 import history from '../history';
 import Axios from 'axios';
-
+////for jason-server:
+// const BASE_URL = process.env.NODE_ENV === 'production'
+//     ? '/api/'
+//     : '//localhost:3000'
+////for real server:
 const BASE_URL = process.env.NODE_ENV === 'production'
     ? '/api/'
-    : '//localhost:3000/'
-
+    : '//localhost:3030/api'
 
 var axios = Axios.create({
     withCredentials: true

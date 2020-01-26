@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Logo from '../assets/img/turtle3.png'
+
 import '../assets/styles/index.css'
 
+import whiteLogo from '../assets/img/turtle3.png'
+import blackLogo from '../assets/img/turtle4.png'
 import { getUserById } from '../actions/UserActions'
 import userProfileImg from "../assets/img/user_prof_img.png";
 import SearchBar from "./SearchBar";
@@ -13,74 +15,120 @@ class NavBar extends Component {
     state = {
         user: '',
         isMenuOpen: false
-    }
-    componentDidMount() {
-        console.log(this.props)
-    }
-    loadUser = async () => {
-        try {
-            await this.props.getUserById('1234');
-            const user = this.props.loggedInUser;
-            console.log('user shmuser\n', user)
-            // document.querySelector('ul.nav-links').innerHTML+=`<li className="nav-item"><Link className="nav-link"><div className="nav-item-user-img-container"></div></Link></li>`
-            this.setState({ ...this.state, user })
-            console.log('new state', this.state)
-        }
-        catch{
-            console.log('add house failed')
-        }
-    }
+    }   
+    
 
     openMenu = () => {
         this.setState({ isMenuOpen: true })
     }
 
+    // render() {
+    //     return <React.Fragment>
+    //         <div style={this.props.style} className="main-navbar flex space-between align-center">
+    //             {/* return <div className={`main-navbar flex space-between ${this.props.class}`}> */}
+    //             <Link to="/">
+    //                 <img className="logo" src={Logo} style={{
+    //                     'width': '80px'
+    //                 }} />
+    //             </Link>
+    //             {(this.props.search) && <SearchBar openMenu={this.openMenu}></SearchBar>}
+
+    //             <ul className="nav-links flex align-center">
+    //                 <li className="nav-item"><Link to="/About" className="nav-link">About</Link></li>
+    //                 <li className="nav-item"><Link to="/house/edit" className="nav-link" >Host</Link></li>
+    //                 <li className="nav-item"><Link className="nav-link">Reserved</Link></li>
+    //                 <li className="nav-item"><Link className="nav-link">Favorites</Link></li>
+    //                 <li className="nav-item"><Link className="nav-link" onClick={this.loadUser}>Login/SignUp</Link></li>
+    //                 <li className="nav-item"><Link className="nav-link">
+    //                     <div className={this.state.user ? "nav-item-user-img-container visible" : "nav-item-user-img-container"}>
+    //                         <img src={userProfileImg} className="nav-item-user-img" />
+    //                     </div>
+    //                     <span className="nav-item-user-name">{this.state.user ? this.state.user.fullName : ''}</span>
+    //                 </Link>
+    //                 </li>
+    //             </ul>
+    //         </div>
+    //         <div className={`filter-buttons-container ${(this.state.isMenuOpen) ? 'shown-filter-container' : ''}`}>
+    //             <FilterBar></FilterBar> 
+    //         </div>
+    //     </React.Fragment>
+        /////////////////////////////////////////////shay
+   
+    
     render() {
-        return <React.Fragment>
-            <div style={this.props.style} className="main-navbar flex space-between align-center">
-                {/* return <div className={`main-navbar flex space-between ${this.props.class}`}> */}
-                <Link to="/">
-                    <img className="logo" src={Logo} style={{
+        const { loggedInUser } = this.props;
+        const consoleCaller = () => {
+            const { caller } = this.props;
+            console.log('this cmp was called by', caller);
+        }
+        const getNavClass = () => {
+            if (this.props.caller !== "home") return "nav-links flex align-center black"
+            else return "nav-links flex align-center"
+        }
+        const getMenuItemClass = () => {
+            if (this.props.caller !== "home") return "nav-item black"
+            else return "nav-item"
+        }
+        const getLinkItemClass = () => {
+            if (this.props.caller !== "home") return "nav-link black"
+            else return "nav-link"
+        }
+        const getuserNameClass = () => {
+            if (this.props.caller !== "home") return "nav-item-user-name black"
+            else return "nav-item-user-name"
+        }
+        const profileImageRender = () => {
+            return (
+                <div >
+                    <div className={(loggedInUser) ? "nav-item-user-img-container visible" : "nav-item-user-img-container"}>
+                        <img src={(loggedInUser) ? loggedInUser.imgUrl : userProfileImg} className="nav-item-user-img" />
+                    </div>
+                    {(loggedInUser) ? <span className={getuserNameClass()}>{loggedInUser.fullName}</span> : ''}
+                </div>
+            )
+        }
+        return (<div>
+            {/* return <div className={`main-navbar flex space-between ${this.props.class}`}> */}
+
+            <ul className={getNavClass()}>
+                <li className={getMenuItemClass()}>            <Link to="/">
+                    <img className="logo" src={(this.props.caller !== "home") ? blackLogo : whiteLogo} style={{
                         'width': '80px'
                     }} />
+                </Link></li>
+                <li className={getMenuItemClass()}>{(this.props.caller!=="home")?<SearchBar openMenu={this.openMenu}></SearchBar>:''}</li>
+                <li className={getMenuItemClass()}><Link to="/About" className={getLinkItemClass()}>About</Link></li>
+                <li className={getMenuItemClass()}><Link to="/house/edit" className={getLinkItemClass()} >Host</Link></li>
+                <li className={getMenuItemClass()}><Link to="/reserved" className={getLinkItemClass()}  onClick={consoleCaller}>Reserved</Link></li>
+                <li className={getMenuItemClass()}><Link className={getLinkItemClass()}>Favorites</Link></li>
+                <li className={getMenuItemClass()}><Link to="/login" className={getLinkItemClass()}>Login/SignUp</Link></li>
+                <li className={getMenuItemClass()}><Link className={getLinkItemClass()}>
+                    {profileImageRender()}
                 </Link>
-                {(this.props.search) && <SearchBar openMenu={this.openMenu}></SearchBar>}
-
-                <ul className="nav-links flex align-center">
-                    <li className="nav-item"><Link to="/About" className="nav-link">About</Link></li>
-                    <li className="nav-item"><Link to="/house/edit" className="nav-link" >Host</Link></li>
-                    <li className="nav-item"><Link className="nav-link">Reserved</Link></li>
-                    <li className="nav-item"><Link className="nav-link">Favorites</Link></li>
-                    <li className="nav-item"><Link className="nav-link" onClick={this.loadUser}>Login/SignUp</Link></li>
-                    <li className="nav-item"><Link className="nav-link">
-                        <div className={this.state.user ? "nav-item-user-img-container visible" : "nav-item-user-img-container"}>
-                            <img src={userProfileImg} className="nav-item-user-img" />
-                        </div>
-                        <span className="nav-item-user-name">{this.state.user ? this.state.user.fullName : ''}</span>
-                    </Link>
-                    </li>
-                </ul>
-            </div>
+                </li>
+            </ul>
             <div className={`filter-buttons-container ${(this.state.isMenuOpen) ? 'shown-filter-container' : ''}`}>
                 <FilterBar></FilterBar> 
             </div>
-        </React.Fragment>
+
+        </div>)
     }
 
 
 }
-
+//<li className={getMenuItemClass()}><SearchBar></SearchBar></li>
 // export default NavBar
 
 const mapStateToProps = state => {
     return {
         // filterBy: state.house.filterBy,
-        loggedInUser: state.user.loggedInUser
+        loggedInUser: state.user.loggedInUser,
+        isLoading: state.system.isLoading
     };
 };
-const mapDispatchToProps = {
-    // setFilter
-    getUserById
-};
+// const mapDispatchToProps = {
+//     // setFilter
+//     getUserById
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
+export default connect(mapStateToProps, null)(NavBar)

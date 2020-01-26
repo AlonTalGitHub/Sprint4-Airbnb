@@ -19,7 +19,7 @@ export default function(state = initialState, action = {}) {
       return { ...state, users: action.users };
       case 'USER_LOAD':
         console.log('userload', action.user)
-        return { ...state, loggedInUser: action.user };
+        return { ...state, users: action.user };
       default:
       return state;
   }

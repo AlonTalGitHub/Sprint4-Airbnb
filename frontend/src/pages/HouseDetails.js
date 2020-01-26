@@ -32,21 +32,22 @@ class HouseDetails extends Component {
     }
 
     loadHouse = async (houseId) => {
-        const house = await HouseService.get(houseId)
+        const houses = await HouseService.get(houseId)
+        console.log('house details page',houses)
+        const house=houses[0];
         this.setState({ house })
-
     }
 
     handleDelete = async () => {
         await this.props.deleteHouse(this.state.house._id)
         this.props.history.push('/')
     }
-
+//style={{ "position": "fixed", "top": "0px", "backgroundColor": "lightblue" }}
     render() {
         const { house } = this.state
         return (
             <React.Fragment>
-                <NavBar style={{ "position": "fixed", "top": "0px", "backgroundColor": "lightblue" }}></NavBar>
+                <NavBar caller={"housedetails"}></NavBar>
                 {(house) && <section className="housedetails-container">
                     <div className="images-container">
                         <div className="gallery">

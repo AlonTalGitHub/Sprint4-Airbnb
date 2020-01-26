@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-
+import paginationTurtle from '../assets/img/pagin_turtle.png'
 let prev_next_btn_style = { 'height': '10px', 'width': '10px', 'display': 'block', 'fill': 'rgb(34, 34, 34)', 'position': 'absolute', 'left': '30%', 'top': '32%' }
 
 
@@ -59,7 +59,7 @@ export default class HousePreview extends Component {
                                 <div className="house-preview-pagination-container">
                                     {this.props.house.imgs.map((img, index) => {
                                         if (index !== this.state.imgIdx) return <div className="house-preview-pagination-circle"></div>
-                                        else return <div className="house-preview-pagination-circle-currimg"></div>
+                                        else return <div className="house-preview-pagination-circle-currimg"><img src={paginationTurtle} alt="" className="house-preview-pagination-turtle"/></div>
                                     }
                                     )}
                                 </div>

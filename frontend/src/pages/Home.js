@@ -18,6 +18,7 @@ class Home extends Component {
 
   componentDidMount() { 
     console.log('home', this.props.filterBy)
+    console.log('welcome back to turtle house user : ',this.props.loggedInUser)
     // debugger
     this.load()
     
@@ -42,7 +43,7 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-        <NavBar></NavBar>
+        <NavBar caller={"home"}></NavBar>
         <img className="index-cover" src={backgroundImage} />
         <SearchForm></SearchForm>
        {/* {this.props.houses.length&& */}
@@ -52,6 +53,8 @@ class Home extends Component {
        <HouseList houses={this.getBestByCountry('England')}></HouseList> 
        <h4 className="reccomended-headline">Most reccomended in Italy</h4>
        <HouseList houses={this.getBestByCountry('Italy')}></HouseList> 
+        {/* <button>blah</button>
+       {this.props.houses.length&&<HouseList houses={this.props.houses}></HouseList>}  */}
       </div>
     );
   }
@@ -60,7 +63,9 @@ class Home extends Component {
 const mapStateToProps = state => {
   return {
       houses: state.house.houses,
-      filterBy: state.house.filterBy
+      filterBy: state.house.filterBy,
+      loggedInUser: state.user.loggedInUser,
+      isLoading: state.system.isLoading
   };
 };
 const mapDispatchToProps = {
@@ -68,5 +73,4 @@ const mapDispatchToProps = {
   // loadHouses,
   filterHouses
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
