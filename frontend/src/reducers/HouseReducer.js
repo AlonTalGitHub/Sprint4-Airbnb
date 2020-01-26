@@ -26,13 +26,6 @@ export default function (state = initialState, action = {}) {
       };
     case 'HOUSE_REMOVE':
       return { ...state, houses: state.houses.filter(house => house._id !== action.houseId) }
-    case 'REVIEW_UPDATE':
-      return {
-        ...state,
-        reviews: state.reviews.map(review =>
-          review._id === action.review._id ? action.review : review
-        )
-      };
     default:
       return state;
   }
