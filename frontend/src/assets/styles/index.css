@@ -25,14 +25,14 @@ body {
 }
 
 .nav-links {
-  width: 80%;
+  /* width: 80%; */
   padding: 5px;
 }
 
 .nav-links>* {
   text-decoration: none;
   padding: 5px;
-  margin-right:10%;
+  margin-right:10px;
 }
 
 .nav-link {
@@ -75,6 +75,25 @@ img.nav-item-user-img{
 span.nav-item-user-name{
   color:greenyellow;
 }
+.filter-buttons-container{
+  height: 50px;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid black;
+
+  top: -80px;
+  transition: 0.3s; 
+
+}
+
+.shown-filter-container{
+  top: 80px;
+  padding: 10px 20px;
+  
+}
+
 .form-loc {
   /* code { font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 monospace; } */
@@ -146,6 +165,10 @@ monospace; } */
   color: white;
 }
 
+.reccomended-headline{
+  margin-left: 24px;
+}
+
 
 /* helpers */
 
@@ -183,11 +206,58 @@ monospace; } */
   flex-wrap: wrap;
 }
 
-/*remove later*/
+/*date-picker*/
 
-input#your_unique_end_date_id {
-  font-size: 9px;
+input#start-date {
+  font-size: 14px;
+  text-align: center;
 }
+input#end-date {
+  font-size: 14px;
+  text-align: center;
+}
+
+.DateRangePickerInput__withBorder {
+  border-radius: 5px;
+  border: 1px solid #dbdbdb;
+  border: 1px solid gray;
+  padding: 2px;  
+  width: 100%;
+}
+
+.DateInput {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  position: relative;
+  display: inline-block;
+  width: calc(50% - 8px);
+  vertical-align: middle;
+}
+
+.DateInput_input {
+  font-weight: 200;  
+  line-height: 14px;
+  color: #484848;
+  background-color: #fff;
+  width: 100%;
+  padding: 2px 18px;
+  border: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 2px solid transparent;
+  border-left: 0;
+  border-radius: 0;
+}
+
+.DateRangePickerInput_arrow_svg {
+  
+  fill: #484848;  
+  height: 16px;
+  width: 16px;
+}
+
+
 
 /*Background image home page*/
 
@@ -208,6 +278,8 @@ img.index-cover {
 .main-nav {
   position: fixed;
 }
+
+
 
 img.logo:hover{
   filter: invert(65%) sepia(75%) saturate(4580%) hue-rotate(75deg) brightness(131%) contrast(95%);

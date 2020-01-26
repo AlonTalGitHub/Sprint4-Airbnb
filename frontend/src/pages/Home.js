@@ -31,11 +31,10 @@ class Home extends Component {
   }
 
 
-  // getBestByCountry = (country) => {
-  //   this.props.houses
-  //   .filter(house => house.country === country)
-  //   .filter(house => house.rating > 7)
-  // }
+  getBestByCountry = (country) => {
+   return this.props.houses.filter(house => house.address.country === country)
+    
+  }
   
 
   handleChange = ev => { };
@@ -46,7 +45,13 @@ class Home extends Component {
         <NavBar></NavBar>
         <img className="index-cover" src={backgroundImage} />
         <SearchForm></SearchForm>
-       {this.props.houses.length&&<HouseList houses={this.props.houses}></HouseList>} 
+       {/* {this.props.houses.length&& */}
+       <h4 className="reccomended-headline">Most reccomended in Israel</h4>
+       <HouseList houses={this.getBestByCountry('Israel')}></HouseList> 
+       <h4 className="reccomended-headline">Most reccomended in England</h4>
+       <HouseList houses={this.getBestByCountry('England')}></HouseList> 
+       <h4 className="reccomended-headline">Most reccomended in Italy</h4>
+       <HouseList houses={this.getBestByCountry('Italy')}></HouseList> 
       </div>
     );
   }

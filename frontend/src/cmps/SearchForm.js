@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from '../cmps/DatePicker';
+import "react-datepicker/dist/react-datepicker.css";
 import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import { connect } from 'react-redux';
-import { setFilter } from '../actions/HouseActions'
-// import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import { setFilter, filterHouses } from '../actions/HouseActions'
+import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
 import '../assets/styles/index.css'
 
 
@@ -41,7 +41,13 @@ class SearchForm extends Component {
     }
 
     onSearch = () => {
-        this.props.setFilter(this.state.filterBy)
+        this.props.filterHouses(this.state.filterBy)
+    }
+
+    saveNightNum=(val)=>{
+        const filterBy={...this.state.filterBy}
+        filterBy.nightsNum=val
+        this.setState({filterBy},console.log(this.state))
     }
 
     render() {
@@ -58,14 +64,15 @@ class SearchForm extends Component {
                     <button onClick={() => this.onChangeCap(-1,'numOfperson')} className="form-num-btn pointer" name="numOfperson">-</button>
                 </span>                
             </div>
-            <div className="form-cap flex space-between align-center">
+            <DatePicker saveNightNum={this.saveNightNum} ></DatePicker>
+            {/* <div className="form-cap flex space-between align-center">
                 <span>How Many nights?</span>
                 <span className="form-cap-control flex space-between">
                     <button onClick={() => this.onChangeCap(1,'nightsNum')} className="form-num-btn pointer" name="nights">+</button>
                     <span className="form-cap-num">{this.state.filterBy.nightsNum}</span>
                     <button onClick={() => this.onChangeCap(-1,'nightsNum')} className="form-num-btn pointer" name="nights">-</button>
                 </span>                
-            </div>
+            </div> */}
 
             {/* <DateRangePicker
                     startDate={this.state.startDate} // momentPropTypes.momentObj or null,
@@ -75,8 +82,8 @@ class SearchForm extends Component {
                     onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
                     focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                     onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                />
-                 */}
+                /> */}
+                
 
             {/* <Link onClick={this.handleClick} className="form-btn pointer flex align-center justify-center" to="/house">Search</Link> */}
             <Link className="align-self" to="/house">
@@ -95,7 +102,8 @@ const mapStateToProps = state => {
     };
 };
 const mapDispatchToProps = {
-    setFilter
+    setFilter,
+    filterHouses
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchForm)

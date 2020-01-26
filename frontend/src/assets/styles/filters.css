@@ -1,0 +1,51 @@
+.filter-menu {
+    display: none;
+}
+
+.shown-filter {
+    display: flex;
+    width: 100px;
+    height: 80px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 5px;
+
+}
+
+.filter-btn {
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    border: none;
+    padding: 5px 10px;
+    background-color: rgb(0, 166, 153);
+    color: white;
+}
+
+.filter-menu .form-cap-control {
+    width: 100%;
+    display: flex;
+}
+
+.filter-num-btn {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid gray;
+    font-size: 15px;
+}
+
+.filter-num-btn:hover {
+    background-color: grey;
+    color: white;
+}
+
+.save-filter-btn{
+    background-color: grey;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
