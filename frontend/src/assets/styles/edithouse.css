@@ -2,12 +2,13 @@
     margin-left: 50px;
     width: 300px;
     border-radius: 5px;
-    height: 280px;
+    height: 100vh;
     padding: 10px;
     z-index: 1;
     color: gray;
     background-color: white;
     margin-top: 100px;
+    
 }
 
 .edit-form>*:not(:last-child) {
@@ -17,13 +18,24 @@
     font-size: 14px;
 }
 
-.edit-form>*:not(:nth-child(5)):not(:nth-child(9)) {
+/* .edit-form>*:not(:nth-child(6)):not(:nth-child(11)):not(:nth-child(8)) {
+    border: 1px solid grey;
+} */
+
+.edit-form>:nth-child(-n+5) {
     border: 1px solid grey;
 }
 
-.edit-form>:nth-child(-n+4) {
+.edit-form>:nth-child(7){
     border: 1px solid grey;
+
 }
+
+.edit-form>:nth-child(4) {
+   min-height: 200px;
+}
+
+
 
 .edit-form>* {
     padding: 5px
@@ -40,6 +52,10 @@
     display: none;
 }
 
+.upload{
+    margin-top: 0;
+}
+
 .success {
     color: #ff5a5f;
 }
@@ -52,12 +68,11 @@
     position: absolute;
     z-index: 6;
     background-color: white;
-    width: 400px;
-    height: 330px;
+    width: 400px;    
     border-radius: 5px;
     font-size: 1.5rem;
     text-align: center;
-    top: 90px;
+    top: 300px;
     padding: 30px;
     left: calc(50% - 200px);
     border: 1px solid gray;

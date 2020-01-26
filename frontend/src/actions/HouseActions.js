@@ -2,9 +2,13 @@ import HouseService from '../services/HouseService';
 
 
 export function filterHouses(filter) {
+  console.log(filter)
   return async (dispatch) => {
     dispatch(_setFilter(filter))
-    const houses = await HouseService.query(filter);
+    //for json-server:
+    // const houses = await HouseService.query(filter);
+    //for real server:
+    const houses = await HouseService.getHouses();
     dispatch(_setHouses(houses))
   }
 }

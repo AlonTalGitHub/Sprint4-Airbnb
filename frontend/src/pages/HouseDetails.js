@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import HouseService from '../services/HouseService'
 
 import NavBar from '../cmps/NavBar'
+import DatePicker from '../cmps/DatePicker'
 // import ChatBox from '../cmps/ChatBox'
 import ReserveHouse from '../cmps/ReserveHouse.js'
 import { Link } from 'react-router-dom';
@@ -32,21 +33,22 @@ class HouseDetails extends Component {
     }
 
     loadHouse = async (houseId) => {
-        const house = await HouseService.get(houseId)
+        const houses = await HouseService.get(houseId)
+        console.log('house details page',houses)
+        const house=houses[0];
         this.setState({ house })
-
     }
 
     handleDelete = async () => {
         await this.props.deleteHouse(this.state.house._id)
         this.props.history.push('/')
     }
-
+//style={{ "position": "fixed", "top": "0px", "backgroundColor": "lightblue" }}
     render() {
         const { house } = this.state
         return (
             <React.Fragment>
-                <NavBar style={{ "position": "fixed", "top": "0px", "backgroundColor": "lightblue" }}></NavBar>
+                <NavBar caller={"housedetails"}></NavBar>
                 {(house) && <section className="housedetails-container">
                     <div className="images-container">
                         <div className="gallery">
@@ -77,6 +79,8 @@ class HouseDetails extends Component {
         )
     }
 }
+
+
 
 
 const mapDispatchToProps = {

@@ -126,9 +126,18 @@ class HouseList extends Component {
 
     }
 
-    style = { backgroundColor: 'red', position: 'fixed' }
+    // style = { backgroundColor: 'red', position: 'fixed' }
+
+
+    //////////////////////////////////////////////////////////////
+    //housePreview attr: filterBy={this.props.filterBy},onDeleteHouse={this.props.onDeleteHouse} 
+    //////////////////////////////////////////////////////////////
+
+
+
     render() {
         const {houses}=this.props
+
         return (
             <section className="house-container" style={this.props.style}>
                 {/* <h2>{this.props.houses[0].title}</h2> */}
@@ -137,7 +146,7 @@ class HouseList extends Component {
                 <ul className="house-list clean-list">
                     {houses.map(house => (
                         <li key={house._id}>
-                            <HousePreview onDeleteHouse={this.props.onDeleteHouse}  house={house} />
+                            <HousePreview house={house}/> 
                         </li>
                     ))}
                 </ul>

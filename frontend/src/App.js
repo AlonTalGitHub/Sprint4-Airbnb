@@ -8,12 +8,11 @@ import Home from './pages/Home.js';
 import About from './pages/About.js';
 import HouseEdit from './pages/HouseEdit'
 
-// import Login from './pages/Login.js';
-// import About from './pages/About.js';
 import HousePage from './pages/HousePage';
 import HouseDetails from './pages/HouseDetails';
 import NavBar from './cmps/NavBar';
-
+import Login from './pages/Login';
+import ReservedPage from './pages/ReservedPage';
 function App() {
   return (
     <div className="App"> 
@@ -25,8 +24,8 @@ function App() {
         {/* <NavBar></NavBar>         */}
         <Switch>
           <Route path="/" component={Home} exact/>
-          {/* <Route path="/about" component={About} exact/>
-          <Route path="/login" component={Login} exact/> */}
+          <Route path="/reserved" component={ReservedPage} exact/>
+          <Route path="/login" component={Login} exact/>
           <Route path="/house" component={HousePage} exact/>
           <Route path="/about" component={About} exact/>
           <Route path="/house/edit" component={HouseEdit} exact/>

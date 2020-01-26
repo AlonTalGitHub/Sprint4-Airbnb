@@ -13,16 +13,23 @@ export default {
     get,
     save,
     remove,
+    getHouses
     // get
 }
 
 function query(filter) {
-    return HttpService.get(`house?address.country_like=${filter.location}&capacity_gte=${filter.numOfperson}`, filter)
+    console.log(filter)
+    return HttpService.get(`/house?address.country_like=${filter.location}&capacity_gte=${filter.numOfperson}`, filter)
+    // return HttpService.get(`/house`, filter)
 
 }
-
+function getHouses() {
+   return HttpService.get('/house')
+}
 async function save(house) {
-    const addedHouse  = house._id? await HttpService.put(`house/${house._id}`, house) : await HttpService.post(`house`, house);
+    const addedHouse  = house._id? await HttpService.put(`house/${house._id}`, house)
+     : 
+     await HttpService.post(`house`, house);
     console.log(addedHouse)
     return  addedHouse
   }
@@ -42,7 +49,7 @@ async function save(house) {
 // }
 
 function get(id) {
-    return HttpService.get(`house/${id}`)
+    return HttpService.get(`/house/${id}`)
 }
 
 function remove(id) {

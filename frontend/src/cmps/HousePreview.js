@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-
+import paginationTurtle from '../assets/img/pagin_turtle.png'
 let prev_next_btn_style = { 'height': '10px', 'width': '10px', 'display': 'block', 'fill': 'rgb(34, 34, 34)', 'position': 'absolute', 'left': '30%', 'top': '32%' }
 
 
@@ -10,21 +10,16 @@ export default class HousePreview extends Component {
         isFav: false
     }
     loadImage = (ev, diff) => {
-        ev.preventDefault();
-        console.log('diff is', diff)
-        var imgLen = this.props.house.imgs.length;
-        console.log('imgLen is', imgLen)
-        var currIdx = this.state.imgIdx;
-        console.log('currIdx is', currIdx)
+        ev.preventDefault();        
+        var imgLen = this.props.house.imgs.length;        
+        var currIdx = this.state.imgIdx;        
         if (currIdx + diff >= imgLen) return this.setState({imgIdx: 0 });
         else if (currIdx + diff < 0) return this.setState({  imgIdx: imgLen - 1 });
         else return this.setState({imgIdx: currIdx + diff })
     }
     onFavClick = (event) => {
         event.preventDefault();
-        event.stopPropagation();
-        console.log(event.target)
-        console.log(this.props.house)
+        event.stopPropagation();        
         // this.setState({ ...this.state, isFav: !this.state.isFav })
         this.setState({ isFav: !this.state.isFav })
     }
@@ -35,8 +30,7 @@ export default class HousePreview extends Component {
 
     // }
 
-    render() {
-        console.log(this.state)
+    render() {        
         return (
             // '+this.props.house._id
             <Link to={"/house/" + this.props.house._id}>
@@ -65,7 +59,7 @@ export default class HousePreview extends Component {
                                 <div className="house-preview-pagination-container">
                                     {this.props.house.imgs.map((img, index) => {
                                         if (index !== this.state.imgIdx) return <div className="house-preview-pagination-circle"></div>
-                                        else return <div className="house-preview-pagination-circle-currimg"></div>
+                                        else return <div className="house-preview-pagination-circle-currimg"><img src={paginationTurtle} alt="" className="house-preview-pagination-turtle"/></div>
                                     }
                                     )}
                                 </div>
