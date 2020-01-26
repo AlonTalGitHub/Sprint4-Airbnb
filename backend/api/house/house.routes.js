@@ -7,6 +7,7 @@ const router = express.Router()
 // router.use(requireAuth)
 
 router.get('/', getHouses)
+router.get('/reserved', getHouse)
 router.get('/:id', getHouse)
 router.post('/',  requireAuth, addHouse)
 router.delete('/:id',  requireAuth, deleteHouse)

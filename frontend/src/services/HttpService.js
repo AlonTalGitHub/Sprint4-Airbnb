@@ -1,6 +1,6 @@
 import history from '../history';
 import Axios from 'axios';
-////for jason-server:
+////for json-server:
 // const BASE_URL = process.env.NODE_ENV === 'production'
 //     ? '/api/'
 //     : '//localhost:3000'

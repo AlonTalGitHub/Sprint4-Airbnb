@@ -1,7 +1,7 @@
 // const logger = require('../../services/logger.service')
 const houseService = require('./house.service')
 const ObjectId = require('mongodb').ObjectId
- 
+
 // TODO: needs error handling! try, catch
 
 async function getHouses(req, res) {
@@ -14,19 +14,32 @@ async function getHouses(req, res) {
         // logger.error('Cannot get houses', err);
         console.log('Cannot get houses', err);
         res.status(500).send({ error: 'cannot get houses' })
-        
+
     }
 }
-async function getHouse(req,res){
+
       
+async function getHouse(req, res) {
+    //shay
+    let ggg=null;
+    console.log('house.controller getHouse req.body',req.body.isReserved,'\n\n')
+    console.log('house.controller getHouse req.params.id',req.params.id,'\n\n')
+    console.log('house.controller getHouse req.query',req.query,'\n\n')
+    if (req.body.isReserved) {
+        ggg = req.body
+        delete ggg.isReserved
+    }
+    else {
+        ggg = { "_id": ObjectId(req.params.id) }
+    }
     try {
-        const house = await houseService.query({"_id":ObjectId(req.params.id)})
+        const house = await houseService.query(ggg)
         res.send(house)
     } catch (err) {
         // logger.error('Cannot get houses', err);
         console.log('Cannot get houses', err);
         res.status(500).send({ error: 'cannot get house' })
-        
+
     }
 }
 async function deleteHouse(req, res) {
