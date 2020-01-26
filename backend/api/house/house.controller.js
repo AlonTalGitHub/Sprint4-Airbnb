@@ -5,8 +5,10 @@ const ObjectId = require('mongodb').ObjectId
 // TODO: needs error handling! try, catch
 
 async function getHouses(req, res) {
+    console.log('controller query',req.query)
+        
     try {
-        const houses = await houseService.query(req.query)
+        let houses = await houseService.query(req.query)
         res.send(houses)
     } catch (err) {
         // logger.error('Cannot get houses', err);
@@ -16,6 +18,7 @@ async function getHouses(req, res) {
     }
 }
 async function getHouse(req,res){
+      
     try {
         const house = await houseService.query({"_id":ObjectId(req.params.id)})
         res.send(house)

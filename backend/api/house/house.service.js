@@ -3,9 +3,12 @@ const ObjectId = require('mongodb').ObjectId
 
 async function query(filterBy = {}) {
     const criteria = _buildCriteria(filterBy)
+    console.log('the criteria is: ',criteria)
     try {
-        const collection = await dbService.getCollection('house')
-        const houses = await collection.find(criteria).toArray();
+        let collection = await dbService.getCollection('house')
+        // console.log('this is house.controller speaking collection is :',collection)
+        let houses = await collection.find(criteria).toArray();
+        // console.log('this is house.controller speaking houses is :',houses)
         return houses
     } catch (err) {
         console.log('ERROR: cannot find houses')
@@ -38,10 +41,32 @@ async function add(house) {
 }
 
 function _buildCriteria(filterBy) {
-    const criteria = {}
+    let criteria = {}
     if (filterBy._id) {
         criteria._id = filterBy._id
     }
+    if(filterBy.country){
+        criteria={
+            ...criteria,"address.country": filterBy.country
+        }
+    }
+    if(filterBy.capacity){
+        criteria={
+            ...criteria,"capacity": {$gte: +filterBy.capacity}
+        }
+    }
+
+
+    // if(filterBy.capacity){
+    //     criteria.capacity=parseInt(filterBy.capacity)
+    //     //from stack overFlow 'relation.$.status': 'friends'
+    //     // criteria.address={}
+    //     // criteria.address.country = filterBy.country
+    //     // criteria.address.coords = {"$exists" : "true"}
+    //     //{ "makes.fgh" : { $exists : true } }
+    //     // criteria.capacity=filterBy.capacity
+    // }
+    
     return criteria;
 }
 
