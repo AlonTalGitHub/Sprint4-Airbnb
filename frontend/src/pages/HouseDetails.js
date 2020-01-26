@@ -9,10 +9,11 @@ import NavBar from '../cmps/NavBar'
 // import ChatBox from '../cmps/ChatBox'
 import ReserveHouse from '../cmps/ReserveHouse.js'
 import { Link } from 'react-router-dom';
-import ReviewList from '../cmps/ReviewList';
+import ReviewList from '../cmps/reviews/ReviewList';
 
 import '../assets/styles/housedetails.css';
 import '../assets/styles/index.css';
+import ReviewCompose from '../cmps/reviews/ReviewCompose';
 
 
 class HouseDetails extends Component {
@@ -52,12 +53,14 @@ class HouseDetails extends Component {
                             {house.imgs.map((img, idx) => <img key={idx} className={`img img-${idx}`} src={img} alt="" />)}
                         </div>
                     </div>
-                    <div className="main-content-container flex ">
+                    <div className="main-content-container flex">
                         <div className="main-content-text-container">
                             <span className="house-title span-line-break">{house.title}</span>
                             <span className="house-header span-line-break">{house.address.country}</span>
                             <span className="house-header span-line-break">Description</span>
-                            <p className="house-content span-line-break">{house.description}</p>
+                            <p className="house-content span-line-break bottom-line">{house.description}</p>
+                            <ReviewList reviews={ house.reviews}/>
+                            <ReviewCompose house={house}/>
                             <div className="details-button-container flex space-between">
                                 <Link to={`/house/edit/${house._id}`} >
                                     <button className="form-btn pointer">Edit House</button>
@@ -65,12 +68,10 @@ class HouseDetails extends Component {
                                 <button onClick={this.handleDelete} className="form-btn pointer">Delete House</button>
                             </div>
                         </div>
-                        {/* <ReviewList reviews={ house.reviews}/> */}
                         <ReserveHouse house={house} detailsPage={true} />
                         
                     </div>
                     {/* <ChatBox house={this.house}></ChatBox> */}
-
                 </section>}
             </React.Fragment>
         )
