@@ -65,7 +65,7 @@ class NavBar extends Component {
                 <li className={getMenuItemClass()}><SearchBar></SearchBar></li>
                 <li className={getMenuItemClass()}><Link to="/About" className={getLinkItemClass()}>About</Link></li>
                 <li className={getMenuItemClass()}><Link to="/house/edit" className={getLinkItemClass()} >Host</Link></li>
-                <li className={getMenuItemClass()}><Link className={getLinkItemClass()}  onClick={consoleCaller}>Reserved</Link></li>
+                <li className={getMenuItemClass()}><Link to="/reserved" className={getLinkItemClass()}  onClick={consoleCaller}>Reserved</Link></li>
                 <li className={getMenuItemClass()}><Link className={getLinkItemClass()}>Favorites</Link></li>
                 <li className={getMenuItemClass()}><Link to="/login" className={getLinkItemClass()}>Login/SignUp</Link></li>
                 <li className={getMenuItemClass()}><Link className={getLinkItemClass()}>

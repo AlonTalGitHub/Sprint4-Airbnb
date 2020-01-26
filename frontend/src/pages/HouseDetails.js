@@ -41,12 +41,12 @@ class HouseDetails extends Component {
         await this.props.deleteHouse(this.state.house._id)
         this.props.history.push('/')
     }
-
+//style={{ "position": "fixed", "top": "0px", "backgroundColor": "lightblue" }}
     render() {
         const { house } = this.state
         return (
             <React.Fragment>
-                <NavBar style={{ "position": "fixed", "top": "0px", "backgroundColor": "lightblue" }}></NavBar>
+                <NavBar caller={"housedetails"}></NavBar>
                 {(house) && <section className="housedetails-container">
                     <div className="images-container">
                         <div className="gallery">

@@ -6,7 +6,8 @@ export default {
     getOrders,
     getById,
     remove,
-    update
+    update,
+    save
 }
 
 function getOrders() {
@@ -23,3 +24,10 @@ function remove(orderId) {
 function update(order) {
     return HttpService.put(`order/${order._id}`, order)
 }
+async function save(order) {
+    const addedOrder  = order._id? await HttpService.put(`/order/${order._id}`, order)
+     : 
+     await HttpService.post(`/order`, order);
+    console.log(addedOrder)
+    return  addedOrder
+  }

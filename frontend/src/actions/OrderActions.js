@@ -91,13 +91,7 @@ function _addOrder(order) {
     };
   }
   
-  function _updateOrder(order) {
-    return {
-      type: 'ORDER_UPDATE',
-      order
-    };
-    
-  }
+
 
 // export function saveOrder(order) {
 //     return async dispatch => {

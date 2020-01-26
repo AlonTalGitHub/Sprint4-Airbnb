@@ -19,8 +19,8 @@ export default {
 
 function query(filter) {
     console.log(filter)
-    return HttpService.get(`/house?address.country_like=${filter.location}&capacity_gte=${filter.numOfperson}`, filter)
-    // return HttpService.get(`/house`, filter)
+    // return HttpService.get(`/house?address.country_like=${filter.location}&capacity_gte=${filter.numOfperson}`, filter)
+    return HttpService.get(`/house`, filter)
 
 }
 function getHouses() {
