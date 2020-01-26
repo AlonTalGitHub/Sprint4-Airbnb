@@ -8,7 +8,7 @@
 // }
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import DatePicker from "react-datepicker";
+import DatePicker from '../cmps/DatePicker';
 import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import { connect } from 'react-redux';
@@ -110,6 +110,7 @@ class ReserveHouse extends Component {
             <div className={this.addReserveClass()}>
                 <h4>Reserve now</h4>
                 <input onChange={this.onChange} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder={house.address.country + " | " + house.title}></input>
+                <DatePicker></DatePicker>
                 <div className="form-cap flex space-between align-center">
                     <span>How Many People?</span>
                     <span className="form-cap-control flex space-between">

@@ -19,12 +19,12 @@ export default {
 
 function query(filter) {
     console.log(filter)
-    // return HttpService.get(`/house?address.country_like=${filter.location}&capacity_gte=${filter.numOfperson}`, filter)
-    return HttpService.get(`/house`, filter)
+    return HttpService.get(`/house?address.country_like=${filter.location}&capacity_gte=${filter.numOfperson}`, filter)
+    // return HttpService.get(`/house`, filter)
 
 }
 function getHouses() {
-    return HttpService.get('/house')
+   return HttpService.get('/house')
 }
 async function save(house) {
     const addedHouse  = house._id? await HttpService.put(`house/${house._id}`, house)

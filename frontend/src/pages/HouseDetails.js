@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import HouseService from '../services/HouseService'
 
 import NavBar from '../cmps/NavBar'
+import DatePicker from '../cmps/DatePicker'
 // import ChatBox from '../cmps/ChatBox'
 import ReserveHouse from '../cmps/ReserveHouse.js'
 import { Link } from 'react-router-dom';
@@ -71,6 +72,7 @@ class HouseDetails extends Component {
                         
                     </div>
                     {/* <ChatBox house={this.house}></ChatBox> */}
+                    
 
                 </section>}
             </React.Fragment>

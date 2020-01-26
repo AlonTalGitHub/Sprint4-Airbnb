@@ -34,7 +34,7 @@ class HousePage extends Component {
             <div>
                 <NavBar caller={"housepage"}></NavBar>
                 {(house) && <HouseList onDeleteHouse={this.onDeleteHouse} houses={this.props.houses}
-                   filterBy={this.props.filterBy} style={{ "marginTop": "100px" }}></HouseList>}
+                   filterBy={this.props.filterBy} style={{ "marginTop": "120px" }}></HouseList>}
             </div>
         )
     }

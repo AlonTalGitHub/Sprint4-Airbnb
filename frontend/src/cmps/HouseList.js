@@ -137,6 +137,7 @@ class HouseList extends Component {
 
     render() {
         const {houses}=this.props
+
         return (
             <section className="house-container" style={this.props.style}>
                 {/* <h2>{this.props.houses[0].title}</h2> */}
