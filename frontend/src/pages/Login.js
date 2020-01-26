@@ -63,7 +63,7 @@ class Login extends Component {
     if (!email || !password || !username) {
       return this.setState({ msg: 'All inputs besides image are required!' });
     }
-    const signupCreds = { email, password, username, imgURL };
+    const signupCreds = { email, password,"username": username, imgURL };
     this.props.signup(signupCreds);
     this.setState({ signupCred: { email: '', password: '', username: '', 'imgURL': '' } });
   };

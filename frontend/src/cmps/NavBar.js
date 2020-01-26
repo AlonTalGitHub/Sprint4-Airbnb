@@ -81,9 +81,9 @@ class NavBar extends Component {
             return (
                 <div >
                     <div className={(loggedInUser) ? "nav-item-user-img-container visible" : "nav-item-user-img-container"}>
-                        <img src={(loggedInUser) ? loggedInUser.imgUrl : userProfileImg} className="nav-item-user-img" />
+                        <img src={(loggedInUser) ? loggedInUser.imgURL : userProfileImg} className="nav-item-user-img" />
                     </div>
-                    {(loggedInUser) ? <span className={getuserNameClass()}>{loggedInUser.fullName}</span> : ''}
+                    {(loggedInUser) ? <span className={getuserNameClass()}>{loggedInUser.username}</span> : ''}
                 </div>
             )
         }
