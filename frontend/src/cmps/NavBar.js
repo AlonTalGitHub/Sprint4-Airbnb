@@ -21,38 +21,6 @@ class NavBar extends Component {
     openMenu = () => {
         this.setState({ isMenuOpen: true })
     }
-
-    // render() {
-    //     return <React.Fragment>
-    //         <div style={this.props.style} className="main-navbar flex space-between align-center">
-    //             {/* return <div className={`main-navbar flex space-between ${this.props.class}`}> */}
-    //             <Link to="/">
-    //                 <img className="logo" src={Logo} style={{
-    //                     'width': '80px'
-    //                 }} />
-    //             </Link>
-    //             {(this.props.search) && <SearchBar openMenu={this.openMenu}></SearchBar>}
-
-    //             <ul className="nav-links flex align-center">
-    //                 <li className="nav-item"><Link to="/About" className="nav-link">About</Link></li>
-    //                 <li className="nav-item"><Link to="/house/edit" className="nav-link" >Host</Link></li>
-    //                 <li className="nav-item"><Link className="nav-link">Reserved</Link></li>
-    //                 <li className="nav-item"><Link className="nav-link">Favorites</Link></li>
-    //                 <li className="nav-item"><Link className="nav-link" onClick={this.loadUser}>Login/SignUp</Link></li>
-    //                 <li className="nav-item"><Link className="nav-link">
-    //                     <div className={this.state.user ? "nav-item-user-img-container visible" : "nav-item-user-img-container"}>
-    //                         <img src={userProfileImg} className="nav-item-user-img" />
-    //                     </div>
-    //                     <span className="nav-item-user-name">{this.state.user ? this.state.user.fullName : ''}</span>
-    //                 </Link>
-    //                 </li>
-    //             </ul>
-    //         </div>
-    //         <div className={`filter-buttons-container ${(this.state.isMenuOpen) ? 'shown-filter-container' : ''}`}>
-    //             <FilterBar></FilterBar> 
-    //         </div>
-    //     </React.Fragment>
-        /////////////////////////////////////////////shay
    
     
     render() {
@@ -81,9 +49,9 @@ class NavBar extends Component {
             return (
                 <div >
                     <div className={(loggedInUser) ? "nav-item-user-img-container visible" : "nav-item-user-img-container"}>
-                        <img src={(loggedInUser) ? loggedInUser.imgUrl : userProfileImg} className="nav-item-user-img" />
+                        <img src={(loggedInUser) ? loggedInUser.imgURL : userProfileImg} className="nav-item-user-img" />
                     </div>
-                    {(loggedInUser) ? <span className={getuserNameClass()}>{loggedInUser.fullName}</span> : ''}
+                    {(loggedInUser) ? <span className={getuserNameClass()}>{loggedInUser.username}</span> : ''}
                 </div>
             )
         }

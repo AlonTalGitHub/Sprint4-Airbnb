@@ -63,7 +63,7 @@ class Login extends Component {
     if (!email || !password || !username) {
       return this.setState({ msg: 'All inputs besides image are required!' });
     }
-    const signupCreds = { email, password, username, imgURL };
+    const signupCreds = { email, password,"username": username, imgURL };
     this.props.signup(signupCreds);
     this.setState({ signupCred: { email: '', password: '', username: '', 'imgURL': '' } });
   };
@@ -139,7 +139,7 @@ class Login extends Component {
     let logoutSection = (
       <div>
         {/* {this.props.isLoading && 'Loading...'} */}
-        <h2 onClick={consoleUser}>Welcome:  {(loggedInUser) ? loggedInUser.fullName : 'blah'}</h2>
+        <h2 onClick={consoleUser}>Welcome:  {(loggedInUser) ? loggedInUser.username : 'blah'}</h2>
        <Link to="/"><button>Back to Turtle House</button></Link>
         <button onClick={this.props.logout}>Logout</button>
       </div>

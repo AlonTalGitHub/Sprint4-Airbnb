@@ -9,30 +9,36 @@ import HttpService from './HttpService'
 
 
 export default {
-    query,    
+    query,
     get,
     save,
     remove,
     getHouses
     // get
 }
-
+/*filter={
+ numOfperson: 1,
+            location: '',
+            nightsNum:1
+}*/
 function query(filter) {
     console.log(filter)
-    return HttpService.get(`/house?address.country_like=${filter.location}&capacity_gte=${filter.numOfperson}`, filter)
+    const queryStr = _createQueryStr(filter)
+    return HttpService.get(queryStr)
+    // return HttpService.get(`/house?address.country_like=${filter.location}&capacity_gte=${filter.numOfperson}`, filter)
     // return HttpService.get(`/house`, filter)
 
 }
 function getHouses() {
-   return HttpService.get('/house')
+    return HttpService.get('/house')
 }
 async function save(house) {
-    const addedHouse  = house._id? await HttpService.put(`house/${house._id}`, house)
-     : 
-     await HttpService.post(`house`, house);
+    const addedHouse = house._id ? await HttpService.put(`house/${house._id}`, house)
+        :
+        await HttpService.post(`house`, house);
     console.log(addedHouse)
-    return  addedHouse
-  }
+    return addedHouse
+}
 
 
 //   function getToyById(houseId) {
@@ -180,3 +186,7 @@ const testHouses = [
         ]
     }
 ]
+
+function _createQueryStr(filter) {
+    return `/house?country=${filter.location}&capacity=${filter.numOfperson}`
+}

@@ -11,7 +11,7 @@ import NavBar from '../cmps/NavBar';
 class HousePage extends Component {
     componentDidMount() {
         console.log("did mount house page")
-        this.props.filterHouses(this.props.filterBy)
+        // this.props.filterHouses(this.props.filterBy)
 
     }
 
@@ -44,7 +44,8 @@ class HousePage extends Component {
 const mapStateToProps = state => {
     return {
         houses: state.house.houses,
-        filterBy: state.house.filterBy
+        filterBy: state.house.filterBy,
+        isLoading:state.system.isLoading
     };
 };
 const mapDispatchToProps = {
