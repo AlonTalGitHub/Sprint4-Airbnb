@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { addReview } from '../../actions/ReviewActions.js';
+import { saveHouse } from '../../actions/HouseActions';
 
 class ReviewCompose extends Component {
 
@@ -13,7 +14,8 @@ class ReviewCompose extends Component {
                 "img": "http://img"
             },
             "txt": '',
-            "aboutHouseId": ''
+            "rate": 4,
+            "createdAt": "2020-01-15T07:51:18.138Z",
         }
     };
 
@@ -38,23 +40,22 @@ class ReviewCompose extends Component {
 
     addReview = ev => {
         ev.preventDefault();
-        this.props.addReview(this.state.reviewToEdit);
-        this.setState({
+        const { house } = this.props
+        let updatedHouse = {...house}
+        console.log(updatedHouse);
+        
+        updatedHouse.reviews.push(this.state.reviewToEdit)
+        this.props.saveHouse(updatedHouse);
+        this.setState(prevState => ({
             reviewToEdit: {
-                txt: '', 
-                byUser: {
-                    "_id": "123456789",
-                    "fullName": "User",
-                    "img": "http://img"
-                },
-                aboutHouseId: this.props.house._id
+                ...prevState.reviewToEdit,
+                "txt": ''
             }
-        });
+        }));
     };
 
 
     render() {
-        // const { house } = this.props
         return (
             <section>
                 <form onSubmit={this.addReview}>
@@ -72,7 +73,7 @@ class ReviewCompose extends Component {
 
 const mapStateToProps = state => {
     return {
-        reviews: state.review.reviews,
+        houses: state.house.houses,
         //   users: state.user.users,
         //   loggedInUser: state.user.loggedInUser
     };
@@ -80,7 +81,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     // loadReviews,
     // loadUsers,
-    addReview
+    saveHouse
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReviewCompose);
