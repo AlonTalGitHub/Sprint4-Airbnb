@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addReview } from '../../actions/ReviewActions.js';
+// import { addReview } from '../../actions/ReviewActions.js';
 import { saveHouse } from '../../actions/HouseActions';
 
 class ReviewCompose extends Component {
