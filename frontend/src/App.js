@@ -13,6 +13,7 @@ import HouseDetails from './pages/HouseDetails';
 import NavBar from './cmps/NavBar';
 import Login from './pages/Login';
 import ReservedPage from './pages/ReservedPage';
+import UserProfile from './pages/UserProfile';
 function App() {
   return (
     <div className="App"> 
@@ -31,6 +32,7 @@ function App() {
           <Route path="/house/edit" component={HouseEdit} exact/>
           <Route path="/house/edit/:id" component={HouseEdit} exact/>
           <Route path="/house/:id" component={HouseDetails} exact/>
+          <Route path="/profile/:id" component={UserProfile} exact/>
           {/* <Route path="house/edit:id" component={HouseEdit} exact/> */}
         </Switch>
       </Router>

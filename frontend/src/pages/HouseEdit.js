@@ -24,7 +24,8 @@ class HouseEdit extends Component {
             description: '',
             capacity: 1,
             price: '',
-            addressInput: ''
+            addressInput: '',
+            reviews:[]
         },
         isModalShown: false,
         uploadStatus: null,
@@ -98,6 +99,7 @@ class HouseEdit extends Component {
     onSaveHouse = async (ev) => {
         ev.preventDefault();
         const owner = this.owner
+        // if(!this.state.newHouse.reviews) this.state.newHouse.reviews=[]
         try {
             await this.checkAddress()
             const newHouse = { ...this.state.newHouse, owner }

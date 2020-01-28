@@ -304,6 +304,32 @@
         "imgURL": "https://a0.muscache.com/im/pictures/user/e23d9c03-0de7-46f9-ba5a-c62a6358ff34.jpg?aki_policy=profile_x_medium"
       },
       "_id": "vaMUKqy"
+    },
+    {
+      "address": {
+        "country": "England",
+        "coords": {
+          "lat": 51.5163908,
+          "lng": -0.1304228
+        }
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1580127922/white-bathroom-interior-1454804_cqkbci.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1580127922/white-wooden-kitchen-cabinet-1599791_u9qkzb.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1580127923/chopping-boards-near-oven-under-hood-2062426_cqgbfp.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1580127923/apartment-blinds-cabinets-chairs-349749_pxr1oc.jpg"
+      ],
+      "title": "Shopping & Chill",
+      "description": "Enjoy the center of London",
+      "capacity": 3,
+      "price": 109,
+      "reviews": [],
+      "owner": {
+        "_id": "0987",
+        "fullName": "Yael Shenker",
+        "imgURL": "https://a0.muscache.com/im/pictures/user/e23d9c03-0de7-46f9-ba5a-c62a6358ff34.jpg?aki_policy=profile_x_medium"
+      },
+      "_id": "NwfGR7I"
     }
   ],
   "user": [
@@ -316,7 +342,29 @@
       "isAdmin": false,
       "imgURL": "http://some-img",
       "houses": [],
-      "favorites": [],
+      "favorites": [
+        {
+          "address": {
+            "country": "Israel",
+            "coords": {
+              "lat": 32.08088,
+              "lng": 34.78057
+            }
+          },
+          "imgs": [
+            "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579639256/apartment-architecture-balcony-building-347141_ol1zud.jpg",
+            "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579639257/architecture-bungalow-country-countryside-463996_labicf.jpg",
+            "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579639256/blue-and-gray-concrete-house-with-attic-during-twilight-186077_glwlws.jpg",
+            "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579639256/bathroom-cabinet-candles-faucet-342800_psxakt.jpg"
+          ],
+          "title": "Tel Aviv Best Appartment",
+          "description": "Your home in Tel Aviv",
+          "capacity": 2,
+          "price": 130,
+          "rating": 4.78,
+          "_id": "vpsmSL4"
+        }
+      ],
       "reserved": [
         {
           "houseId": "ahy546",

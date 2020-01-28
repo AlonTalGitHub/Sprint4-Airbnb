@@ -70,7 +70,7 @@ class NavBar extends Component {
                 <li className={getMenuItemClass()}><Link to="/reserved" className={getLinkItemClass()}  onClick={consoleCaller}>Reserved</Link></li>
                 <li className={getMenuItemClass()}><Link className={getLinkItemClass()}>Favorites</Link></li>
                 <li className={getMenuItemClass()}><Link to="/login" className={getLinkItemClass()}>Login/SignUp</Link></li>
-                <li className={getMenuItemClass()}><Link className={getLinkItemClass()}>
+                <li className={getMenuItemClass()}><Link to={"/profile/"+this.props.loggedInUser._id} className={getLinkItemClass()}>
                     {profileImageRender()}
                 </Link>
                 </li>

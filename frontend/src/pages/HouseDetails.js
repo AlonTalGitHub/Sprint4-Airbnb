@@ -33,9 +33,9 @@ class HouseDetails extends Component {
     }
 
     loadHouse = async (houseId) => {
-        const houses = await HouseService.get(houseId)
-        console.log('house details page',houses)
-        const house=houses[0];
+        const house = await HouseService.get(houseId)
+        console.log('house details page',house)
+        // const house=houses[0];
         this.setState({ house })
     }
 
@@ -61,7 +61,7 @@ class HouseDetails extends Component {
                             <span className="house-header span-line-break">{house.address.country}</span>
                             <span className="house-header span-line-break">Description</span>
                             <p className="house-content span-line-break bottom-line">{house.description}</p>
-                            <ReviewList reviews={ house.reviews}/>
+                            {/* <ReviewList reviews={ house.reviews}/> */}
                             <ReviewCompose house={house}/>
                             <div className="details-button-container flex space-between">
                                 <Link to={`/house/edit/${house._id}`} >
