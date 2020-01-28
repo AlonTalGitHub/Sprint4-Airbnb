@@ -33,9 +33,9 @@ function getHouses() {
     return HttpService.get('/house')
 }
 async function save(house) {
-    const addedHouse = house._id ? await HttpService.put(`house/${house._id}`, house)
+    const addedHouse = house._id ? await HttpService.put(`/house/${house._id}`, house)
         :
-        await HttpService.post(`house`, house);
+        await HttpService.post(`/house`, house);
     console.log(addedHouse)
     return addedHouse
 }
@@ -59,7 +59,7 @@ function get(id) {
 }
 
 function remove(id) {
-    return HttpService.delete(`house/${id}`, id)
+    return HttpService.delete(`/house/${id}`, id)
 }
 
 // function save(house) {
