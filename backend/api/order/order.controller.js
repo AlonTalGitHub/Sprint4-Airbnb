@@ -4,8 +4,20 @@ const orderService = require('./order.service')
 // TODO: needs error handling! try, catch
 
 async function getOrders(req, res) {
+    console.log('this is order.controller getOrders,req.query: ',req.query)
     try {
         const orders = await orderService.query(req.query)
+        res.send(orders)
+    } catch (err) {
+        // logger.error('Cannot get orders', err);
+        console.log('Cannot get orders', err);
+        res.status(500).send({ error: 'cannot get orders' })
+
+    }
+}
+async function getOrder(req, res) {
+    try {
+        const orders = await orderService.query({"_id":req.params.id})
         res.send(orders)
     } catch (err) {
         // logger.error('Cannot get orders', err);
@@ -43,5 +55,6 @@ async function addOrder(req, res) {
 module.exports = {
     getOrders,
     deleteOrder,
-    addOrder
+    addOrder,
+    getOrder
 }

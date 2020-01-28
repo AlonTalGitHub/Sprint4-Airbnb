@@ -53,8 +53,6 @@ class Home extends Component {
        <HouseList houses={this.getBestByCountry('England')}></HouseList> 
        <h4 className="reccomended-headline">Most reccomended in Italy</h4>
        <HouseList houses={this.getBestByCountry('Italy')}></HouseList> 
-        {/* <button>blah</button>
-       {this.props.houses.length&&<HouseList houses={this.props.houses}></HouseList>}  */}
       </div>
     );
   }

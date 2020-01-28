@@ -64,11 +64,12 @@ async function getCollection(collectionName) {
 
 //bMv1zuQG7EoZmzLe
 //RS6Kwe55wg89SdT
-// { useUnifiedTopology: true } { useNewUrlParser: true }
+// { useUnifiedTopology: true } { useNewUrlParser: true } 
+//?authSource=admin
 async function connect() {
     try{
         const uri = "mongodb+srv://shayke:bMv1zuQG7EoZmzLe@cluster0-f7z7e.mongodb.net/test?retryWrites=true&w=majority";
-        const client = await new MongoClient.connect(uri,{ useUnifiedTopology: true } )
+        const client = await new MongoClient.connect(uri,{ useUnifiedTopology: true })
         return client; 
         // .catch(err => { console.log(err); });
     }

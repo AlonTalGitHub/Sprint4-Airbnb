@@ -188,5 +188,19 @@ const testHouses = [
 ]
 
 function _createQueryStr(filter) {
+    if(filter.isReserved){
+        return `/house/${filter._id}`
+    }
     return `/house?country=${filter.location}&capacity=${filter.numOfperson}`
+
 }
+//shay functions:
+    // if (filterBy.orders) {
+    //     let orders = filterBy.orders
+    //     console.log(' _makeQuerySTR: orders are ',orders)
+    //     let Length=orders.length
+    //     let STR=orders.reduce((acc, item,idx) => {
+    //         if(idx<Length-1) return acc+`order${idx}=${item}&`
+    //         else return acc+`order${idx}=${item}`}, '?reserved=true&')
+    //         return STR;
+    // }
