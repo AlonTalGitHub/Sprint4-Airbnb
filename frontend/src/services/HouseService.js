@@ -23,12 +23,12 @@ export default {
 }*/
 function query(filter) {
     console.log(filter)
-    // serever
-    // const queryStr = _createQueryStr(filter)
-    // return HttpService.get(queryStr)
+    // server
+    const queryStr = _createQueryStr(filter)
+    return HttpService.get(queryStr)
 
     //json-server
-    return HttpService.get(`/house?address.country_like=${filter.location}&capacity_gte=${filter.numOfperson}`, filter)
+    // return HttpService.get(`/house?address.country_like=${filter.location}&capacity_gte=${filter.numOfperson}`, filter)
     // return HttpService.get(`/house`, filter)
 
 }
@@ -59,7 +59,7 @@ function get(id) {
 }
 
 function remove(id) {
-    return HttpService.delete(`house/${id}`, id)
+    return HttpService.delete(`/house/${id}`, id)
 }
 
 // function save(house) {
@@ -188,5 +188,19 @@ const testHouses = [
 ]
 
 function _createQueryStr(filter) {
+    if(filter.isReserved){
+        return `/house/${filter._id}`
+    }
     return `/house?country=${filter.location}&capacity=${filter.numOfperson}`
+
 }
+//shay functions:
+    // if (filterBy.orders) {
+    //     let orders = filterBy.orders
+    //     console.log(' _makeQuerySTR: orders are ',orders)
+    //     let Length=orders.length
+    //     let STR=orders.reduce((acc, item,idx) => {
+    //         if(idx<Length-1) return acc+`order${idx}=${item}&`
+    //         else return acc+`order${idx}=${item}`}, '?reserved=true&')
+    //         return STR;
+    // }

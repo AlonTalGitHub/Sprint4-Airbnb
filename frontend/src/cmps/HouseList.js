@@ -143,7 +143,7 @@ class HouseList extends Component {
                 {/* <h2>{this.props.houses[0].title}</h2> */}
                 {/* <NavBar style={this.style} class='banana'></NavBar> */}
                 {/* <h2 className="house-main-head">Houses List</h2> */}
-                <ul className="house-list clean-list">
+                <ul className={"house-list clean-list "+ this.props.caller}>
                     {houses.map(house => (
                         <li key={house._id}>
                             <HousePreview house={house}/> 

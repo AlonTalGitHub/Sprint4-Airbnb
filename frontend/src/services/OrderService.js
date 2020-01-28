@@ -10,24 +10,37 @@ export default {
     save
 }
 
-function getOrders() {
-    return HttpService.get('order')
+function getOrders(filterBy = {}) {
+    let querySTR = _makeQuerySTR(filterBy)
+    return HttpService.get(`/order${querySTR}`)
 }
 
 function getById(orderId) {
-    return HttpService.get(`order/${orderId}`)
+    return HttpService.get(`/order/${orderId}`)
 }
 function remove(orderId) {
-    return HttpService.delete(`order/${orderId}`)
+    return HttpService.delete(`/order/${orderId}`)
 }
 
 function update(order) {
-    return HttpService.put(`order/${order._id}`, order)
+    return HttpService.put(`/order/${order._id}`, order)
 }
 async function save(order) {
-    const addedOrder  = order._id? await HttpService.put(`/order/${order._id}`, order)
-     : 
-     await HttpService.post(`/order`, order);
+    const addedOrder = order._id ? await HttpService.put(`/order/${order._id}`, order)
+        :
+        await HttpService.post(`/order`, order);
     console.log(addedOrder)
-    return  addedOrder
-  }
+    return addedOrder
+}
+function _makeQuerySTR(filterBy) {
+    if (filterBy.orders) {
+        let orders = filterBy.orders
+        console.log(' _makeQuerySTR: orders are ',orders)
+        let Length=orders.length
+        let STR=orders.reduce((acc, item,idx) => {
+            if(idx<Length-1) return acc+`order${idx}=${item}&`
+            else return acc+`order${idx}=${item}`}, '?reserved=true&')
+            return STR;
+    }
+    else return '';
+}
