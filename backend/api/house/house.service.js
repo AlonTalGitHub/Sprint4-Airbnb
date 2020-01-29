@@ -25,7 +25,6 @@ async function remove(houseId) {
     }
 }
 
-
 async function add(house) {
     // house.byHouseId = ObjectId(house.byHouseId);
     // house.aboutHouseId = ObjectId(house.aboutHouseId);
@@ -36,6 +35,18 @@ async function add(house) {
         return house;
     } catch (err) {
         console.log(`ERROR: cannot insert house`)
+        throw err;
+    }
+}
+
+async function update(house) {
+    const collection = await dbService.getCollection('house')
+    house._id = ObjectId(house._id);
+    try {
+        await collection.replaceOne({"_id":house._id}, {$set : house})
+        return house
+    } catch (err) {
+        console.log(`ERROR: cannot update user ${house._id}`)
         throw err;
     }
 }
@@ -74,7 +85,8 @@ function _buildCriteria(filterBy) {
 module.exports = {
     query,
     remove,
-    add
+    add,
+    update
 }
 
 // async function query(filterBy = {}) {

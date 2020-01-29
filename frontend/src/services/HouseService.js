@@ -6,8 +6,6 @@ import HttpService from './HttpService'
 // const BASE_URL = (process.env.NODE_ENV !== 'development') ? '/api/house/'
 //     : '//localhost:3000/house/';
 
-
-
 export default {
     query,
     get,

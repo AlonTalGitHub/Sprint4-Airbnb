@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-// import { addReview } from '../../actions/ReviewActions.js';
 import { saveHouse } from '../../actions/HouseActions';
 
 class ReviewCompose extends Component {
@@ -11,22 +9,13 @@ class ReviewCompose extends Component {
             "byUser": {
                 "_id": "123456789",
                 "fullName": "User",
-                "img": "http://img"
+                "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
             },
             "txt": '',
             "rate": 4,
             "createdAt": "2020-01-15T07:51:18.138Z",
         }
     };
-
-    componentDidMount() {
-        this.setState(prevState => ({
-            reviewToEdit: {
-                ...prevState.reviewToEdit,
-                aboutHouseId: this.props.house._id
-            }
-        }));
-    }
 
     handleChange = ev => {
         const { name, value } = ev.target;
@@ -38,22 +27,27 @@ class ReviewCompose extends Component {
         }));
     };
 
-    addReview = ev => {
+    addReview = async (ev) => {
         ev.preventDefault();
-        const { house } = this.props
-        let updatedHouse = {...house}
-        console.log(updatedHouse);
-        
-        updatedHouse.reviews.push(this.state.reviewToEdit)
-        this.props.saveHouse(updatedHouse);
-        this.setState(prevState => ({
-            reviewToEdit: {
-                ...prevState.reviewToEdit,
-                "txt": ''
-            }
-        }));
+        try {
+            const { house } = this.props
+            console.log(house)
+            let updatedHouse = {...house}
+            console.log(updatedHouse);
+            updatedHouse.reviews.push(this.state.reviewToEdit)
+            await this.props.saveHouse(updatedHouse);
+            this.setState(prevState => ({
+                reviewToEdit: {
+                    ...prevState.reviewToEdit,
+                    "txt": ''
+                }
+            }));
+        } catch (error) {
+            console.log('add review to house faild');
+            throw error;
+            
+        }
     };
-
 
     render() {
         return (

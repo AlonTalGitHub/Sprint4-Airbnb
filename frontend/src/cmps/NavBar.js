@@ -59,7 +59,7 @@ class NavBar extends Component {
             {/* return <div className={`main-navbar flex space-between ${this.props.class}`}> */}
 
             <ul className={getNavClass()}>
-                <li className={getMenuItemClass()}>            <Link to="/">
+                <li className={getMenuItemClass()}><Link to="/">
                     <img className="logo" src={(this.props.caller !== "home") ? blackLogo : whiteLogo} style={{
                         'width': '80px'
                     }} />
@@ -68,7 +68,11 @@ class NavBar extends Component {
                 <li className={getMenuItemClass()}><Link to="/About" className={getLinkItemClass()}>About</Link></li>
                 <li className={getMenuItemClass()}><Link to="/house/edit" className={getLinkItemClass()} >Host</Link></li>
                 <li className={getMenuItemClass()}><Link to="/reserved" className={getLinkItemClass()}  onClick={consoleCaller}>Reserved</Link></li>
+<<<<<<< HEAD
                 <li className={getMenuItemClass()}><Link to="/favorites"className={getLinkItemClass()}>Favorites</Link></li>
+=======
+                {/* <li className={getMenuItemClass()}><Link className={getLinkItemClass()}>Favorites</Link></li> */}
+>>>>>>> e7ea480f857737dce2b4af2d1852d54deccd8a57
                 <li className={getMenuItemClass()}><Link to="/login" className={getLinkItemClass()}>Login/SignUp</Link></li>
                 {/* <li className={getMenuItemClass()}><Link to={"/profile/"+this.props.loggedInUser._id} className={getLinkItemClass()}>
                     {profileImageRender()}
