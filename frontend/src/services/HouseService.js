@@ -6,8 +6,6 @@ import HttpService from './HttpService'
 // const BASE_URL = (process.env.NODE_ENV !== 'development') ? '/api/house/'
 //     : '//localhost:3000/house/';
 
-
-
 export default {
     query,
     get,
@@ -23,9 +21,9 @@ export default {
 }*/
 function query(filter) {
     console.log(filter)
-    const queryStr = _createQueryStr(filter)
-    return HttpService.get(queryStr)
-    // return HttpService.get(`/house?address.country_like=${filter.location}&capacity_gte=${filter.numOfperson}`, filter)
+    // const queryStr = _createQueryStr(filter)
+    // return HttpService.get(queryStr)
+    return HttpService.get(`/house?address.country_like=${filter.location}&capacity_gte=${filter.numOfperson}`, filter)
     // return HttpService.get(`/house`, filter)
 
 }
@@ -33,9 +31,9 @@ function getHouses() {
     return HttpService.get('/house')
 }
 async function save(house) {
-    const addedHouse = house._id ? await HttpService.put(`house/${house._id}`, house)
+    const addedHouse = house._id ? await HttpService.put(`/house/${house._id}`, house)
         :
-        await HttpService.post(`house`, house);
+        await HttpService.post(`/house`, house);
     console.log(addedHouse)
     return addedHouse
 }

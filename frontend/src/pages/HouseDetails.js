@@ -14,6 +14,7 @@ import ReviewList from '../cmps/reviews/ReviewList';
 
 import '../assets/styles/housedetails.css';
 import '../assets/styles/index.css';
+import '../assets/styles/reviewpreview.css';
 import ReviewCompose from '../cmps/reviews/ReviewCompose';
 
 
@@ -24,7 +25,7 @@ class HouseDetails extends Component {
 
     componentDidMount() {
         const houseId = this.props.match.params.id;
-        console.log(houseId)
+        console.log('details mounting: ',houseId)
         this.loadHouse(houseId)
     }
 
@@ -33,9 +34,9 @@ class HouseDetails extends Component {
     }
 
     loadHouse = async (houseId) => {
-        const houses = await HouseService.get(houseId)
-        console.log('house details page',houses)
-        const house=houses[0];
+        console.log('house details is first: ',houseId)
+        const house = await HouseService.get(houseId)
+        console.log('house details is: ',house)
         this.setState({ house })
     }
 
@@ -43,7 +44,6 @@ class HouseDetails extends Component {
         await this.props.deleteHouse(this.state.house._id)
         this.props.history.push('/')
     }
-//style={{ "position": "fixed", "top": "0px", "backgroundColor": "lightblue" }}
     render() {
         const { house } = this.state
         return (
@@ -80,33 +80,15 @@ class HouseDetails extends Component {
     }
 }
 
-
-
-
+const mapStateToProps = state => {
+    return {
+        houses: state.house.houses
+    };
+};
 const mapDispatchToProps = {
     deleteHouse,
     filterHouses
 };
 
-export default connect(null, mapDispatchToProps)(HouseDetails)
-
-
-
-
-
-
-
-
-
-// componentDidMount() {
-//     this.loadHouse()
-// }
-
-// loadHouse = () => {
-//     const houseId = this.props.match.params.id;
-//     houseService.get(houseId).then(car=>{
-//         this.setState({car});
-//     })
-//     console.log(houseId);
-// }
+export default connect(mapStateToProps, mapDispatchToProps)(HouseDetails)
 

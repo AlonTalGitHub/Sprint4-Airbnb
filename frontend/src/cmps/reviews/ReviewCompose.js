@@ -11,22 +11,13 @@ class ReviewCompose extends Component {
             "byUser": {
                 "_id": "123456789",
                 "fullName": "User",
-                "img": "http://img"
+                "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
             },
             "txt": '',
             "rate": 4,
             "createdAt": "2020-01-15T07:51:18.138Z",
         }
     };
-
-    componentDidMount() {
-        this.setState(prevState => ({
-            reviewToEdit: {
-                ...prevState.reviewToEdit,
-                aboutHouseId: this.props.house._id
-            }
-        }));
-    }
 
     handleChange = ev => {
         const { name, value } = ev.target;
@@ -46,6 +37,7 @@ class ReviewCompose extends Component {
         
         updatedHouse.reviews.push(this.state.reviewToEdit)
         this.props.saveHouse(updatedHouse);
+        
         this.setState(prevState => ({
             reviewToEdit: {
                 ...prevState.reviewToEdit,
@@ -53,7 +45,6 @@ class ReviewCompose extends Component {
             }
         }));
     };
-
 
     render() {
         return (
