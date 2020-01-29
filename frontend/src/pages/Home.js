@@ -6,7 +6,7 @@ import SearchForm from '../cmps/SearchForm';
 import backgroundImage from '../assets/img/bgc.jpg'
 import HouseList from '../cmps/HouseList';
 import NavBar from '../cmps/NavBar';
-
+// import MapMarker from '../cmps/MapMarker'
 // import { connect } from 'react-redux';
 
 // import { loadReviews, addReview } from '../actions/ReviewActions.js';
@@ -53,6 +53,7 @@ class Home extends Component {
        <HouseList houses={this.getBestByCountry('ireland')}></HouseList> 
        <h4 className="reccomended-headline">Most reccomended in Italy</h4>
        <HouseList houses={this.getBestByCountry('italy')}></HouseList> 
+       {/* <MapMarker/> */}
       </div>
     );
   }

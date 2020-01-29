@@ -187,20 +187,27 @@ const testHouses = [
     }
 ]
 
-function _createQueryStr(filter) {
-    if(filter.isReserved){
-        return `/house/${filter._id}`
-    }
-    return `/house?country=${filter.location}&capacity=${filter.numOfperson}`
+// function _createQueryStr(filter) {
+//     if(filter.isReserved){
+//         return `/house/${filter._id}`
+//     }
+//     return `/house?country=${filter.location}&capacity=${filter.numOfperson}`
 
+// }
+//shay's function:
+function _createQueryStr(filter) {
+    var querySTR='/house'
+    if(filter.isReserved){
+        querySTR+=  `/${filter._id}`
+    }
+    if(filter.location){
+        querySTR+=`?country=${filter.location}&capacity=${filter.numOfperson}`
+    }
+    if(filter.startDate&&!filter.location){
+        querySTR+=`?startdate=${filter.startDate}&enddate=${filter.endtDate}&`
+    }
+    if(filter.startDate&&filter.location){
+        querySTR+=`&startdate=${filter.startDate}&enddate=${filter.endtDate}&`
+    }
+    return querySTR;
 }
-//shay functions:
-    // if (filterBy.orders) {
-    //     let orders = filterBy.orders
-    //     console.log(' _makeQuerySTR: orders are ',orders)
-    //     let Length=orders.length
-    //     let STR=orders.reduce((acc, item,idx) => {
-    //         if(idx<Length-1) return acc+`order${idx}=${item}&`
-    //         else return acc+`order${idx}=${item}`}, '?reserved=true&')
-    //         return STR;
-    // }

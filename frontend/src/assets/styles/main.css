@@ -36,7 +36,11 @@ span.house-preview-third-line-cost-part-two { font-weight: 400 !important; }
  .house-preview-pagination-container { bottom: 20%; position: absolute; left: 25%; } 
  .house-preview-pagination-turtle { position: absolute; top: -5px; margin-left: 5px; width: 13%; height: auto; opacity:1; } 
  ul.house-list.clean-list>* { position: relative; } 
- .house-preview-pagination-container { display:flex; wrap:nowrap; bottom: 20%; position: absolute; } 
+ .house-preview-pagination-container { display:flex; flex-wrap:nowrap; bottom: 20%; position: absolute; } 
+ .map-marker-img-container { transform: rotate(50deg);margin-left: -1px; } 
+ .map-marker-sub-container { border: 2px solid green; border-radius: 300px 300px 300px 0px; transform: rotate(-47deg);padding: 5px; background-color: lightgreen; height: 45px; width: 45px;} 
+ .map-marker-container {position:relative;}
+ .map-marker-price{color:green;font-size:1.5rem;top:-30px;left:-0.5rem;position:absolute;}
  @media only screen and (min-width: 745px) { img.house-preview-image { max-width:300px; } 
  ul.house-list.clean-list { display:grid; grid-template-columns: 1fr 1fr 1fr; gap:20px; } 
  ul.house-list.clean-list>* { position: relative; } 
