@@ -34,9 +34,8 @@ class HouseDetails extends Component {
     }
 
     loadHouse = async (houseId) => {
-        console.log('house details is first: ',houseId)
         const house = await HouseService.get(houseId)
-        console.log('house details is: ',house)
+        console.log('house details page',house)
         this.setState({ house })
     }
 

@@ -42,6 +42,20 @@ export function getUserById(userId) {
     }
   };
 }
+
+//yael update user
+export function updateUser(user) {
+  return async dispatch => {
+    try {
+     let updatedUser= await UserService.update(user);
+     console.log('userActions',updatedUser)
+      dispatch(setUser(updatedUser));
+    } catch (err) {
+      console.log('UserActions: err in updateUser', err);
+    }
+  };
+}
+///yael update user//
 // THUNK
 // export function getUserByTurlak() {
 //   return async dispatch => {

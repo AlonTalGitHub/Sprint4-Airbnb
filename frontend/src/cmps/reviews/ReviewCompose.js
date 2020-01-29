@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-// import { addReview } from '../../actions/ReviewActions.js';
 import { saveHouse } from '../../actions/HouseActions';
 
 class ReviewCompose extends Component {
@@ -29,21 +27,26 @@ class ReviewCompose extends Component {
         }));
     };
 
-    addReview = ev => {
+    addReview = async (ev) => {
         ev.preventDefault();
-        const { house } = this.props
-        let updatedHouse = {...house}
-        console.log(updatedHouse);
-        
-        updatedHouse.reviews.push(this.state.reviewToEdit)
-        this.props.saveHouse(updatedHouse);
-        
-        this.setState(prevState => ({
-            reviewToEdit: {
-                ...prevState.reviewToEdit,
-                "txt": ''
-            }
-        }));
+        try {
+            const { house } = this.props
+            console.log(house)
+            let updatedHouse = {...house}
+            console.log(updatedHouse);
+            updatedHouse.reviews.push(this.state.reviewToEdit)
+            await this.props.saveHouse(updatedHouse);
+            this.setState(prevState => ({
+                reviewToEdit: {
+                    ...prevState.reviewToEdit,
+                    "txt": ''
+                }
+            }));
+        } catch (error) {
+            console.log('add review to house faild');
+            throw error;
+            
+        }
     };
 
     render() {

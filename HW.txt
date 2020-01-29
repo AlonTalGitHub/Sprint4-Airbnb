@@ -1,0 +1,19 @@
+assignments:
+Yael:
+add house :add owner from loggedInUser if not logged in alert user and redirect
+
+countries in lowercase
+
+filter by country-home page
+
+favorites
+
+
+Shay:
+map component in details page
+filter dates 
+
+Alon:
+reviews-mongo
+my-houses page
+

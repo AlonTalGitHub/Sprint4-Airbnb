@@ -6,7 +6,9 @@ async function query(filterBy = {}) {
     try {
         const collection = await dbService.getCollection('order')
         const orders = await collection.find(criteria).toArray();
+        console.log('order.service  orders after promise all: ', orders)
         return orders
+
     } catch (err) {
         console.log('ERROR: cannot find orders')
         throw err;
@@ -24,11 +26,10 @@ async function remove(orderId) {
 
 
 async function add(order) {
-    // order.byOrderId = ObjectId(order.byOrderId);
-    // order.aboutOrderId = ObjectId(order.aboutOrderId);
     try {
         const collection = await dbService.getCollection('order')
         await collection.insertOne(order);
+        console.log('order.service, order was added successfully, order is: ',order)
         return order;
     } catch (err) {
         console.log(`ERROR: cannot insert order`)
@@ -37,7 +38,19 @@ async function add(order) {
 }
 
 function _buildCriteria(filterBy) {
-    const criteria = {};
+    let criteria = {};
+    var ids=[]
+    if (filterBy._id) {
+        criteria._id = filterBy._id
+    }
+    if (filterBy.reserved) {
+        delete filterBy.reserved
+    for (key in filterBy) {
+        ids.push(ObjectId(filterBy[key]))
+    }
+    criteria={_id:{"$in":ids}}
+    console.log('order.service _buildCriteria(filterBy): ', criteria)
+    }
     return criteria;
 }
 
@@ -46,53 +59,3 @@ module.exports = {
     remove,
     add
 }
-
-// async function query(filterBy = {}) {
-    //     // const criteria = _buildCriteria(filterBy)
-    //     const collection = await dbService.getCollection('order')
-    //     try {
-    //         // const orders = await collection.find(criteria).toArray();
-    //         var orders = await collection.aggregate([
-    //             {
-    //                 $match: filterBy
-    //             },
-    //             {
-    //                 $lookup:
-    //                 {
-    //                     from: 'order',
-    //                     localField: 'byOrderId',
-    //                     foreignField: '_id',
-    //                     as: 'byOrder'
-    //                 }
-    //             },
-    //             {
-    //                 $unwind: '$byOrder'
-    //             },
-    //             {
-    //                 $lookup:
-    //                 {
-    //                     from: 'order',
-    //                     localField: 'aboutOrderId',
-    //                     foreignField: '_id',
-    //                     as: 'aboutOrder'
-    //                 }
-    //             },
-    //             {
-    //                 $unwind: '$aboutOrder'
-    //             }
-    //         ]).toArray()
-    
-    //         orders = orders.map(order => {
-    //             order.byOrder = { _id: order.byOrder._id, ordername: order.byOrder.ordername }
-    //             order.aboutOrder = { _id: order.aboutOrder._id, ordername: order.aboutOrder.ordername }
-    //             delete order.byOrderId;
-    //             delete order.aboutOrderId;
-    //             return order;
-    //         })
-    
-    //         return orders
-    //     } catch (err) {
-    //         console.log('ERROR: cannot find orders')
-    //         throw err;
-    //     }
-    // }

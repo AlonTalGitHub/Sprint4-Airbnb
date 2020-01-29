@@ -35,11 +35,6 @@ class ReserveHouse extends Component {
     onChangeCap = async (diff) => {
         if (this.state.filterBy.numOfperson === 1 && diff === -1) return
         this.setState(prevState => prevState.filterBy.numOfperson += diff)
-        // ////////////////////////////////////////////////
-        // await this.props.getUserById('1234')
-        // const users=this.props.users
-        // console.log('\nturlak turlak turlak\n',users,'\nturlak turlak turlak\n')
-        // ///////////////////////////////////////////////
     }
 
     onChange = (ev) => {
@@ -62,17 +57,18 @@ class ReserveHouse extends Component {
     onReserve = async (ev) => {
         ev.preventDefault();
         const user = this.props.loggedInUser;
+        if (!user) {
+            alert('login first!')
+            return;
+        } 
         let houseOrder = new Order(this.props.house._id,user._id, this.state.filterBy.numOfperson);
         console.log('ReserveHouse, user is: ',this.props.loggedInUser);
-        // localStorageService.store('order', houseOrder)
-        ////////////////////////////////////////////////
-
-        // console.log('\nturlak turlak turlak\n',user,'\nturlak turlak turlak\n')
-        ///////////////////////////////////////////////
         try {
-            user.reserved.push(houseOrder)
-            await UserService.update(user)
             await this.props.saveOrder(houseOrder)
+            let orders=this.props.orders
+            let storedOrderId=orders[orders.length-1]._id
+            user.reserved.push(storedOrderId)
+            await UserService.update(user)
         }
         catch(err){
             console.log('ReserveHouse: add house failed',err)
@@ -84,16 +80,6 @@ class ReserveHouse extends Component {
 
     }
 
-    // onSaveHouse = async (ev) => {
-    //     ev.preventDefault()
-    //     try {
-    //         await this.props.saveHouse(this.state.newHouse)
-    //         this.setState({ isModalShown: true })
-    //     }
-    //     catch{
-    //         console.log('add house failed')
-    //     }
-    // }
     addReserveClass = () => {
         if (!this.props.detailsPage) {
             return "search-form flex column space-between"
@@ -131,7 +117,8 @@ class ReserveHouse extends Component {
 const mapStateToProps = state => {
     return {
         filterBy: state.house.filterBy,
-        loggedInUser: state.user.loggedInUser
+        loggedInUser: state.user.loggedInUser,
+        orders:state.order.orders
     };
 };
 const mapDispatchToProps = {

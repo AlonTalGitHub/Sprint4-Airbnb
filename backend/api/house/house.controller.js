@@ -21,20 +21,9 @@ async function getHouses(req, res) {
       
 async function getHouse(req, res) {
     //shay
-    let ggg=null;
-    console.log('house.controller getHouse req.body',req.body.isReserved,'\n\n')
-    console.log('house.controller getHouse req.params.id',req.params.id,'\n\n')
-    console.log('house.controller getHouse req.query',req.query,'\n\n')
-    if (req.body.isReserved) {
-        ggg = req.body
-        delete ggg.isReserved
-    }
-    else {
-        ggg = { "_id": ObjectId(req.params.id) }
-    }
     try {
-        const house = await houseService.query(ggg)
-        res.send(house)
+        const house = await houseService.query({ "_id": ObjectId(req.params.id)})
+        res.send(house[0])
     } catch (err) {
         // logger.error('Cannot get houses', err);
         console.log('Cannot get houses', err);
@@ -57,9 +46,16 @@ async function addHouse(req, res) {
     res.send(house)
 }
 
+async function updateHouse(req, res) {
+    let house = req.body;
+    house = await houseService.update(house)
+    res.send(house)
+}
+
 module.exports = {
     getHouses,
     deleteHouse,
     addHouse,
-    getHouse
+    getHouse,
+    updateHouse
 }
