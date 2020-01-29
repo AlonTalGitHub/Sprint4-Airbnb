@@ -48,7 +48,7 @@ class Home extends Component {
         <SearchForm></SearchForm>
        {/* {this.props.houses.length&& */}
        <h4 className="reccomended-headline">Most reccomended in Israel</h4>
-       <HouseList houses={this.getBestByCountry('portugal')}></HouseList> 
+       <HouseList houses={this.getBestByCountry('israel')}></HouseList> 
        <h4 className="reccomended-headline">Most reccomended in England</h4>
        <HouseList houses={this.getBestByCountry('ireland')}></HouseList> 
        <h4 className="reccomended-headline">Most reccomended in Italy</h4>

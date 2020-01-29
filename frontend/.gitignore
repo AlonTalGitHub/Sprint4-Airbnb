@@ -22,6 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-#cmps
-./cmps/MapMarker.js
-./cmps/MapPreview.js
+#env
+.env

@@ -22,7 +22,8 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
+    cookie: { secure: false },
+    maxAge: Date.now() + (30 * 86400 * 1000)
 }))
 
 if (process.env.NODE_ENV === 'production') {

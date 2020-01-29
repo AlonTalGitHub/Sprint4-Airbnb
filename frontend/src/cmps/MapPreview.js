@@ -28,7 +28,8 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import HouseDetails from '../pages/HouseDetails';
 import MapMarker from './MapMarker'
-const MY_GMAP_API_KEY = 'AIzaSyAn8p53vq-FNZpiqERRc0rXHhGejVaB-Bc';
+//MY API KEY HERE:
+// const API_KEY=process.env.GMAP_API_KEY
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class MapPreview extends Component {
@@ -39,15 +40,12 @@ class MapPreview extends Component {
         },
         zoom: 11
     };
-
     render() {
-        console.log('house coords: ', this.state.center)
-        console.log('MapPreview props', this.props)
         return (
             // Important! Always set the container height explicitly
             <div style={{ height: '100vh', width: '100%' }}>
                 <GoogleMapReact
-                    bootstrapURLKeys={{ key: MY_GMAP_API_KEY }}
+                    bootstrapURLKeys={{ key:process.env.REACT_APP_GMAP_API_KEY }}
                     defaultCenter={this.state.center}
                     defaultZoom={this.state.zoom}
                 >
