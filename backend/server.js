@@ -22,14 +22,19 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
+    cookie: {
+        secure: false,
+        // maxAge: Date.now() + (30 * 86400 * 1000)
+
+    },
+
 }))
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, 'public')));
 } else {
     const corsOptions = {
-        origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000','http://localhost:3001'],
+        origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000', 'http://localhost:3001'],
         credentials: true
     };
     app.use(cors(corsOptions));
@@ -45,7 +50,7 @@ app.use('/api/order', orderRoutes)
 
 
 // const logger = require('./services/logger.service')
- const port = process.env.PORT || 3030;
+const port = process.env.PORT || 3030;
 http.listen(port, () => {
     console.log('Server is running on port: ' + port)
 });

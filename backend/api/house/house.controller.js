@@ -1,12 +1,13 @@
 // const logger = require('../../services/logger.service')
+const userService = require('../user/user.service')
 const houseService = require('./house.service')
 const ObjectId = require('mongodb').ObjectId
 
 // TODO: needs error handling! try, catch
 
 async function getHouses(req, res) {
-    console.log('controller query',req.query)
-        
+    console.log('controller query', req.query)
+
     try {
         let houses = await houseService.query(req.query)
         res.send(houses)
@@ -18,11 +19,11 @@ async function getHouses(req, res) {
     }
 }
 
-      
+
 async function getHouse(req, res) {
     //shay
     try {
-        const house = await houseService.query({ "_id": ObjectId(req.params.id)})
+        const house = await houseService.query({ "_id": ObjectId(req.params.id) })
         res.send(house[0])
     } catch (err) {
         // logger.error('Cannot get houses', err);
@@ -40,6 +41,18 @@ async function addHouse(req, res) {
     var house = req.body;
     // house.byUserId = req.session.user._id;
     house = await houseService.add(house)
+    console.log('house.controler house id is', house._id.toString())
+    const { _id } = house.owner
+    const user = await userService.getById(_id)
+    console.log('house.controler user is', user)
+    user.houses.push(house._id.toString())
+    user.isHost = true
+    updateUser = await userService.update(user)
+    console.log('updates user in house controller',updateUser)
+
+
+
+
     // house.byUser = req.session.user;
     // TODO - need to find aboutUser
     // house.aboutUser = {} 

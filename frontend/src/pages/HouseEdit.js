@@ -25,7 +25,9 @@ class HouseEdit extends Component {
             capacity: 1,
             price: '',
             addressInput: '',
-            reviews:[]
+            reviews: [],
+            rating: this.getRandomArbitrary(3, 5)
+
         },
         isModalShown: false,
         uploadStatus: null,
@@ -33,10 +35,17 @@ class HouseEdit extends Component {
     }
 
     componentDidMount() {
+        if (!this.props.loggedInUser) {
+            console.log('please login')
+        }
         const { id } = this.props.match.params
         if (!id) return
         this.getHouse(id)
 
+    }
+
+    getRandomArbitrary(min, max) {
+        return (Math.random() * (max - min) + min).toFixed(2)
     }
 
     getHouse = async (id) => {
@@ -46,6 +55,7 @@ class HouseEdit extends Component {
         newHouse.addressInput = addressInput
         this.setState({ newHouse }, () => console.log(this.state))
     }
+
 
     upload = async (ev) => {
         const fileMap = ev.target.files
@@ -60,6 +70,7 @@ class HouseEdit extends Component {
             let resFiles = await Promise.all(filePrms)
             const newHouse = { ...this.state.newHouse }
             resFiles.forEach(file => { if (file.url) newHouse.imgs.push(file.url) })
+            // this.setState(prevState=>({...prevState,newHouse,uploadedstatus:'success'}))
             // newHouse.imgs=uploadedImgs
             this.setState({ newHouse })
             this.setState({ uploadStatus: 'success' })
@@ -90,25 +101,42 @@ class HouseEdit extends Component {
         this.setState({ newHouse }, () => console.log(this.state))
     }
 
-    owner = {
-        _id: "0987",
-        fullName: "Yael Shenker",
-        imgURL: "https://a0.muscache.com/im/pictures/user/e23d9c03-0de7-46f9-ba5a-c62a6358ff34.jpg?aki_policy=profile_x_medium"
+    // owner = {
+    //     _id: "0987",
+    //     fullName: "Yael Shenker",
+    //     imgURL: "https://a0.muscache.com/im/pictures/user/e23d9c03-0de7-46f9-ba5a-c62a6358ff34.jpg?aki_policy=profile_x_medium"
+    // }
+
+    createOwner = (user) => {
+        return {
+            _id: user._id,
+            username: user.username,
+            imgURL: user.imgURL
+        }
     }
 
     onSaveHouse = async (ev) => {
         ev.preventDefault();
-        const owner = this.owner
-        // if(!this.state.newHouse.reviews) this.state.newHouse.reviews=[]
-        try {
-            await this.checkAddress()
-            const newHouse = { ...this.state.newHouse, owner }
-            delete newHouse.addressInput
-            await this.props.saveHouse(newHouse)
-            this.setState({ isModalShown: true })
+        const user = { ...this.props.loggedInUser }
+        if (!user) {
+            console.log('please login')
         }
-        catch{
-            console.log('add house failed')
+        // if(!this.state.newHouse.reviews) this.state.newHouse.reviews=[]
+        else {
+            const owner = this.createOwner(user)
+            try {
+                await this.checkAddress()                
+                const address = { ...this.state.newHouse.address}                
+                const country=address.country.toLowerCase()                
+                address.country=country                
+                const newHouse = { ...this.state.newHouse, owner,address}
+                delete newHouse.addressInput                
+                await this.props.saveHouse(newHouse)                
+                this.setState({ isModalShown: true })
+            }
+            catch{
+                console.log('add house failed')
+            }
         }
     }
 
@@ -128,7 +156,7 @@ class HouseEdit extends Component {
         })
         const newHouse = { ...this.state.newHouse }
         newHouse.imgs = imgs
-        this.setState({ newHouse }, () => console.log(this.state.newHouse))
+        this.setState({ newHouse })
     }
 
     dispalyImg = () => {
@@ -176,16 +204,10 @@ class HouseEdit extends Component {
     }
 
     getAddress = async (coords) => {
-        // const { coords } = this.state.newHouse.address
-        console.log(coords)
         if (!coords) return
         const res = await Axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${coords.lat}+${coords.lng}&key=029b29b812cb4bfea627a8b82b6b92c4`)
-        console.log(res.data.results)
         const addressInput = res.data.results[0].formatted
-        console.log(addressInput)
         return addressInput
-
-
     }
 
     render() {
@@ -226,7 +248,6 @@ class HouseEdit extends Component {
                 <span>Congardulations!</span>
                 <span>Your property is on TurtleHouse</span>
                 <button onClick={this.onBackClick} className="form-btn pointer">Back To HomePage</button>
-
             </div>
             <div className={isModalShown ? 'block-screen' : 'block-screen-hidden'}></div>
 
@@ -236,8 +257,15 @@ class HouseEdit extends Component {
 }
 
 
+const mapStateToProps = state => {
+    return {
+        loggedInUser: state.user.loggedInUser
+    };
+};
+
+
 const mapDispatchToProps = {
     saveHouse
 };
 
-export default connect(null, mapDispatchToProps)(HouseEdit)
+export default connect(mapStateToProps, mapDispatchToProps)(HouseEdit)

@@ -25,7 +25,7 @@ class HousePreview extends Component {
         
     
         // this.setState({ ...this.state, isFav: !this.state.isFav })
-        this.setState({ isFav: !this.state.isFav }, this.AddToFav)
+        this.setState({ isFav: !this.state.isFav })
     }
 
     AddToFav = () => {

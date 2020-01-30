@@ -37,6 +37,7 @@ async function signup(userCred) {
 }
 async function logout() {
     await HttpService.post('/auth/logout');
+    console.log('front clear session user logged out')
     sessionStorage.clear();
 }
 function _handleLogin(user) {

@@ -41,6 +41,8 @@ class SearchForm extends Component {
     }
 
     onSearch = () => {
+        const filterBy={...this.state.filterBy}
+        filterBy.location.toLowerCase()
         this.props.filterHouses(this.state.filterBy)
     }
 
