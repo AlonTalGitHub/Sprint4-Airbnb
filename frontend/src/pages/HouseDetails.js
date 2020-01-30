@@ -16,6 +16,7 @@ import '../assets/styles/housedetails.css';
 import '../assets/styles/index.css';
 import '../assets/styles/reviewpreview.css';
 import ReviewCompose from '../cmps/reviews/ReviewCompose';
+import MapPreview from '../cmps/MapPreview'
 
 
 class HouseDetails extends Component {
@@ -69,6 +70,7 @@ class HouseDetails extends Component {
                         
                     </div>
                     {/* <ChatBox house={this.house}></ChatBox> */}
+                    <MapPreview caller="housedetails" house={house}/>
                 </section>}
             </React.Fragment>
         )

@@ -7,7 +7,7 @@ class About extends Component {
         user:''
     }
 render(){
-
+    {console.log('blah blah blah: ',process.env.GMAP_API_KEY)}
     return(<div>
         <img src={cabin} alt="" className="src"/>
     </div>
