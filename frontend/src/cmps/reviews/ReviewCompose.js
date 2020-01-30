@@ -1,31 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-// import { addReview } from '../../actions/ReviewActions.js';
 import { saveHouse } from '../../actions/HouseActions';
 
 class ReviewCompose extends Component {
 
     state = {
         reviewToEdit: {
-            "byUser": {
-                "_id": "123456789",
-                "fullName": "User",
-                "img": "http://img"
-            },
+            "byUser": null,
             "txt": '',
             "rate": 4,
-            "createdAt": "2020-01-15T07:51:18.138Z",
+            "createdAt": Date.now(),
         }
     };
 
     componentDidMount() {
-        this.setState(prevState => ({
-            reviewToEdit: {
-                ...prevState.reviewToEdit,
-                aboutHouseId: this.props.house._id
-            }
-        }));
+        if (this.props.loggedInUser) this.loadUser();  
     }
 
     handleChange = ev => {
@@ -38,33 +27,45 @@ class ReviewCompose extends Component {
         }));
     };
 
-    addReview = ev => {
-        ev.preventDefault();
-        const { house } = this.props
-        let updatedHouse = {...house}
-        console.log(updatedHouse);
-        
-        updatedHouse.reviews.push(this.state.reviewToEdit)
-        this.props.saveHouse(updatedHouse);
-        this.setState(prevState => ({
-            reviewToEdit: {
-                ...prevState.reviewToEdit,
-                "txt": ''
-            }
-        }));
-    };
+    loadUser = () => {
+        const { _id , username, imgURL } = this.props.loggedInUser;
+        const byUser = { _id , username, imgURL }
+        this.setState({ reviewToEdit: {...this.state.reviewToEdit, byUser } }, () => console.log(this.state.reviewToEdit));
+    }
 
+    addReview = async (ev) => {
+        ev.preventDefault();
+        try {
+            const { house } = this.props
+            console.log(house)
+            let updatedHouse = {...house}
+            console.log(updatedHouse);
+            updatedHouse.reviews.push(this.state.reviewToEdit)
+            await this.props.saveHouse(updatedHouse);
+            this.setState(prevState => ({
+                reviewToEdit: {
+                    ...prevState.reviewToEdit,
+                    "txt": ''
+                }
+            }));
+        } catch (error) {
+            console.log('add review to house faild');
+            throw error;
+            
+        }
+    };
 
     render() {
         return (
             <section>
                 <form onSubmit={this.addReview}>
                     <textarea
+                        className="review-textarea"
                         name="txt"
                         onChange={this.handleChange}
                         value={this.state.reviewToEdit.txt}
                     ></textarea>
-                    <button>Add</button>
+                    <button className="form-btn pointer">Add</button>
                 </form>
             </section>
         )
@@ -75,7 +76,7 @@ const mapStateToProps = state => {
     return {
         houses: state.house.houses,
         //   users: state.user.users,
-        //   loggedInUser: state.user.loggedInUser
+        loggedInUser: state.user.loggedInUser
     };
 };
 const mapDispatchToProps = {

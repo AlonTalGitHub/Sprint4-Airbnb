@@ -59,9 +59,16 @@ async function addHouse(req, res) {
     res.send(house)
 }
 
+async function updateHouse(req, res) {
+    let house = req.body;
+    house = await houseService.update(house)
+    res.send(house)
+}
+
 module.exports = {
     getHouses,
     deleteHouse,
     addHouse,
-    getHouse
+    getHouse,
+    updateHouse
 }

@@ -144,8 +144,8 @@ class HouseList extends Component {
                 {/* <NavBar style={this.style} class='banana'></NavBar> */}
                 {/* <h2 className="house-main-head">Houses List</h2> */}
                 <ul className={"house-list clean-list "+ this.props.caller}>
-                    {houses.map(house => (
-                        <li key={house._id}>
+                    {houses.map((house,idx) => (
+                        <li key={idx}>
                             <HousePreview house={house}/> 
                         </li>
                     ))}

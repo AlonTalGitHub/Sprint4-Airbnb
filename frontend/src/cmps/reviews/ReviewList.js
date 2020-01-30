@@ -4,8 +4,8 @@ import ReviewPreview from './ReviewPreview';
 export default function ReviewList(props) {
 
     return (
-        <ul>
-            {props.reviews.map(review => <ReviewPreview key={review.byUser._id} review={review} />)}
-        </ul>
+        <div>
+            {props.reviews.map((review, idx) => <ReviewPreview key={idx} review={review} />)}
+        </div>
     )
 }

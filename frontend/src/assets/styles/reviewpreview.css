@@ -1,0 +1,15 @@
+/*---------- reviews ----------*/
+
+.user-img-container img {
+    display: block;
+    width: 50px;
+    height: 50px;
+    /* position: absolute; */
+    background-color: white;
+    border-radius: 50%;
+}
+
+.review-textarea {
+    padding-bottom: 4px;
+    /* border-bottom: 1px solid rgb(48, 48, 48); */
+}

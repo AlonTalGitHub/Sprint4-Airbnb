@@ -3,7 +3,7 @@ const ObjectId = require('mongodb').ObjectId
 
 async function query(filterBy = {}) {
     const criteria = _buildCriteria(filterBy)
-    console.log('the criteria is: ',criteria)
+    console.log('the criteria is: ', criteria)
     try {
         let collection = await dbService.getCollection('house')
         // console.log('this is house.controller speaking collection is :',collection)
@@ -25,7 +25,6 @@ async function remove(houseId) {
     }
 }
 
-
 async function add(house) {
     // house.byHouseId = ObjectId(house.byHouseId);
     // house.aboutHouseId = ObjectId(house.aboutHouseId);
@@ -40,20 +39,33 @@ async function add(house) {
     }
 }
 
+async function update(house) {
+    const collection = await dbService.getCollection('house')
+    house._id = ObjectId(house._id);
+    try {
+        await collection.replaceOne({"_id":house._id}, {$set : house})
+        return house
+    } catch (err) {
+        console.log(`ERROR: cannot update user ${house._id}`)
+        throw err;
+    }
+}
+
 function _buildCriteria(filterBy) {
     let criteria = {}
     if (filterBy._id) {
         criteria._id = filterBy._id
     }
-    if(filterBy.country){
-        criteria={
-            ...criteria,"address.country": filterBy.country
+    if (filterBy.country) {
+        criteria = {
+            ...criteria, "address.country": filterBy.country
         }
     }
-    if(filterBy.capacity){
-        criteria={
-            ...criteria,"capacity": {$gte: +filterBy.capacity}
+    if (filterBy.capacity) {
+        criteria = {
+            ...criteria, "capacity": { $gte: +filterBy.capacity }
         }
+        //ADD startDate and endDate to criteria!!
     }
 
 
@@ -66,14 +78,15 @@ function _buildCriteria(filterBy) {
     //     //{ "makes.fgh" : { $exists : true } }
     //     // criteria.capacity=filterBy.capacity
     // }
-    
+
     return criteria;
 }
 
 module.exports = {
     query,
     remove,
-    add
+    add,
+    update
 }
 
 // async function query(filterBy = {}) {

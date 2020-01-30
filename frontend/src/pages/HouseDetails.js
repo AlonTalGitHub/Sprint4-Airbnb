@@ -14,7 +14,9 @@ import ReviewList from '../cmps/reviews/ReviewList';
 
 import '../assets/styles/housedetails.css';
 import '../assets/styles/index.css';
+import '../assets/styles/reviewpreview.css';
 import ReviewCompose from '../cmps/reviews/ReviewCompose';
+import MapPreview from '../cmps/MapPreview'
 
 
 class HouseDetails extends Component {
@@ -24,12 +26,8 @@ class HouseDetails extends Component {
 
     componentDidMount() {
         const houseId = this.props.match.params.id;
-        console.log(houseId)
+        console.log('details mounting: ',houseId)
         this.loadHouse(houseId)
-    }
-
-    async componentWillUnmount() {
-        // await this.props.filterHouses({ location: '', numOfperson: 1 })
     }
 
     loadHouse = async (houseId) => {
@@ -42,7 +40,6 @@ class HouseDetails extends Component {
         await this.props.deleteHouse(this.state.house._id)
         this.props.history.push('/')
     }
-//style={{ "position": "fixed", "top": "0px", "backgroundColor": "lightblue" }}
     render() {
         const { house } = this.state
         return (
@@ -60,7 +57,7 @@ class HouseDetails extends Component {
                             <span className="house-header span-line-break">{house.address.country}</span>
                             <span className="house-header span-line-break">Description</span>
                             <p className="house-content span-line-break bottom-line">{house.description}</p>
-                            {/* <ReviewList reviews={ house.reviews}/> */}
+                            <ReviewList reviews={ house.reviews}/>
                             <ReviewCompose house={house}/>
                             <div className="details-button-container flex space-between">
                                 <Link to={`/house/edit/${house._id}`} >
@@ -73,39 +70,22 @@ class HouseDetails extends Component {
                         
                     </div>
                     {/* <ChatBox house={this.house}></ChatBox> */}
+                    <MapPreview caller="housedetails" house={house}/>
                 </section>}
             </React.Fragment>
         )
     }
 }
 
-
-
-
+const mapStateToProps = state => {
+    return {
+        houses: state.house.houses
+    };
+};
 const mapDispatchToProps = {
     deleteHouse,
     filterHouses
 };
 
-export default connect(null, mapDispatchToProps)(HouseDetails)
-
-
-
-
-
-
-
-
-
-// componentDidMount() {
-//     this.loadHouse()
-// }
-
-// loadHouse = () => {
-//     const houseId = this.props.match.params.id;
-//     houseService.get(houseId).then(car=>{
-//         this.setState({car});
-//     })
-//     console.log(houseId);
-// }
+export default connect(mapStateToProps, mapDispatchToProps)(HouseDetails)
 
