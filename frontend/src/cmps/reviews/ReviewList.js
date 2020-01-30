@@ -5,7 +5,7 @@ export default function ReviewList(props) {
 
     return (
         <div>
-            {props.reviews.map(review => <ReviewPreview key={review.byUser._id} review={review} />)}
+            {props.reviews.map((review, idx) => <ReviewPreview key={idx} review={review} />)}
         </div>
     )
 }
