@@ -14,7 +14,7 @@ class ReviewCompose extends Component {
     };
 
     componentDidMount() {
-        this.loadUser()  
+        if (this.props.loggedInUser) this.loadUser();  
     }
 
     handleChange = ev => {
