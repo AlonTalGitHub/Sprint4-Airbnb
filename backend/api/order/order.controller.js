@@ -4,7 +4,7 @@ const orderService = require('./order.service')
 // TODO: needs error handling! try, catch
 
 async function getOrders(req, res) {
-    console.log('this is order.controller getOrders,req.query: ',req.query)
+    console.log('this is order.controller getOrders,req.query: ', req.query)
     try {
         const orders = await orderService.query(req.query)
         res.send(orders)
@@ -17,7 +17,7 @@ async function getOrders(req, res) {
 }
 async function getOrder(req, res) {
     try {
-        const orders = await orderService.query({"_id":req.params.id})
+        const orders = await orderService.query({ "_id": req.params.id })
         res.send(orders)
     } catch (err) {
         // logger.error('Cannot get orders', err);
@@ -51,10 +51,24 @@ async function addOrder(req, res) {
         throw err
     }
 }
+async function updateOrder(req, res) {
+    console.log('update req.body', req.body)
+    console.log('update req.params', req.params)
+    console.log('update req.params', req.query)
+    try {
+        var order = req.body;
+        order = await orderService.update(order)
+        res.send(order)
+    } catch (err) {
+        console.log('order.controller,update order,err', err)
+        throw err
+    }
+}
 
 module.exports = {
     getOrders,
     deleteOrder,
     addOrder,
-    getOrder
+    getOrder,
+    updateOrder
 }

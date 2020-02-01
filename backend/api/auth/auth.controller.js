@@ -33,6 +33,7 @@ async function signup(req, res) {
 async function logout(req, res){
     try {
         req.session.destroy()
+        // req.session=null;
         console.log('session destroyed')
         res.send({ message: 'logged out successfully' })
     } catch (err) {

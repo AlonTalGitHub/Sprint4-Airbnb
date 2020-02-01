@@ -132,27 +132,35 @@ class ResrvedPage extends Component {
         this.loadReservedHouses()
         // eturn houses
     }
-    loadReservedHouses= async()=>{
+    loadReservedHouses = async () => {
         const orderIds = this.props.loggedInUser.reserved
         console.log('this is ReservedPage speaking logged user is: ', this.props.loggedInUser, '\n\n', 'the reserved houses arr', this.props.loggedInUser.reserved, '\n\n')
         try {
-            let storedOrders= await OrderService.getOrders({orders:orderIds})
-            console.log('this is ReservedPage speaking,orders are: ',storedOrders,'\n')
+            let storedOrders = await OrderService.getOrders({ orders: orderIds })
+            console.log('this is ReservedPage speaking,orders are: ', storedOrders, '\n')
             let housesPrms = storedOrders.map(async (storedOrder) => {
                 let house = await HouseService.get(storedOrder.houseId)
-                console.log('this is ReservedPage speaking, house is: ', house,'\n')
+                house.isConfirmedByHouse = storedOrder.isConfirmedByHouse
+                console.log('this is ReservedPage speaking, house is: ', house, '\n')
                 return house;
             })
-            let houses =await Promise.all(housesPrms)
-            
-            console.log('reserve houses after promise all',houses)
-            this.setState({houses: houses })
+            let houses = await Promise.all(housesPrms)
+
+            console.log('reserve houses after promise all', houses)
+            this.setState({ houses: houses })
         }
         catch (err) {
             throw err
         }
     }
-
+    getConfirmedHouses = () => {
+        let confirmedHouses = this.state.houses.filter(house => { if (house.isConfirmedByHouse) return house })
+        return confirmedHouses
+    }
+    getUnConfirmedHouses = () => {
+        let UnconfirmedHouses = this.state.houses.filter(house => { if (!house.isConfirmedByHouse) return house })
+        return UnconfirmedHouses
+    }
     render() {
         const { houses } = this.state
 
@@ -160,7 +168,14 @@ class ResrvedPage extends Component {
             <div>
                 <NavBar caller={"reservedpage"}></NavBar>
                 <h2 className="reservedpage">My Reserved Houses</h2>
-                {(houses) &&  <HouseList caller={"reservedpage"} houses={this.state.houses}></HouseList>}
+                <div className="reservedpage-confirmed-houses">
+                <h3 className="reservedpage">Confirmed by House Owner</h3>
+                {(houses) && <HouseList caller={"reservedpage"} houses={this.getConfirmedHouses()}></HouseList>}
+                </div>   
+                <div className="reservedpage-not-confirmed-houses">
+                <h3 className="reservedpage">Not Yet Confirmed by House Owner</h3>
+                {(houses) && <HouseList caller={"reservedpage"} houses={this.getUnConfirmedHouses()}></HouseList>}
+                </div>           
             </div>
         )
     }

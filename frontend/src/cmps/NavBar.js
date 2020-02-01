@@ -15,14 +15,14 @@ class NavBar extends Component {
     state = {
         user: '',
         isMenuOpen: false
-    }   
-    
+    }
+
 
     openMenu = () => {
         this.setState({ isMenuOpen: true })
     }
-   
-    
+
+
     render() {
         const { loggedInUser } = this.props;
         const consoleCaller = () => {
@@ -64,12 +64,12 @@ class NavBar extends Component {
                         'width': '80px'
                     }} />
                 </Link></li>
-                <li className={getMenuItemClass()}>{(this.props.caller!=="home")?<SearchBar openMenu={this.openMenu}></SearchBar>:''}</li>
+                <li className={getMenuItemClass()}>{(this.props.caller !== "home") ? <SearchBar openMenu={this.openMenu}></SearchBar> : ''}</li>
                 <li className={getMenuItemClass()}><Link to="/About" className={getLinkItemClass()}>About</Link></li>
-                <li className={getMenuItemClass()}><Link to="/house/edit" className={getLinkItemClass()} >Host</Link></li>
-                <li className={getMenuItemClass()}><Link to="/reserved" className={getLinkItemClass()}  onClick={consoleCaller}>Reserved</Link></li>
-                
-                <li className={getMenuItemClass()}><Link to="/favorites" className={getLinkItemClass()}>Favorites</Link></li>
+                {this.props.loggedInUser && <li className={getMenuItemClass()}><Link to="/house/edit" className={getLinkItemClass()} >Host</Link></li>}
+                {this.props.loggedInUser && <li className={getMenuItemClass()}><Link to="/reserved" className={getLinkItemClass()} onClick={consoleCaller}>Reserved</Link></li>}
+                {this.props.loggedInUser && <li className={getMenuItemClass()}><Link to="/favorites" className={getLinkItemClass()}>Favorites</Link></li>}
+                {this.props.loggedInUser && <li className={getMenuItemClass()}><Link to="/requests" className={getLinkItemClass()}>Requests</Link></li>}
                 <li className={getMenuItemClass()}><Link to="/login" className={getLinkItemClass()}>Login/SignUp</Link></li>
                 {/* { <li className={getMenuItemClass()}><Link to={"/profile/"+this.props.loggedInUser._id} className={getLinkItemClass()}>
                     {profileImageRender()}
@@ -79,7 +79,7 @@ class NavBar extends Component {
                     {profileImageRender()}</li>
             </ul>
             <div className={`filter-buttons-container ${(this.state.isMenuOpen) ? 'shown-filter-container' : ''}`}>
-                <FilterBar></FilterBar> 
+                <FilterBar></FilterBar>
             </div>
 
         </div>)
