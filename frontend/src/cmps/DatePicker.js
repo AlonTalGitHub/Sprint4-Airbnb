@@ -40,6 +40,7 @@ export default class SearchForm extends Component {
     //     }
     // }
 
+
     render() {
         // const BAD_DATES = [moment(), moment().add(10, 'days')];
         // const BAD_DATES = [moment('Feb 20th 2020'),moment('Feb 21th 2020')];

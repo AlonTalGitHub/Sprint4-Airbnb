@@ -3,12 +3,17 @@ const ObjectId = require('mongodb').ObjectId
 const orderService=require('../order/order.service')
 async function query(filterBy = {}) {
     const criteria = _buildCriteria(filterBy)
-    console.log('the criteria is: ', criteria)
+    console.log('house service the criteria is: ', criteria)
+    let houses;
     try {
         let collection = await dbService.getCollection('house')
-        // console.log('this is house.controller speaking collection is :',collection)
-        let houses = await collection.find(criteria).toArray();
-        // console.log('this is house.controller speaking houses is :',houses)
+        if (filterBy.countries) {
+            houses = await collection.find(criteria).sort({ "rating": -1 }).limit(3).toArray();
+            
+        } else {
+            houses = await collection.find(criteria).toArray()
+        }
+        console.log('this is house.service speaking houses is :', houses[0])
         return houses
     } catch (err) {
         console.log('ERROR: cannot find houses')
@@ -63,6 +68,16 @@ function _buildCriteria(filterBy) {
             ...criteria, "capacity": { $gte: +filterBy.capacity }
         }
     }
+    if (filterBy.ids) {
+        let idsArr = filterBy.ids.split(',')
+        let objectIds = idsArr.map(id => ObjectId(id))
+        criteria = { _id: { "$in": objectIds } }
+    }
+    if (filterBy.countries) {
+        let countries = filterBy.countries.split(',')
+        criteria = { "address.country": { "$in": countries } }
+    }
+    
     if (filterBy.allExcept) {
         let allHousesExcept = filterBy.allExceptHouses.map(houseId=>ObjectId(houseId))
         criteria = {

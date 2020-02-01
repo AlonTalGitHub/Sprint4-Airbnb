@@ -71,10 +71,10 @@ class NavBar extends Component {
                 {this.props.loggedInUser && <li className={getMenuItemClass()}><Link to="/favorites" className={getLinkItemClass()}>Favorites</Link></li>}
                 {this.props.loggedInUser && <li className={getMenuItemClass()}><Link to="/requests" className={getLinkItemClass()}>Requests</Link></li>}
                 <li className={getMenuItemClass()}><Link to="/login" className={getLinkItemClass()}>Login/SignUp</Link></li>
-                {/* <li className={getMenuItemClass()}><Link to={"/profile/"+this.props.loggedInUser._id} className={getLinkItemClass()}>
+                {/* { <li className={getMenuItemClass()}><Link to={"/profile/"+this.props.loggedInUser._id} className={getLinkItemClass()}>
                     {profileImageRender()}
                 </Link>
-                </li> */}
+                </li>} */}
                 <li className={getMenuItemClass()}>
                     {profileImageRender()}</li>
             </ul>
