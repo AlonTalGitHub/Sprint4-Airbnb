@@ -44,6 +44,9 @@ span.house-preview-third-line-cost-part-two { font-weight: 400 !important; }
  @media only screen and (min-width: 745px) { img.house-preview-image { max-width:300px; } 
  ul.house-list.clean-list { display:grid; grid-template-columns: 1fr 1fr 1fr; gap:20px; } 
  ul.house-list.clean-list>* { position: relative; } 
+ ul.request-list{/*margin-top: 250px;*/}
+ .house-requests-container{margin-top: 80px;}
+ h1.request-page-header{margin-top:200px}
  .house-preview-details { } 
  .house-preview-container { margin-left: 0px; } 
  .house-preview-first-line-container { width:300px; } 

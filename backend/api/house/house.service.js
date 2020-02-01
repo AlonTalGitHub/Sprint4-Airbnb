@@ -1,6 +1,6 @@
 const dbService = require('../services/db.service')
 const ObjectId = require('mongodb').ObjectId
-
+const orderService=require('../order/order.service')
 async function query(filterBy = {}) {
     const criteria = _buildCriteria(filterBy)
     console.log('the criteria is: ', criteria)
@@ -26,9 +26,6 @@ async function remove(houseId) {
 }
 
 async function add(house) {
-    // house.byHouseId = ObjectId(house.byHouseId);
-    // house.aboutHouseId = ObjectId(house.aboutHouseId);
-
     const collection = await dbService.getCollection('house')
     try {
         await collection.insertOne(house);
@@ -43,7 +40,7 @@ async function update(house) {
     const collection = await dbService.getCollection('house')
     house._id = ObjectId(house._id);
     try {
-        await collection.replaceOne({"_id":house._id}, {$set : house})
+        await collection.replaceOne({ "_id": house._id }, { $set: house })
         return house
     } catch (err) {
         console.log(`ERROR: cannot update user ${house._id}`)
@@ -65,76 +62,48 @@ function _buildCriteria(filterBy) {
         criteria = {
             ...criteria, "capacity": { $gte: +filterBy.capacity }
         }
-        //ADD startDate and endDate to criteria!!
     }
-
-
-    // if(filterBy.capacity){
-    //     criteria.capacity=parseInt(filterBy.capacity)
-    //     //from stack overFlow 'relation.$.status': 'friends'
-    //     // criteria.address={}
-    //     // criteria.address.country = filterBy.country
-    //     // criteria.address.coords = {"$exists" : "true"}
-    //     //{ "makes.fgh" : { $exists : true } }
-    //     // criteria.capacity=filterBy.capacity
-    // }
-
+    if (filterBy.allExcept) {
+        let allHousesExcept = filterBy.allExceptHouses.map(houseId=>ObjectId(houseId))
+        criteria = {
+            ...criteria, _id: { $nin: allHousesExcept}
+        }
+    }
     return criteria;
+}
+
+async function getAvailableHouses(dates) {
+    let userDates={...dates}
+    console.log('startDate is: ', userDates.startDate, '\n')
+    console.log('endDate is: ', userDates.endDate, '\n')
+
+    let orderFilterBy = {
+        dates: true,
+        startDate:userDates.startDate,
+        endDate:userDates.endDate
+    }
+    console.log('orderFilterBy: ', orderFilterBy)
+
+    try {
+        let overlappingOrders = await orderService.query(orderFilterBy)
+        console.log('overlappingOrders are: ',overlappingOrders)
+        let unAvailableHouses = overlappingOrders.map(order => order.houseId)
+        console.log('unAvailableHouses: ',unAvailableHouses)
+        let filter = {
+            allExcept: true,
+            allExceptHouses: unAvailableHouses
+        }
+        let availableHouses = await query(filter)
+        return availableHouses;
+    } catch (err) {
+        throw err
+    }
 }
 
 module.exports = {
     query,
     remove,
     add,
-    update
+    update,
+    getAvailableHouses
 }
-
-// async function query(filterBy = {}) {
-    //     // const criteria = _buildCriteria(filterBy)
-    //     const collection = await dbService.getCollection('house')
-    //     try {
-    //         // const houses = await collection.find(criteria).toArray();
-    //         var houses = await collection.aggregate([
-    //             {
-    //                 $match: filterBy
-    //             },
-    //             {
-    //                 $lookup:
-    //                 {
-    //                     from: 'house',
-    //                     localField: 'byHouseId',
-    //                     foreignField: '_id',
-    //                     as: 'byHouse'
-    //                 }
-    //             },
-    //             {
-    //                 $unwind: '$byHouse'
-    //             },
-    //             {
-    //                 $lookup:
-    //                 {
-    //                     from: 'house',
-    //                     localField: 'aboutHouseId',
-    //                     foreignField: '_id',
-    //                     as: 'aboutHouse'
-    //                 }
-    //             },
-    //             {
-    //                 $unwind: '$aboutHouse'
-    //             }
-    //         ]).toArray()
-
-    //         houses = houses.map(house => {
-    //             house.byHouse = { _id: house.byHouse._id, housename: house.byHouse.housename }
-    //             house.aboutHouse = { _id: house.aboutHouse._id, housename: house.aboutHouse.housename }
-    //             delete house.byHouseId;
-    //             delete house.aboutHouseId;
-    //             return house;
-    //         })
-
-    //         return houses
-    //     } catch (err) {
-    //         console.log('ERROR: cannot find houses')
-    //         throw err;
-    //     }
-    // }

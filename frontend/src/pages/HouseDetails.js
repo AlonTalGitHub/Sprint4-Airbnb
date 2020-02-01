@@ -16,7 +16,7 @@ import '../assets/styles/housedetails.css';
 import '../assets/styles/index.css';
 import '../assets/styles/reviewpreview.css';
 import ReviewCompose from '../cmps/reviews/ReviewCompose';
-import MapPreview from '../cmps/MapPreview'
+import MapPreview from '../cmps/MapPreview.js'
 
 
 class HouseDetails extends Component {

@@ -186,7 +186,7 @@ const testHouses = [
 ]
 
 // function _createQueryStr(filter) {
-//     if(filter.isReserved){
+//     if(filter.byId){
 //         return `/house/${filter._id}`
 //     }
 //     return `/house?country=${filter.location}&capacity=${filter.numOfperson}`
@@ -194,18 +194,37 @@ const testHouses = [
 // }
 //shay's function:
 function _createQueryStr(filter) {
-    var querySTR='/house'
-    if(filter.isReserved){
-        querySTR+=  `/${filter._id}`
+    var querySTR = '/house'
+    if (filter.byId) {
+        querySTR += `/${filter._id}`
     }
-    if(filter.location){
-        querySTR+=`?country=${filter.location}&capacity=${filter.numOfperson}`
+    if (filter.location) {
+        querySTR += `?country=${filter.location}&capacity=${filter.numOfperson}`
     }
-    if(filter.startDate&&!filter.location){
-        querySTR+=`?startdate=${filter.startDate}&enddate=${filter.endtDate}&`
+    ////////////////daterange
+    // if (filter.allExcept && !filter.location && !filter.byId) {
+    //     let houses = filter.allExceptHouses
+    //     let STR = houses.reduce((acc, item, idx) => { acc += `houseId=${item}&`; return acc }, '?allExcept=true&')
+    //     querySTR += STR.substring(0, STR.length - 1)
+    // }
+    // if (filter.allExcept && filter.location && !filter.byId) {
+    //     let houses = filter.allExceptHouses
+    //     let STR = houses.reduce((acc, item, idx) => { acc += `houseId=${item}&`; return acc }, '/allExcept=true&')
+    //     querySTR += STR.substring(0, STR.length - 1)
+    // }
+    if (filter.startDate && filter.endDate && !filter.location) {
+        querySTR += `?dates=true&startDate=${filter.startDate}&endDate=${filter.endDate}`
     }
-    if(filter.startDate&&filter.location){
-        querySTR+=`&startdate=${filter.startDate}&enddate=${filter.endtDate}&`
+    if(filter.startDate && filter.endDate && filter.location){
+        querySTR += `&startDate=${filter.startDate}&endDate=${filter.endDate}`
     }
     return querySTR;
 }
+
+//shay:
+            // if(filter.startDate&&!filter.location){
+            //     querySTR+=`?startdate=${filter.startDate}&enddate=${filter.endtDate}&`
+            // }
+            // if(filter.startDate&&filter.location){
+            //     querySTR+=`&startdate=${filter.startDate}&enddate=${filter.endtDate}&`
+            // }

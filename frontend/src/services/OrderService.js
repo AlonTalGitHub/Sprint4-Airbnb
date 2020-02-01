@@ -33,14 +33,22 @@ async function save(order) {
     return addedOrder
 }
 function _makeQuerySTR(filterBy) {
+    let STR = '';
     if (filterBy.orders) {
         let orders = filterBy.orders
-        console.log(' _makeQuerySTR: orders are ',orders)
-        let Length=orders.length
-        let STR=orders.reduce((acc, item,idx) => {
-            if(idx<Length-1) return acc+`order${idx}=${item}&`
-            else return acc+`order${idx}=${item}`}, '?reserved=true&')
-            return STR;
+        console.log(' _makeQuerySTR: orders are ', orders)
+        let Length = orders.length
+        STR = orders.reduce((acc, item, idx) => {
+            if (idx < Length - 1) return acc + `order${idx}=${item}&`
+            else return acc + `order${idx}=${item}`
+        }, '?reserved=true&')
+        return STR;
     }
-    else return '';
+    if (filterBy.houserequests) {
+        STR = `?houserequests=true&houseId=${filterBy.houseId}`
+    }
+    if(filterBy.dates){
+        STR=`?dates=true&startDate=${filterBy.startDate}&endDate=${filterBy.endDate}`
+    }
+    return STR;
 }

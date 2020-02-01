@@ -1,8 +1,9 @@
 const dbService = require('../services/db.service')
 const ObjectId = require('mongodb').ObjectId
-
+// const ISODate=require('mongodb').ISODate
 async function query(filterBy = {}) {
     const criteria = _buildCriteria(filterBy)
+    console.log('criteria is: ', criteria)
     try {
         const collection = await dbService.getCollection('order')
         const orders = await collection.find(criteria).toArray();
@@ -26,10 +27,11 @@ async function remove(orderId) {
 
 
 async function add(order) {
+    order.isConfirmedByHouse = false
     try {
         const collection = await dbService.getCollection('order')
         await collection.insertOne(order);
-        console.log('order.service, order was added successfully, order is: ',order)
+        console.log('order.service, order was added successfully, order is: ', order)
         return order;
     } catch (err) {
         console.log(`ERROR: cannot insert order`)
@@ -37,19 +39,62 @@ async function add(order) {
     }
 }
 
+async function update(order) {
+    let filterBy = { updateOrder: true }
+    const criteria = _buildCriteria(filterBy)
+    let orderId = { _id: ObjectId(order._id) }
+    console.log('order.service: ', orderId, criteria)
+    try {
+        const collection = await dbService.getCollection('order')
+        await collection.update(orderId, criteria)
+        let updatedOrder = await query(orderId)
+        return updatedOrder
+    }
+    catch (err) {
+        console.log(`ERROR: cannot update order`)
+        throw err;
+    }
+
+}
+
 function _buildCriteria(filterBy) {
     let criteria = {};
-    var ids=[]
+    var ids = []
     if (filterBy._id) {
         criteria._id = filterBy._id
     }
     if (filterBy.reserved) {
         delete filterBy.reserved
-    for (key in filterBy) {
-        ids.push(ObjectId(filterBy[key]))
+        for (key in filterBy) {
+            ids.push(ObjectId(filterBy[key]))
+        }
+        criteria = { _id: { "$in": ids } }
+        console.log('order.service _buildCriteria(filterBy): ', criteria)
     }
-    criteria={_id:{"$in":ids}}
-    console.log('order.service _buildCriteria(filterBy): ', criteria)
+    if (filterBy.houserequests) {
+        console.log('order.service houserequests for house ')
+        criteria = {
+            "houseId": { $eq: filterBy.houseId }
+        }
+    }
+    if (filterBy.updateOrder) {
+        //{_id:dfdsg},{$set:{isConfirmedByHouse:true}}
+        criteria = { $set: { isConfirmedByHouse: true } }
+    }
+    if (filterBy.dates) {
+        // criteria = {
+        //     $and: [
+        //         { "endDate": { $lt: `ISODate(${filterBy.startDate})` } },
+        //         { "startDate": { $gte: `ISODate(${filterBy.endDate})` } }
+        //     ]
+        // }
+        // criteria={
+        //     // endDate:{$gte:filterBy.startDate}
+        //                 "startDate":{$lte:filterBy.endDate}
+        // }
+        criteria = {
+            $and: [{ "endDate": { $gte: filterBy.startDate } }, { "startDate": { $lt: filterBy.endDate } }]
+        }
     }
     return criteria;
 }
@@ -57,5 +102,6 @@ function _buildCriteria(filterBy) {
 module.exports = {
     query,
     remove,
-    add
+    add,
+    update
 }

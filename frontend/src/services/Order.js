@@ -4,6 +4,8 @@ export default class Order {
         this.byUser = {"_id":userId}
         this.numOfPeople=numOfPeople;
         this.createdAt = (new Date).getTime()
+        // this.startDate=dates.startDate
+        // this.endDate=dates.endDate
     }
 }
 

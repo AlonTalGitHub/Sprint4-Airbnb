@@ -20,15 +20,18 @@ import Order from "../services/Order.js";
 import localStorageService from "../services/localStorageService";
 import UserService from "../services/UserService";
 import OrderService from "../services/OrderService";
-import {saveOrder} from "../actions/OrderActions";
+import { saveOrder } from "../actions/OrderActions";
+import moment from 'moment'
 class ReserveHouse extends Component {
     state = {
         filterBy: {
             numOfperson: 1,
             location: ''
         },
+
         startDate: null,
-        endDate: null,
+        endDate: null
+
 
     }
 
@@ -45,11 +48,11 @@ class ReserveHouse extends Component {
         this.setState({ filterBy })
     }
 
-    handleChange = date => {
-        this.setState({
-            startDate: date
-        });
-    }
+    // handleChange = date => {
+    //     this.setState({
+    //         startDate: date
+    //     });
+    // }
 
     onSearch = () => {
         this.props.setFilter(this.state.filterBy)
@@ -60,21 +63,30 @@ class ReserveHouse extends Component {
         if (!user) {
             alert('login first!')
             return;
-        } 
-        let houseOrder = new Order(this.props.house._id,user._id, this.state.filterBy.numOfperson);
-        console.log('ReserveHouse, user is: ',this.props.loggedInUser);
+        }
+        // debugger
+        // console.log('ReserveHouse, user is: ', this.props.loggedInUser);
+        //.format("MMM Do YYYY")
+        console.log('reserve btn: ',this.state)
+        let dates = { startDate: this.state.startDate._d, endDate: this.state.endDate._d }
+        console.log('the dates the user chose: ', dates)//{ startDate: dates.startDate._d, endDate: dates.endDate._d }) }
+        let houseOrder = new Order(this.props.house._id, user._id, this.state.filterBy.numOfperson);
+        //this.state.startDate._d
+        houseOrder.startDate=dates.startDate
+        houseOrder.endDate=dates.endDate
         try {
             await this.props.saveOrder(houseOrder)
-            let orders=this.props.orders
-            let storedOrderId=orders[orders.length-1]._id
+            console.log('orders are: ', this.props.orders)
+            let orders = this.props.orders
+            let storedOrderId = orders[orders.length - 1]._id
             user.reserved.push(storedOrderId)
             await UserService.update(user)
         }
-        catch(err){
-            console.log('ReserveHouse: add house failed',err)
+        catch (err) {
+            console.log('ReserveHouse: add house failed', err)
             throw err;
         }
-        finally{
+        finally {
             console.log('check your reserved items ')
         }
 
@@ -88,37 +100,40 @@ class ReserveHouse extends Component {
             return "search-form flex column space-between reserve-form"
         }
     }
-
+    changeDates = (userDates) => {
+        console.log('before setState :', userDates)
+        this.setState({ ...this.state, ...userDates })
+    }
     render() {
         // const [startDate, setStartDate] = useState(null);
         const { house } = this.props;
         return (
             <div className={this.addReserveClass()}>
-                <h4>Reserve now</h4>
+                <h4 className="reserve-form-header">Reserve Now!</h4>
                 <input onChange={this.onChange} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder={house.address.country + " | " + house.title}></input>
-                <DatePicker></DatePicker>
+                <DatePicker changeDates={this.changeDates}></DatePicker>
                 <div className="form-cap flex space-between align-center">
                     <span>How Many People?</span>
                     <span className="form-cap-control flex space-between">
                         <button onClick={() => this.onChangeCap(1)} className="form-num-btn pointer" name="numOfperson">+</button>
                         <span className="form-cap-num">{this.state.filterBy.numOfperson}</span>
-                        <button onClick={() => this.onChangeCap(-1)} className="form-num-btn pointer" name="numOfperson">-</button>
+                        <button onClick={() => this.onChangeCap(-1)} className="form-num-btn pointer minus" name="numOfperson">-</button>
                     </span>
                 </div>
-
+                <span className="reserve-price-tag">${house.price}/night</span>
                 <Link to="/house">
-                    <button onClick={this.onReserve} className="form-btn pointer flex align-center justify-center">RESERVE</button>
+                    <button onClick={this.onReserve} className="form-btn pointer flex align-center justify-center reserve-btn">RESERVE</button>
                 </Link>
             </div>)
 
-}
+    }
 }
 
 const mapStateToProps = state => {
     return {
         filterBy: state.house.filterBy,
         loggedInUser: state.user.loggedInUser,
-        orders:state.order.orders
+        orders: state.order.orders
     };
 };
 const mapDispatchToProps = {

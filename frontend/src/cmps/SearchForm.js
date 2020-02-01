@@ -6,27 +6,35 @@ import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import { connect } from 'react-redux';
 import { setFilter, filterHouses } from '../actions/HouseActions'
+import { loadOrders } from '../actions/OrderActions'
 import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import moment from 'moment'
+import OrderService from '../services/OrderService.js';
+import HouseService from '../services/HouseService'
 import '../assets/styles/index.css'
-
 
 class SearchForm extends Component {
     state = {
         filterBy: {
             numOfperson: 1,
             location: '',
-            nightsNum:1
+            nightsNum: 1
         },
         startDate: null,
         endDate: null
     }
-
-    onChangeCap = (diff,key) => {
+    changeDates = (userDates) => {
+        let startDate = moment.utc(userDates.startDate).format()
+        let endDate = moment.utc(userDates.endDate).format()
+        let newDates={startDate:startDate,endDate:endDate}
+        this.setState({ ...this.state, ...newDates })
+    }
+    onChangeCap = (diff, key) => {
         if (this.state.filterBy[key] === 1 && diff === -1) return
-        this.setState(prevState => prevState.filterBy[key] += diff,()=>console.log(this.state))
+        this.setState(prevState => prevState.filterBy[key] += diff, () => console.log(this.state))
     }
 
-    onChange = (ev) => {
+    setLocation = (ev) => {
         const key = ev.target.name
         const value = ev.target.value
         const filterBy = { ...this.state.filterBy }
@@ -40,31 +48,32 @@ class SearchForm extends Component {
         });
     }
 
-    onSearch = () => {
-        this.props.filterHouses(this.state.filterBy)
+    onSearch = async () => {
+        this.props.filterHouses(this.state)
     }
 
-    saveNightNum=(val)=>{
-        const filterBy={...this.state.filterBy}
-        filterBy.nightsNum=val
-        this.setState({filterBy},console.log(this.state))
-    }
+    // saveNightNum=(val)=>{
+    //     const filterBy={...this.state.filterBy}
+    //     filterBy.nightsNum=val
+    //     this.setState({filterBy},console.log(this.state))
+    // }
 
     render() {
         // const [startDate, setStartDate] = useState(null);
         return <div className="search-form flex column space-between">
             {/* <form> */}
             <h2>Book with Turtle House and feel At Home, Wherever You Go</h2>
-            <input onChange={this.onChange} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder="Where To Go?"></input>
+            <input onChange={this.setLocation} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder="Where To Go?"></input>
             <div className="form-cap flex space-between align-center">
                 <span>How Many People?</span>
                 <span className="form-cap-control flex space-between">
-                    <button onClick={() => this.onChangeCap(1,'numOfperson')} className="form-num-btn pointer" name="numOfperson">+</button>
+                    <button onClick={() => this.onChangeCap(1, 'numOfperson')} className="form-num-btn pointer" name="numOfperson">+</button>
                     <span className="form-cap-num">{this.state.filterBy.numOfperson}</span>
-                    <button onClick={() => this.onChangeCap(-1,'numOfperson')} className="form-num-btn pointer" name="numOfperson">-</button>
-                </span>                
+                    <button onClick={() => this.onChangeCap(-1, 'numOfperson')} className="form-num-btn pointer minus" name="numOfperson">-</button>
+                </span>
             </div>
-            <DatePicker saveNightNum={this.saveNightNum} ></DatePicker>
+            {/* <DatePicker saveNightNum={this.saveNightNum}></DatePicker> */}
+            <DatePicker changeDates={this.changeDates}></DatePicker>
             {/* <div className="form-cap flex space-between align-center">
                 <span>How Many nights?</span>
                 <span className="form-cap-control flex space-between">
@@ -74,8 +83,8 @@ class SearchForm extends Component {
                 </span>                
             </div> */}
 
-           
-                
+
+
 
             {/* <Link onClick={this.handleClick} className="form-btn pointer flex align-center justify-center" to="/house">Search</Link> */}
             <Link className="align-self" to="/house">
@@ -90,12 +99,14 @@ class SearchForm extends Component {
 
 const mapStateToProps = state => {
     return {
-        filterBy: state.house.filterBy
+        filterBy: state.house.filterBy,
+        houses: state.house.houses
     };
 };
 const mapDispatchToProps = {
     setFilter,
-    filterHouses
+    filterHouses,
+    loadOrders,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchForm)
