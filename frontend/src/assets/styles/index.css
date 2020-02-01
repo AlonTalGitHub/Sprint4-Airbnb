@@ -187,7 +187,13 @@ button.form-btn.reserve-btn {
 }
 
 .reserve-price-tag {
-    margin-Left: calc((100% - 70px)/2);
+    /* margin-Left: calc((100% - 70px)/2); */
+    text-align: center;
+}
+
+.reserve-price-tag-total {
+    font-weight: bold;
+    text-align: center;
 }
 
 .reserve-form-header {
@@ -394,5 +400,11 @@ img.index-cover {
     position: fixed;
 }
 
-
-/* img.logo:hover { filter: invert(65%) sepia(75%) saturate(4580%) hue-rotate(75deg) brightness(131%) contrast(95%); transform:scale(1.1); } */
+/* @media only screen and (max-width: 530px) {
+    .search-form {
+        width: 100vw;
+        height: 100vh;
+        margin: 0px;
+        margin-top: 280px;
+    }
+} */

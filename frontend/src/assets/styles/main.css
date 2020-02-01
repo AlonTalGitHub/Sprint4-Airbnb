@@ -9,8 +9,23 @@ ul.house-list.reservedpage {
 }
 
 h2.reservedpage {
-    padding-top: 130px;
+    margin-top: 130px;
     padding-left: 24px;
+    padding: 30px;
+    text-align: center;
+}
+
+h3.reservedpage {
+    text-align: center;
+}
+
+h4.reserve-form-house-name {
+    text-align: center;
+}
+
+h3.reserve-form-header {
+    text-align: center;
+    margin:0px;
 }
 
 .house-main-head {
@@ -361,7 +376,7 @@ ul.house-list.clean-list>* {
         position: relative;
     }
     ul.request-list {
-        /*margin-top: 250px;*/
+        /*margin-top: 250px; */
     }
     .house-requests-container {
         margin-top: 80px;

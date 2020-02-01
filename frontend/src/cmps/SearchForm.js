@@ -63,9 +63,9 @@ class SearchForm extends Component {
         return <div className="search-form flex column space-between">
             {/* <form> */}
             <h2>Book with Turtle House and feel At Home, Wherever You Go</h2>
-            <input onChange={this.setLocation} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder="Where To Go?"></input>
+            <input onChange={this.setLocation} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder="Where to?"></input>
             <div className="form-cap flex space-between align-center">
-                <span>How Many People?</span>
+                <span>Number of Guests</span>
                 <span className="form-cap-control flex space-between">
                     <button onClick={() => this.onChangeCap(1, 'numOfperson')} className="form-num-btn pointer" name="numOfperson">+</button>
                     <span className="form-cap-num">{this.state.filterBy.numOfperson}</span>
