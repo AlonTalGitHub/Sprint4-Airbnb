@@ -49,12 +49,6 @@ class ReserveHouse extends Component {
         this.setState({ filterBy })
     }
 
-    // handleChange = date => {
-    //     this.setState({
-    //         startDate: date
-    //     });
-    // }
-
     onSearch = () => {
         this.props.setFilter(this.state.filterBy)
     }
@@ -109,6 +103,10 @@ class ReserveHouse extends Component {
         console.log('before setState :', userDates)
         this.setState({ ...this.state, ...userDates })
     }
+    getTotalPrice = () => {
+        if (!this.state.startDate || !this.state.endDate) return (<span></span>)
+        else return (< span className="reserve-price-tag-total">{'Total: ' + this.props.house.price * (this.state.endDate.subtract(this.state.startDate).days())}</span>)
+    }
     render() {
         // const [startDate, setStartDate] = useState(null);
         const { house } = this.props;
@@ -127,10 +125,10 @@ class ReserveHouse extends Component {
                     </span>
                 </div>
                 <span className="reserve-price-tag">${house.price}/night</span>
-                {this.state.endDate && this.state.startDate && < span className="reserve-price-tag-total">Total:${house.price * (this.state.endDate.subtract(this.state.startDate).days())}</span>}
+                {this.getTotalPrice()}
                 <Link to="/house">
-    <button onClick={this.onReserve} className="form-btn pointer flex align-center justify-center reserve-btn">RESERVE</button>
-</Link>
+                    <button onClick={this.onReserve} className="form-btn pointer flex align-center justify-center reserve-btn">RESERVE</button>
+                </Link>
             </div >)
 
     }

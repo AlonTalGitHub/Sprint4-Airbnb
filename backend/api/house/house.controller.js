@@ -8,15 +8,15 @@ const ObjectId = require('mongodb').ObjectId
 async function getHouses(req, res) {
     console.log('controller query', req.query)
     try {
-        if (req.query.startDate && req.query.endDate) {
-            let userDates={...req.query}
-            delete userDates.dates
-            let houses=await _getAvailableHouses(userDates)
-            res.send(houses)
-        } else{
+        // if (req.query.startDate && req.query.endDate) {
+        //     let userDates={...req.query}
+        //     delete userDates.dates
+        //     let houses=await _getAvailableHouses(userDates)
+        //     res.send(houses)
+        // } else{
             let houses = await houseService.query(req.query)
             res.send(houses)
-        }
+        // }
     }
     catch (err) {
         // logger.error('Cannot get houses', err);
@@ -71,18 +71,18 @@ async function updateHouse(req, res) {
     house = await houseService.update(house)
     res.send(house)
 }
-async function _getAvailableHouses(userDates) {
-    try {
-        let houses = await houseService.getAvailableHouses(userDates)
-        // res.send(houses)
-        return houses
-    } catch (err) {
-        // logger.error('Cannot get houses', err);
-        console.log('Cannot get houses', err);
-        res.status(500).send({ error: 'cannot get houses' })
+// async function _getAvailableHouses(userDates) {
+//     try {
+//         let houses = await houseService.getAvailableHouses(userDates)
+//         // res.send(houses)
+//         return houses
+//     } catch (err) {
+//         // logger.error('Cannot get houses', err);
+//         console.log('Cannot get houses', err);
+//         res.status(500).send({ error: 'cannot get houses' })
 
-    }
-}
+//     }
+// }
 module.exports = {
     getHouses,
     deleteHouse,

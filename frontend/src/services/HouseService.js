@@ -67,11 +67,13 @@ function _createQueryStr(filter) {
     }
     if (filter.favorites) {
         const ids = filter.favorites.join()
-        querySTR += `?ids=${ids}`
+        //querySTR += `?ids=${ids}`
+        querySTR = `/house?ids=${ids}` //ask yael
     }
     if (filter.countries) {
         const countries = filter.countries.join()
-        querySTR += `?countries=${countries}`
+        // querySTR += `?countries=${countries}`
+        querySTR = `/house?countries=${countries}`//ask yael
     }
     console.log('query ready', querySTR)
     return querySTR;
