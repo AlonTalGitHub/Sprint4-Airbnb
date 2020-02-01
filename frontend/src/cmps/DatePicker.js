@@ -25,6 +25,9 @@ export default class SearchForm extends Component {
     }
     componentDidMount() {
     }
+    // componentWillUpdate(){
+    //     this.sendDates();
+    // }
     sendDates = () => {
         this.props.changeDates({ ...this.state })
     }
@@ -48,7 +51,7 @@ export default class SearchForm extends Component {
             startDateId="start-date" // PropTypes.string.isRequired,
             endDate={this.state.endDate} // momentPropTypes.momentObj or null,
             endDateId="end-date" // PropTypes.string.isRequired,
-            onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate }, this.sendDates())}  // PropTypes.func.isRequired,
+            onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate },()=>this.sendDates())}  // PropTypes.func.isRequired,
             focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
             onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
         />
