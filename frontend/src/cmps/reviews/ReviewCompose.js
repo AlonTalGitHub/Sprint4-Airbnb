@@ -6,16 +6,16 @@ class ReviewCompose extends Component {
 
     state = {
         reviewToEdit: {
-            "byUser": {
-                "_id": "123456789",
-                "fullName": "User",
-                "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
-            },
+            "byUser": null,
             "txt": '',
             "rate": 4,
-            "createdAt": "2020-01-15T07:51:18.138Z",
+            "createdAt": Date.now(),
         }
     };
+
+    componentDidMount() {
+        if (this.props.loggedInUser) this.loadUser();  
+    }
 
     handleChange = ev => {
         const { name, value } = ev.target;
@@ -26,6 +26,12 @@ class ReviewCompose extends Component {
             }
         }));
     };
+
+    loadUser = () => {
+        const { _id , username, imgURL } = this.props.loggedInUser;
+        const byUser = { _id , username, imgURL }
+        this.setState({ reviewToEdit: {...this.state.reviewToEdit, byUser } }, () => console.log(this.state.reviewToEdit));
+    }
 
     addReview = async (ev) => {
         ev.preventDefault();
@@ -54,11 +60,12 @@ class ReviewCompose extends Component {
             <section>
                 <form onSubmit={this.addReview}>
                     <textarea
+                        className="review-textarea"
                         name="txt"
                         onChange={this.handleChange}
                         value={this.state.reviewToEdit.txt}
                     ></textarea>
-                    <button>Add</button>
+                    <button className="form-btn pointer">Add</button>
                 </form>
             </section>
         )
@@ -69,7 +76,7 @@ const mapStateToProps = state => {
     return {
         houses: state.house.houses,
         //   users: state.user.users,
-        //   loggedInUser: state.user.loggedInUser
+        loggedInUser: state.user.loggedInUser
     };
 };
 const mapDispatchToProps = {

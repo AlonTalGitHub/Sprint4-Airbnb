@@ -11,12 +11,12 @@ import NavBar from '../cmps/NavBar';
 class HousePage extends Component {
     componentDidMount() {
         console.log("did mount house page")
-        // this.props.filterHouses(this.props.filterBy)
+        this.props.filterHouses(this.props.filterBy)
 
     }
 
     async componentWillUnmount() {
-        // await this.props.filterHouses({ location: '', numOfperson: 1 })
+        await this.props.filterHouses({ location: '', numOfperson: 1 })
     }    
 
     onDeleteHouse = (houseId) => {

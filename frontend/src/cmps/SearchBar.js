@@ -8,6 +8,7 @@ import { setFilter, filterHouses } from '../actions/HouseActions'
 import countries from '../services/CountryService'
 // import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
 import '../assets/styles/index.css'
+import '../assets/styles/searchbar.css'
 
 
 class SearchBar extends Component {
@@ -55,8 +56,8 @@ class SearchBar extends Component {
 
     selectedText(value) {
         if(value==='Anywhere') value=''
-        const filterBy = { ...this.props.filterBy }
-        filterBy.location = value
+        const filterBy = { ...this.props.filterBy }       
+        filterBy.location = value.toLowerCase()
 
         this.setState({
             text: value,
@@ -71,7 +72,7 @@ class SearchBar extends Component {
             return null;
         }
         return (
-            <ul style={{ "position": "absolute", "backgroundColor": "white" }} >
+            <ul className="country-list" >
                 {
                     suggestions.map((item, index) => (<li key={index} onClick={() => this.selectedText(item)}>{item}</li>))
                 }
@@ -82,12 +83,10 @@ class SearchBar extends Component {
     render() {
         const { text, suggestions } = this.state;
         return <div className="flex column">
-
             {/* <input onFocus={this.handleFocus} onChange={this.onChange} className="form-loc" value={this.props.filterBy.location} type="text" name="location" placeholder="Where?"></input> */}
-            <input autoComplete="off" onFocus={this.handleFocus} onChange={this.onTextChange} className="form-loc" value={text} type="text" name="location" placeholder="Where?"></input>
+            <input autoComplete="off" onFocus={this.handleFocus} onChange={this.onTextChange}
+             className="form-loc" value={text} type="text" name="location" placeholder="Where?"></input>
             <div> {this.renderSuggestions()}</div>
-
-
         </div>
 
     }

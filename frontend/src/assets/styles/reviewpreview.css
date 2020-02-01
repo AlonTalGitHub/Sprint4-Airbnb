@@ -1,4 +1,4 @@
-/*---------- review ----------*/
+/*---------- reviews ----------*/
 
 .user-img-container img {
     display: block;
@@ -7,4 +7,9 @@
     /* position: absolute; */
     background-color: white;
     border-radius: 50%;
+}
+
+.review-textarea {
+    padding-bottom: 4px;
+    /* border-bottom: 1px solid rgb(48, 48, 48); */
 }

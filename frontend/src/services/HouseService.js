@@ -194,6 +194,7 @@ const testHouses = [
 // }
 //shay's function:
 function _createQueryStr(filter) {
+    console.log(' _createQueryStr(filter) blah blah ',filter)
     var querySTR = '/house'
     if (filter.byId) {
         querySTR += `/${filter._id}`

@@ -26,7 +26,7 @@ class SearchForm extends Component {
     changeDates = (userDates) => {
         let startDate = moment.utc(userDates.startDate).format()
         let endDate = moment.utc(userDates.endDate).format()
-        let newDates={startDate:startDate,endDate:endDate}
+        let newDates = { startDate: startDate, endDate: endDate }
         this.setState({ ...this.state, ...newDates })
     }
     onChangeCap = (diff, key) => {
@@ -48,8 +48,15 @@ class SearchForm extends Component {
         });
     }
 
-    onSearch = async () => {
-        this.props.filterHouses(this.state)
+    onSearch = () => {
+        const filterBy={...this.state.filterBy}
+        filterBy.location.toLowerCase()
+        // let filter = { ...this.state}
+        // filter.filterBy=filterBy;
+        filterBy.startDate=this.state.startDate
+        filterBy.endDate=this.state.endDate
+        console.log('this is searchForm: ',filterBy)
+        this.props.filterHouses(filterBy)
     }
 
     // saveNightNum=(val)=>{

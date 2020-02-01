@@ -30,10 +30,6 @@ class HouseDetails extends Component {
         this.loadHouse(houseId)
     }
 
-    async componentWillUnmount() {
-        // await this.props.filterHouses({ location: '', numOfperson: 1 })
-    }
-
     loadHouse = async (houseId) => {
         const house = await HouseService.get(houseId)
         console.log('house details page',house)

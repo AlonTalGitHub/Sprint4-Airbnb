@@ -1,4 +1,5 @@
 // const logger = require('../../services/logger.service')
+const userService = require('../user/user.service')
 const houseService = require('./house.service')
 const ObjectId = require('mongodb').ObjectId
 
@@ -47,6 +48,18 @@ async function addHouse(req, res) {
     var house = req.body;
     // house.byUserId = req.session.user._id;
     house = await houseService.add(house)
+    console.log('house.controler house id is', house._id.toString())
+    const { _id } = house.owner
+    const user = await userService.getById(_id)
+    console.log('house.controler user is', user)
+    user.houses.push(house._id.toString())
+    user.isHost = true
+    updateUser = await userService.update(user)
+    console.log('updates user in house controller',updateUser)
+
+
+
+
     // house.byUser = req.session.user;
     // TODO - need to find aboutUser
     // house.aboutUser = {} 

@@ -1,6 +1,5 @@
 const dbService = require('../services/db.service')
 const ObjectId = require('mongodb').ObjectId
-// const ISODate=require('mongodb').ISODate
 async function query(filterBy = {}) {
     const criteria = _buildCriteria(filterBy)
     console.log('criteria is: ', criteria)
@@ -78,20 +77,9 @@ function _buildCriteria(filterBy) {
         }
     }
     if (filterBy.updateOrder) {
-        //{_id:dfdsg},{$set:{isConfirmedByHouse:true}}
         criteria = { $set: { isConfirmedByHouse: true } }
     }
     if (filterBy.dates) {
-        // criteria = {
-        //     $and: [
-        //         { "endDate": { $lt: `ISODate(${filterBy.startDate})` } },
-        //         { "startDate": { $gte: `ISODate(${filterBy.endDate})` } }
-        //     ]
-        // }
-        // criteria={
-        //     // endDate:{$gte:filterBy.startDate}
-        //                 "startDate":{$lte:filterBy.endDate}
-        // }
         criteria = {
             $and: [{ "endDate": { $gte: filterBy.startDate } }, { "startDate": { $lt: filterBy.endDate } }]
         }
