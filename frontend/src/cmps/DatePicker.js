@@ -36,9 +36,7 @@ export default class SearchForm extends Component {
     //         this.props.saveNightNum(numOfnights)
     //     }
     // }
-    handleChange=(startDate,endDate)=>{
-        this.setState({startDate,endDate},this.sendDates)
-    }
+    
 
     render() {
         // const BAD_DATES = [moment(), moment().add(10, 'days')];
