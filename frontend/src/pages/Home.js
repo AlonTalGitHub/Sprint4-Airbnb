@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setFilter, filterHouses } from '../actions/HouseActions'
+import { setFilter, filterHouses, getBestByCountry } from '../actions/HouseActions'
 
 import SearchForm from '../cmps/SearchForm';
 import backgroundImage from '../assets/img/bgc.jpg'
@@ -25,9 +25,10 @@ class Home extends Component {
   }
 
   load = async () => {
-    // await this.props.setFilter({location:'',numOfperson:1})
-    // debugger
-    this.props.filterHouses({ location: '', numOfperson: 1, nightsNum: 1 })
+    // this.props.filterHouses({ location: '', numOfperson: 1, nightsNum: 1 })
+    this.props.getBestByCountry({ countries: ['israel'] })
+    this.props.getBestByCountry({ countries: ['spain'] })
+    this.props.getBestByCountry({ countries: ['italy'] })
 
   }
 
@@ -37,23 +38,28 @@ class Home extends Component {
 
   }
 
-
-  handleChange = ev => { };
-
   render() {
     return (
       <div className="home">
         <NavBar caller={"home"}></NavBar>
         <img className="index-cover" src={backgroundImage} />
         <SearchForm></SearchForm>
-       {/* {this.props.houses.length&& */}
-       <h4 className="reccomended-headline">Most reccomended in Israel</h4>
-       <HouseList houses={this.getBestByCountry('israel')}></HouseList> 
-       <h4 className="reccomended-headline">Most reccomended in England</h4>
-       <HouseList houses={this.getBestByCountry('ireland')}></HouseList> 
-       <h4 className="reccomended-headline">Most reccomended in Italy</h4>
-       <HouseList houses={this.getBestByCountry('italy')}></HouseList> 
-       {/* <MapMarker/> */}
+        {/* {this.props.houses.length&& */}
+        <section className="lists-section">
+          <div>
+            <h4 className="reccomended-headline">Most reccomended in Israel</h4>
+            <HouseList houses={this.props.israel}></HouseList>
+          </div>
+          <div>
+            <h4 className="reccomended-headline">Most reccomended in Italy</h4>
+            <HouseList houses={this.props.italy}></HouseList>
+          </div>
+          <div>
+            <h4 className="reccomended-headline">Most reccomended in Spain</h4>
+            <HouseList houses={this.props.spain}></HouseList>
+          </div>
+        </section>
+        {/* /* <MapMarker/> */}
       </div>
     );
   }
@@ -62,6 +68,9 @@ class Home extends Component {
 const mapStateToProps = state => {
   return {
     houses: state.house.houses,
+    israel: state.house.israel,
+    italy: state.house.italy,
+    spain: state.house.spain,
     filterBy: state.house.filterBy,
     loggedInUser: state.user.loggedInUser,
     isLoading: state.system.isLoading
@@ -69,6 +78,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = {
   setFilter,
+  getBestByCountry,
   // loadHouses,
   filterHouses
 };

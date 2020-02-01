@@ -3,12 +3,17 @@ const ObjectId = require('mongodb').ObjectId
 
 async function query(filterBy = {}) {
     const criteria = _buildCriteria(filterBy)
-    console.log('the criteria is: ', criteria)
+    console.log('house service the criteria is: ', criteria)
+    let houses;
     try {
         let collection = await dbService.getCollection('house')
-        // console.log('this is house.controller speaking collection is :',collection)
-        let houses = await collection.find(criteria).toArray();
-        // console.log('this is house.controller speaking houses is :',houses)
+        if (filterBy.countries) {
+            houses = await collection.find(criteria).sort({ "rating": -1 }).limit(3).toArray();
+            
+        } else {
+            houses = await collection.find(criteria)
+        }
+        console.log('this is house.service speaking houses is :', houses[0])
         return houses
     } catch (err) {
         console.log('ERROR: cannot find houses')
@@ -43,7 +48,7 @@ async function update(house) {
     const collection = await dbService.getCollection('house')
     house._id = ObjectId(house._id);
     try {
-        await collection.replaceOne({"_id":house._id}, {$set : house})
+        await collection.replaceOne({ "_id": house._id }, { $set: house })
         return house
     } catch (err) {
         console.log(`ERROR: cannot update user ${house._id}`)
@@ -67,8 +72,15 @@ function _buildCriteria(filterBy) {
         }
         //ADD startDate and endDate to criteria!!
     }
-
-
+    if (filterBy.ids) {
+        let idsArr = filterBy.ids.split(',')
+        let objectIds = idsArr.map(id => ObjectId(id))
+        criteria = { _id: { "$in": objectIds } }
+    }
+    if (filterBy.countries) {
+        let countries = filterBy.countries.split(',')
+        criteria = { "address.country": { "$in": countries } }
+    }
     // if(filterBy.capacity){
     //     criteria.capacity=parseInt(filterBy.capacity)
     //     //from stack overFlow 'relation.$.status': 'friends'

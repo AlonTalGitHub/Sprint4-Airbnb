@@ -12,11 +12,40 @@ export function filterHouses(filter) {
     dispatch(_setHouses(houses))
   }
 }
+export function getBestByCountry(filter) {
+
+  console.log(filter)
+  return async (dispatch) => {    
+    let houses = await HouseService.query(filter);
+    console.log(houses)   
+    dispatch(_setBestByCountry(filter.countries[0],houses))
+    // dispatch(_setBestByCountry(filter.location.toUpperCase(),houses))
+  }
+}
+
+export function AddToFavorites(ids) {
+  if (ids.length > 0) {
+    return async dispatch => {
+      try {        
+        const favHouses = await HouseService.query({ favorites: ids })        
+        dispatch(_AddToFavs(favHouses))
+      }
+      catch (err) {
+        console.log(err)
+      }
+    }
+  } else {
+    return dispatch => {
+      dispatch(_AddToFavs([])) 
+    }
+  }
+
+}
 
 export function setFilter(filter) {
   return dispatch => {
     dispatch(_setFilter(filter));
-    
+
   };
 }
 
@@ -42,11 +71,25 @@ export function deleteHouse(houseId) {
     catch (err) {
       console.log(err)
     }
-    
+
   }
 }
 
-        
+function _setBestByCountry(country,houses) {
+  return {    
+    type: `SET_BEST_${country.toUpperCase()}`,
+    houses
+  }
+}
+
+function _AddToFavs(houses) {
+  return {
+    type: 'SET_FAVS',
+    houses
+  }
+}
+
+
 function _setHouses(houses) {
   return {
     type: 'SET_HOUSES',
@@ -72,7 +115,7 @@ function _updateHouse(house) {
     type: 'HOUSE_UPDATE',
     house
   };
-  
+
 }
 
 function _deleteHouse(houseId) {

@@ -194,18 +194,27 @@ const testHouses = [
 // }
 //shay's function:
 function _createQueryStr(filter) {
-    var querySTR='/house'
-    if(filter.isReserved){
-        querySTR+=  `/${filter._id}`
+    var querySTR = '/house'
+    if (filter.isReserved) {
+        querySTR += `/${filter._id}`
     }
-    if(filter.location){
-        querySTR+=`?country=${filter.location}&capacity=${filter.numOfperson}`
+    if (filter.location) {
+        querySTR += `?country=${filter.location}&capacity=${filter.numOfperson}`
     }
-    if(filter.startDate&&!filter.location){
-        querySTR+=`?startdate=${filter.startDate}&enddate=${filter.endtDate}&`
+    if (filter.startDate && !filter.location) {
+        querySTR += `?startdate=${filter.startDate}&enddate=${filter.endtDate}&`
     }
-    if(filter.startDate&&filter.location){
-        querySTR+=`&startdate=${filter.startDate}&enddate=${filter.endtDate}&`
+    if (filter.startDate && filter.location) {
+        querySTR += `&startdate=${filter.startDate}&enddate=${filter.endtDate}&`
     }
+    if (filter.favorites) {
+        const ids = filter.favorites.join()
+        querySTR += `?ids=${ids}`
+    }
+    if (filter.countries) {
+        const countries = filter.countries.join()
+        querySTR += `?countries=${countries}`
+    }
+    console.log('query ready', querySTR)
     return querySTR;
 }

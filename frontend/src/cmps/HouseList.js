@@ -145,7 +145,7 @@ class HouseList extends Component {
                 {/* <h2 className="house-main-head">Houses List</h2> */}
                 <ul className={"house-list clean-list "+ this.props.caller}>
                     {houses.map((house,idx) => (
-                        <li key={idx}>
+                        <li key={house._id}>
                             <HousePreview house={house}/> 
                         </li>
                     ))}

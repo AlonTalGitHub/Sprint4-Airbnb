@@ -16,13 +16,13 @@ class SearchBar extends Component {
         filterBy: this.props.filterBy,
         isMenuOpen: false,
         suggestions: [],
-        text: ''
+        text: this.props.filterBy.location
 
     }
 
     componentDidMount() {
         console.log(this.props.filterBy)
-        this.setState({ filterBy: this.props.filterBy }, console.log(this.state))
+        this.setState({ filterBy: {...this.props.filterBy} }, console.log(this.state))
     }
 
 
@@ -56,7 +56,7 @@ class SearchBar extends Component {
 
     selectedText(value) {
         if(value==='Anywhere') value=''
-        const filterBy = { ...this.props.filterBy }       
+        const filterBy = { ...this.state.filterBy }       
         filterBy.location = value.toLowerCase()
 
         this.setState({
@@ -81,7 +81,7 @@ class SearchBar extends Component {
     }
 
     render() {
-        const { text, suggestions } = this.state;
+        const { text, suggestions, filterBy } = this.state;
         return <div className="flex column">
             {/* <input onFocus={this.handleFocus} onChange={this.onChange} className="form-loc" value={this.props.filterBy.location} type="text" name="location" placeholder="Where?"></input> */}
             <input autoComplete="off" onFocus={this.handleFocus} onChange={this.onTextChange}
