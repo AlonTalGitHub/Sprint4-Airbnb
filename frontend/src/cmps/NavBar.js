@@ -30,8 +30,8 @@ class NavBar extends Component {
             console.log('this cmp was called by', caller);
         }
         const getNavClass = () => {
-            if (this.props.caller !== "home") return "nav-links flex align-center black"
-            else return "nav-links flex align-center"
+            if (this.props.caller !== "home") return "nav-links flex align-center space-between black"
+            else return "nav-links flex align-center space-between"
         }
         const getMenuItemClass = () => {
             if (this.props.caller !== "home") return "nav-item black"
