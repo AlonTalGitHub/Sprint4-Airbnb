@@ -33,20 +33,20 @@ class Favorites extends Component {
 
     loadFavoriteHouses = async () => {
         const favoriteIds = this.props.loggedInUser.favorites
-        if(favoriteIds.length>0){
+        if (favoriteIds.length > 0) {
             console.log('this is FavouritePage logged user is: ', this.props.loggedInUser, '\n\n', 'Favorite houses are', this.props.loggedInUser.favorites, '\n\n')
             try {
                 const favHouses = await HouseService.query({ favorites: favoriteIds })
-    
+
                 console.log('favorite houses ', favHouses)
-    
+
                 this.setState({ houses: favHouses })
             }
             catch (err) {
                 throw err
             }
-            
-        }else this.setState({houses:null})
+
+        } else this.setState({ houses: null })
     }
 
     render() {
@@ -55,7 +55,7 @@ class Favorites extends Component {
         return (
             <div>
                 <NavBar caller={"reservedpage"}></NavBar>
-                <h2 className="reservedpage">My Favorite Houses</h2>                
+                <h2 className="reservedpage">My Favorite Houses</h2>
                 {(houses) && <HouseList houses={this.props.houses}></HouseList>}
             </div>
         )
@@ -66,15 +66,10 @@ class Favorites extends Component {
 const mapStateToProps = state => {
     return {
         houses: state.house.favorites,
-        // filterBy: state.house.filterBy
         loggedInUser: state.user.loggedInUser
     };
 };
 const mapDispatchToProps = {
-    // // loadHouses,
-    // filterHouses,
-    // setFilter,
-    // deleteHouse
     AddToFavorites
 };
 

@@ -8,32 +8,35 @@ import { setFilter, filterHouses } from '../actions/HouseActions'
 // import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
 import '../assets/styles/index.css'
 
-export default class CapacityFilter extends Component {
+export default class PriceFilter extends Component {
     state = {
-        isMenuOpen: false
+        isMenuOpen: false,
+        price: 50
     }
 
     onToggleMenu = () => {
         this.setState((prevState => prevState.isMenuOpen = !prevState.isMenuOpen))
-        // this.setState((prevState => prevState.isMenuOpen = !prevState.isMenuOpen),()=>this.props.updateState())
+
     }
 
     onSaveFilter = () => {
         this.onToggleMenu()
-        this.props.saveFilter()
+        this.props.onChangePrice(this.state.price)
+        // this.props.saveFilter()
+    }
+
+    onChange = (ev) => {
+        this.setState({ price: +ev.target.value })
     }
 
     render() {
         const { isMenuOpen } = this.state
         return <React.Fragment>
-            <div className="filter-container flex column">
-                <button onClick={this.onToggleMenu} className="filter-btn pointer">Guests</button>
+            <div className="filter-container pointer flex column">
+                <button onClick={this.onToggleMenu} className="filter-btn">Price</button>
                 <div className={`filter-menu ${(isMenuOpen) ? 'shown-filter column space-between' : ''}`}>
-                    <span className="form-cap-control flex space-between align-center">
-                        <button onClick={() => this.props.onChangeCap(1, 'numOfperson')} className="filter-num-btn pointer" name="numOfperson">+</button>
-                        <span className="form-cap-num">{this.props.filterBy.numOfperson}</span>
-                        <button onClick={() => this.props.onChangeCap(-1, 'numOfperson')} className="filter-num-btn pointer" name="numOfperson">-</button>
-                    </span>
+                    <input onChange={this.onChange} type="range" name="price" value={this.state.price} min="50" max="1000"></input>
+                    <label htmlFor="price" >${this.state.price}</label>
                     <button onClick={this.onSaveFilter} className="save-filter-btn pointer">Save</button>
                 </div>
             </div>

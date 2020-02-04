@@ -4,6 +4,7 @@ const initialState = {
   israel:[],
   italy:[],
   spain:[],
+  myHouses:[],
   filterBy: { numOfperson: 1, location: '' },
   selectedHouse: null
 };
@@ -41,6 +42,8 @@ export default function (state = initialState, action = {}) {
     case 'SET_BEST_SPAIN':
       console.log('spainnnn', action.houses)
       return { ...state, spain: action.houses }
+    case 'SET_MY_HOUSES':      
+      return { ...state, myHouses: action.houses}
     default:
       return state;
   }

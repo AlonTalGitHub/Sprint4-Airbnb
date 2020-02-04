@@ -14,10 +14,7 @@ class HousePage extends Component {
         this.props.filterHouses(this.props.filterBy)
 
     }
-
-    async componentWillUnmount() {
-        await this.props.filterHouses({ location: '', numOfperson: 1 })
-    }    
+      
 
     onDeleteHouse = (houseId) => {
         this.props.deleteHouse(houseId)

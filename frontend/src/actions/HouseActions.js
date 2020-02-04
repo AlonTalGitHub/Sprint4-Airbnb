@@ -27,7 +27,7 @@ export function AddToFavorites(ids) {
   if (ids.length > 0) {
     return async dispatch => {
       try {        
-        const favHouses = await HouseService.query({ favorites: ids })        
+        const favHouses = await HouseService.query({ ids: ids })        
         dispatch(_AddToFavs(favHouses))
       }
       catch (err) {
@@ -37,6 +37,24 @@ export function AddToFavorites(ids) {
   } else {
     return dispatch => {
       dispatch(_AddToFavs([])) 
+    }
+  }
+
+}
+export function setMyHouses(ids) {
+  if (ids.length > 0) {
+    return async dispatch => {
+      try {        
+        const myHouses = await HouseService.query({ ids: ids })        
+        dispatch(_setMyHouses(myHouses))
+      }
+      catch (err) {
+        console.log(err)
+      }
+    }
+  } else {
+    return dispatch => {
+      dispatch(_setMyHouses([])) 
     }
   }
 
@@ -55,6 +73,7 @@ export function saveHouse(house) {
       const addedHouse = await HouseService.save(house);
       console.log('action add house', addedHouse)
       house._id ? dispatch(_updateHouse(addedHouse)) : dispatch(_addHouse(addedHouse));
+      return addedHouse
     } catch (err) {
       console.log('HouseActions: err in addHouse', err);
     }
@@ -85,6 +104,12 @@ function _setBestByCountry(country,houses) {
 function _AddToFavs(houses) {
   return {
     type: 'SET_FAVS',
+    houses
+  }
+}
+function _setMyHouses(houses) {
+  return {
+    type: 'SET_MY_HOUSES',
     houses
   }
 }

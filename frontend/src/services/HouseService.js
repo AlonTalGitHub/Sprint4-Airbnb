@@ -37,7 +37,7 @@ async function save(house) {
     const addedHouse = house._id ? await HttpService.put(`/house/${house._id}`, house)
         :
         await HttpService.post(`/house`, house);
-    console.log(addedHouse)
+    console.log('house service fron save house',addedHouse)
     return addedHouse
 }
 
@@ -51,12 +51,12 @@ function remove(id) {
 }
 
 function _createQueryStr(filter) {
-    
-    var querySTR = '/house'
+    var querySTR = '/house'    
+       
     if (filter.byId) {
         querySTR += `/${filter._id}`
     }
-    if (filter.location) {
+    if (filter.location==='' || filter.location) {        
         querySTR += `?country=${filter.location}&capacity=${filter.numOfperson}`
     }    
     if (filter.startDate && filter.endDate && !filter.location) {
@@ -65,13 +65,17 @@ function _createQueryStr(filter) {
     if(filter.startDate && filter.endDate && filter.location){
         querySTR += `&startDate=${filter.startDate}&endDate=${filter.endDate}`
     }
-    if (filter.favorites) {
-        const ids = filter.favorites.join()
+    if (filter.ids) {
+        const ids = filter.ids.join()
         querySTR += `?ids=${ids}`
     }
+    
     if (filter.countries) {
         const countries = filter.countries.join()
         querySTR += `?countries=${countries}`
+    }
+    if(filter.price){
+        querySTR+=`&price=${filter.price}`
     }
     console.log('query ready', querySTR)
     return querySTR;

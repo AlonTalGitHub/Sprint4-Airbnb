@@ -24,12 +24,10 @@ class Home extends Component {
 
   }
 
-  load = async () => {
-    // this.props.filterHouses({ location: '', numOfperson: 1, nightsNum: 1 })
+  load = async () => {    
     this.props.getBestByCountry({ countries: ['israel'] })
     this.props.getBestByCountry({ countries: ['spain'] })
     this.props.getBestByCountry({ countries: ['italy'] })
-
   }
 
 

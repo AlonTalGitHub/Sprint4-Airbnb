@@ -34,11 +34,11 @@ export function removeUser(userId) {
 export function getUserById(userId) {
   return async dispatch => {
     try {
-     let user = await UserService.getUserById(userId);
+     let user = await UserService.getById(userId);
      console.log('userActions',user)
       dispatch(_loadUser(user));  
     } catch (err) {
-      console.log('UserActions: err in removeUser', err);
+      console.log('UserActions: err in get user', err);
     }
   };
 }

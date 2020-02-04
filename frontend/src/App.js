@@ -17,6 +17,7 @@ import ReservedPage from './pages/ReservedPage';
 import UserProfile from './pages/UserProfile';
 import Favorites from './pages/Favorites';
 import RequestPage from './pages/RequestPage';
+import MyHouses from './pages/MyHouses';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/requests" component={RequestPage} exact/>
           <Route path="/reserved" component={ReservedPage} exact/>
           <Route path="/favorites" component={Favorites} exact/>
+          <Route path="/myhouses" component={MyHouses} exact/>
           <Route path="/login" component={Login} exact/>
           <Route path="/house" component={HousePage} exact/>
           <Route path="/about" component={About} exact/>

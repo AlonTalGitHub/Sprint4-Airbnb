@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { deleteHouse, filterHouses } from '../actions/HouseActions'
+import { updateUser } from '../actions/UserActions'
 import { connect } from 'react-redux';
 // import { connect } from 'react-redux';
 
@@ -26,18 +27,30 @@ class HouseDetails extends Component {
 
     componentDidMount() {
         const houseId = this.props.match.params.id;
-        console.log('details mounting: ',houseId)
+        console.log('details mounting: ', houseId)
         this.loadHouse(houseId)
     }
 
     loadHouse = async (houseId) => {
         const house = await HouseService.get(houseId)
-        console.log('house details page',house)
+        console.log('house details page', house)
         this.setState({ house })
     }
 
+    checkIfOwner = () => {
+        const { loggedInUser } = this.props
+        const isOwner = (loggedInUser && loggedInUser._id === this.state.house.owner._id) ? true : false
+        console.log(isOwner)
+        return isOwner
+    }
+
     handleDelete = async () => {
-        await this.props.deleteHouse(this.state.house._id)
+        const { _id } = this.state.house
+        let { loggedInUser } = this.props
+        const houses = loggedInUser.houses.filter(id=>id!==_id)
+        loggedInUser = { ...loggedInUser, houses }
+        await this.props.deleteHouse(_id)
+        await this.props.updateUser(loggedInUser)
         this.props.history.push('/')
     }
     render() {
@@ -57,20 +70,22 @@ class HouseDetails extends Component {
                             <span className="house-header span-line-break">{house.address.country}</span>
                             <span className="house-header span-line-break">Description</span>
                             <p className="house-content span-line-break bottom-line">{house.description}</p>
-                            <ReviewList reviews={ house.reviews}/>
-                            <ReviewCompose house={house}/>
-                            <div className="details-button-container flex space-between">
-                                <Link to={`/house/edit/${house._id}`} >
-                                    <button className="form-btn pointer">Edit House</button>
-                                </Link>
-                                <button onClick={this.handleDelete} className="form-btn pointer">Delete House</button>
-                            </div>
+                            <ReviewList reviews={house.reviews} />
+                            <ReviewCompose house={house} />
+                            {(this.checkIfOwner()) &&
+                                <div className="details-button-container flex space-between">
+                                    <Link to={`/house/edit/${house._id}`} >
+                                        <button className="form-btn pointer">Edit House</button>
+                                    </Link>
+                                    <button onClick={this.handleDelete} className="form-btn pointer">Delete House</button>
+                                </div>
+                            }
                         </div>
                         <ReserveHouse house={house} detailsPage={true} />
-                        
+
                     </div>
                     {/* <ChatBox house={this.house}></ChatBox> */}
-                    <MapPreview caller="housedetails" house={house}/>
+                    <MapPreview caller="housedetails" house={house} />
                 </section>}
             </React.Fragment>
         )
@@ -79,12 +94,14 @@ class HouseDetails extends Component {
 
 const mapStateToProps = state => {
     return {
-        houses: state.house.houses
+        houses: state.house.houses,
+        loggedInUser: state.user.loggedInUser
     };
 };
 const mapDispatchToProps = {
     deleteHouse,
-    filterHouses
+    filterHouses,
+    updateUser
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HouseDetails)

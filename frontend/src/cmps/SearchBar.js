@@ -17,13 +17,19 @@ class SearchBar extends Component {
         isMenuOpen: false,
         suggestions: [],
         text: this.props.filterBy.location
-
     }
 
     componentDidMount() {
         console.log(this.props.filterBy)
-        this.setState({ filterBy: {...this.props.filterBy} }, console.log(this.state))
+        this.setState({ filterBy: {...this.props.filterBy} },()=> console.log('search bar mounting filter is',this.state.filterBy))
     }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.filterBy!==this.props.filterBy){
+            this.setState({filterBy:{...this.props.filterBy}},()=>console.log(this.state.filterBy))
+        }
+        
+    }   
 
 
     onChange = (ev) => {

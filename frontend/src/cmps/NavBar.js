@@ -69,6 +69,7 @@ class NavBar extends Component {
                 {this.props.loggedInUser && <li className={getMenuItemClass()}><Link to="/house/edit" className={getLinkItemClass()} >Host</Link></li>}
                 {this.props.loggedInUser && <li className={getMenuItemClass()}><Link to="/reserved" className={getLinkItemClass()} onClick={consoleCaller}>Reserved</Link></li>}
                 {this.props.loggedInUser && <li className={getMenuItemClass()}><Link to="/favorites" className={getLinkItemClass()}>Favorites</Link></li>}
+                {this.props.loggedInUser && <li className={getMenuItemClass()}><Link to="/myhouses" className={getLinkItemClass()}>My Houses</Link></li>}
                 {this.props.loggedInUser && <li className={getMenuItemClass()}><Link to="/requests" className={getLinkItemClass()}>Requests</Link></li>}
                 <li className={getMenuItemClass()}><Link to="/login" className={getLinkItemClass()}>Login/SignUp</Link></li>
                 {/* { <li className={getMenuItemClass()}><Link to={"/profile/"+this.props.loggedInUser._id} className={getLinkItemClass()}>

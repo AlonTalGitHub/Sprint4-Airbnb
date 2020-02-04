@@ -50,25 +50,19 @@ class SearchForm extends Component {
 
     onSearch = () => {
         const filterBy={...this.state.filterBy}
-        filterBy.location.toLowerCase()
-        // let filter = { ...this.state}
-        // filter.filterBy=filterBy;
+        filterBy.location=filterBy.location.toLowerCase()        
         filterBy.startDate=this.state.startDate
         filterBy.endDate=this.state.endDate
         console.log('this is searchForm: ',filterBy)
-        this.props.filterHouses(filterBy)
+        // this.props.filterHouses(filterBy)
+        this.props.setFilter(filterBy)
     }
 
-    // saveNightNum=(val)=>{
-    //     const filterBy={...this.state.filterBy}
-    //     filterBy.nightsNum=val
-    //     this.setState({filterBy},console.log(this.state))
-    // }
+    
 
     render() {
-        // const [startDate, setStartDate] = useState(null);
-        return <div className="search-form flex column space-between">
-            {/* <form> */}
+        
+        return <div className="search-form flex column space-between">           
             <h2>Book with Turtle House and feel At Home, Wherever You Go</h2>
             <input onChange={this.setLocation} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder="Where to?"></input>
             <div className="form-cap flex space-between align-center">
@@ -79,26 +73,11 @@ class SearchForm extends Component {
                     <button onClick={() => this.onChangeCap(-1, 'numOfperson')} className="form-num-btn pointer minus" name="numOfperson">-</button>
                 </span>
             </div>
-            {/* <DatePicker saveNightNum={this.saveNightNum}></DatePicker> */}
-            <DatePicker changeDates={this.changeDates}></DatePicker>
-            {/* <div className="form-cap flex space-between align-center">
-                <span>How Many nights?</span>
-                <span className="form-cap-control flex space-between">
-                    <button onClick={() => this.onChangeCap(1,'nightsNum')} className="form-num-btn pointer" name="nights">+</button>
-                    <span className="form-cap-num">{this.state.filterBy.nightsNum}</span>
-                    <button onClick={() => this.onChangeCap(-1,'nightsNum')} className="form-num-btn pointer" name="nights">-</button>
-                </span>                
-            </div> */}
-
-
-
-
-            {/* <Link onClick={this.handleClick} className="form-btn pointer flex align-center justify-center" to="/house">Search</Link> */}
+            
+            <DatePicker changeDates={this.changeDates}></DatePicker>            
             <Link className="align-self" to="/house">
                 <button onClick={this.onSearch} className="form-btn pointer flex align-center justify-center">Search</button>
-            </Link>
-            {/* <button className="form-btn pointer" >Search</button> */}
-            {/* </form> */}
+            </Link>            
         </div>
     }
 
@@ -118,4 +97,3 @@ const mapDispatchToProps = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchForm)
 
-// export default SearchForm
