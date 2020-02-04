@@ -7,7 +7,7 @@ import '../assets/styles/index.css'
 
 import whiteLogo from '../assets/img/turtle3.png'
 import blackLogo from '../assets/img/turtle4.png'
-import { getUserById } from '../actions/UserActions'
+// import { getUserById } from '../actions/UserActions'
 import userProfileImg from "../assets/img/user_prof_img.png";
 import SearchBar from "./SearchBar";
 import FilterBar from "./FilterBar";

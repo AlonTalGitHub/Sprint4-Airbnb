@@ -108,6 +108,7 @@ body {
 
 .nav-item-user-img-container {
     display: none;
+    
 }
 
 .nav-item-user-img-container.visible {
@@ -117,6 +118,12 @@ body {
     /* position: absolute; */
     background-color: white;
     border-radius: 50%;
+}
+.nav-item-user-img-container.requests{
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    margin:0 30px;
 }
 
 img.nav-item-user-img {

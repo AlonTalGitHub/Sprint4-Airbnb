@@ -140,7 +140,7 @@ class ResrvedPage extends Component {
             console.log('this is ReservedPage speaking,orders are: ', storedOrders, '\n')
             let housesPrms = storedOrders.map(async (storedOrder) => {
                 let house = await HouseService.get(storedOrder.houseId)
-                house.isConfirmedByHouse = storedOrder.isConfirmedByHouse
+                house.status = storedOrder.status
                 console.log('this is ReservedPage speaking, house is: ', house, '\n')
                 return house;
             })
@@ -153,14 +153,11 @@ class ResrvedPage extends Component {
             throw err
         }
     }
-    getConfirmedHouses = () => {
-        let confirmedHouses = this.state.houses.filter(house => { if (house.isConfirmedByHouse) return house })
-        return confirmedHouses
+    getFilteredHouses = (statusInput) => {
+        let houses = this.state.houses.filter(house => { if (house.status===statusInput) return house })
+        return houses
     }
-    getUnConfirmedHouses = () => {
-        let UnconfirmedHouses = this.state.houses.filter(house => { if (!house.isConfirmedByHouse) return house })
-        return UnconfirmedHouses
-    }
+
     render() {
         const { houses } = this.state
 
@@ -168,14 +165,18 @@ class ResrvedPage extends Component {
             <div>
                 <NavBar caller={"reservedpage"}></NavBar>
                 <h2 className="reservedpage">My Reserved Houses</h2>
-                <div className="reservedpage-confirmed-houses">
-                <h3 className="reservedpage">Confirmed by House Owner</h3>
-                {(houses) && <HouseList caller={"reservedpage"} houses={this.getConfirmedHouses()}></HouseList>}
-                </div>   
                 <div className="reservedpage-not-confirmed-houses">
                 <h3 className="reservedpage">Not Yet Confirmed by House Owner</h3>
-                {(houses) && <HouseList caller={"reservedpage"} houses={this.getUnConfirmedHouses()}></HouseList>}
+                {(houses) && <HouseList caller={"reservedpage"} houses={this.getFilteredHouses('initial')}></HouseList>}
                 </div>           
+                <div className="reservedpage-confirmed-houses">
+                <h3 className="reservedpage">Confirmed by House Owner</h3>
+                {(houses) && <HouseList caller={"reservedpage"} houses={this.getFilteredHouses('accepted')}></HouseList>}
+                </div> 
+                <div className="reservedpage-confirmed-houses">
+                <h3 className="reservedpage">Rejected by House Owner</h3>
+                {(houses) && <HouseList caller={"reservedpage"} houses={this.getFilteredHouses('rejected')}></HouseList>}
+                </div>     
             </div>
         )
     }
