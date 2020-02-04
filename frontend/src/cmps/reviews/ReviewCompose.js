@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { saveHouse } from '../../actions/HouseActions';
+// import { addHouseReview } from '../../actions/HouseActions';
 
 class ReviewCompose extends Component {
 
@@ -33,26 +33,16 @@ class ReviewCompose extends Component {
         this.setState({ reviewToEdit: {...this.state.reviewToEdit, byUser } }, () => console.log(this.state.reviewToEdit));
     }
 
-    addReview = async (ev) => {
+    addReview = (ev) => {
         ev.preventDefault();
-        try {
-            const { house } = this.props
-            console.log(house)
-            let updatedHouse = {...house}
-            console.log(updatedHouse);
-            updatedHouse.reviews.push(this.state.reviewToEdit)
-            await this.props.saveHouse(updatedHouse);
-            this.setState(prevState => ({
-                reviewToEdit: {
-                    ...prevState.reviewToEdit,
-                    "txt": ''
-                }
-            }));
-        } catch (error) {
-            console.log('add review to house faild');
-            throw error;
-            
-        }
+        const review = {...this.state.reviewToEdit}
+        this.props.onUpdateReviews(review)
+        this.setState(prevState => ({
+            reviewToEdit: {
+                ...prevState.reviewToEdit,
+                "txt": ''
+            }
+        }));
     };
 
     render() {
@@ -74,7 +64,7 @@ class ReviewCompose extends Component {
 
 const mapStateToProps = state => {
     return {
-        houses: state.house.houses,
+        // houses: state.house.houses,
         //   users: state.user.users,
         loggedInUser: state.user.loggedInUser
     };
@@ -82,8 +72,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     // loadReviews,
     // loadUsers,
-    saveHouse
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReviewCompose);
-

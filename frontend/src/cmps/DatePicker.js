@@ -47,6 +47,8 @@ export default class SearchForm extends Component {
         // const isDayBlocked = day => BAD_DATES.filter(d => d.isSame(day, 'day')).length > 0;
             {/* isDayBlocked={isDayBlocked} */}
         return <DateRangePicker
+            startDatePlaceholderText ='mm/dd/yyyy'
+            endDatePlaceholderText = 'mm/dd/yyyy'
             startDate={this.state.startDate} // momentPropTypes.momentObj or null,
             startDateId="start-date" // PropTypes.string.isRequired,
             endDate={this.state.endDate} // momentPropTypes.momentObj or null,

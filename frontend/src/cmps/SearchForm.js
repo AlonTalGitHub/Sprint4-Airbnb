@@ -70,10 +70,14 @@ class SearchForm extends Component {
         return <div className="search-form flex column space-between">
             {/* <form> */}
             <h2 className="search-form-title">Book with Turtle Place to feel At Home, Wherever You Go.</h2>
-            <div className="form-input-header">WHERE</div>
-            <input onChange={this.setLocation} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder="Anywhere"></input>
+            <div>
+                <div className="form-input-header">WHERE</div>
+                <input onChange={this.setLocation} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder="Anywhere"></input>
+            </div>
+            <div>
             <div className="form-input-header">CHECK-IN / CHECKOUT</div>
             <DatePicker changeDates={this.changeDates}></DatePicker>
+            </div>
             <div className="form-cap flex space-between align-center">
                 <span className="form-input-header">GUESTS</span>
                 <span className="form-cap-control flex space-between">
