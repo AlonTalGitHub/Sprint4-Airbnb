@@ -11,7 +11,7 @@ import '../assets/styles/index.css'
 export default class PriceFilter extends Component {
     state = {
         isMenuOpen: false,
-        price: 50
+        price: this.props.price || 1000
     }
 
     onToggleMenu = () => {

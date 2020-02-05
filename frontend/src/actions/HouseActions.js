@@ -63,7 +63,6 @@ export function setMyHouses(ids) {
 export function setFilter(filter) {
   return dispatch => {
     dispatch(_setFilter(filter));
-
   };
 }
 
@@ -140,7 +139,6 @@ function _updateHouse(house) {
     type: 'HOUSE_UPDATE',
     house
   };
-
 }
 
 function _deleteHouse(houseId) {
@@ -149,17 +147,3 @@ function _deleteHouse(houseId) {
     houseId
   };
 }
-
-// export function loadHouses(filter) {
-//   console.log('load houses', filter)
-//   return async dispatch => {
-//     try {
-//       const houses = await HouseService.query(filter);
-//       console.log(houses)
-//       dispatch(setHouses(houses));
-
-//     } catch (err) {
-//       console.log('HouseActions: err in loadHouses', err);
-//     }
-//   };
-// }

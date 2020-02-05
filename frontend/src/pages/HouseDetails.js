@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { deleteHouse, filterHouses } from '../actions/HouseActions'
 import { updateUser } from '../actions/UserActions'
+import { deleteHouse, filterHouses, saveHouse } from '../actions/HouseActions'
 import { connect } from 'react-redux';
 // import { connect } from 'react-redux';
 
@@ -19,21 +19,18 @@ import '../assets/styles/reviewpreview.css';
 import ReviewCompose from '../cmps/reviews/ReviewCompose';
 import MapPreview from '../cmps/MapPreview.js'
 
-
 class HouseDetails extends Component {
     state = {
         house: null
     }
 
-    componentDidMount() {
-        const houseId = this.props.match.params.id;
-        console.log('details mounting: ', houseId)
+    componentDidMount() {        
+        const houseId = this.props.match.params.id;        
         this.loadHouse(houseId)
     }
 
     loadHouse = async (houseId) => {
-        const house = await HouseService.get(houseId)
-        console.log('house details page', house)
+        const house = await HouseService.get(houseId)        
         this.setState({ house })
     }
 
@@ -53,6 +50,22 @@ class HouseDetails extends Component {
         await this.props.updateUser(loggedInUser)
         this.props.history.push('/')
     }
+
+    updateReviews = async (review) => {
+        const { house } = this.state
+        const reviews = house.reviews
+        let reviewsToUpdate = reviews.slice()
+        reviewsToUpdate.splice(reviews.length, 0, review)
+        const newHouse = { ...house, reviews: reviewsToUpdate }
+        try {
+            await this.props.saveHouse(newHouse)
+        } catch (error) {
+            console.log('add review to house faild');
+            throw error;  
+        }
+        this.setState({ house: newHouse })
+    }
+
     render() {
         const { house } = this.state
         return (
@@ -70,16 +83,22 @@ class HouseDetails extends Component {
                             <span className="house-header span-line-break">{house.address.country}</span>
                             <span className="house-header span-line-break">Description</span>
                             <p className="house-content span-line-break bottom-line">{house.description}</p>
-                            <ReviewList reviews={house.reviews} />
-                            <ReviewCompose house={house} />
-                            {(this.checkIfOwner()) &&
-                                <div className="details-button-container flex space-between">
+                            <ReviewList reviews={house.reviews} />                            
+                            <ReviewCompose onUpdateReviews={this.updateReviews} />
+                            {this.checkIfOwner() &&<div className="details-button-container flex space-between">
                                     <Link to={`/house/edit/${house._id}`} >
                                         <button className="form-btn pointer">Edit House</button>
                                     </Link>
                                     <button onClick={this.handleDelete} className="form-btn pointer">Delete House</button>
                                 </div>
                             }
+                            
+                            {/* <div className="details-button-container flex space-between">
+                                <Link to={`/house/edit/${house._id}`} >
+                                    <button className="form-btn pointer">Edit House</button>
+                                </Link>
+                                <button onClick={this.handleDelete} className="form-btn pointer">Delete House</button>
+                            </div> */}
                         </div>
                         <ReserveHouse house={house} detailsPage={true} />
 
@@ -101,8 +120,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     deleteHouse,
     filterHouses,
-    updateUser
+    updateUser,
+    saveHouse
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HouseDetails)
-

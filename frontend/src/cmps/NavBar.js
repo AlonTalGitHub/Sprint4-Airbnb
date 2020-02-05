@@ -17,6 +17,9 @@ class NavBar extends Component {
         isMenuOpen: false
     }
 
+    componentDidMount(){
+        console.log(this.props.history)
+    }
 
     openMenu = () => {
         this.setState({ isMenuOpen: true })
@@ -30,8 +33,8 @@ class NavBar extends Component {
             console.log('this cmp was called by', caller);
         }
         const getNavClass = () => {
-            if (this.props.caller !== "home") return "nav-links flex align-center black"
-            else return "nav-links flex align-center"
+            if (this.props.caller !== "home") return "nav-links flex align-center space-between black"
+            else return "nav-links flex align-center space-between"
         }
         const getMenuItemClass = () => {
             if (this.props.caller !== "home") return "nav-item black"
@@ -80,7 +83,7 @@ class NavBar extends Component {
                     {profileImageRender()}</li>
             </ul>
             <div className={`filter-buttons-container ${(this.state.isMenuOpen) ? 'shown-filter-container' : ''}`}>
-                <FilterBar></FilterBar>
+                <FilterBar history={this.props.history}></FilterBar>
             </div>
 
         </div>)

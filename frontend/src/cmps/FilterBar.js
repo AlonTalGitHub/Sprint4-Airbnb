@@ -8,6 +8,8 @@ import CapacityFilter from './CapacityFilter';
 import DatePicker from './DatePicker'
 import moment from 'moment'
 import PriceFilter from "./PriceFilter";
+import { Redirect } from "react-router";
+// import history from "../history";
 
 class FilterBar extends Component {
     state = {
@@ -19,6 +21,7 @@ class FilterBar extends Component {
     componentDidMount() {
         console.log('filter bar', this.state.filterBy)
     }
+
     componentDidUpdate(prevProps) {
         if (prevProps.filterBy !== this.props.filterBy) {
             this.setState({ filterBy: { ...this.props.filterBy } }, () => console.log(this.state.filterBy))
@@ -44,8 +47,9 @@ class FilterBar extends Component {
 
     }
 
-    saveFilter = () => {
-        this.props.filterHouses(this.state.filterBy)
+    saveFilter = async () => {
+        this.props.filterHouses(this.state.filterBy)        
+        
     }
 
     updateState = () => {
@@ -61,7 +65,7 @@ class FilterBar extends Component {
                 <CapacityFilter updateState={this.updateState}
                     saveFilter={this.saveFilter} filterBy={filterBy} onChangeCap={this.onChangeCap}>
                 </CapacityFilter>
-                <PriceFilter saveFilter={this.saveFilter} onChangePrice={this.onChangePrice}></PriceFilter>
+                <PriceFilter price={this.props.filterBy.price} saveFilter={this.saveFilter} onChangePrice={this.onChangePrice}></PriceFilter>
             <DatePicker changeDates={this.changeDates}></DatePicker>
             </div>
 

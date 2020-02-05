@@ -43,10 +43,13 @@ export default class DatePicker extends Component {
     
 
     render() {
-       
-        return <DateRangePicker        
-            
-            
+        // const BAD_DATES = [moment(), moment().add(10, 'days')];
+        // const BAD_DATES = [moment('Feb 20th 2020'),moment('Feb 21th 2020')];
+        // const isDayBlocked = day => BAD_DATES.filter(d => d.isSame(day, 'day')).length > 0;
+            {/* isDayBlocked={isDayBlocked} */}
+        return <DateRangePicker
+            startDatePlaceholderText ='mm/dd/yyyy'
+            endDatePlaceholderText = 'mm/dd/yyyy'
             startDate={this.state.startDate} // momentPropTypes.momentObj or null,
             startDateId="start-date" // PropTypes.string.isRequired,
             endDate={this.state.endDate} // momentPropTypes.momentObj or null,

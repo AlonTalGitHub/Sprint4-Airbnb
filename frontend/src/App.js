@@ -11,7 +11,7 @@ import HouseEdit from './pages/HouseEdit'
 
 import HousePage from './pages/HousePage';
 import HouseDetails from './pages/HouseDetails';
-// import NavBar from './cmps/NavBar';
+import NavBar from './cmps/NavBar';
 import Login from './pages/Login';
 import ReservedPage from './pages/ReservedPage';
 import UserProfile from './pages/UserProfile';

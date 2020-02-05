@@ -13,9 +13,9 @@
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    -webkit-font-smoothing: antialiased;
+    /* -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-decoration: none;
+    text-decoration: none;  */
 }
 
 * {
@@ -37,9 +37,10 @@ body {
 }
 
 .nav-links {
-    /* width: 80%; */
-    padding: 5px;
+    width: 100%;
+    padding: 10px;
     position: absolute;
+    height: 80px;
 }
 
 .nav-links.black {
@@ -53,9 +54,13 @@ body {
 
 .nav-links>* {
     text-decoration: none;
+    font-weight: bold;
     padding: 5px;
-    padding-right: 22px;
 }
+
+/* .nav-links>* {
+
+} */
 
 .nav-link {
     color: white;
@@ -132,20 +137,22 @@ span.nav-item-user-name {
 }
 
 .filter-buttons-container {
-    height: 50px;
+    height: 60px;
     position: fixed;
     z-index: 1;
     width: 100%;
     background-color: white;
     border-bottom: 1px solid black;
-    top: -80px;
-    transition: 0.3s;
-}
-
-.shown-filter-container {
     top: 80px;
+    transition: 0.3s;
+    margin-bottom: 40px;
     padding: 10px 20px;
 }
+
+/* .shown-filter-container {
+    top: 80px;
+    
+} */
 
 span.nav-item-user-name.black {
     color: #484848;
@@ -156,25 +163,34 @@ span.nav-item-user-name.black {
 .form-loc {
     /* code { font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 monospace; } */
+    height: 47px;
+    width: 100%;
+    font-size: 17px;
     border-radius: 5px;
     border-style: none;
-    border: 1px solid grey;
+    border: 1px solid rgb(230, 230, 230);
     padding: 5px;
 }
 
 .search-form {
+    font-family: 'RobotoBold';
     position: absolute;
-    top: 90px;
-    margin-left: 50px;
-    width: 40%;
+    width: 450px;
+    height: 420px;
+    top: 100px;
+    margin-left: 10vw;
     border: 1px solid rgb(48, 48, 48);
     border-radius: 5px;
     padding: 20px 35px;
-    font-size: 15px;
+    font-size: 13px;
+    letter-spacing: 1px;
     z-index: 1;
     color: gray;
     background-color: white;
-    height: calc(80vh - 130px);
+}
+
+.search-form-title {
+    font-size: 26px;;
 }
 
 .reserve-form {
@@ -201,6 +217,7 @@ button.form-btn.reserve-btn {
 }
 
 .search-form>* {
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
@@ -221,6 +238,11 @@ button.form-btn.reserve-btn {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
+.form-input-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
 .form-cap {
     padding: 0;
 }
@@ -230,19 +252,17 @@ button.form-btn.reserve-btn {
 }
 
 .form-btn {
-    margin-top: 25px;
-    background-color: #1c636c;
-    /* #ff5a5f; */
-    color: white;
-    border-radius: 10px;
-    width: 100px;
-    height: 40px;
-    border: 0;
     align-self: flex-end;
+    width: 100px;
+    padding: 15px;
+    color: white;
+    background-color: #4caf50;
+    border: 0;
+    border-radius: 5px;
     text-decoration: none;
     text-align: center;
-    font-size: 1rem;
-    padding: 5px 20px;
+    font-size: 1.05rem;
+    font-weight: bold;
 }
 
 .form-btn:focus {
@@ -251,11 +271,13 @@ button.form-btn.reserve-btn {
 
 .form-btn:hover {
     /* color: black; */
-    background-color: #45adbb;
+    background-color: #37983b;
 }
 
 .form-cap-num {
-    color: black;
+    margin-top: 5px;
+    font-size: 15px;
+    color: rgb(48, 48, 48);
 }
 
 .form-num-btn:focus {
@@ -264,8 +286,8 @@ button.form-btn.reserve-btn {
 
 .form-num-btn {
     background-color: white;
-    border: 1px solid gray;
-    border-radius: 50%;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 5px;
     height: 26px;
     width: 26px;
     padding: 5px;
@@ -326,24 +348,25 @@ button.form-btn.reserve-btn {
 /*date-picker*/
 
 input#start-date {
-    font-size: 14px;
+    font-size: 17px;
     text-align: center;
 }
 
 input#end-date {
-    font-size: 14px;
+    font-size: 17px;
     text-align: center;
 }
 
 .DateRangePickerInput__withBorder {
     border-radius: 5px;
     border: 1px solid #dbdbdb;
-    border: 1px solid gray;
+    border: 1px solid rgb(230, 230, 230);
     padding: 2px;
     width: 100%;
 }
 
 .DateInput {
+    height: 40px;
     margin: 0;
     padding: 0;
     background: #fff;
@@ -354,6 +377,7 @@ input#end-date {
 }
 
 .DateInput_input {
+    margin-top: 9px;
     font-weight: 200;
     line-height: 14px;
     color: #484848;
@@ -382,7 +406,7 @@ input#end-date {
 
 img.index-cover {
     width: 100%;
-    height: 80vh;
+    height: 90vh;
     object-fit: cover;
 }
 
