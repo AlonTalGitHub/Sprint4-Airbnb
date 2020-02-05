@@ -17,12 +17,19 @@ class NavBar extends Component {
         isMenuOpen: false
     }
 
-    componentDidMount(){
+    componentDidMount() {
         console.log(this.props.history)
     }
 
     openMenu = () => {
         this.setState({ isMenuOpen: true })
+    }
+
+    dispalyFilters=()=>{
+        const callers=['housepage','housedetails']
+        const dispaly=callers.some(caller=>caller===this.props.caller)
+        console.log('is filter bar',dispaly)
+        return dispaly
     }
 
 
@@ -82,9 +89,11 @@ class NavBar extends Component {
                 <li className={getMenuItemClass()}>
                     {profileImageRender()}</li>
             </ul>
-            <div className={`filter-buttons-container ${(this.state.isMenuOpen) ? 'shown-filter-container' : ''}`}>
-                <FilterBar history={this.props.history}></FilterBar>
-            </div>
+            {   (this.dispalyFilters())&&
+                <div className={`filter-buttons-container ${(this.state.isMenuOpen) ? 'shown-filter-container' : ''}`}>
+                    <FilterBar></FilterBar>
+                </div>
+            }
 
         </div>)
     }

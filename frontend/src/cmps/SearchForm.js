@@ -54,8 +54,8 @@ class SearchForm extends Component {
         filterBy.startDate = this.state.startDate
         filterBy.endDate = this.state.endDate
         console.log('this is searchForm: ', filterBy)
-        // this.props.filterHouses(filterBy)
-        this.props.filterHouses(filterBy)
+        // this.props.filterHouses(filterBy)       
+        this.props.setFilter(filterBy)
     }
 
 

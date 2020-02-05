@@ -20,6 +20,7 @@ class FilterBar extends Component {
 
     componentDidMount() {
         console.log('filter bar', this.state.filterBy)
+        
     }
 
     componentDidUpdate(prevProps) {
@@ -43,13 +44,15 @@ class FilterBar extends Component {
     }
 
     onChangePrice = (val) => {
-        this.setState(prevState => prevState.filterBy.price = val, this.saveFilter)
+        console.log('onchange price called')        
+        // this.setState(prevState => prevState.filterBy.price = val, ()=>console.log('changeprice',this.state))
+        this.setState(prevState => prevState.filterBy.price=val,() => console.log('price change filter bar', this.state.filterBy))
 
     }
 
-    saveFilter = async () => {
-        this.props.filterHouses(this.state.filterBy)        
-        
+    saveFilter = () => {
+        console.log('save filter filter bar')
+        this.props.filterHouses(this.state.filterBy)      
     }
 
     updateState = () => {
@@ -65,8 +68,8 @@ class FilterBar extends Component {
                 <CapacityFilter updateState={this.updateState}
                     saveFilter={this.saveFilter} filterBy={filterBy} onChangeCap={this.onChangeCap}>
                 </CapacityFilter>
-                <PriceFilter price={this.props.filterBy.price} saveFilter={this.saveFilter} onChangePrice={this.onChangePrice}></PriceFilter>
-            <DatePicker changeDates={this.changeDates}></DatePicker>
+                <PriceFilter price={this.state.filterBy.price} saveFilter={this.saveFilter} onChangePrice={this.onChangePrice}></PriceFilter>
+            {/* <DatePicker changeDates={this.changeDates}></DatePicker> */}
             </div>
 
 

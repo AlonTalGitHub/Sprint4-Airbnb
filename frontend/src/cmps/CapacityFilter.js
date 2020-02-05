@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { setFilter, filterHouses } from '../actions/HouseActions'
 // import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
 import '../assets/styles/index.css'
+import { Link } from "react-router-dom";
 
 export default class CapacityFilter extends Component {
     state = {
@@ -34,7 +35,10 @@ export default class CapacityFilter extends Component {
                         <span className="form-cap-num">{this.props.filterBy.numOfperson}</span>
                         <button onClick={() => this.props.onChangeCap(-1, 'numOfperson')} className="filter-num-btn pointer" name="numOfperson">-</button>
                     </span>
-                    <button onClick={this.onSaveFilter} className="save-filter-btn pointer">Save</button>
+                    <Link to="/house">
+                        <button onClick={this.onSaveFilter} className="save-filter-btn pointer">Save</button>
+                    </Link>
+
                 </div>
             </div>
         </React.Fragment>

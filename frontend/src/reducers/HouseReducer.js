@@ -5,7 +5,7 @@ const initialState = {
   italy:[],
   spain:[],
   myHouses:[],
-  filterBy: { numOfperson: 1, location: '' },
+  filterBy: { numOfperson: 1, location: '', price:1000},
   selectedHouse: null
 };
 

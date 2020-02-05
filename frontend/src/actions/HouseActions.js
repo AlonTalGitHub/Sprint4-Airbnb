@@ -1,4 +1,5 @@
 import HouseService from '../services/HouseService';
+import history from '../history'
 
 
 export function filterHouses(filter) {
@@ -9,16 +10,17 @@ export function filterHouses(filter) {
     let houses = await HouseService.query(filter);
     // for real server:
     // const houses = await HouseService.getHouses();
-    dispatch(_setHouses(houses))
+    await dispatch(_setHouses(houses))
+    // history.push('/house')
   }
 }
 export function getBestByCountry(filter) {
 
   console.log(filter)
-  return async (dispatch) => {    
+  return async (dispatch) => {
     let houses = await HouseService.query(filter);
-    console.log(houses)   
-    dispatch(_setBestByCountry(filter.countries[0],houses))
+    console.log(houses)
+    dispatch(_setBestByCountry(filter.countries[0], houses))
     // dispatch(_setBestByCountry(filter.location.toUpperCase(),houses))
   }
 }
@@ -26,8 +28,8 @@ export function getBestByCountry(filter) {
 export function AddToFavorites(ids) {
   if (ids.length > 0) {
     return async dispatch => {
-      try {        
-        const favHouses = await HouseService.query({ ids: ids })        
+      try {
+        const favHouses = await HouseService.query({ ids: ids })
         dispatch(_AddToFavs(favHouses))
       }
       catch (err) {
@@ -36,7 +38,7 @@ export function AddToFavorites(ids) {
     }
   } else {
     return dispatch => {
-      dispatch(_AddToFavs([])) 
+      dispatch(_AddToFavs([]))
     }
   }
 
@@ -44,8 +46,8 @@ export function AddToFavorites(ids) {
 export function setMyHouses(ids) {
   if (ids.length > 0) {
     return async dispatch => {
-      try {        
-        const myHouses = await HouseService.query({ ids: ids })        
+      try {
+        const myHouses = await HouseService.query({ ids: ids })
         dispatch(_setMyHouses(myHouses))
       }
       catch (err) {
@@ -54,7 +56,7 @@ export function setMyHouses(ids) {
     }
   } else {
     return dispatch => {
-      dispatch(_setMyHouses([])) 
+      dispatch(_setMyHouses([]))
     }
   }
 
@@ -93,8 +95,8 @@ export function deleteHouse(houseId) {
   }
 }
 
-function _setBestByCountry(country,houses) {
-  return {    
+function _setBestByCountry(country, houses) {
+  return {
     type: `SET_BEST_${country.toUpperCase()}`,
     houses
   }
