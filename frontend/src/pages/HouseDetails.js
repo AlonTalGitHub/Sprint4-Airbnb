@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { deleteHouse, filterHouses } from '../actions/HouseActions'
+import { deleteHouse, filterHouses, saveHouse } from '../actions/HouseActions'
 import { connect } from 'react-redux';
 // import { connect } from 'react-redux';
 
@@ -18,7 +18,6 @@ import '../assets/styles/reviewpreview.css';
 import ReviewCompose from '../cmps/reviews/ReviewCompose';
 import MapPreview from '../cmps/MapPreview.js'
 
-
 class HouseDetails extends Component {
     state = {
         house: null
@@ -26,13 +25,13 @@ class HouseDetails extends Component {
 
     componentDidMount() {
         const houseId = this.props.match.params.id;
-        console.log('details mounting: ',houseId)
+        // console.log('details mounting: ',houseId)
         this.loadHouse(houseId)
     }
 
     loadHouse = async (houseId) => {
         const house = await HouseService.get(houseId)
-        console.log('house details page',house)
+        // console.log('house details page',house)
         this.setState({ house })
     }
 
@@ -40,6 +39,22 @@ class HouseDetails extends Component {
         await this.props.deleteHouse(this.state.house._id)
         this.props.history.push('/')
     }
+
+    updateReviews = async (review) => {
+        const { house } = this.state
+        const reviews = house.reviews
+        let reviewsToUpdate = reviews.slice()
+        reviewsToUpdate.splice(reviews.length, 0, review)
+        const newHouse = { ...house, reviews: reviewsToUpdate }
+        try {
+            await this.props.saveHouse(newHouse)
+        } catch (error) {
+            console.log('add review to house faild');
+            throw error;  
+        }
+        this.setState({ house: newHouse })
+    }
+
     render() {
         const { house } = this.state
         return (
@@ -58,7 +73,7 @@ class HouseDetails extends Component {
                             <span className="house-header span-line-break">Description</span>
                             <p className="house-content span-line-break bottom-line">{house.description}</p>
                             <ReviewList reviews={ house.reviews}/>
-                            <ReviewCompose house={house}/>
+                            <ReviewCompose onUpdateReviews={this.updateReviews} />
                             <div className="details-button-container flex space-between">
                                 <Link to={`/house/edit/${house._id}`} >
                                     <button className="form-btn pointer">Edit House</button>
@@ -84,8 +99,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = {
     deleteHouse,
-    filterHouses
+    filterHouses,
+    saveHouse
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HouseDetails)
-

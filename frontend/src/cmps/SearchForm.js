@@ -69,10 +69,17 @@ class SearchForm extends Component {
         // const [startDate, setStartDate] = useState(null);
         return <div className="search-form flex column space-between">
             {/* <form> */}
-            <h2>Book with Turtle House and feel At Home, Wherever You Go</h2>
-            <input onChange={this.setLocation} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder="Where to?"></input>
+            <h2 className="search-form-title">Book with Turtle Place to feel At Home, Wherever You Go.</h2>
+            <div>
+                <div className="form-input-header">WHERE</div>
+                <input onChange={this.setLocation} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder="Anywhere"></input>
+            </div>
+            <div>
+            <div className="form-input-header">CHECK-IN / CHECKOUT</div>
+            <DatePicker changeDates={this.changeDates}></DatePicker>
+            </div>
             <div className="form-cap flex space-between align-center">
-                <span>Number of Guests</span>
+                <span className="form-input-header">GUESTS</span>
                 <span className="form-cap-control flex space-between">
                     <button onClick={() => this.onChangeCap(1, 'numOfperson')} className="form-num-btn pointer" name="numOfperson">+</button>
                     <span className="form-cap-num">{this.state.filterBy.numOfperson}</span>
@@ -80,7 +87,6 @@ class SearchForm extends Component {
                 </span>
             </div>
             {/* <DatePicker saveNightNum={this.saveNightNum}></DatePicker> */}
-            <DatePicker changeDates={this.changeDates}></DatePicker>
             {/* <div className="form-cap flex space-between align-center">
                 <span>How Many nights?</span>
                 <span className="form-cap-control flex space-between">
@@ -89,9 +95,6 @@ class SearchForm extends Component {
                     <button onClick={() => this.onChangeCap(-1,'nightsNum')} className="form-num-btn pointer" name="nights">-</button>
                 </span>                
             </div> */}
-
-
-
 
             {/* <Link onClick={this.handleClick} className="form-btn pointer flex align-center justify-center" to="/house">Search</Link> */}
             <Link className="align-self" to="/house">

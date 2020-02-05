@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 
 class UserProfile extends Component {
 
-    render(){
-        const {favorites}=this.props.loggedInUser
-        console.log(favorites)
-        return <HouseList houses={favorites}></HouseList>
+    render() {
+        return (<div>
+           <span>welcome user!</span>
+        </div>)
     }
 }
 

@@ -554,3 +554,9 @@ h1.request-page-header {
         display: none;
     }
 }
+
+@media only screen and (max-width: 700px) {
+    .reservedpage-not-confirmed-houses {
+        margin-top: 25%;
+    }
+}

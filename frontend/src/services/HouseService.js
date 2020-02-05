@@ -12,7 +12,6 @@ export default {
     save,
     remove,
     getHouses
-    // get
 }
 /*filter={
  numOfperson: 1,

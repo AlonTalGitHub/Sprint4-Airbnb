@@ -127,9 +127,9 @@ class ReserveHouse extends Component {
                 <span className="reserve-price-tag">${house.price}/night</span>
                 {this.getTotalPrice()}
                 <Link to="/house">
-                    <button onClick={this.onReserve} className="form-btn pointer flex align-center justify-center reserve-btn">RESERVE</button>
+                    <button onClick={this.onReserve} className="form-btn pointer flex align-center justify-center reserve-btn">Reserve</button>
                 </Link>
-            </div >)
+            </div>)
 
     }
 }

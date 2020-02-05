@@ -154,7 +154,7 @@ class ResrvedPage extends Component {
         }
     }
     getFilteredHouses = (statusInput) => {
-        let houses = this.state.houses.filter(house => { if (house.status===statusInput) return house })
+        let houses = this.state.houses.filter(house => { if (house.status === statusInput) return house })
         return houses
     }
 
@@ -162,21 +162,23 @@ class ResrvedPage extends Component {
         const { houses } = this.state
 
         return (
-            <div>
+            <div className="reservedpage-container">
                 <NavBar caller={"reservedpage"}></NavBar>
-                <h2 className="reservedpage">My Reserved Houses</h2>
-                <div className="reservedpage-not-confirmed-houses">
-                <h3 className="reservedpage">Not Yet Confirmed by House Owner</h3>
-                {(houses) && <HouseList caller={"reservedpage"} houses={this.getFilteredHouses('initial')}></HouseList>}
-                </div>           
-                <div className="reservedpage-confirmed-houses">
-                <h3 className="reservedpage">Confirmed by House Owner</h3>
-                {(houses) && <HouseList caller={"reservedpage"} houses={this.getFilteredHouses('accepted')}></HouseList>}
-                </div> 
-                <div className="reservedpage-confirmed-houses">
-                <h3 className="reservedpage">Rejected by House Owner</h3>
-                {(houses) && <HouseList caller={"reservedpage"} houses={this.getFilteredHouses('rejected')}></HouseList>}
-                </div>     
+                <div className="reservedpage-content-container">
+                    <h2 className="reservedpage">My Reserved Houses</h2>
+                    <div className="reservedpage-not-confirmed-houses">
+                        <h3 className="reservedpage">Not Yet Confirmed by House Owner</h3>
+                        {(houses) && <HouseList caller={"reservedpage"} houses={this.getFilteredHouses('initial')}></HouseList>}
+                    </div>
+                    <div className="reservedpage-confirmed-houses">
+                        <h3 className="reservedpage">Confirmed by House Owner</h3>
+                        {(houses) && <HouseList caller={"reservedpage"} houses={this.getFilteredHouses('accepted')}></HouseList>}
+                    </div>
+                    <div className="reservedpage-confirmed-houses">
+                        <h3 className="reservedpage">Rejected by House Owner</h3>
+                        {(houses) && <HouseList caller={"reservedpage"} houses={this.getFilteredHouses('rejected')}></HouseList>}
+                    </div>
+                </div>
             </div>
         )
     }

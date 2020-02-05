@@ -28,6 +28,21 @@ export default function (state = initialState, action = {}) {
         ...state, houses: state.houses.map(house =>
           house._id === action.house._id ? action.house : house)
       };
+    case 'HOUSE_ADD_REVIEW':
+      console.log('add review', action.house)
+      return {
+        ...state, houses: state.houses.map(house => {
+          if (house._id !== action.house._id) {
+            return house
+          }
+          const reviews = house.reviews
+          let reviewsToUpdate = reviews.slice()
+          reviewsToUpdate.splice(reviews.length, 0, action.review)
+          const houseToUpdate = { ...house, reviews: reviewsToUpdate }
+
+          return houseToUpdate
+      })
+    }
     case 'HOUSE_REMOVE':
       return { ...state, houses: state.houses.filter(house => house._id !== action.houseId) }
     case 'SET_FAVS':
