@@ -66,10 +66,8 @@ class SearchForm extends Component {
     // }
 
     render() {
-        // const [startDate, setStartDate] = useState(null);
         return <div className="search-form flex column space-between">
-            {/* <form> */}
-            <h2 className="search-form-title">Book with Turtle Place to feel At Home, Wherever You Go.</h2>
+            <div className="search-form-title">Book with Turtle House and feel At Home, Wherever You Go.</div>
             <div>
                 <div className="form-input-header">WHERE</div>
                 <input onChange={this.setLocation} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder="Anywhere"></input>
@@ -86,22 +84,9 @@ class SearchForm extends Component {
                     <button onClick={() => this.onChangeCap(-1, 'numOfperson')} className="form-num-btn pointer minus" name="numOfperson">-</button>
                 </span>
             </div>
-            {/* <DatePicker saveNightNum={this.saveNightNum}></DatePicker> */}
-            {/* <div className="form-cap flex space-between align-center">
-                <span>How Many nights?</span>
-                <span className="form-cap-control flex space-between">
-                    <button onClick={() => this.onChangeCap(1,'nightsNum')} className="form-num-btn pointer" name="nights">+</button>
-                    <span className="form-cap-num">{this.state.filterBy.nightsNum}</span>
-                    <button onClick={() => this.onChangeCap(-1,'nightsNum')} className="form-num-btn pointer" name="nights">-</button>
-                </span>                
-            </div> */}
-
-            {/* <Link onClick={this.handleClick} className="form-btn pointer flex align-center justify-center" to="/house">Search</Link> */}
             <Link className="align-self" to="/house">
                 <button onClick={this.onSearch} className="form-btn pointer flex align-center justify-center">Search</button>
             </Link>
-            {/* <button className="form-btn pointer" >Search</button> */}
-            {/* </form> */}
         </div>
     }
 

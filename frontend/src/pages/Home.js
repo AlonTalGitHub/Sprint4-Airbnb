@@ -45,7 +45,7 @@ class Home extends Component {
         <img className="index-cover" src={backgroundImage} />
         <SearchForm></SearchForm>
         {/* {this.props.houses.length&& */}
-        <section className="lists-section">
+        <section className="lists-section-container">
           <div>
             <h4 className="reccomended-headline">Most reccomended in Israel</h4>
             <HouseList houses={this.props.israel}></HouseList>
