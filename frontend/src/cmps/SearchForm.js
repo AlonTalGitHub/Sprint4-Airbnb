@@ -61,9 +61,8 @@ class SearchForm extends Component {
 
 
     render() {
-
         return <div className="search-form flex column space-between">
-            <div className="search-form-title">Book with Turtle House and feel At Home, Wherever You Go</div>
+            <div className="search-form-title">Book with Turtle House and feel At Home, Wherever You Go.</div>
             <div>
                 <div className="form-input-header">WHERE</div>
                 <input onChange={this.setLocation} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder="Anywhere"></input>
