@@ -25,17 +25,15 @@ class NavBar extends Component {
     openMenu = () => {
         this.setState({ isMenuOpen: true })
     }
-    blah = () => {
-        console.log('bahhhhh', this.state)
+    toggleHamburger = () => {
         var newState = { ...this.state, isScreen: !this.state.isScreen }
         this.setState({ ...this.state, ...newState })
     }
 
     dispalyFilters = () => {
         const callers = ['housepage', 'housedetails']
-        const dispaly = callers.some(caller => caller === this.props.caller)
-        console.log('is filter bar', dispaly)
-        return dispaly
+        const display = callers.some(caller => caller === this.props.caller)
+        return display
     }
 
 
@@ -65,13 +63,15 @@ class NavBar extends Component {
         const profileImageRender = () => {
             if (loggedInUser) {
                 return (
-                    <div ><Link to={`/user/${loggedInUser._id}`}>
-                        <div className={(loggedInUser) ? "nav-item-user-img-container visible" : "nav-item-user-img-container"}>
-                            <img src={(loggedInUser) ? loggedInUser.imgURL : userProfileImg} className="nav-item-user-img" />
-                        </div>
-                    </Link>
-                        {/* {(loggedInUser) ? <span className={getuserNameClass()}>{loggedInUser.username}</span> : ''} */}
-                        {(loggedInUser) ? <Link to="/login" className={getuserNameClass() + " small-screen-hide"}><span className={getuserNameClass() + " small-screen-hide"}>Logout</span></Link> : ''}
+                    <div >
+                        <Link to="/">
+                            <div className={(loggedInUser) ? "nav-item-user-img-container visible" : "nav-item-user-img-container"}>
+                                <img src={(loggedInUser) ? loggedInUser.imgURL : userProfileImg} className="nav-item-user-img" />
+                            </div>
+
+
+                        </Link>
+
                     </div>
                 )
             } else return (<div></div>)
@@ -79,7 +79,16 @@ class NavBar extends Component {
         return (<div className={"nav-container " + not_home}>
             {/* return <div className={`main-navbar flex space-between ${this.props.class}`}> */}
             {/* <Link to="/"> */}
-            <img className={`logo${(this.state.isScreen) ? " show " + not_home : " hide " + not_home}`} src={(this.props.caller !== "home") ? blackLogo : whiteLogo} onClick={this.blah} />
+            <div className="harta-barta">
+                <img className={`logo${(this.state.isScreen) ? " show " + not_home : " hide " + not_home}`} src={(this.props.caller !== "home") ? blackLogo : whiteLogo} onClick={this.toggleHamburger} />
+                <div className={getMenuItemClass() + " small-screen-hide"}>{(this.props.caller !== "home") ? <SearchBar openMenu={this.openMenu}></SearchBar> : ''}</div>
+                {(this.dispalyFilters()) &&
+                    <div className={`filter-buttons-container ${(this.state.isMenuOpen) ? 'shown-filter-container' : ''}`}>
+                        <FilterBar></FilterBar>
+                    </div>
+                }
+
+            </div>
             {/* </Link> */}
 
             <div className={getMenuItemClass() + " small-screen-show"}>{(this.props.caller !== "home") ? <SearchBar openMenu={this.openMenu}></SearchBar> : ''}</div>
@@ -87,16 +96,17 @@ class NavBar extends Component {
 
                 <ul className={getNavClass() + ' ' + not_home}>
                     <Link to="/">
-                        <img className={(not_home === 'not-home') ? "logo small-screen-hide" : "logo invisible small-screen-hide"} src={(this.props.caller !== "home") ? blackLogo : whiteLogo} onClick={this.blah} />
+                        <img className={(not_home === 'not-home') ? "logo small-screen-hide" : "logo invisible small-screen-hide"} src={(this.props.caller !== "home") ? blackLogo : whiteLogo} onClick={this.toggleHamburger} />
                     </Link>
-                    <li key="1" id="one" className={getMenuItemClass() + " small-screen-hide"}>{(this.props.caller !== "home") ? <SearchBar openMenu={this.openMenu}></SearchBar> : ''}</li>
-                    <li key="2" id="two" className={getMenuItemClass()}><Link to="/About" className={getLinkItemClass()}>About</Link></li>
-                    {this.props.loggedInUser && <li id="three" key="3" className={getMenuItemClass()}><Link to="/house/edit" className={getLinkItemClass()} >Host</Link></li>}
-                    {this.props.loggedInUser && <li id="four" key="4" className={getMenuItemClass()}><Link to="/reserved" className={getLinkItemClass()} onClick={consoleCaller}>Reserved</Link></li>}
-                    {this.props.loggedInUser && <li id="five" key="5" className={getMenuItemClass()}><Link to="/favorites" className={getLinkItemClass()}>Favorites</Link></li>}
-                    {this.props.loggedInUser && <li id="six" key="6" className={getMenuItemClass()}><Link to="/requests" className={getLinkItemClass()}>Requests</Link></li>}
-                    {this.props.loggedInUser && <li id="seven" key="7" className={getMenuItemClass() + " small-screen-show"}><Link to={`/user/${this.props.loggedInUser._id}`} className={getLinkItemClass(this.props.loggedInUser.username)}>{`(${this.props.loggedInUser.username})`}</Link><Link to="/login">Logout</Link></li>}
-                    {!this.props.loggedInUser && <li id="seven" key="7" className={getMenuItemClass()}><Link to="/login" className={getLinkItemClass()}>Login/Signup</Link></li>}
+                    <li key="1" id="two" onClick={this.toggleHamburger} className={getMenuItemClass()}><Link to="/About" className={getLinkItemClass()}>About</Link></li>
+                    <li key="2" id="three" onClick={this.toggleHamburger} className={getMenuItemClass() + " small-screen-show"}><Link to="/" className={getLinkItemClass()}>Home</Link></li>
+                    {this.props.loggedInUser && <li id="four" key="3" onClick={this.toggleHamburger} className={getMenuItemClass()}><Link to="/house/edit" className={getLinkItemClass()} >Host</Link></li>}
+                    {this.props.loggedInUser && <li id="five" key="4" onClick={this.toggleHamburger} className={getMenuItemClass()}><Link to="/reserved" className={getLinkItemClass()} onClick={consoleCaller}>Reserved</Link></li>}
+                    {this.props.loggedInUser && <li id="six" key="5" onClick={this.toggleHamburger} className={getMenuItemClass()}><Link to="/favorites" className={getLinkItemClass()}>Favorites</Link></li>}
+                    {this.props.loggedInUser && <li id="seven" key="6" onClick={this.toggleHamburger} className={getMenuItemClass()}><Link to="/requests" className={getLinkItemClass()}>Requests</Link></li>}
+                    {this.props.loggedInUser && <li id="eight" key="7" onClick={this.toggleHamburger} className={getMenuItemClass() + " small-screen-show"}><Link to="/login" className={getLinkItemClass(this.props.loggedInUser.username)}>{`(${this.props.loggedInUser.username})`}</Link><Link to="/login">Logout</Link></li>}
+                    {!this.props.loggedInUser && <li id="eight" key="7" onClick={this.toggleHamburger} className={getMenuItemClass()}><Link to="/login" className={getLinkItemClass()}>Login/Signup</Link></li>}
+
                     {/* { <li className={getMenuItemClass()}><Link to={"/profile/"+this.props.loggedInUser._id} className={getLinkItemClass()}>
                     {profileImageRender()}
                 </Link>
@@ -104,11 +114,6 @@ class NavBar extends Component {
                     <li className={getMenuItemClass()}>
                         {profileImageRender()}</li>
                 </ul>
-                {(this.dispalyFilters()) &&
-                    <div className={`filter-buttons-container ${(this.state.isMenuOpen) ? 'shown-filter-container' : ''}`}>
-                        <FilterBar></FilterBar>
-                    </div>
-                }
             </div>
         </div>)
     }
