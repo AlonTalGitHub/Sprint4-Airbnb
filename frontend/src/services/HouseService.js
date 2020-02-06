@@ -71,7 +71,8 @@ function _createQueryStr(filter) {
     
     if (filter.countries) {
         const countries = filter.countries.join()
-        querySTR += `?countries=${countries}`
+        // querySTR += `?countries=${countries}`
+        querySTR = `/house?countries=${countries}`//ask yael
     }
     if(filter.price){
         querySTR+=`&price=${filter.price}`

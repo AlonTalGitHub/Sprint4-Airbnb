@@ -12,7 +12,7 @@ h2.reservedpage {
     margin-top: 130px;
     padding-left: 24px;
     padding: 30px;
-    text-align: center;
+    /* text-align: center; */
 }
 
 h3.reservedpage {
@@ -25,7 +25,7 @@ h4.reserve-form-house-name {
 
 h3.reserve-form-header {
     text-align: center;
-    margin:0px;
+    margin: 0px;
 }
 
 .house-main-head {
@@ -353,6 +353,8 @@ ul.house-list.clean-list>* {
 
 .map-marker-container {
     position: relative;
+    top: -60px;
+    left: -22.5px;
 }
 
 .map-marker-price {
@@ -363,7 +365,130 @@ ul.house-list.clean-list>* {
     position: absolute;
 }
 
+.request-preview {
+    padding-top: 40px;
+    align-items: flex-start;
+    box-shadow: 23px 16px 23px 0px rgba(180, 179, 181, 1);
+    width: 85vw;
+    max-width: 565px;
+    height: 150px;
+    margin-left: calc((100% - 85vw)/2);
+    border-radius: 7000px;
+    border: 2px solid lightgray;
+    margin-bottom: 35px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.request-preview-details {
+    display: flex;
+    flex-direction: column;
+    word-break: keep-all;
+}
+
+.request-preview-details-header {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.request-preview-details-detail {
+    text-overflow: ellipsis;
+}
+
+.request-preview-btn:hover {
+    background-color: #37983b;
+}
+
+.request-preview-btn.big-screen {
+    margin: 15px;
+}
+
+h2.house-requests-house-name {
+    /* text-align: center; */
+}
+
+.house-requests-container {
+    margin-top: 45px;
+}
+
+h1.request-page-header {
+    /* margin-top: 200px; */
+    /* text-align: center; */
+}
+
+.house-requests-house-name-container {
+    /* margin-left: calc((100% - 140px)/2); */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.house-requests-house-name-show-requests-btn.show {
+    transform: rotate(180deg);
+    font-size: 2rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.house-requests-house-name-show-requests-btn {
+    transform: rotate(0deg);
+    margin-right: 16px;
+    font-size: 2rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.request-container.hide {
+    display: none;
+}
+
+.request-container {
+    display: block;
+}
+
+.request-preview-btns {
+    display: none;
+}
+
+.request-preview-btns.big-screen {
+    display: flex;
+}
+
+.request-preview>* {
+    margin-left: 10px;
+}
+
+.request-page-sub-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.request-preview-user-img-container.requests {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    margin: 0 30px;
+}
+
+img.request-preview-user-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    margin-left: calc((100% - 50px)/2);
+}
+
 @media only screen and (min-width: 745px) {
+    .request-preview {
+        margin-left: calc((100% - 565px)/2);
+    }
+    .house-requests-house-name-container {
+        /* margin-left: calc((100% - 140px)/2); */
+        justify-content: center;
+    }
     img.house-preview-image {
         max-width: 300px;
     }
@@ -378,12 +503,6 @@ ul.house-list.clean-list>* {
     ul.request-list {
         /*margin-top: 250px; */
     }
-    .house-requests-container {
-        margin-top: 80px;
-    }
-    h1.request-page-header {
-        margin-top: 200px
-    }
     .house-preview-details {}
     .house-preview-container {
         margin-left: 0px;
@@ -396,7 +515,30 @@ ul.house-list.clean-list>* {
     /* .house-preview-first-line-rate-container { position: absolute; left: 85%; } */
 }
 
-@media only screen and (max-width: 430px) {
+.request-preview-btn.yes {
+    padding: 11px 5px;
+}
+
+.request-preview-btn.no {
+    padding: 10px 9px;
+}
+
+.request-preview-btn {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #4caf50;
+    color: white;
+}
+
+.request-list-empty {
+    color: gray;
+    font-size: 2rem;
+    text-align: center;
+}
+
+@media only screen and (max-width:430px) {
     .house-preview-container {
         margin-left: 0px;
     }
@@ -413,4 +555,36 @@ ul.house-list.clean-list>* {
         margin-left: 0px;
     }
     .house-preview-add-to-favs-btn {}
+}
+
+@media only screen and (max-width: 510px) {
+    .request-preview-btns.big-screen {
+        display: none;
+    }
+    .request-preview-btns.small-screen {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 6px;
+    }
+    /* .request-preview-details.user-details { display:none; } */
+    .request-preview {
+        padding-top: 0px;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .request-preview-details.user-details {
+        display: none;
+    }
+    .request-page-sub-container {
+        margin-top: 50px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .reservedpage-not-confirmed-houses {
+        margin-top: 25%;
+    }
 }

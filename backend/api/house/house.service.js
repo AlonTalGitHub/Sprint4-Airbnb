@@ -1,16 +1,24 @@
 const dbService = require('../services/db.service')
 const ObjectId = require('mongodb').ObjectId
-const orderService=require('../order/order.service')
+const orderService = require('../order/order.service')
 async function query(filterBy = {}) {
-    const criteria = _buildCriteria(filterBy)
+    var criteria = _buildCriteria(filterBy)
     console.log('house service the criteria is: ', criteria)
     let houses;
     try {
         let collection = await dbService.getCollection('house')
         if (filterBy.countries) {
             houses = await collection.find(criteria).sort({ "rating": -1 }).limit(3).toArray();
-            
-        } else {
+
+        } else if (filterBy.startDate && filterBy.endDate) {
+            let newFilterBy = await _getAvailableHouses({ startDate: filterBy.startDate, endDate: filterBy.endDate })
+            console.log('newFilterBy: ', newFilterBy)
+            dateCriteria = _buildCriteria(newFilterBy)
+            let newCriteria={...criteria,...dateCriteria}
+            console.log('newCriteria is: ', newCriteria)
+            houses = await collection.find(newCriteria).toArray()
+        }
+        else {
             houses = await collection.find(criteria).toArray()
         }
         console.log('this is house.service speaking houses is :', houses[0])
@@ -82,39 +90,43 @@ function _buildCriteria(filterBy) {
         let countries = filterBy.countries.split(',')
         criteria = { "address.country": { "$in": countries } }
     }
-    
+
     if (filterBy.allExcept) {
-        let allHousesExcept = filterBy.allExceptHouses.map(houseId=>ObjectId(houseId))
+        let allHousesExcept = filterBy.allExceptHouses.map(houseId => ObjectId(houseId))
         criteria = {
-            ...criteria, _id: { $nin: allHousesExcept}
+            ...criteria, _id: { $nin: allHousesExcept }
         }
     }
     return criteria;
 }
 
-async function getAvailableHouses(dates) {
-    let userDates={...dates}
+async function _getAvailableHouses(dates) {
+    let userDates = { ...dates }
     console.log('startDate is: ', userDates.startDate, '\n')
     console.log('endDate is: ', userDates.endDate, '\n')
 
     let orderFilterBy = {
         dates: true,
-        startDate:userDates.startDate,
-        endDate:userDates.endDate
+        startDate: userDates.startDate,
+        endDate: userDates.endDate
     }
     console.log('orderFilterBy: ', orderFilterBy)
 
     try {
         let overlappingOrders = await orderService.query(orderFilterBy)
-        console.log('overlappingOrders are: ',overlappingOrders)
+        console.log('overlappingOrders are: ', overlappingOrders)
         let unAvailableHouses = overlappingOrders.map(order => order.houseId)
-        console.log('unAvailableHouses: ',unAvailableHouses)
-        let filter = {
+        console.log('unAvailableHouses: ', unAvailableHouses)
+        // let filter = {
+        //     allExcept: true,
+        //     allExceptHouses: unAvailableHouses
+        // }
+        return {
             allExcept: true,
             allExceptHouses: unAvailableHouses
         }
-        let availableHouses = await query(filter)
-        return availableHouses;
+        // let availableHouses = await query(filter)
+        // return availableHouses;
     } catch (err) {
         throw err
     }
@@ -125,5 +137,4 @@ module.exports = {
     remove,
     add,
     update,
-    getAvailableHouses
 }

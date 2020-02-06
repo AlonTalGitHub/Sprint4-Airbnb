@@ -26,7 +26,7 @@ async function remove(orderId) {
 
 
 async function add(order) {
-    order.isConfirmedByHouse = false
+    order.status = 'initial'
     try {
         const collection = await dbService.getCollection('order')
         await collection.insertOne(order);
@@ -39,13 +39,13 @@ async function add(order) {
 }
 
 async function update(order) {
-    let filterBy = { updateOrder: true }
+    let filterBy = { updateOrder: true ,status:order.status}
     const criteria = _buildCriteria(filterBy)
     let orderId = { _id: ObjectId(order._id) }
     console.log('order.service: ', orderId, criteria)
     try {
         const collection = await dbService.getCollection('order')
-        await collection.update(orderId, criteria)
+        await collection.updateOne(orderId, criteria)
         let updatedOrder = await query(orderId)
         return updatedOrder
     }
@@ -77,7 +77,7 @@ function _buildCriteria(filterBy) {
         }
     }
     if (filterBy.updateOrder) {
-        criteria = { $set: { isConfirmedByHouse: true } }
+        criteria = { $set: { status: filterBy.status } }
     }
     if (filterBy.dates) {
         criteria = {

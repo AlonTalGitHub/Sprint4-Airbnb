@@ -40,7 +40,7 @@ function App() {
           <Route path="/house/edit" component={HouseEdit} exact/>
           <Route path="/house/edit/:id" component={HouseEdit} exact/>
           <Route path="/house/:id" component={HouseDetails} exact/>
-          <Route path="/profile/:id" component={UserProfile} exact/>
+          <Route path="/user/:id" component={UserProfile} exact/>
           {/* <Route path="house/edit:id" component={HouseEdit} exact/> */}
         </Switch>
       </Router>
