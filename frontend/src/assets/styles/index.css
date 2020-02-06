@@ -45,7 +45,7 @@ body {
 
 .nav-links.black {
     background-color: white;
-    border-bottom: 2px solid black;
+    border-bottom: 0.5px solid grey;
     position: fixed;
     top: 0;
     z-index: 200;
@@ -132,12 +132,12 @@ span.nav-item-user-name {
 }
 
 .filter-buttons-container {
-    height: 60px;
+    height: 50px;
     position: fixed;
     z-index: 1;
     width: 100%;
     background-color: white;
-    border-bottom: 1px solid black;
+    border-bottom: 0.5px solid gray;
     top: 80px;
     transition: 0.3s;
     margin-bottom: 40px;

@@ -38,9 +38,9 @@ export default class PriceFilter extends Component {
         return <React.Fragment>
             <div className="filter-container pointer flex column">
                 <button onClick={this.onToggleMenu} className="filter-btn">Price</button>
-                <div className={`filter-menu ${(isMenuOpen) ? 'shown-filter column space-between' : ''}`}>
+                <div className={`filter-menu ${(isMenuOpen) ? 'shown-filter price column space-between' : ''}`}>
                     <input onChange={this.onChange} type="range" name="price" value={this.props.price} min="50" max="1000"></input>
-                    <label htmlFor="price" >${this.props.price}</label>
+                    <label htmlFor="price" >Max price: ${this.props.price}</label>
                     <Link to="/house">
                         <button onClick={this.onSaveFilter} className="save-filter-btn pointer">Save</button>
                     </Link>
