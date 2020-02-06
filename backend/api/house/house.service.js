@@ -76,6 +76,11 @@ function _buildCriteria(filterBy) {
             ...criteria, "capacity": { $gte: +filterBy.capacity }
         }
     }
+    if(filterBy.price){
+        criteria={
+            ...criteria,"price":{$lte:+filterBy.price}
+        }
+    }
     if (filterBy.ids) {
         let idsArr = filterBy.ids.split(',')
         let objectIds = idsArr.map(id => ObjectId(id))

@@ -24,12 +24,10 @@ class Home extends Component {
 
   }
 
-  load = async () => {
-    // this.props.filterHouses({ location: '', numOfperson: 1, nightsNum: 1 })
+  load = async () => {    
     this.props.getBestByCountry({ countries: ['israel'] })
     this.props.getBestByCountry({ countries: ['spain'] })
     this.props.getBestByCountry({ countries: ['italy'] })
-
   }
 
 
@@ -45,7 +43,7 @@ class Home extends Component {
         <img className="index-cover" src={backgroundImage} />
         <SearchForm></SearchForm>
         {/* {this.props.houses.length&& */}
-        <section className="lists-section">
+        <section className="lists-section-container">
           <div>
             <h4 className="reccomended-headline">Most reccomended in Israel</h4>
             <HouseList houses={this.props.israel}></HouseList>

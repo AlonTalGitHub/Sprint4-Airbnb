@@ -1,51 +1,81 @@
 import React, { Component } from "react";
-import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
-import 'react-dates/lib/css/_datepicker.css';
-import 'react-dates/initialize';
+
 import { connect } from 'react-redux';
 import { setFilter, filterHouses } from '../actions/HouseActions'
-// import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
-import '../assets/styles/index.css'
-import CapacityFilter from "./CapacityFilter";
 
-class FilterBar extends Component{
+import '../assets/styles/index.css'
+import CapacityFilter from './CapacityFilter';
+import DatePicker from './DatePicker'
+import moment from 'moment'
+import PriceFilter from "./PriceFilter";
+import { Redirect } from "react-router";
+// import history from "../history";
+
+class FilterBar extends Component {
     state = {
-        filterBy: this.props.filterBy,
+        filterBy: { ...this.props.filterBy },
         startDate: null,
         endDate: null
     }
 
-    componentDidMount(){
-        console.log('filter bar',this.state.filterBy)
+    componentDidMount() {
+        console.log('filter bar', this.state.filterBy)
+        
     }
 
-    onChangeCap = (diff,key) => {
-        console.log('cap change before',this.state.filterBy)
+    componentDidUpdate(prevProps) {
+        if (prevProps.filterBy !== this.props.filterBy) {
+            this.setState({ filterBy: { ...this.props.filterBy } }, () => console.log(this.state.filterBy))
+        }
+
+    }
+
+    changeDates = (userDates) => {
+        let startDate = moment.utc(userDates.startDate).format()
+        let endDate = moment.utc(userDates.endDate).format()
+        let newDates = { startDate: startDate, endDate: endDate }
+        this.setState({ filterBy: { ...this.state.filterBy, ...newDates } }, this.saveFilter)
+    }
+
+    onChangeCap = (diff, key) => {
+        console.log('cap change before', this.state.filterBy)
         if (this.state.filterBy[key] === 1 && diff === -1) return
-        this.setState(prevState => prevState.filterBy[key] += diff,()=>console.log('cap change filter bar',this.state.filterBy))
+        this.setState(prevState => prevState.filterBy[key] += diff, () => console.log('cap change filter bar', this.state.filterBy))
     }
 
-    saveFilter=()=>{
-       this.props.filterHouses(this.state.filterBy)
+    onChangePrice = (val) => {
+        console.log('onchange price called')        
+        // this.setState(prevState => prevState.filterBy.price = val, ()=>console.log('changeprice',this.state))
+        this.setState(prevState => prevState.filterBy.price=val,() => console.log('price change filter bar', this.state.filterBy))
+
     }
 
-    updateState=()=>{
-        const filter={...this.props.filterBy}
-        console.log(filter)
-        this.setState({filterBy:filter})
+    saveFilter = () => {
+        console.log('save filter filter bar')
+        this.props.filterHouses(this.state.filterBy)      
     }
-    
-    render(){
-        const {filterBy}=this.state
+
+    updateState = () => {
+        const filter = { ...this.props.filterBy }
+        // console.log(filter)
+        this.setState({ filterBy: filter }, this.saveFilter)
+    }
+
+    render() {
+        const { filterBy } = this.state
         return <React.Fragment>
-            <CapacityFilter updateState={this.updateState}
-             saveFilter={this.saveFilter} filterBy={filterBy} onChangeCap={this.onChangeCap}>
+            <div className="flex">
+                <CapacityFilter updateState={this.updateState}
+                    saveFilter={this.saveFilter} filterBy={filterBy} onChangeCap={this.onChangeCap}>
+                </CapacityFilter>
+                <PriceFilter price={this.state.filterBy.price} saveFilter={this.saveFilter} onChangePrice={this.onChangePrice}></PriceFilter>
+            {/* <DatePicker changeDates={this.changeDates}></DatePicker> */}
+            </div>
 
-             </CapacityFilter>
+
         </React.Fragment>
-                      
-    
+
+
     }
 }
 

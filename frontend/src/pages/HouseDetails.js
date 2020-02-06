@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { updateUser } from '../actions/UserActions'
 import { deleteHouse, filterHouses, saveHouse } from '../actions/HouseActions'
 import { connect } from 'react-redux';
 // import { connect } from 'react-redux';
@@ -23,20 +24,30 @@ class HouseDetails extends Component {
         house: null
     }
 
-    componentDidMount() {
-        const houseId = this.props.match.params.id;
-        // console.log('details mounting: ',houseId)
+    componentDidMount() {        
+        const houseId = this.props.match.params.id;        
         this.loadHouse(houseId)
     }
 
     loadHouse = async (houseId) => {
-        const house = await HouseService.get(houseId)
-        // console.log('house details page',house)
+        const house = await HouseService.get(houseId)        
         this.setState({ house })
     }
 
+    checkIfOwner = () => {
+        const { loggedInUser } = this.props
+        const isOwner = (loggedInUser && loggedInUser._id === this.state.house.owner._id) ? true : false
+        console.log(isOwner)
+        return isOwner
+    }
+
     handleDelete = async () => {
-        await this.props.deleteHouse(this.state.house._id)
+        const { _id } = this.state.house
+        let { loggedInUser } = this.props
+        const houses = loggedInUser.houses.filter(id=>id!==_id)
+        loggedInUser = { ...loggedInUser, houses }
+        await this.props.deleteHouse(_id)
+        await this.props.updateUser(loggedInUser)
         this.props.history.push('/')
     }
 
@@ -72,20 +83,28 @@ class HouseDetails extends Component {
                             <span className="house-header span-line-break">{house.address.country}</span>
                             <span className="house-header span-line-break">Description</span>
                             <p className="house-content span-line-break bottom-line">{house.description}</p>
-                            <ReviewList reviews={ house.reviews}/>
+                            <ReviewList reviews={house.reviews} />
                             <ReviewCompose onUpdateReviews={this.updateReviews} />
-                            <div className="details-button-container flex space-between">
+                            {this.checkIfOwner() &&<div className="details-button-container flex space-between">
+                                    <Link to={`/house/edit/${house._id}`} >
+                                        <button className="form-btn pointer">Edit House</button>
+                                    </Link>
+                                    <button onClick={this.handleDelete} className="form-btn pointer">Delete House</button>
+                                </div>
+                            }
+                            
+                            {/* <div className="details-button-container flex space-between">
                                 <Link to={`/house/edit/${house._id}`} >
                                     <button className="form-btn pointer">Edit House</button>
                                 </Link>
                                 <button onClick={this.handleDelete} className="form-btn pointer">Delete House</button>
-                            </div>
+                            </div> */}
                         </div>
                         <ReserveHouse house={house} detailsPage={true} />
-                        
+
                     </div>
                     {/* <ChatBox house={this.house}></ChatBox> */}
-                    <MapPreview caller="housedetails" house={house}/>
+                    <MapPreview caller="housedetails" house={house} />
                 </section>}
             </React.Fragment>
         )
@@ -94,12 +113,14 @@ class HouseDetails extends Component {
 
 const mapStateToProps = state => {
     return {
-        houses: state.house.houses
+        houses: state.house.houses,
+        loggedInUser: state.user.loggedInUser
     };
 };
 const mapDispatchToProps = {
     deleteHouse,
     filterHouses,
+    updateUser,
     saveHouse
 };
 

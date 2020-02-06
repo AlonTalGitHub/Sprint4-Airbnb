@@ -12,7 +12,7 @@ h2.reservedpage {
     margin-top: 130px;
     padding-left: 24px;
     padding: 30px;
-    text-align: center;
+    /* text-align: center; */
 }
 
 h3.reservedpage {
@@ -353,6 +353,8 @@ ul.house-list.clean-list>* {
 
 .map-marker-container {
     position: relative;
+    top: -60px;
+    left: -22.5px;
 }
 
 .map-marker-price {
@@ -395,7 +397,7 @@ ul.house-list.clean-list>* {
 }
 
 .request-preview-btn:hover {
-    background-color: #45adbb;
+    background-color: #37983b;
 }
 
 .request-preview-btn.big-screen {
@@ -403,7 +405,7 @@ ul.house-list.clean-list>* {
 }
 
 h2.house-requests-house-name {
-    text-align: center;
+    /* text-align: center; */
 }
 
 .house-requests-container {
@@ -411,15 +413,16 @@ h2.house-requests-house-name {
 }
 
 h1.request-page-header {
-    margin-top: 200px;
-    text-align: center;
+    /* margin-top: 200px; */
+    /* text-align: center; */
 }
 
 .house-requests-house-name-container {
-    margin-left: calc((100% - 140px)/2);
+    /* margin-left: calc((100% - 140px)/2); */
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: center;
 }
 
 .house-requests-house-name-show-requests-btn.show {
@@ -457,12 +460,34 @@ h1.request-page-header {
     margin-left: 10px;
 }
 
+.request-page-sub-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.request-preview-user-img-container.requests {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    margin: 0 30px;
+}
+
+img.request-preview-user-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    margin-left: calc((100% - 50px)/2);
+}
+
 @media only screen and (min-width: 745px) {
     .request-preview {
         margin-left: calc((100% - 565px)/2);
     }
     .house-requests-house-name-container {
-        margin-left: calc((100% - 140px)/2);
+        /* margin-left: calc((100% - 140px)/2); */
+        justify-content: center;
     }
     img.house-preview-image {
         max-width: 300px;
@@ -503,7 +528,7 @@ h1.request-page-header {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #1c636c;
+    background-color: #4caf50;
     color: white;
 }
 
@@ -552,6 +577,9 @@ h1.request-page-header {
 @media only screen and (max-width: 640px) {
     .request-preview-details.user-details {
         display: none;
+    }
+    .request-page-sub-container {
+        margin-top: 50px;
     }
 }
 

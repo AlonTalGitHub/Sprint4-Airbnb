@@ -22,9 +22,13 @@ export default function(state = initialState, action = {}) {
       };
     case 'SET_USERS':
       return { ...state, users: action.users };
+    // case 'USER_LOAD':
+    //     console.log('userload', action.user)        
+    //     return { ...state, users: action.user };
     case 'USER_LOAD':
-        console.log('userload', action.user)        
-        return { ...state, users: action.user };
+        console.log('userload', action.user) 
+        sessionStorage.setItem('user', JSON.stringify(action.user))
+        return { ...state, loggedInUser: action.user };
       default:
       return state;
   }

@@ -1,39 +1,40 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom'
-
 import { connect } from 'react-redux';
-
 import NavBar from '../cmps/NavBar';
 import RequestList from '../cmps/RequestList'
 import OrderService from '../services/OrderService'
 import '../assets/styles/main.css'
 import HouseService from '../services/HouseService'
 class RequestPage extends Component {
-    constructor(props) {
-        super(props)
-        if (!this.props.loggedInUser) {
-            this.state = {}
-        } else {
+    // constructor(props) {
+    //     super(props)
+    //     if (!this.props.loggedInUser) {
+    //         this.state = {}
+    //     } else {
 
-            let myHouses = this.props.loggedInUser.houses.map(myhouseId => {
-                return {
-                    houseId: myhouseId,
-                    houseTitle: null,
-                    address: null,
-                    isListVisible: false
-                }
-            })
-            this.state = { houses: myHouses }
-        }
-    }
+    //         let myHouses = this.props.loggedInUser.houses.map(myhouseId => {
+    //             return {
+    //                 houseId: myhouseId,
+    //                 houseTitle: null,
+    //                 address: null,
+    //                 isListVisible: false
+    //             }
+    //         })
+    //         this.state = { houses: myHouses }
+    //     }
+    // }
+    state = {}
     componentDidMount() {
-        console.log("did mount request page")
+        console.log("did mount request page,state: ", this.state)
         this.loadHouseData()
     }
     loadHouseData = async () => {
         try {
-            let housePrms = this.state.houses.map(house => HouseService.get(house.houseId))
-            let resHouses = await Promise.all(housePrms)
+            let filter = { ids: this.props.loggedInUser.houses }
+            let resHouses = await HouseService.query(filter);
+            // let housePrms = this.state.houses.map(house => HouseService.get(house.houseId))
+            // let resHouses = await Promise.all(housePrms)
             // let resHouses=[{
             //     _id: '5e35c84acdb2e21828653cc5',
             //     address: { country: 'sweden', coords: { lat: 59.3304287, lng: 18.0666493 } },     
@@ -52,25 +53,26 @@ class RequestPage extends Component {
             //       imgURL: 'https://besttv232-ynet-images1-prod.cdn.it.best-tv.com/PicServer4/2014/11/04/5675636/821800099791490598no.jpg'
             //     }
             //   }]
-            let houses = resHouses.map(house => {
-                return {
-                    houseId: house._id,
-                    houseTitle: house.title,
-                    address: house.address
-                }
-            })
-            this.setState({ ...this.state.houses, ...houses })
-            let housesWithRequestsPrms = houses.map(house => {
+            // let houses = await resHouses.map(house => {
+            //     return {
+            //         houseId: house._id,
+            //         houseTitle: house.title,
+            //         address: house.address
+            //     }
+            // })
+            console.log('resHouses: ', resHouses)
+            this.setState({ houses: resHouses })
+            let requestsPrms = resHouses.map(house => {
                 let filterBy = {
                     houserequests: true,
-                    houseId: house.houseId
+                    houseId: house._id
                 }
                 return OrderService.getOrders(filterBy)
             })
-            let housesWithRequests = await Promise.all(housesWithRequestsPrms)
-            let newHouses = houses.map((house, idx) => {
-                let requests = housesWithRequests[idx].filter((request) => { if (request.status === 'initial') return request })
-                house.requests = requests;
+            let requests = await Promise.all(requestsPrms)
+            let newHouses = resHouses.map((house, idx) => {
+                let newRequests = requests[idx].filter((request) => { if (request.status === 'initial') return request })
+                house.requests = newRequests;
                 return house;
             })
             this.setState({ ...this.state, ...newHouses })
@@ -90,18 +92,17 @@ class RequestPage extends Component {
     }
 
 
-
+    //.filter(house => { if (house.requests.length > 0) return house })
     loadLists = () => {
         let lists = (<div></div>);
         if (this.state.houses) {
-            { console.log('harta barta,houses: ', this.state.houses) }
-            lists = this.state.houses.filter(house => { if (house.requests.length > 0) return house }).map((house, idx) => {
+            lists = this.state.houses.filter(house => { if (house.requests && house.requests.length > 0) return house }).map((house, idx) => {
 
                 return (
                     <div className="house-requests-list-container">
                         <div className="house-requests-house-name-container">
                             {/* <div className= "house-requests-house-name-show-requests-btn show" >^</div> */}
-                            <h2 className="house-requests-house-name">{(house.houseTitle) ? house.houseTitle : 'Loading..'}</h2>
+                            <h2 className="house-requests-house-name">{(house.title) ? house.title : 'Loading..'}</h2>
                         </div>
                         <RequestList house={house} handleRequest={this.handleRequest}
                             filterBy={''} style={{ "marginTop": "120px" }} key={idx} />
@@ -110,15 +111,18 @@ class RequestPage extends Component {
             })
         }
 
+        console.log('harta barta,houses: ', this.state)
         return lists
     }
     render() {
         return (
             <div className="request-page-container">
                 <NavBar caller={"requestpage"}></NavBar>
+                <div className="request-page-sub-container">
                 <h1 className="request-page-header">My Requests</h1>
                 <div className="house-requests-container">
                     {this.loadLists()}
+                </div>
                 </div>
             </div>
         )

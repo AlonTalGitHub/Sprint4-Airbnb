@@ -9,32 +9,38 @@ import { setFilter, filterHouses } from '../actions/HouseActions'
 import '../assets/styles/index.css'
 import { Link } from "react-router-dom";
 
-export default class CapacityFilter extends Component {
+export default class PriceFilter extends Component {
     state = {
-        isMenuOpen: false
+        isMenuOpen: false,
+        // price: this.props.price || 1000
     }
 
     onToggleMenu = () => {
         this.setState((prevState => prevState.isMenuOpen = !prevState.isMenuOpen))
-        // this.setState((prevState => prevState.isMenuOpen = !prevState.isMenuOpen),()=>this.props.updateState())
+
     }
 
     onSaveFilter = () => {
+        console.log('on save called ')
         this.onToggleMenu()
+        // this.props.onChangePrice(this.state.price)
         this.props.saveFilter()
+    }
+
+    onChange = (ev) => {
+        // this.setState({ price: +ev.target.value })
+        this.props.onChangePrice(+ev.target.value)     
+
     }
 
     render() {
         const { isMenuOpen } = this.state
         return <React.Fragment>
-            <div className="filter-container flex column">
-                <button onClick={this.onToggleMenu} className="filter-btn pointer">Guests</button>
+            <div className="filter-container pointer flex column">
+                <button onClick={this.onToggleMenu} className="filter-btn">Price</button>
                 <div className={`filter-menu ${(isMenuOpen) ? 'shown-filter column space-between' : ''}`}>
-                    <span className="form-cap-control flex space-between align-center">
-                        <button onClick={() => this.props.onChangeCap(1, 'numOfperson')} className="filter-num-btn pointer" name="numOfperson">+</button>
-                        <span className="form-cap-num">{this.props.filterBy.numOfperson}</span>
-                        <button onClick={() => this.props.onChangeCap(-1, 'numOfperson')} className="filter-num-btn pointer" name="numOfperson">-</button>
-                    </span>
+                    <input onChange={this.onChange} type="range" name="price" value={this.props.price} min="50" max="1000"></input>
+                    <label htmlFor="price" >${this.props.price}</label>
                     <Link to="/house">
                         <button onClick={this.onSaveFilter} className="save-filter-btn pointer">Save</button>
                     </Link>

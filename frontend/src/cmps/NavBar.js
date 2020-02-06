@@ -18,6 +18,9 @@ class NavBar extends Component {
         isScreen: false
     }
 
+    componentDidMount() {
+        console.log(this.props.history)
+    }
 
     openMenu = () => {
         this.setState({ isMenuOpen: true })
@@ -27,10 +30,14 @@ class NavBar extends Component {
         var newState = { ...this.state, isScreen: !this.state.isScreen }
         this.setState({ ...this.state, ...newState })
     }
-    kuku = () => {
-        if (this.props.loggedInUser) return `logged as (${this.props.loggedInUser.username}) Signout`
-        else return "Login/Signup"
+
+    dispalyFilters = () => {
+        const callers = ['housepage', 'housedetails']
+        const dispaly = callers.some(caller => caller === this.props.caller)
+        console.log('is filter bar', dispaly)
+        return dispaly
     }
+
 
     render() {
         const { loggedInUser } = this.props;
@@ -56,16 +63,18 @@ class NavBar extends Component {
             else return "nav-item-user-name"
         }
         const profileImageRender = () => {
-            return (
-                <div ><Link to={`/user/${this.props.loggedInUser._id}`}>
-                    <div className={(loggedInUser) ? "nav-item-user-img-container visible" : "nav-item-user-img-container"}>
-                        <img src={(loggedInUser) ? loggedInUser.imgURL : userProfileImg} className="nav-item-user-img" />
+            if (loggedInUser) {
+                return (
+                    <div ><Link to={`/user/${loggedInUser._id}`}>
+                        <div className={(loggedInUser) ? "nav-item-user-img-container visible" : "nav-item-user-img-container"}>
+                            <img src={(loggedInUser) ? loggedInUser.imgURL : userProfileImg} className="nav-item-user-img" />
+                        </div>
+                    </Link>
+                        {/* {(loggedInUser) ? <span className={getuserNameClass()}>{loggedInUser.username}</span> : ''} */}
+                        {(loggedInUser) ? <Link to="/login" className={getuserNameClass() + " small-screen-hide"}><span className={getuserNameClass() + " small-screen-hide"}>Logout</span></Link> : ''}
                     </div>
-                </Link>
-                    {/* {(loggedInUser) ? <span className={getuserNameClass()}>{loggedInUser.username}</span> : ''} */}
-                    {(loggedInUser) ? <Link to="/login" className={getuserNameClass() + " small-screen-hide"}><span className={getuserNameClass() + " small-screen-hide"}>Logout</span></Link> : ''}
-                </div>
-            )
+                )
+            } else return (<div></div>)
         }
         return (<div className={"nav-container " + not_home}>
             {/* return <div className={`main-navbar flex space-between ${this.props.class}`}> */}
@@ -95,9 +104,11 @@ class NavBar extends Component {
                     <li className={getMenuItemClass()}>
                         {profileImageRender()}</li>
                 </ul>
-                <div className={`filter-buttons-container ${(this.state.isMenuOpen) ? 'shown-filter-container' : ''}`}>
-                    <FilterBar></FilterBar>
-                </div>
+                {(this.dispalyFilters()) &&
+                    <div className={`filter-buttons-container ${(this.state.isMenuOpen) ? 'shown-filter-container' : ''}`}>
+                        <FilterBar></FilterBar>
+                    </div>
+                }
             </div>
         </div>)
     }

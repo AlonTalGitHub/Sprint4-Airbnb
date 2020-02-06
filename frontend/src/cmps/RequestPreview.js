@@ -28,8 +28,8 @@ export default class RequestPreview extends Component {
                     {/* <span>{props.request._id}</span> */}
                     {/* <button style={{'width':'100px','height':'50px'}} onClick={(ev)=>props.confirmGuest(ev,props.request)}></button> */}
 
-                    <div className="nav-item-user-img-container visible requests">
-                        <img src={this.state.user.imgURL} className="nav-item-user-img" />
+                    <div className="request-preview-user-img-container requests">
+                        <img src={this.state.user.imgURL} className="request-preview-user-img" />
                     </div>
                     <div className="request-preview-details user-details">
                         <span className="request-preview-details-header">User Details</span>

@@ -4,6 +4,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import { connect } from 'react-redux';
 import { saveHouse } from '../actions/HouseActions'
+import { getUserById } from '../actions/UserActions'
 import '../assets/styles/index.css'
 import '../assets/styles/edithouse.css'
 import HouseService from '../services/HouseService'
@@ -125,13 +126,14 @@ class HouseEdit extends Component {
         else {
             const owner = this.createOwner(user)
             try {
-                await this.checkAddress()                
-                const address = { ...this.state.newHouse.address}                
-                const country=address.country.toLowerCase()                
-                address.country=country                
-                const newHouse = { ...this.state.newHouse, owner,address}
-                delete newHouse.addressInput                
-                await this.props.saveHouse(newHouse)                
+                await this.checkAddress()
+                const address = { ...this.state.newHouse.address }
+                const country = address.country.toLowerCase()
+                address.country = country
+                const newHouse = { ...this.state.newHouse, owner, address }
+                delete newHouse.addressInput
+                await this.props.saveHouse(newHouse)
+                await this.props.getUserById(user._id)        
                 this.setState({ isModalShown: true })
             }
             catch{
@@ -198,7 +200,7 @@ class HouseEdit extends Component {
         for (let i = 1; i < 9; i++) {
             const str = (i === 1) ? `${i} person` : `${i} persons`
             // const isSelected=(i===this.state.newHouse.capacity)? selected : ''
-            options.push(<option selected={(i === this.state.newHouse.capacity) ? true : false} value={i}>{str}</option>)
+            options.push(<option key={i} selected={(i === this.state.newHouse.capacity) ? true : false} value={i}>{str}</option>)
         }
         return options
     }
@@ -265,7 +267,8 @@ const mapStateToProps = state => {
 
 
 const mapDispatchToProps = {
-    saveHouse
+    saveHouse,
+    getUserById
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HouseEdit)

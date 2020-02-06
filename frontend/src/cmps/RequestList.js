@@ -62,12 +62,12 @@ class RequestList extends Component {
     }
     //(this.state.isListVisible)? "request-container":"request-container hide"
     render() {
-        { console.log('house is ', this.props.house.houseId, '\n\n', 'and the requests are: ', this.props.house.requests) }
+        { console.log('house is ', this.props.house._id, '\n\n', 'and the requests are: ', this.props.house.requests) }
         return (
             <section className={"request-container"}>
                 {(!this.props.house.requests || (this.props.house.requests.length === 0)) && <div className="request-list-empty"> No new requests</div>}
                 <ul className="request-list clean-list">
-                    {this.props.house.requests && (this.props.house.requests.length > 0) && this.props.house.requests.requests.map(request => <li key={request._id}><RequestPreview request={request} handleRequest={this.props.handleRequest} /></li>)}
+                    {this.props.house.requests && (this.props.house.requests.length > 0) && this.props.house.requests.map(request => <li key={request._id}><RequestPreview request={request} handleRequest={this.props.handleRequest} /></li>)}
                 </ul>
             </section>
         )
