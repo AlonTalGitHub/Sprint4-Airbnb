@@ -16,8 +16,8 @@ class MapPreview extends Component {
         super(props)
         this.state = {
             center: {
-                lat: 59.3304287, //this.props.house.address.coords.lat,
-                lng: 18.0666493//this.props.house.address.coords.lng
+                lat: this.props.house.address.coords.lat,
+                lng: this.props.house.address.coords.lng
             },
             zoom: 11
         };
@@ -34,23 +34,23 @@ class MapPreview extends Component {
             zoom: zoom
         });
     }
-    blah = async () => {
-        Geocode.fromAddress("Eiffel Tower").then(
-            response => {
-                const { lat, lng } = response.results[0].geometry.location;
-                console.log('Eiffel tower', lat, lng);
-            },
-            error => {
-                console.error(error);
-            }
-        );
-    }
+    // blah = async () => {
+    //     Geocode.fromAddress("Eiffel Tower").then(
+    //         response => {
+    //             const { lat, lng } = response.results[0].geometry.location;
+    //             console.log('Eiffel tower', lat, lng);
+    //         },
+    //         error => {
+    //             console.error(error);
+    //         }
+    //     );
+    // }
     render() {
         // {console.log('Map Preview state is: ',this.state)}
-        { this.blah() }
+        // { this.blah() }
         return (
             // Important! Always set the container height explicitly
-            <div style={{ height: '100vh', width: '100%' }}>
+            <div style={{ height: '80vh', width: '50%','paddingLeft': '10px' }}>
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: process.env.REACT_APP_GMAP_API_KEY, v: '3.31' }}
                     center={this.state.center}

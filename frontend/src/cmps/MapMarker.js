@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import TurtleMarker from '../assets/img/pagin_turtle.png'
 export default class MapMarker extends Component {
     render() {
-        console.log('MapMarker props: ',this.props)
+        // console.log('MapMarker props: ',this.props)
         return (
             <div className="map-marker-container">
                 {(this.props.caller === "housedetails") ? '' : <span className="map-marker-price">{'$' + this.props.house.price}</span>}

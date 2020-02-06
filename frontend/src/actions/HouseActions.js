@@ -1,17 +1,43 @@
 import HouseService from '../services/HouseService';
 import history from '../history'
+import { loading, doneLoading } from './SystemActions';
+
+/*
+export function loadUsers() {
+  return async dispatch => {
+    try {
+      // example for loading
+      dispatch(loading());
+      const users = await UserService.getUsers();
+      dispatch(setUsers(users));
+    } catch (err) {
+      console.log('UserActions: err in loadUsers', err);
+      // example for rerouting - after changing the store
+      // history.push('/some/path');
+    } finally {
+      dispatch(doneLoading());
+    }
+  };
+}
+
+*/
 
 
 export function filterHouses(filter) {
   console.log(filter)
   return async (dispatch) => {
-    dispatch(_setFilter(filter))
-    // for json-server:
-    let houses = await HouseService.query(filter);
-    // for real server:
-    // const houses = await HouseService.getHouses();
-    await dispatch(_setHouses(houses))
-    // history.push('/house')
+    try {
+      dispatch(loading());
+      dispatch(_setFilter(filter))
+      let houses = await HouseService.query(filter);
+      await dispatch(_setHouses(houses))
+    } catch (err) {
+      console.log('filter houses action err', err)
+      throw err;
+    }
+    finally {
+      dispatch(doneLoading());
+    }
   }
 }
 export function getBestByCountry(filter) {
