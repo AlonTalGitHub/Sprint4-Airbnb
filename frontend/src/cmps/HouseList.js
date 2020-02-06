@@ -139,7 +139,8 @@ class HouseList extends Component {
         const {houses}=this.props
 
         return (
-            <section className="house-container" style={this.props.style}>
+            <section className={(this.props.home)?"house-container home-list":"house-container"}>
+            {/* <section className="house-container" style={this.props.style}> */}
                 {/* <h2>{this.props.houses[0].title}</h2> */}
                 {/* <NavBar style={this.style} class='banana'></NavBar> */}
                 {/* <h2 className="house-main-head">Houses List</h2> */}

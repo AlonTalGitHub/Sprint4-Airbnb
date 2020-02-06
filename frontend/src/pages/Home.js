@@ -46,15 +46,15 @@ class Home extends Component {
         <section className="lists-section-container">
           <div>
             <h4 className="reccomended-headline">Most reccomended in Israel</h4>
-            <HouseList houses={this.props.israel}></HouseList>
+            <HouseList home="home" houses={this.props.israel}></HouseList>
           </div>
           <div>
             <h4 className="reccomended-headline">Most reccomended in Italy</h4>
-            <HouseList houses={this.props.italy}></HouseList>
+            <HouseList home="home" houses={this.props.italy}></HouseList>
           </div>
           <div>
             <h4 className="reccomended-headline">Most reccomended in Spain</h4>
-            <HouseList houses={this.props.spain}></HouseList>
+            <HouseList home="home" houses={this.props.spain}></HouseList>
           </div>
         </section>
         {/* /* <MapMarker/> */}
