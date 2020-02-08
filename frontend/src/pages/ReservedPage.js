@@ -7,7 +7,7 @@ import HouseService from '../services/HouseService'
 import HouseList from '../cmps/HouseList'
 import NavBar from '../cmps/NavBar';
 import OrderService from '../services/OrderService';
-
+import Loading from '../cmps/Loading'
 
 class ResrvedPage extends Component {
     // state = {
@@ -160,27 +160,36 @@ class ResrvedPage extends Component {
 
     render() {
         const { houses } = this.state
-
-        return (
-            <div className="reservedpage-container">
-                <NavBar caller={"reservedpage"}></NavBar>
-                <div className="reservedpage-content-container">
-                    <h2 className="reservedpage">My Reserved Houses</h2>
-                    <div className="reservedpage-not-confirmed-houses">
-                        <h3 className="reservedpage">Not Yet Confirmed by House Owner</h3>
-                        {(houses) && <HouseList caller={"reservedpage"} houses={this.getFilteredHouses('initial')}></HouseList>}
-                    </div>
-                    <div className="reservedpage-confirmed-houses">
-                        <h3 className="reservedpage">Confirmed by House Owner</h3>
-                        {(houses) && <HouseList caller={"reservedpage"} houses={this.getFilteredHouses('accepted')}></HouseList>}
-                    </div>
-                    <div className="reservedpage-confirmed-houses">
-                        <h3 className="reservedpage">Rejected by House Owner</h3>
-                        {(houses) && <HouseList caller={"reservedpage"} houses={this.getFilteredHouses('rejected')}></HouseList>}
-                    </div>
-                </div>
+        if (houses && houses.length === 0) return (<div className="reservedpage-container">
+            <NavBar caller={"reservedpage"}></NavBar>
+            <div className="reserved-container-none">
+                <h2 className="reservedpage">My Reserved Houses</h2>
+                <div>No reserved items to show</div>
             </div>
-        )
+        </div>)
+        else {
+            return (
+                <div className="reservedpage-container">
+                    <NavBar caller={"reservedpage"}></NavBar>
+                    {(this.props.isLoading || !houses) && <Loading />}
+                    {(houses) && <div className="reservedpage-content-container">
+                        <h2 className="reservedpage">My Reserved Houses</h2>
+                        <div className="reservedpage-not-confirmed-houses">
+                            <h3 className="reservedpage">Not Yet Confirmed by House Owner</h3>
+                            {(houses) && <HouseList caller={"reservedpage"} houses={this.getFilteredHouses('initial')}></HouseList>}
+                        </div>
+                        <div className="reservedpage-confirmed-houses">
+                            <h3 className="reservedpage">Confirmed by House Owner</h3>
+                            {(houses) && <HouseList caller={"reservedpage"} houses={this.getFilteredHouses('accepted')}></HouseList>}
+                        </div>
+                        <div className="reservedpage-confirmed-houses">
+                            <h3 className="reservedpage">Rejected by House Owner</h3>
+                            {(houses) && <HouseList caller={"reservedpage"} houses={this.getFilteredHouses('rejected')}></HouseList>}
+                        </div>
+                    </div>}
+                </div>
+            )
+        }
     }
 }
 

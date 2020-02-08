@@ -18,19 +18,19 @@ import '../assets/styles/index.css';
 import '../assets/styles/reviewpreview.css';
 import ReviewCompose from '../cmps/reviews/ReviewCompose';
 import MapPreview from '../cmps/MapPreview.js'
-
+import Loading from '../cmps/Loading'
 class HouseDetails extends Component {
     state = {
         house: null
     }
 
-    componentDidMount() {        
-        const houseId = this.props.match.params.id;        
+    componentDidMount() {
+        const houseId = this.props.match.params.id;
         this.loadHouse(houseId)
     }
 
     loadHouse = async (houseId) => {
-        const house = await HouseService.get(houseId)        
+        const house = await HouseService.get(houseId)
         this.setState({ house })
     }
 
@@ -44,7 +44,7 @@ class HouseDetails extends Component {
     handleDelete = async () => {
         const { _id } = this.state.house
         let { loggedInUser } = this.props
-        const houses = loggedInUser.houses.filter(id=>id!==_id)
+        const houses = loggedInUser.houses.filter(id => id !== _id)
         loggedInUser = { ...loggedInUser, houses }
         await this.props.deleteHouse(_id)
         await this.props.updateUser(loggedInUser)
@@ -61,7 +61,7 @@ class HouseDetails extends Component {
             await this.props.saveHouse(newHouse)
         } catch (error) {
             console.log('add review to house faild');
-            throw error;  
+            throw error;
         }
         this.setState({ house: newHouse })
     }
@@ -71,6 +71,7 @@ class HouseDetails extends Component {
         return (
             <React.Fragment>
                 <NavBar caller={"housedetails"}></NavBar>
+                {(this.props.isLoading || !house) && <Loading />}
                 {(house) && <section className="housedetails-container">
                     <div className="images-container">
                         <div className="gallery">
@@ -85,14 +86,14 @@ class HouseDetails extends Component {
                             <div className="house-content span-line-break bottom-line">{house.description}</div>
                             <ReviewList reviews={house.reviews} />
                             <ReviewCompose onUpdateReviews={this.updateReviews} />
-                            {this.checkIfOwner() &&<div className="details-button-container flex space-between">
-                                    <Link to={`/house/edit/${house._id}`} >
-                                        <button className="form-btn pointer">Edit House</button>
-                                    </Link>
-                                    <button onClick={this.handleDelete} className="form-btn pointer">Delete House</button>
-                                </div>
+                            {this.checkIfOwner() && <div className="details-button-container flex space-between">
+                                <Link to={`/house/edit/${house._id}`} >
+                                    <button className="form-btn pointer">Edit House</button>
+                                </Link>
+                                <button onClick={this.handleDelete} className="form-btn pointer">Delete House</button>
+                            </div>
                             }
-                            
+
                             {/* <div className="details-button-container flex space-between">
                                 <Link to={`/house/edit/${house._id}`} >
                                     <button className="form-btn pointer">Edit House</button>
@@ -114,7 +115,8 @@ class HouseDetails extends Component {
 const mapStateToProps = state => {
     return {
         houses: state.house.houses,
-        loggedInUser: state.user.loggedInUser
+        loggedInUser: state.user.loggedInUser,
+        isLoading: state.system.isLoading
     };
 };
 const mapDispatchToProps = {

@@ -12,6 +12,7 @@ import NavBar from '../cmps/NavBar';
 // import { loadReviews, addReview } from '../actions/ReviewActions.js';
 // import { loadUsers } from '../actions/UserActions.js';
 import { Link } from 'react-router-dom';
+import Loading from '../cmps/Loading'
 
 class Home extends Component {
   state = {};
@@ -24,7 +25,7 @@ class Home extends Component {
 
   }
 
-  load = async () => {    
+  load = async () => {
     this.props.getBestByCountry({ countries: ['israel'] })
     this.props.getBestByCountry({ countries: ['spain'] })
     this.props.getBestByCountry({ countries: ['italy'] })
@@ -40,21 +41,22 @@ class Home extends Component {
     return (
       <div className="home">
         <NavBar caller={"home"}></NavBar>
+        {this.props.isLoading && <Loading />}
         <img className="index-cover" src={backgroundImage} />
         <SearchForm></SearchForm>
         {/* {this.props.houses.length&& */}
         <section className="lists-section-container">
           <div>
             <h4 className="reccomended-headline">Most reccomended in Israel</h4>
-            <HouseList houses={this.props.israel}></HouseList>
+            <HouseList home="home" houses={this.props.israel}></HouseList>
           </div>
           <div>
             <h4 className="reccomended-headline">Most reccomended in Italy</h4>
-            <HouseList houses={this.props.italy}></HouseList>
+            <HouseList home="home" houses={this.props.italy}></HouseList>
           </div>
           <div>
             <h4 className="reccomended-headline">Most reccomended in Spain</h4>
-            <HouseList houses={this.props.spain}></HouseList>
+            <HouseList home="home" houses={this.props.spain}></HouseList>
           </div>
         </section>
         {/* /* <MapMarker/> */}

@@ -14,7 +14,7 @@ import HouseDetails from './pages/HouseDetails';
 import NavBar from './cmps/NavBar';
 import Login from './pages/Login';
 import ReservedPage from './pages/ReservedPage';
-import UserProfile from './pages/UserProfile';
+
 import Favorites from './pages/Favorites';
 import RequestPage from './pages/RequestPage';
 import MyHouses from './pages/MyHouses';
@@ -39,8 +39,7 @@ function App() {
           <Route path="/about" component={About} exact/>
           <Route path="/house/edit" component={HouseEdit} exact/>
           <Route path="/house/edit/:id" component={HouseEdit} exact/>
-          <Route path="/house/:id" component={HouseDetails} exact/>
-          <Route path="/user/:id" component={UserProfile} exact/>
+          <Route path="/house/:id" component={HouseDetails} exact/>          
           {/* <Route path="house/edit:id" component={HouseEdit} exact/> */}
         </Switch>
       </Router>
