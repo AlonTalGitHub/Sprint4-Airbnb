@@ -50,12 +50,12 @@ class ReviewCompose extends Component {
             <section>
                 <form onSubmit={this.addReview}>
                     <textarea
-                        className="review-textarea"
+                        className="review-textarea form-loc"
                         name="txt"
                         onChange={this.handleChange}
                         value={this.state.reviewToEdit.txt}
                     ></textarea>
-                    <button className="form-btn pointer">Add</button>
+                    <button className="add-btn pointer">Add</button>
                 </form>
             </section>
         )

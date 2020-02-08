@@ -19,7 +19,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 1050px;
     margin: 0 auto;
     padding-left: 10px;
     padding-right: 10px;
@@ -31,7 +31,7 @@
 }
 
 .main-content-text-container {
-    max-width: 800px;
+    width: 100%;
     padding-bottom: 30px;
 }
 
@@ -71,6 +71,17 @@
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: #EBEBEB
+  }
+
+  .add-btn {
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    padding: 5px 10px;
+    outline: none
+    /* margin-left: 30px; */
   }
 /*---------- images Layout ----------*/
 

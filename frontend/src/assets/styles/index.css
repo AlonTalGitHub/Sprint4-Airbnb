@@ -82,13 +82,13 @@ body {
 
 
 /* .nav-link:hover { */
-
-
-/* color:#ff5a5f; */
-
-
-/*text-decoration: text-decoration-line text-decoration-color text-decoration-style|initial|inherit; */
-
+    
+    
+    /* color:#ff5a5f; */
+    
+    
+    /*text-decoration: text-decoration-line text-decoration-color text-decoration-style|initial|inherit; */
+    
 
 /* text-decoration: underline white solid; */
 
@@ -174,12 +174,12 @@ span.nav-item-user-name.black {
 
 .form-loc {
     /* code { font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-monospace; } */
-    height: 47px;
-    width: 100%;
-    font-size: 17px;
-    border-radius: 5px;
-    border-style: none;
+        monospace; } */
+        height: 47px;
+        width: 100%;
+        font-size: 17px;
+        border-radius: 5px;
+        border-style: none;
     border: 1px solid rgb(230, 230, 230);
     padding: 5px;
     /* margin-left: 85px;
@@ -227,6 +227,7 @@ monospace; } */
 }
 
 
+
 /* Main Contant Container */
 
 .lists-section-container {
@@ -236,8 +237,25 @@ monospace; } */
     padding-right: 10px;
 }
 
+.reccomended-headline {
+    margin-left: 24px;
+}
+
 .reserve-form {
+    font-family: 'RobotoBold';
+    position: absolute;
     width: 400px;
+    height: 420px;
+    top: 15vh;
+    margin-left: 10vw;
+    border: 1px solid rgb(48, 48, 48);
+    border-radius: 5px;
+    padding: 20px 35px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    z-index: 1;
+    color: gray;
+    background-color: white;
 }
 
 button.form-btn.reserve-btn {
@@ -328,8 +346,47 @@ button.form-btn.reserve-btn {
     color: white;
 }
 
-.reccomended-headline {
-    margin-left: 24px;
+/* Login Page */
+
+.login-form {
+    font-family: 'RobotoBold';
+    position: absolute;
+    width: 300px;
+    height: 250px;
+    top: 10vh;
+    left: calc((100% - 300px)/2);
+    border: 1px solid rgb(153, 153, 153);
+    border-radius: 5px;
+    padding: 20px 35px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    z-index: 1;
+    color: gray;
+    background-color: white;
+}
+
+.login-form>*:first-child>* {
+    margin-bottom: 10px;
+}
+
+.login-btn {
+    width: 100%;
+}
+
+.login-question {
+    display: flex;
+    align-self: center;
+    font-size: 20px;
+    margin-top: 380px;
+}
+
+.sign-up {
+    height: 400px;
+    top: calc(10vh + 350px) ;
+}
+
+.sign-up>*:nth-child(4) {
+    margin-bottom: 40px;
 }
 
 
@@ -369,6 +426,8 @@ button.form-btn.reserve-btn {
 .wrap {
     flex-wrap: wrap;
 }
+
+
 
 
 /*date-picker*/
@@ -509,7 +568,7 @@ img.logo {
     .nav-item-user-img-container.visible {
         display: none;
     }
-    .nav-links>* {}
+
     img.logo.show {
         top: 17px;
         left: 0px;
