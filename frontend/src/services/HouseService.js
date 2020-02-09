@@ -56,13 +56,16 @@ function _createQueryStr(filter) {
         querySTR += `/${filter._id}`
     }
     if (filter.location==='' || filter.location) {        
-        querySTR += `?country=${filter.location}&capacity=${filter.numOfperson}`
+        querySTR += `?country=${filter.location}`
     }    
-    if (filter.startDate && filter.endDate && !filter.location) {
-        querySTR += `?dates=true&startDate=${filter.startDate}&endDate=${filter.endDate}`
-    }
+    // if (filter.startDate && filter.endDate && !filter.location) {
+    //     querySTR += `?dates=true&startDate=${filter.startDate}&endDate=${filter.endDate}`
+    // }
     if(filter.startDate && filter.endDate && filter.location){
         querySTR += `&startDate=${filter.startDate}&endDate=${filter.endDate}`
+    }
+    if(filter.numOfperson){
+        querySTR +=`&capacity=${filter.numOfperson}`
     }
     if (filter.ids) {
         const ids = filter.ids.join()

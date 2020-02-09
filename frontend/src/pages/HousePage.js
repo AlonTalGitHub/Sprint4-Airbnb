@@ -9,6 +9,7 @@ import NavBar from '../cmps/NavBar';
 import Loading from '../cmps/Loading'
 class HousePage extends Component {
     componentDidMount() {
+        this.props.history.push("/house");
         console.log("did mount house page")
         this.props.filterHouses(this.props.filterBy)
 
@@ -25,14 +26,14 @@ class HousePage extends Component {
         console.log(house)
         if (this.props.isLoading || !house) return (
             <div>
-                <NavBar caller={"housepage"}></NavBar>
+                {/* <NavBar caller={"housepage"}></NavBar> */}
                 <Loading />
             </div>
         )
         else {
             return (
                 <div>
-                    <NavBar caller={"housepage"}></NavBar>
+                    {/* <NavBar caller={"housepage"}></NavBar> */}
 
                     {(house) && <HouseList onDeleteHouse={this.onDeleteHouse} houses={this.props.houses}
                         filterBy={this.props.filterBy} style={{ "marginTop": "150px" }}></HouseList>}

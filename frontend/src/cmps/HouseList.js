@@ -2,7 +2,8 @@ import React, { Component } from "react";
 // import { withRouter } from "react-router";
 import HousePreview from "./HousePreview";
 import NavBar from "./NavBar";
-
+import history from "../history"
+import { withRouter } from 'react-router-dom';
 class HouseList extends Component {
     // houses = [
     //     {
@@ -121,7 +122,7 @@ class HouseList extends Component {
     //     }
     // ]
 
-    loadHouse=()=>{
+    loadHouse = () => {
 
 
     }
@@ -132,22 +133,34 @@ class HouseList extends Component {
     //////////////////////////////////////////////////////////////
     //housePreview attr: filterBy={this.props.filterBy},onDeleteHouse={this.props.onDeleteHouse} 
     //////////////////////////////////////////////////////////////
+    getClassforContainer = () => {
+        let caller = this.props.location.pathname
+        switch (caller) {
+            case '/':
+                return "house-container home-list";
+            case '/favorites':
+                return "house-container favorite-list";
 
+            default:
+                return "house-container";
+        }
 
+    }
 
     render() {
-        const {houses}=this.props
+        const { houses } = this.props
 
         return (
-            <section className={(this.props.home)?"house-container home-list":"house-container"}>
-            {/* <section className="house-container" style={this.props.style}> */}
+            <section className={this.getClassforContainer()}>
+                {/* <section className={(this.props.home) ? "house-container home-list" : "house-container"}> */}
+                {/* <section className="house-container" style={this.props.style}> */}
                 {/* <h2>{this.props.houses[0].title}</h2> */}
                 {/* <NavBar style={this.style} class='banana'></NavBar> */}
                 {/* <h2 className="house-main-head">Houses List</h2> */}
-                <ul className={"house-list clean-list "+ this.props.caller}>
-                    {houses.map((house,idx) => (
+                <ul className={"house-list clean-list " + this.props.caller}>
+                    {houses.map((house, idx) => (
                         <li key={house._id}>
-                            <HousePreview house={house}/> 
+                            <HousePreview house={house} />
                         </li>
                     ))}
                 </ul>
@@ -155,5 +168,4 @@ class HouseList extends Component {
         )
     }
 }
-
-export default HouseList
+export default HouseList = withRouter(HouseList)

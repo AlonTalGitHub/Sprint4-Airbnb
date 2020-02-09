@@ -114,6 +114,10 @@ class NavBar extends Component {
                     <li className={getMenuItemClass()}>
                         {profileImageRender()}</li>
                 </ul>
+                {(this.dispalyFilters()) &&
+                    <div className={`filter-buttons-container ${(this.state.isMenuOpen) ? 'shown-filter-container' : ''}`}>
+                        <FilterBar></FilterBar>
+                    </div>}
             </div>
         </div>)
     }

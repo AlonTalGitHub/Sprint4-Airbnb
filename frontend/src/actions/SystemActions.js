@@ -4,4 +4,3 @@ export function loading() {
 export function doneLoading() {
   return { type: 'LOADING_DONE' }
 }
-

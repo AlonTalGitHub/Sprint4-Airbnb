@@ -26,6 +26,7 @@ class HouseDetails extends Component {
 
     componentDidMount() {
         const houseId = this.props.match.params.id;
+        this.props.history.push(`/house/${houseId}`);
         this.loadHouse(houseId)
     }
 
@@ -70,7 +71,7 @@ class HouseDetails extends Component {
         const { house } = this.state
         return (
             <React.Fragment>
-                <NavBar caller={"housedetails"}></NavBar>
+                {/* <NavBar caller={"housedetails"}></NavBar> */}
                 {(this.props.isLoading || !house) && <Loading />}
                 {(house) && <section className="housedetails-container">
                     <div className="images-container">

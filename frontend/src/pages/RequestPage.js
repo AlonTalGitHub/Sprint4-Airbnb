@@ -10,6 +10,7 @@ import Loading from '../cmps/Loading'
 class RequestPage extends Component {
     state = {}
     componentDidMount() {
+        this.props.history.push("/requests");
         console.log("did mount request page,state: ", this.state)
         this.loadHouseData()
     }
@@ -99,7 +100,7 @@ class RequestPage extends Component {
     render() {
         return (
             <div className="request-page-container">
-                <NavBar caller={"requestpage"}></NavBar>
+                {/* <NavBar caller={"requestpage"}></NavBar> */}
                 <div className="request-page-sub-container">
                     <h1 className="request-page-header">My Requests</h1>
                     <div className="house-requests-container">

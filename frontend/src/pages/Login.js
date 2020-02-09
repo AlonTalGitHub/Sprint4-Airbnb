@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import NavBar from '../cmps/NavBar';
 import { Link } from 'react-router-dom';
-
+import { withRouter } from 'react-router-dom';
 import {
   loadUsers,
   removeUser,
@@ -25,7 +25,10 @@ class Login extends Component {
       imgURL: ''
     }
   };
+ componentDidMount(){
+  this.props.history.push("/login");
 
+ }
   loginHandleChange = ev => {
     const { name, value } = ev.target;
     this.setState(prevState => ({
@@ -166,8 +169,9 @@ const mapDispatchToProps = {
   logout,
   signup,
   removeUser,
-  loadUsers
+  loadUsers,
+
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login=withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
 

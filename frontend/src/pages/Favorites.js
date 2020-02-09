@@ -18,6 +18,7 @@ class Favorites extends Component {
     }
     componentDidMount() {
         // this.loadFavoriteHouses()
+        this.props.history.push("/favorites");
         this.props.AddToFavorites(this.props.loggedInUser.favorites)
 
     }
@@ -53,7 +54,7 @@ class Favorites extends Component {
         const { houses } = this.props
         return (
             <div>
-                <NavBar caller={"reservedpage"}></NavBar>
+                {/* <NavBar caller={"reservedpage"}></NavBar> */}
                 <div className="favorites-container">
                     <h2 className="favorites">My Favorite Houses</h2>
                     {(houses) && <HouseList houses={this.props.houses}></HouseList>}

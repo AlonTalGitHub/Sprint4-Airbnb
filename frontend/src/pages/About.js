@@ -6,6 +6,9 @@ class About extends Component {
     state={
         user:''
     }
+    componentDidMount(){
+        this.props.history.push("/about");
+    }
 render(){
     {console.log('blah blah blah: ',process.env.GMAP_API_KEY)}
     return(<div>
