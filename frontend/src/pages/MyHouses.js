@@ -23,7 +23,7 @@ class Favorites extends Component {
             <div className="my-houses-page-container">
                 {/* <NavBar caller={"reservedpage"}></NavBar> */}
                 <span className="my-houses-header">My Houses</span>
-                {(houses) && <HouseList houses={this.props.houses} caller={"myHouses"}></HouseList>}
+                {(houses) && <HouseList houses={this.props.houses}></HouseList>}
             </div>
         )
     }

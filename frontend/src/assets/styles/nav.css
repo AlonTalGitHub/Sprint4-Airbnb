@@ -207,10 +207,10 @@ img.nav-item-user-img {
     .nav-item.search-bar.hide {
         display: none;
     }
-    ul.nav-list>*:not(:first-child:nth-of-type(2)) {
+    ul.nav-list>*:not(:first-child) {
         display: none;
     }
-    ul.nav-list.open>*:not(:first-child:nth-of-type(2)) {
+    ul.nav-list.open>*:not(:first-child) {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
