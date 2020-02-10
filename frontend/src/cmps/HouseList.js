@@ -20,7 +20,7 @@ class HouseList extends Component {
             case '/house':
                 return "house-page";
             default:
-                return "house-container";
+                return "";
         }
 
     }

@@ -121,6 +121,7 @@
 
  .home-list {
      margin-top: 30px;
+     padding-top: 0px;
  }
 
  .favorite-list {
@@ -517,9 +518,11 @@
      align-items: center;
      /* margin-top: 100px; */
  }
+
  .house-container.my-houses {
-    padding-top: 0px;
-}
+     padding-top: 0px;
+ }
+
  @media only screen and (min-width: 745px) {
      .request-preview {
          margin-left: calc((100% - 565px)/2);
