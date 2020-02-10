@@ -18,8 +18,7 @@ class Favorites extends Component {
 
     }
     componentDidMount() {
-        this.loadFavoriteHouses()
-        
+        this.loadFavoriteHouses()        
 
     }
 
@@ -45,7 +44,7 @@ class Favorites extends Component {
            <div>                
                 <div className="favorites-container">
                     <h2 className="favorites">My Favorite Houses</h2>
-                    {(houses) && <HouseList houses={this.props.houses}></HouseList>}
+                    {(houses && !this.props.isLoading) && <HouseList houses={this.props.houses}></HouseList>}
                     {(this.props.isLoading || !houses) && <Loading />}
                 </div>
             </div>)

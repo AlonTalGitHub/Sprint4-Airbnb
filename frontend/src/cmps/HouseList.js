@@ -10,12 +10,14 @@ class HouseList extends Component {
 
     getClassAddition = () => {
         let caller = this.props.location.pathname
+        console.log('getclassadition',caller)
         switch (caller) {
             case '/':
                 return "home-list";
             case '/favorites':
                 return "favorite-list";
             case '/myhouses':
+                console.log('my-houses')
                 return "my-houses";
             case '/house':
                 return "house-page";

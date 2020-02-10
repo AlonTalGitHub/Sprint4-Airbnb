@@ -138,7 +138,7 @@ class Nav extends Component {
                 {this.props.loggedInUser && <li className="nav-item" onClick={() => this.checkIfHome('/requests', true)}><Link to="/requests" className="nav-link">Requets</Link></li>}
                 {this.props.loggedInUser && <li className="nav-item" onClick={() => this.checkIfHome('/favorites', true)}><Link to="/favorites" className="nav-link">Favorites</Link></li>}
                 {this.props.loggedInUser && <li className="nav-item" onClick={() => this.checkIfHome('/house/edit', true)}><Link to="/house/edit" className="nav-link">Host</Link></li>}
-                {this.props.loggedInUser && <li className="nav-item" onClick={() => this.checkIfHome('/house/edit', true)}><Link to="/myHouses" className="nav-link">My Houses</Link></li>}
+                {this.props.loggedInUser && <li className="nav-item" onClick={() => this.checkIfHome('/house/edit', true)}><Link to="/myhouses" className="nav-link">My Houses</Link></li>}
                 <li className={(!this.props.loggedInUser) ? "nav-item push" : "nav-item"} onClick={() => this.checkIfHome('/about', true)}><Link to="/about" className="nav-link">About</Link></li>
                 <li className="nav-item" onClick={() => this.checkIfHome('/login', true)}><Link to="/login" className="nav-link">{this.profileImageRender()}</Link></li>
             </ul>
