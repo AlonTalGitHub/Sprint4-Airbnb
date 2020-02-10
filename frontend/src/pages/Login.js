@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import NavBar from '../cmps/NavBar';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import {updateRoute} from '../actions/SystemActions'
+import '../assets/styles/index.css'
 
 import {
   loadUsers,
@@ -25,7 +28,10 @@ class Login extends Component {
       imgURL: ''
     }
   };
+  componentDidMount() {
+    this.props.history.push("/login");
 
+  }
   loginHandleChange = ev => {
     const { name, value } = ev.target;
     this.setState(prevState => ({
@@ -53,8 +59,10 @@ class Login extends Component {
       return this.setState({ msg: 'Please enter user/password' });
     }
     const userCreds = { email, password };
-    this.props.login(userCreds);
+    await this.props.login(userCreds);
     this.setState({ loginCred: { email: '', password: '' } });
+    this.props.updateRoute('/')
+    this.props.history.push('/')
   };
 
   doSignup = async ev => {
@@ -63,9 +71,11 @@ class Login extends Component {
     if (!email || !password || !username) {
       return this.setState({ msg: 'All inputs besides image are required!' });
     }
-    const signupCreds = { email, password,"username": username, imgURL };
+    const signupCreds = { email, password, "username": username, imgURL };
     this.props.signup(signupCreds);
     this.setState({ signupCred: { email: '', password: '', username: '', 'imgURL': '' } });
+    this.props.updateRoute('/')
+    this.props.history.push('/')
   };
 
   removeUser = userId => {
@@ -74,61 +84,63 @@ class Login extends Component {
 
   render() {
     let signupSection = (
-      <form onSubmit={this.doSignup}>
+      <form className="login-form sign-up flex column space-between" onSubmit={this.doSignup}>
         <input
+          className="form-loc"
           type="text"
           name="email"
           value={this.state.signupCred.email}
           onChange={this.signupHandleChange}
           placeholder="Email"
         />
-        <br />
         <input
+          className="form-loc"
           name="password"
           type="password"
           value={this.state.signupCred.password}
           onChange={this.signupHandleChange}
           placeholder="Password"
         />
-        <br />
         <input
+          className="form-loc"
           type="text"
           name="username"
           value={this.state.signupCred.username}
           onChange={this.signupHandleChange}
           placeholder="Username"
         />
-        <br />
         <input
+          className="form-loc"
           type="text"
           name="imgURL"
           value={this.state.signupCred.imgURL}
           onChange={this.signupHandleChange}
           placeholder="image"
         />
-        <br />
-        <button>Signup</button>
+        <button className="form-btn login-btn">Signup</button>
       </form>
     );
     let loginSection = (
-      <form onSubmit={this.doLogin}>
-        <input
-          type="text"
-          name="email"
-          value={this.state.loginCred.email}
-          onChange={this.loginHandleChange}
-          placeholder="Email"
-        />
-        <br />
-        <input
-          type="password"
-          name="password"
-          value={this.state.loginCred.password}
-          onChange={this.loginHandleChange}
-          placeholder="Password"
-        />
-        <br />
-        <button>Login</button>
+      <form className="login-form flex column space-between" onSubmit={this.doLogin}>
+        <div>
+          <input
+            className="form-loc"
+            type="text"
+            name="email"
+            value={this.state.loginCred.email}
+            onChange={this.loginHandleChange}
+            placeholder="Email"
+          />
+          <input
+            className="form-loc"
+            type="password"
+            name="password"
+            value={this.state.loginCred.password}
+            onChange={this.loginHandleChange}
+            placeholder="Password"
+          />
+        </div>
+        <button className="form-btn login-btn">Login</button>
       </form>
     );
     const { loggedInUser } = this.props;
@@ -137,16 +149,17 @@ class Login extends Component {
       console.log('user logged in: ', loggedInUser.fullName)
     }
     let logoutSection = (
-      <div>
+      <div className="login-form flex column space-between">
         {/* {this.props.isLoading && 'Loading...'} */}
         <h2 onClick={consoleUser}>Welcome:  {(loggedInUser) ? loggedInUser.username : 'blah'}</h2>
-       <Link to="/"><button>Back to Turtle House</button></Link>
-        <button onClick={this.props.logout}>Logout</button>
+        <Link to="/"><button className="form-btn login-btn">Back to Turtle House</button></Link>
+        <button className="form-btn login-btn" onClick={this.props.logout}>Logout</button>
       </div>
     )
     return (
-      <div>
+      <div className="flex column space-between">
         {!loggedInUser && loginSection}
+        {!loggedInUser && <div className="login-question">Not a user yet ?</div>}
         {!loggedInUser && signupSection}
         {(loggedInUser) ? logoutSection : ''}
       </div>
@@ -166,8 +179,10 @@ const mapDispatchToProps = {
   logout,
   signup,
   removeUser,
-  loadUsers
+  loadUsers,
+  updateRoute
+
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login = withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
 

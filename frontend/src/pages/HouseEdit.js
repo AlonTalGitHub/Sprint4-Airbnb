@@ -37,6 +37,7 @@ class HouseEdit extends Component {
     }
 
     componentDidMount() {
+        this.props.history.push("/house/edit");
         if (!this.props.loggedInUser) {
             console.log('please login')
             this.props.history.push('/login')
@@ -207,13 +208,12 @@ class HouseEdit extends Component {
         const { id } = this.props.match.params
         if (this.props.isLoading) return (
             <div>
-                <NavBar caller={"housepage"}></NavBar>
+                
                 <Loading />
             </div>
         )
         else {
-            return <React.Fragment>
-                <NavBar style={{ "position": "fixed", "top": "0px", "backgroundColor": "lightblue" }}></NavBar>
+            return <React.Fragment>               
                 <form className="edit-form flex column" onSubmit={this.onSaveHouse}>
                     <input required name="country" onChange={this.onAddressChange} value={newHouse.address.country} type="text" placeholder="Country"></input>
                     <input required ref="address" onChange={this.onInputChange} name="addressInput" type="text" placeholder="Address" value={this.state.newHouse.addressInput}></input>

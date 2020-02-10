@@ -18,16 +18,12 @@ import ReservedPage from './pages/ReservedPage';
 import Favorites from './pages/Favorites';
 import RequestPage from './pages/RequestPage';
 import MyHouses from './pages/MyHouses';
-
+import Nav from './cmps/Nav'
 function App() {
   return (
     <div className="App"> 
       <Router history={history}>
-        {/* <nav>
-        <nav className="main-nav">
-          <Link to="/about">About</Link>
-        </nav> */}
-        {/* <NavBar></NavBar>         */}
+        <Nav/>
         <Switch>
           <Route path="/" component={Home} exact/>
           <Route path="/requests" component={RequestPage} exact/>

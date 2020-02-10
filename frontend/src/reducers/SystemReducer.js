@@ -1,5 +1,6 @@
 const initialState = {
-  isLoading: false
+  isLoading: false,
+  currRoute: null
 };
 
 export default function (state = initialState, action = {}) {
@@ -8,6 +9,9 @@ export default function (state = initialState, action = {}) {
       return { ...state, isLoading: true };
     case 'LOADING_DONE':
       return { ...state, isLoading: false };
+    case 'UPDATE_ROUTE':
+      console.log('system reducer here: route is : ', action.route)
+      return { ...state, currRoute: action.route }
     default: return state;
   }
 }

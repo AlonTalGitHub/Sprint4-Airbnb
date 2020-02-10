@@ -19,7 +19,7 @@ class Favorites extends Component {
     }
     componentDidMount() {
         this.loadFavoriteHouses()
-        // this.props.AddToFavorites(this.props.loggedInUser.favorites)
+        
 
     }
 
@@ -40,23 +40,16 @@ class Favorites extends Component {
     }
 
     render() {
-        const { houses } = this.props
-        if (this.props.isLoading) return (
-            <div>
-                <NavBar caller={"housepage"}></NavBar>
-                <Loading />
-            </div>
-        )
-        else {
-            return (<div>
-                <NavBar caller={"reservedpage"}></NavBar>
+        const { houses } = this.props        
+           return (
+           <div>                
                 <div className="favorites-container">
                     <h2 className="favorites">My Favorite Houses</h2>
-                    {(houses) && <HouseList style={{marginTop: "20px"}} houses={this.props.houses}></HouseList>}
-                    {/* {(this.props.isLoading || !houses) && <Loading />} */}
+                    {(houses) && <HouseList houses={this.props.houses}></HouseList>}
+                    {(this.props.isLoading || !houses) && <Loading />}
                 </div>
             </div>)
-        }
+        
     }
 }
 

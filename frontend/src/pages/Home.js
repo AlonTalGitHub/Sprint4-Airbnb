@@ -18,6 +18,7 @@ class Home extends Component {
   state = {};
 
   componentDidMount() {
+    this.props.history.push("/");
     console.log('home', this.props.filterBy)
     console.log('welcome back to turtle house user : ', this.props.loggedInUser)
     // debugger
@@ -40,7 +41,7 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-        <NavBar caller={"home"}></NavBar>
+        {/* <NavBar caller={"home"}></NavBar> */}
         {this.props.isLoading && <Loading />}
         <img className="index-cover" src={backgroundImage} />
         <SearchForm></SearchForm>

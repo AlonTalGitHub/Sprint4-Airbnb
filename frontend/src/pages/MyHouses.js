@@ -10,7 +10,8 @@ import NavBar from '../cmps/NavBar';
 class Favorites extends Component {
 
     
-    componentDidMount() {        
+    componentDidMount() { 
+        this.props.history.push("/myhouses");       
         this.props.setMyHouses(this.props.loggedInUser.houses)
     }
     
@@ -19,10 +20,10 @@ class Favorites extends Component {
         const { houses } = this.props
 
         return (
-            <div>
-                <NavBar caller={"reservedpage"}></NavBar>
-                <h2 className="reservedpage">My Houses</h2>
-                {(houses) && <HouseList houses={this.props.houses}></HouseList>}
+            <div className="my-houses-page-container">
+                {/* <NavBar caller={"reservedpage"}></NavBar> */}
+                <span className="my-houses-header">My Houses</span>
+                {(houses) && <HouseList houses={this.props.houses} caller={"myHouses"}></HouseList>}
             </div>
         )
     }

@@ -129,6 +129,7 @@ class ResrvedPage extends Component {
 
     }
     componentDidMount() {
+        this.props.history.push("/reserved");
         this.loadReservedHouses()
         // eturn houses
     }
@@ -161,7 +162,7 @@ class ResrvedPage extends Component {
     render() {
         const { houses } = this.state
         if (houses && houses.length === 0) return (<div className="reservedpage-container">
-            <NavBar caller={"reservedpage"}></NavBar>
+            {/* <NavBar caller={"reservedpage"}></NavBar> */}
             <div className="reserved-container-none">
                 <h2 className="reservedpage">My Reserved Houses</h2>
                 <div>No reserved items to show</div>
@@ -170,7 +171,7 @@ class ResrvedPage extends Component {
         else {
             return (
                 <div className="reservedpage-container">
-                    <NavBar caller={"reservedpage"}></NavBar>
+                    {/* <NavBar caller={"reservedpage"}></NavBar> */}
                     {(this.props.isLoading || !houses) && <Loading />}
                     {(houses) && <div className="reservedpage-content-container">
                         <h2 className="reservedpage">My Reserved Houses</h2>
