@@ -14,7 +14,7 @@ import history from '../history'
 class Nav extends Component {
     constructor(props) {
         super(props);
-        this.state = { width: 0, height: 0, currPath: null };
+        this.state = { width: 0, height: 0, currPath: null, isMenuOpen: false };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
 
     }
@@ -46,8 +46,11 @@ class Nav extends Component {
     }
     toggleHamburger = () => {
         const screenWidth = this.state.width;
-        let navListBackground=document.querySelector('.nav-list-background')
+        let navListBackground = document.querySelector('.nav-list-background')
         if (screenWidth <= 700) {
+            let menu = !this.state.isMenuOpen
+            let newState = { isMenuOpen: menu }
+            this.setState({ ...this.state, ...newState })
             // console.log('screenWidth: ', screenWidth)
             document.querySelector('.logo-burger').classList.toggle('open')
             navListBackground.classList.toggle('open')
@@ -64,7 +67,7 @@ class Nav extends Component {
         //         searchBar.classList.toggle('hide')
         //     }
         // }
-        
+
     }
     changeClassName = (node, str, action) => {
         var children = node.childNodes;
@@ -118,7 +121,7 @@ class Nav extends Component {
 
     }
     render() {
-        // console.log('nav state is: ', this.state)
+        console.log('nav state is: ', this.state)
         // console.log('history is: ', this.props.history.location.pathname)
         return (<div className="nav-container">
             <div className="nav-list-background"></div>
@@ -129,14 +132,14 @@ class Nav extends Component {
                         <span className="logo-burger">^</span>
                     </div>
                 </li>
-                {(this.state.currPath !== '/') && <li className="nav-item search-bar"><SearchBar /></li>}
+                {(this.state.currPath !== '/' && !this.state.isMenuOpen) && <li className="nav-item search-bar"><SearchBar /></li>}
                 {(this.state.currPath !== '/') && <li className={"nav-item push"} onClick={() => this.checkIfHome('/', true)}><Link to="/" className="nav-link">Home</Link></li>}
                 {this.props.loggedInUser && <li className={(this.state.currPath !== '/') ? "nav-item" : "nav-item push"} onClick={() => this.checkIfHome('/reserved', true)}><Link to="/reserved" className="nav-link" >Reserved</Link></li>}
                 {this.props.loggedInUser && <li className="nav-item" onClick={() => this.checkIfHome('/requests', true)}><Link to="/requests" className="nav-link">Requets</Link></li>}
                 {this.props.loggedInUser && <li className="nav-item" onClick={() => this.checkIfHome('/favorites', true)}><Link to="/favorites" className="nav-link">Favorites</Link></li>}
                 {this.props.loggedInUser && <li className="nav-item" onClick={() => this.checkIfHome('/house/edit', true)}><Link to="/house/edit" className="nav-link">Host</Link></li>}
                 {this.props.loggedInUser && <li className="nav-item" onClick={() => this.checkIfHome('/house/edit', true)}><Link to="/myHouses" className="nav-link">My Houses</Link></li>}
-                <li className="nav-item" onClick={() => this.checkIfHome('/about', true)}><Link to="/about" className="nav-link">About</Link></li>
+                <li className={(!this.props.loggedInUser) ? "nav-item push" : "nav-item"} onClick={() => this.checkIfHome('/about', true)}><Link to="/about" className="nav-link">About</Link></li>
                 <li className="nav-item" onClick={() => this.checkIfHome('/login', true)}><Link to="/login" className="nav-link">{this.profileImageRender()}</Link></li>
             </ul>
 

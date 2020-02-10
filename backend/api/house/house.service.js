@@ -3,7 +3,7 @@ const ObjectId = require('mongodb').ObjectId
 const orderService = require('../order/order.service')
 async function query(filterBy = {}) {
     var criteria = _buildCriteria(filterBy)
-    console.log('house service the criteria is: ', criteria)
+    // console.log('house service the criteria is: ', criteria)
     let houses;
     try {
         let collection = await dbService.getCollection('house')
@@ -12,16 +12,16 @@ async function query(filterBy = {}) {
 
         } else if (filterBy.startDate && filterBy.endDate) {
             let newFilterBy = await _getAvailableHouses({ startDate: filterBy.startDate, endDate: filterBy.endDate })
-            console.log('newFilterBy: ', newFilterBy)
+            // console.log('newFilterBy: ', newFilterBy)
             dateCriteria = _buildCriteria(newFilterBy)
             let newCriteria={...criteria,...dateCriteria}
-            console.log('newCriteria is: ', newCriteria)
+            // console.log('newCriteria is: ', newCriteria)
             houses = await collection.find(newCriteria).toArray()
         }
         else {
             houses = await collection.find(criteria).toArray()
         }
-        console.log('this is house.service speaking houses is :', houses[0])
+        // console.log('this is house.service speaking houses is :', houses[0])
         return houses
     } catch (err) {
         console.log('ERROR: cannot find houses')
@@ -102,8 +102,8 @@ function _buildCriteria(filterBy) {
 
 async function _getAvailableHouses(dates) {
     let userDates = { ...dates }
-    console.log('startDate is: ', userDates.startDate, '\n')
-    console.log('endDate is: ', userDates.endDate, '\n')
+    // console.log('startDate is: ', userDates.startDate, '\n')
+    // console.log('endDate is: ', userDates.endDate, '\n')
 
     let orderFilterBy = {
         dates: true,
@@ -114,19 +114,13 @@ async function _getAvailableHouses(dates) {
 
     try {
         let overlappingOrders = await orderService.query(orderFilterBy)
-        console.log('overlappingOrders are: ', overlappingOrders)
+        // console.log('overlappingOrders are: ', overlappingOrders)
         let unAvailableHouses = overlappingOrders.map(order => order.houseId)
-        console.log('unAvailableHouses: ', unAvailableHouses)
-        // let filter = {
-        //     allExcept: true,
-        //     allExceptHouses: unAvailableHouses
-        // }
+        // console.log('unAvailableHouses: ', unAvailableHouses)
         return {
             allExcept: true,
             allExceptHouses: unAvailableHouses
         }
-        // let availableHouses = await query(filter)
-        // return availableHouses;
     } catch (err) {
         throw err
     }

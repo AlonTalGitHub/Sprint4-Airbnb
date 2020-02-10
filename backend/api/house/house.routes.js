@@ -4,7 +4,7 @@ const {addHouse, getHouses, deleteHouse,getHouse, updateHouse} = require('./hous
 const router = express.Router()
 
 // middleware that is specific to this router
-// router.use(requireAuth)
+
 
 router.get('/', getHouses)
 router.get('/reserved', getHouse)
