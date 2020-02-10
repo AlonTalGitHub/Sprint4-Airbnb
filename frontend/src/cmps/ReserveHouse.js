@@ -93,10 +93,10 @@ class ReserveHouse extends Component {
 
     addReserveClass = () => {
         if (!this.props.detailsPage) {
-            return "search-form flex column space-between"
+            return "reserve-form flex column space-between"
         }
         else {
-            return "search-form flex column space-between reserve-form"
+            return "reserve-form flex column space-between"
         }
     }
     changeDates = (userDates) => {

@@ -20,10 +20,10 @@ class Favorites extends Component {
         const { houses } = this.props
 
         return (
-            <div>
+            <div className="my-houses-page-container">
                 {/* <NavBar caller={"reservedpage"}></NavBar> */}
-                <h2 className="reservedpage">My Houses</h2>
-                {(houses) && <HouseList houses={this.props.houses}></HouseList>}
+                <span className="my-houses-header">My Houses</span>
+                {(houses) && <HouseList houses={this.props.houses} caller={"myHouses"}></HouseList>}
             </div>
         )
     }

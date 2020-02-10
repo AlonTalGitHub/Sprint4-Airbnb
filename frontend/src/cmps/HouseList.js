@@ -133,14 +133,15 @@ class HouseList extends Component {
     //////////////////////////////////////////////////////////////
     //housePreview attr: filterBy={this.props.filterBy},onDeleteHouse={this.props.onDeleteHouse} 
     //////////////////////////////////////////////////////////////
-    getClassforContainer = () => {
+    getClassAddition = () => {
         let caller = this.props.location.pathname
         switch (caller) {
             case '/':
-                return "house-container home-list";
+                return "home-list";
             case '/favorites':
-                return "house-container favorite-list";
-
+                return "favorite-list";
+            case '/myhouses':
+                return "my-houses";
             default:
                 return "house-container";
         }
@@ -151,13 +152,13 @@ class HouseList extends Component {
         const { houses } = this.props
 
         return (
-            <section className={this.getClassforContainer()}>
+            <section className={"house-container " + this.getClassAddition()}>
                 {/* <section className={(this.props.home) ? "house-container home-list" : "house-container"}> */}
                 {/* <section className="house-container" style={this.props.style}> */}
                 {/* <h2>{this.props.houses[0].title}</h2> */}
                 {/* <NavBar style={this.style} class='banana'></NavBar> */}
                 {/* <h2 className="house-main-head">Houses List</h2> */}
-                <ul className={"house-list clean-list " + this.props.caller}>
+                <ul className={"house-list clean-list " + this.getClassAddition()}>
                     {houses.map((house, idx) => (
                         <li key={house._id}>
                             <HousePreview house={house} />

@@ -1,7 +1,7 @@
  ul.house-list.clean-list {
      list-style-type: none;
-     padding-left: calc((100% - 940px)/2);
-     padding-right: calc((100% - 940px)/2);
+     /* padding-left: calc((100% - 940px)/2);
+     padding-right: calc((100% - 940px)/2); */
  }
 
  ul.house-list.reservedpage {
@@ -112,7 +112,7 @@
  }
 
  .house-container {
-     margin-top: 150px;
+     padding-top: 75px;
      margin-bottom: 30px;
      padding-left: 24px !important;
      padding-right: 24px !important;
@@ -472,7 +472,7 @@
      display: flex;
      flex-direction: column;
      align-items: center;
-     margin-top: 100px;
+     /* margin-top: 100px; */
  }
 
  .request-preview-user-img-container.requests {
@@ -575,6 +575,21 @@
      text-align: center;
  }
 
+ span.my-houses-header {
+     padding: 30px;
+     padding-top: 120px;
+     padding-left: 24px;
+     font-family: RobotoBold;
+     font-size: 1.3rem;
+ }
+
+ .my-houses-page-container {
+     display: flex;
+     flex-direction: column;
+     /* justify-content: center; */
+     align-items: center;
+ }
+
  @media only screen and (max-width:430px) {
      .house-preview-container {
          margin-left: 0px;
@@ -625,6 +640,9 @@
          margin-top: 0px;
      }
      .reserved-container-none {
+         margin-top: 0px;
+     }
+     .house-container {
          margin-top: 0px;
      }
  }

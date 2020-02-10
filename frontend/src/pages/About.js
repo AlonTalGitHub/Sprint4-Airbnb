@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NavBar from '../cmps/NavBar';
 import cabin from '../assets/img/crap1.jpg'
+import '../assets/styles/aboutPage.css'
 class About extends Component {
     state={
         user:''
@@ -10,9 +11,8 @@ class About extends Component {
         this.props.history.push("/about");
     }
 render(){
-    {console.log('blah blah blah: ',process.env.GMAP_API_KEY)}
     return(<div>
-        <img src={cabin} alt="" className="src"/>
+        <img src={cabin} alt="" className="about-img"/>
     </div>
 
     )

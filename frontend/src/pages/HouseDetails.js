@@ -26,7 +26,7 @@ class HouseDetails extends Component {
 
     componentDidMount() {
         const houseId = this.props.match.params.id;
-        this.props.history.push(`/house/${houseId}`);
+        // this.props.history.push(`/house/${houseId}`);
         this.loadHouse(houseId)
     }
 
@@ -84,7 +84,7 @@ class HouseDetails extends Component {
                             <span className="house-title span-line-break">{house.title}</span>
                             <span className="house-header span-line-break">{house.address.country}</span>
                             <span className="house-header span-line-break">Description</span>
-                            <p className="house-content span-line-break bottom-line">{house.description}</p>
+                            <div className="house-content span-line-break bottom-line">{house.description}</div>
                             <ReviewList reviews={house.reviews} />
                             <ReviewCompose onUpdateReviews={this.updateReviews} />
                             {this.checkIfOwner() && <div className="details-button-container flex space-between">
