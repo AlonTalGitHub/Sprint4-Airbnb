@@ -32,9 +32,9 @@ class HousePage extends Component {
         )
         else {
             return (
-                <div>
+                <div className="house-page-container">
                     {/* <NavBar caller={"housepage"}></NavBar> */}
-
+                    <span className="house-page-header">Houses</span>
                     {(house) && <HouseList onDeleteHouse={this.onDeleteHouse} houses={this.props.houses}
                         filterBy={this.props.filterBy} style={{ "marginTop": "150px" }}></HouseList>}
                 </div>

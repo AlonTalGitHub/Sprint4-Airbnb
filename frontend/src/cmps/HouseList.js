@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 import history from "../history"
 import { withRouter } from 'react-router-dom';
 class HouseList extends Component {
-  
+
 
 
     getClassAddition = () => {
@@ -17,6 +17,8 @@ class HouseList extends Component {
                 return "favorite-list";
             case '/myhouses':
                 return "my-houses";
+            case '/house':
+                return "house-page";
             default:
                 return "house-container";
         }
@@ -28,7 +30,7 @@ class HouseList extends Component {
 
         return (
             <section className={"house-container " + this.getClassAddition()}>
-              
+
                 <ul className={"house-list clean-list " + this.getClassAddition()}>
                     {houses.map((house, idx) => (
                         <li key={house._id}>

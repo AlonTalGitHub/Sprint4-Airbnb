@@ -4,17 +4,17 @@ import { connect } from 'react-redux';
 import HouseService from '../services/HouseService'
 import HouseList from '../cmps/HouseList'
 import NavBar from '../cmps/NavBar';
-
+import Loading from '../cmps/Loading'
 
 
 class Favorites extends Component {
 
-    
-    componentDidMount() { 
-        this.props.history.push("/myhouses");       
+
+    componentDidMount() {
+        this.props.history.push("/myhouses");
         this.props.setMyHouses(this.props.loggedInUser.houses)
     }
-    
+
 
     render() {
         const { houses } = this.props
@@ -24,6 +24,7 @@ class Favorites extends Component {
                 {/* <NavBar caller={"reservedpage"}></NavBar> */}
                 <span className="my-houses-header">My Houses</span>
                 {(houses) && <HouseList houses={this.props.houses}></HouseList>}
+                {(this.props.isLoading || !houses) && <Loading />}
             </div>
         )
     }
@@ -33,7 +34,8 @@ class Favorites extends Component {
 const mapStateToProps = state => {
     return {
         houses: state.house.myHouses,
-        loggedInUser: state.user.loggedInUser
+        loggedInUser: state.user.loggedInUser,
+        isLoading: state.system.isLoading
     };
 };
 const mapDispatchToProps = {
