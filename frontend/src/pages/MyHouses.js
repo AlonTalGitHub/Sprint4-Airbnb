@@ -6,12 +6,11 @@ import HouseList from '../cmps/HouseList'
 import NavBar from '../cmps/NavBar';
 import Loading from '../cmps/Loading'
 
-
+import '../assets/styles/main.css'
 class Favorites extends Component {
 
 
     componentDidMount() {
-        this.props.history.push("/myhouses");
         this.props.setMyHouses(this.props.loggedInUser.houses)
     }
 
@@ -23,7 +22,7 @@ class Favorites extends Component {
             <div className="my-houses-page-container">
                 {/* <NavBar caller={"reservedpage"}></NavBar> */}
                 <span className="my-houses-header">My Houses</span>
-                {(houses) && <HouseList houses={this.props.houses}></HouseList>}
+                {(houses && !this.props.isLoading) && <HouseList houses={this.props.houses}></HouseList>}
                 {(this.props.isLoading || !houses) && <Loading />}
             </div>
         )
