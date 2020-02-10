@@ -100,7 +100,7 @@ class SearchBar extends Component {
         const { text, suggestions, filterBy } = this.state;
         return <div className="flex column">
             {/* <input onFocus={this.handleFocus} onChange={this.onChange} className="form-loc" value={this.props.filterBy.location} type="text" name="location" placeholder="Where?"></input> */}
-            <input autoComplete="off" onFocus={this.handleFocus} onChange={this.onTextChange}
+            <input autoComplete="off" onChange={this.onTextChange}
                 className="form-loc" value={text} type="text" name="location" placeholder="Where?"></input>
             <div> {this.renderSuggestions()}</div>
         </div>

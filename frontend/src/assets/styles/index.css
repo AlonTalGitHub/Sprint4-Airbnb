@@ -478,14 +478,11 @@ img.index-cover {
     position: relative;
 }
 
-
 /*main-nav style*/
 
 .main-nav {
     position: fixed;
 }
-
-
 
 .small-screen-show {
     display: none;
@@ -528,6 +525,24 @@ img.index-cover {
 
 .request-page-sub-container {
     padding-top: 125px;
+}
+
+.house-page-header {
+    padding-top: 125px;
+    font-family: RobotoBold;
+    font-size: 1.3rem;
+}
+
+.house-page-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.house-container.house-page {
+    padding-top: 15px;
 }
 
 @media only screen and (max-width: 700px) {
