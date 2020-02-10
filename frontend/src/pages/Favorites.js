@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 // import HouseService from '../services/HouseService'
 // import { Link } from 'react-router-dom'
-import { AddToFavorites } from '../actions/HouseActions'
+// import { AddToFavorites } from '../actions/HouseActions'
+import { loadFavorites } from '../actions/HouseActions'
 
 import { connect } from 'react-redux';
 import HouseService from '../services/HouseService'
@@ -17,50 +18,45 @@ class Favorites extends Component {
 
     }
     componentDidMount() {
-        // this.loadFavoriteHouses()
-        this.props.AddToFavorites(this.props.loggedInUser.favorites)
+        this.loadFavoriteHouses()
+        // this.props.AddToFavorites(this.props.loggedInUser.favorites)
 
     }
 
     componentDidUpdate(prevProps) {
-        // if(prevProps.loggedInUser!==this.props.loggedInUser){
-        //     this.loadFavoriteHouses()
-        // }
-
+        if (prevProps.loggedInUser !== this.props.loggedInUser) {
+            this.loadFavoriteHouses()
+        }
     }
 
 
 
     loadFavoriteHouses = async () => {
         const favoriteIds = this.props.loggedInUser.favorites
-        if (favoriteIds.length > 0) {
-            console.log('this is FavouritePage logged user is: ', this.props.loggedInUser, '\n\n', 'Favorite houses are', this.props.loggedInUser.favorites, '\n\n')
-            try {
-                const favHouses = await HouseService.query({ favorites: favoriteIds })
+        console.log('favorites page favIds are', favoriteIds)
+        this.props.loadFavorites(favoriteIds)
 
-                console.log('favorite houses ', favHouses)
 
-                this.setState({ houses: favHouses })
-            }
-            catch (err) {
-                throw err
-            }
-
-        } else this.setState({ houses: null })
     }
 
     render() {
         const { houses } = this.props
-        return (
+        if (this.props.isLoading) return (
             <div>
+                <NavBar caller={"housepage"}></NavBar>
+                <Loading />
+            </div>
+        )
+        else {
+            return (<div>
                 <NavBar caller={"reservedpage"}></NavBar>
                 <div className="favorites-container">
                     <h2 className="favorites">My Favorite Houses</h2>
-                    {(houses) && <HouseList houses={this.props.houses}></HouseList>}
-                    {(this.props.isLoading || !houses) && <Loading />}
+                    {(houses) && <HouseList style={{marginTop: "20px"}} houses={this.props.houses}></HouseList>}
+                    {/* {(this.props.isLoading || !houses) && <Loading />} */}
                 </div>
-            </div>
-        )
+            </div>)
+        }
     }
 }
 
@@ -73,7 +69,8 @@ const mapStateToProps = state => {
     };
 };
 const mapDispatchToProps = {
-    AddToFavorites
+    // AddToFavorites,
+    loadFavorites
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Favorites)

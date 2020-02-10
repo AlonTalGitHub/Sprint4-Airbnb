@@ -23,8 +23,7 @@ export function loadUsers() {
 */
 
 
-export function filterHouses(filter) {
-  console.log(filter)
+export function filterHouses(filter) {  
   return async (dispatch) => {
     try {
       dispatch(loading());
@@ -40,53 +39,64 @@ export function filterHouses(filter) {
     }
   }
 }
-export function getBestByCountry(filter) {
-
-  console.log(filter)
+export function getBestByCountry(filter) {  
   return async (dispatch) => {
-    let houses = await HouseService.query(filter);
-    console.log(houses)
-    dispatch(_setBestByCountry(filter.countries[0], houses))
-    // dispatch(_setBestByCountry(filter.location.toUpperCase(),houses))
+    try {
+      let houses = await HouseService.query(filter);      
+      dispatch(_setBestByCountry(filter.countries[0], houses))
+    }
+    catch (err) {
+      throw (err)
+    }
+    
   }
 }
 
-export function AddToFavorites(ids) {
-  if (ids.length > 0) {
-    return async dispatch => {
-      try {
+export function loadFavorites(ids) {
+  return async dispatch => {
+    try {
+      dispatch(loading());
+      if (ids.length > 0) {
         const favHouses = await HouseService.query({ ids: ids })
-        dispatch(_AddToFavs(favHouses))
+        dispatch(_setFavs(favHouses))
+      } else {
+        dispatch(_setFavs([]))
       }
-      catch (err) {
-        console.log(err)
-      }
+
     }
-  } else {
-    return dispatch => {
-      dispatch(_AddToFavs([]))
+    catch (err) {
+      console.log(err)
+      throw err
+    }
+    finally {
+      dispatch(doneLoading());
     }
   }
-
 }
+
 export function setMyHouses(ids) {
-  if (ids.length > 0) {
-    return async dispatch => {
-      try {
+  return async dispatch => {
+    try {
+      if (ids.length > 0) {
+        dispatch(loading());
         const myHouses = await HouseService.query({ ids: ids })
         dispatch(_setMyHouses(myHouses))
-      }
-      catch (err) {
-        console.log(err)
+      } else {
+        return dispatch => {
+          dispatch(_setMyHouses([]))
+        }
       }
     }
-  } else {
-    return dispatch => {
-      dispatch(_setMyHouses([]))
+    catch (err) {
+      console.log(err)
     }
+    finally {
+      dispatch(doneLoading());
+    }    
   }
-
 }
+
+
 
 export function setFilter(filter) {
   return dispatch => {
@@ -97,12 +107,15 @@ export function setFilter(filter) {
 export function saveHouse(house) {
   return async dispatch => {
     try {
-      const addedHouse = await HouseService.save(house);
-      console.log('action add house', addedHouse)
+      dispatch(loading())
+      const addedHouse = await HouseService.save(house);      
       house._id ? dispatch(_updateHouse(addedHouse)) : dispatch(_addHouse(addedHouse));
       return addedHouse
     } catch (err) {
       console.log('HouseActions: err in addHouse', err);
+    }
+    finally{
+      dispatch(doneLoading());
     }
   };
 }
@@ -110,8 +123,7 @@ export function saveHouse(house) {
 export function deleteHouse(houseId) {
   return async (dispatch) => {
     try {
-      await HouseService.remove(houseId)
-      console.log('house delete action')
+      await HouseService.remove(houseId)      
       dispatch(_deleteHouse(houseId))
     }
     catch (err) {
@@ -128,7 +140,13 @@ function _setBestByCountry(country, houses) {
   }
 }
 
-function _AddToFavs(houses) {
+// function _AddToFavs(houses) {
+//   return {
+//     type: 'SET_FAVS',
+//     houses
+//   }
+// }
+function _setFavs(houses) {
   return {
     type: 'SET_FAVS',
     houses

@@ -11,8 +11,7 @@ import { Link } from "react-router-dom";
 
 export default class PriceFilter extends Component {
     state = {
-        isMenuOpen: false,
-        // price: this.props.price || 1000
+        isMenuOpen: false        
     }
 
     onToggleMenu = () => {
@@ -20,15 +19,12 @@ export default class PriceFilter extends Component {
 
     }
 
-    onSaveFilter = () => {
-        console.log('on save called ')
-        this.onToggleMenu()
-        // this.props.onChangePrice(this.state.price)
+    onSaveFilter = () => {        
+        this.onToggleMenu()        
         this.props.saveFilter()
     }
 
-    onChange = (ev) => {
-        // this.setState({ price: +ev.target.value })
+    onChange = (ev) => {        
         this.props.onChangePrice(+ev.target.value)     
 
     }

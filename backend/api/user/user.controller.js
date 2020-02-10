@@ -93,10 +93,25 @@ async function updateUser(req, res) {
         throw err
     }
 }
+async function addFavorite(req, res) {
+    try {
+        const favoriteId = req.body;
+        console.log('user controller favorite id ', favoriteId.favId)
+        console.log('user controller favorite id str ', favoriteId.favId.toString())
+        const userId = req.params.id;
+        const user = await userService.addFavorite(userId, favoriteId.favId.toString())
+        res.send(user)
+    }
+    catch (err) {
+        console.log('backend user.controller err:', err)
+        throw err
+    }
+}
 
 module.exports = {
     getUser,
     getUsers,
     deleteUser,
-    updateUser
+    updateUser,
+    addFavorite
 }

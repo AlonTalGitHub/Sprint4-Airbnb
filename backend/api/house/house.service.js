@@ -56,7 +56,7 @@ async function update(house) {
         await collection.replaceOne({ "_id": house._id }, { $set: house })
         return house
     } catch (err) {
-        console.log(`ERROR: cannot update user ${house._id}`)
+        console.log(`ERROR: cannot update house ${house._id}`)
         throw err;
     }
 }

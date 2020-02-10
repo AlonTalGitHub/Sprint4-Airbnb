@@ -104,8 +104,8 @@ class ReserveHouse extends Component {
         this.setState({ ...this.state, ...userDates })
     }
     getTotalPrice = () => {
-        if (!this.state.startDate || !this.state.endDate) return (<span></span>)
-        else return (< span className="reserve-price-tag-total">{'Total: ' + this.props.house.price * (this.state.endDate.subtract(this.state.startDate).days())}</span>)
+        if (!this.state.startDate || !this.state.endDate) return (<span></span>)        
+        else return (< span className="reserve-price-tag-total">{'Total: $' + this.props.house.price * (this.state.endDate-this.state.startDate)/1000/60/60/24}</span>)
     }
     render() {
         // const [startDate, setStartDate] = useState(null);

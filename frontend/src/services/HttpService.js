@@ -25,13 +25,15 @@ export default {
     },
     delete(endpoint, data){
         return ajax(endpoint, 'DELETE', data)
+    },
+    patch(endpoint, data){
+        return ajax(endpoint, 'PATCH', data)
     }
 }
 
 
 async function ajax(endpoint, method='get', data=null , dispatch) {
-    console.log('ajax-endpoint',endpoint)
-    console.log('ajax-data',data)
+    console.log('ajax-endpoint',endpoint)    
     console.log('ajax-method',method)
     try {
         const res = await axios({

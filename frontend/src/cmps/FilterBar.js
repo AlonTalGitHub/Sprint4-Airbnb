@@ -18,16 +18,12 @@ class FilterBar extends Component {
         endDate: null
     }
 
-    componentDidMount() {
-        console.log('filter bar', this.state.filterBy)
-        
-    }
+
 
     componentDidUpdate(prevProps) {
         if (prevProps.filterBy !== this.props.filterBy) {
-            this.setState({ filterBy: { ...this.props.filterBy } }, () => console.log(this.state.filterBy))
+            this.setState({ filterBy: { ...this.props.filterBy } })
         }
-
     }
 
     changeDates = (userDates) => {
@@ -38,38 +34,28 @@ class FilterBar extends Component {
     }
 
     onChangeCap = (diff, key) => {
-        console.log('cap change before', this.state.filterBy)
         if (this.state.filterBy[key] === 1 && diff === -1) return
-        this.setState(prevState => prevState.filterBy[key] += diff, () => console.log('cap change filter bar', this.state.filterBy))
+        this.setState(prevState => prevState.filterBy[key] += diff)
     }
 
     onChangePrice = (val) => {
-        console.log('onchange price called')        
-        // this.setState(prevState => prevState.filterBy.price = val, ()=>console.log('changeprice',this.state))
-        this.setState(prevState => prevState.filterBy.price=val,() => console.log('price change filter bar', this.state.filterBy))
-
+        this.setState(prevState => prevState.filterBy.price = val)
     }
 
-    saveFilter = () => {
-        console.log('save filter filter bar')
-        this.props.filterHouses(this.state.filterBy)      
+    saveFilter = () => {        
+        this.props.filterHouses(this.state.filterBy)
     }
-
-    updateState = () => {
-        const filter = { ...this.props.filterBy }
-        // console.log(filter)
-        this.setState({ filterBy: filter }, this.saveFilter)
-    }
+    
 
     render() {
         const { filterBy } = this.state
         return <React.Fragment>
             <div className="flex">
-                <CapacityFilter updateState={this.updateState}
+                <CapacityFilter
                     saveFilter={this.saveFilter} filterBy={filterBy} onChangeCap={this.onChangeCap}>
                 </CapacityFilter>
                 <PriceFilter price={this.state.filterBy.price} saveFilter={this.saveFilter} onChangePrice={this.onChangePrice}></PriceFilter>
-            {/* <DatePicker changeDates={this.changeDates}></DatePicker> */}
+                {/* <DatePicker changeDates={this.changeDates}></DatePicker> */}
             </div>
 
 

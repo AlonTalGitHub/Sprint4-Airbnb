@@ -36,7 +36,8 @@ export function getUserById(userId) {
     try {
      let user = await UserService.getById(userId);
      console.log('userActions',user)
-      dispatch(_loadUser(user));  
+      dispatch(_loadUser(user)); 
+      return user 
     } catch (err) {
       console.log('UserActions: err in get user', err);
     }
@@ -55,6 +56,10 @@ export function updateUser(user) {
     }
   };
 }
+
+// export function addToFavorites(user,favoriteId){
+//   return async
+// }
 ///yael update user//
 // THUNK
 // export function getUserByTurlak() {

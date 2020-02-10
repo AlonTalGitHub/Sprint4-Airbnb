@@ -126,12 +126,8 @@ class HouseList extends Component {
 
     }
 
-    // style = { backgroundColor: 'red', position: 'fixed' }
-
-
-    //////////////////////////////////////////////////////////////
-    //housePreview attr: filterBy={this.props.filterBy},onDeleteHouse={this.props.onDeleteHouse} 
-    //////////////////////////////////////////////////////////////
+    // style = { backgroundColor: 'red', position: 'fixed' }   
+    
 
 
 

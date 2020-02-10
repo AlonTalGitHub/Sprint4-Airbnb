@@ -9,7 +9,8 @@ export default {
     getUsers,
     getById,
     remove,
-    update
+    update,
+    addFavorite
 }
 
 function getUsers() {
@@ -25,6 +26,9 @@ function remove(userId) {
 
 function update(user) {
     return HttpService.put(`/user/${user._id}`, user)
+}
+function addFavorite(user,favorite) {
+    return HttpService.patch(`/user/${user._id}`, favorite)
 }
 
 async function login(userCred) {
