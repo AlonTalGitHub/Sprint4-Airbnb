@@ -1,12 +1,10 @@
 const dbService = require('../services/db.service')
 const ObjectId = require('mongodb').ObjectId
 async function query(filterBy = {}) {
-    const criteria = _buildCriteria(filterBy)
-    console.log('criteria is: ', criteria)
+    const criteria = _buildCriteria(filterBy)   
     try {
         const collection = await dbService.getCollection('order')
-        const orders = await collection.find(criteria).toArray();
-        console.log('order.service  orders after promise all: ', orders)
+        const orders = await collection.find(criteria).toArray();       
         return orders
 
     } catch (err) {
@@ -29,8 +27,7 @@ async function add(order) {
     order.status = 'initial'
     try {
         const collection = await dbService.getCollection('order')
-        await collection.insertOne(order);
-        console.log('order.service, order was added successfully, order is: ', order)
+        await collection.insertOne(order);        
         return order;
     } catch (err) {
         console.log(`ERROR: cannot insert order`)
@@ -41,8 +38,7 @@ async function add(order) {
 async function update(order) {
     let filterBy = { updateOrder: true ,status:order.status}
     const criteria = _buildCriteria(filterBy)
-    let orderId = { _id: ObjectId(order._id) }
-    console.log('order.service: ', orderId, criteria)
+    let orderId = { _id: ObjectId(order._id) }   
     try {
         const collection = await dbService.getCollection('order')
         await collection.updateOne(orderId, criteria)
@@ -67,11 +63,9 @@ function _buildCriteria(filterBy) {
         for (key in filterBy) {
             ids.push(ObjectId(filterBy[key]))
         }
-        criteria = { _id: { "$in": ids } }
-        console.log('order.service _buildCriteria(filterBy): ', criteria)
+        criteria = { _id: { "$in": ids } }      
     }
-    if (filterBy.houserequests) {
-        console.log('order.service houserequests for house ')
+    if (filterBy.houserequests) {        
         criteria = {
             "houseId": { $eq: filterBy.houseId }
         }

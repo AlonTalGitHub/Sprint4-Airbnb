@@ -13,20 +13,10 @@ export default {
     remove,
     getHouses
 }
-/*filter={
- numOfperson: 1,
-            location: '',
-            nightsNum:1
-}*/
-function query(filter) {
-    console.log(filter)
-    // server
-    const queryStr = _createQueryStr(filter)
-    return HttpService.get(queryStr)
 
-    //json-server
-    // return HttpService.get(`/house?address.country_like=${filter.location}&capacity_gte=${filter.numOfperson}`, filter)
-    // return HttpService.get(`/house`, filter)
+function query(filter) {    
+    const queryStr = _createQueryStr(filter)
+    return HttpService.get(queryStr)   
 
 }
 function getHouses() {
@@ -57,9 +47,7 @@ function _createQueryStr(filter) {
     if (filter.location==='' || filter.location) {        
         querySTR += `?country=${filter.location}`
     }    
-    // if (filter.startDate && filter.endDate && !filter.location) {
-    //     querySTR += `?dates=true&startDate=${filter.startDate}&endDate=${filter.endDate}`
-    // }
+    
     if(filter.startDate && filter.endDate && filter.location){
         querySTR += `&startDate=${filter.startDate}&endDate=${filter.endDate}`
     }
@@ -72,14 +60,12 @@ function _createQueryStr(filter) {
     }
     
     if (filter.countries) {
-        const countries = filter.countries.join()
-        // querySTR += `?countries=${countries}`
-        querySTR = `/house?countries=${countries}`//ask yael
+        const countries = filter.countries.join()        
+        querySTR = `/house?countries=${countries}`
     }
     if(filter.price){
         querySTR+=`&price=${filter.price}`
-    }
-    console.log('query ready', querySTR)
+    }    
     return querySTR;
 }
 

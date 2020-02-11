@@ -4,33 +4,32 @@ import NavBar from '../cmps/NavBar';
 import cabin from '../assets/img/crap1.jpg'
 import '../assets/styles/aboutPage.css'
 class About extends Component {
-    state={
-        user:''
+    state = {
+        user: ''
     }
-    componentDidMount(){
-        this.props.history.push("/about");
+
+    render() {
+        return (<div className="about-page-container">
+            <img src={cabin} alt="" className="about-img" />
+            <div className="about-info-container">
+                <p>
+                    Welcome to the most amazing site in the world!
+                    Here you will be able to book a place for your next vacation.
+                    So what are you waiting for? 
+                    you'r next vacation is only a few clicks away!
+                </p>
+            </div>
+        </div>
+        )
     }
-render(){
-    return(<div>
-        <img src={cabin} alt="" className="about-img"/>
-    </div>
-
-    )
-}
 
 }
-
-
-
-
 
 
 const mapStateToProps = state => {
     return {
-        loggedInUser:state.user.loggedInUser
+        loggedInUser: state.user.loggedInUser
     };
 };
-// const mapDispatchToProps = {
-//     getUserById
-// };
+
 export default connect(mapStateToProps, null)(About)

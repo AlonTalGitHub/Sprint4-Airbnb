@@ -28,13 +28,11 @@ class Nav extends Component {
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateWindowDimensions);
     }
-    componentDidUpdate(prevProps) {
-        // debugger;
+    componentDidUpdate(prevProps) {        
         if (prevProps.location.pathname !== this.props.location.pathname) {
-            let path = this.props.location.pathname;
-            // console.log('nav bar update,path: ', path)
+            let path = this.props.location.pathname;            
             this.checkIfHome(path)
-        }
+        }       
     }
 
     updateWindowDimensions() {
@@ -46,8 +44,7 @@ class Nav extends Component {
         if (screenWidth <= this.state.mediaQuery) {
             let menu = !this.state.isMenuOpen
             let newState = { isMenuOpen: menu }
-            this.setState({ ...this.state, ...newState })
-            // console.log('screenWidth: ', screenWidth)
+            this.setState({ ...this.state, ...newState })            
             document.querySelector('.logo-burger').classList.toggle('open')
             navListBackground.classList.toggle('open')
             document.querySelector('.nav-list').classList.toggle('open')
@@ -57,7 +54,7 @@ class Nav extends Component {
             let searchForm = document.querySelector('.search-form');
             if (searchForm) searchForm.classList.toggle('menu-open')
         }
-
+        
     }
     changeClassName = (node, str, action) => {
         var children = node.childNodes;
@@ -110,10 +107,7 @@ class Nav extends Component {
         }
 
     }
-
-    render() {
-        // console.log('nav state is: ', this.state)
-        // console.log('match params : ', this.props.location)
+    render() {        
         return (<div className="nav-container">
             <div className="nav-list-background"></div>
             <ul className="nav-list">

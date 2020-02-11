@@ -1,23 +1,18 @@
 import React, { Component } from "react";
-// import { withRouter } from "react-router";
 import HousePreview from "./HousePreview";
-import NavBar from "./NavBar";
-import history from "../history"
 import { withRouter } from 'react-router-dom';
+
+
 class HouseList extends Component {
 
-
-
     getClassAddition = () => {
-        let caller = this.props.location.pathname
-        console.log('getclassadition',caller)
+        let caller = this.props.location.pathname        
         switch (caller) {
             case '/':
                 return "home-list";
             case '/favorites':
                 return "favorite-list";
-            case '/myhouses':
-                console.log('my-houses')
+            case '/myhouses':                
                 return "my-houses";
             case '/house':
                 return "house-page";

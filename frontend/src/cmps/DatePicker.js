@@ -23,30 +23,15 @@ export default class DatePicker extends Component {
             [key]: date
         });
     }
-    componentDidMount() {
-    }
-    // componentWillUpdate(){
-    //     this.sendDates();
-    // }
+    
     sendDates = () => {
         this.props.changeDates({ ...this.state })
-    }
-    // calculateNights = () => {
-    //     const oneDay = 24 * 60 * 60 * 1000;
-    //     const { startDate, endDate } = this.state
-    //     if (startDate && endDate) {
-    //         const numOfnights = (endDate._d - startDate._d) / oneDay
-    //         this.props.saveNightNum(numOfnights)
-    //     }
-    // }
+    }    
     
     
 
     render() {
-        // const BAD_DATES = [moment(), moment().add(10, 'days')];
-        // const BAD_DATES = [moment('Feb 20th 2020'),moment('Feb 21th 2020')];
-        // const isDayBlocked = day => BAD_DATES.filter(d => d.isSame(day, 'day')).length > 0;
-            {/* isDayBlocked={isDayBlocked} */}
+       
         return <DateRangePicker
             startDatePlaceholderText ='mm/dd/yyyy'
             endDatePlaceholderText = 'mm/dd/yyyy'

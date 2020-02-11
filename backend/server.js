@@ -23,7 +23,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false },
-    // maxAge: Date.now() + (30 * 86400 * 1000)
+
 }))
 
 if (process.env.NODE_ENV === 'production') {
@@ -41,7 +41,7 @@ app.use('/api/auth', authRoutes)
 app.use('/api/house', houseRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/order', orderRoutes)
-// connectSockets(io)
+
 
 
 

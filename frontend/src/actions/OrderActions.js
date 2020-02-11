@@ -1,11 +1,9 @@
 import OrderService from '../services/OrderService.js';
 
-export function loadOrders(filter) {
-  console.log('load orders', filter)
+export function loadOrders(filter) {  
   return async dispatch => {
     try {
-      const orders = await OrderService.query(filter);
-      console.log(orders)
+      const orders = await OrderService.query(filter);      
       dispatch(setOrders(orders));
 
     } catch (err) {
@@ -33,8 +31,7 @@ export function setFilter(filter) {
 export function deleteOrder(orderId) {
   return async (dispatch) => {
     try {
-      await OrderService.remove(orderId)
-      console.log('order delete action')
+      await OrderService.remove(orderId)      
       dispatch(_deleteOrder(orderId))
     }
     catch (err) {
@@ -46,8 +43,7 @@ export function deleteOrder(orderId) {
 export function saveOrder(order) {
     return async dispatch => {
       try {
-        const addedOrder = await OrderService.save(order);
-        console.log('action add order', addedOrder)
+        const addedOrder = await OrderService.save(order);        
         order._id ? dispatch(_updateOrder(addedOrder)) : dispatch(_addOrder(addedOrder));
       } catch (err) {
         console.log('OrderActions: err in addOrder', err);
@@ -92,23 +88,3 @@ function _addOrder(order) {
   
 
 
-// export function saveOrder(order) {
-//     return async dispatch => {
-//       try {
-//         const addedOrder = await UserService.save_order(order);
-//         console.log('new added order', addedOrder)
-//       //   order._id ? dispatch(_updateOrder(addedOrder)) : dispatch(_addOrder(addedOrder));
-//       dispatch(_addOrder(addedOrder))
-//       } catch (err) {
-//         console.log('OrderActions: err in addOrder', err);
-//       }
-//     };
-//   }
-
-  
-// function _addOrder(order) {
-//     return {
-//       type: 'ORDER_ADD',
-//       order
-//     };
-//   }

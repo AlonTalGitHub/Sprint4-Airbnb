@@ -15,7 +15,8 @@ import { connect } from 'react-redux';
 import { setFilter } from '../actions/HouseActions'
 // import { saveOrder } from '../actions/OrderActions'
 import { getUserById } from '../actions/UserActions'
-import '../assets/styles/index.css'
+// import '../assets/styles/index.css'
+import '../assets/styles/reservehouse.css'
 import Order from "../services/Order.js";
 import localStorageService from "../services/localStorageService";
 import UserService from "../services/UserService";
@@ -63,19 +64,13 @@ class ReserveHouse extends Component {
             alert('login first!')
             return;
         }
-        // debugger
-        // console.log('ReserveHouse, user is: ', this.props.loggedInUser);
-        //.format("MMM Do YYYY")
-        console.log('reserve btn: ', this.state)
+        
         let dates = { startDate: this.state.startDate._d, endDate: this.state.endDate._d }
-        console.log('the dates the user chose: ', dates)//{ startDate: dates.startDate._d, endDate: dates.endDate._d }) }
-        let houseOrder = new Order(this.props.house._id, user._id, this.state.filterBy.numOfperson);
-        //this.state.startDate._d
+        let houseOrder = new Order(this.props.house._id, user._id, this.state.filterBy.numOfperson);        
         houseOrder.startDate = dates.startDate
         houseOrder.endDate = dates.endDate
         try {
-            await this.props.saveOrder(houseOrder)
-            console.log('orders are: ', this.props.orders)
+            await this.props.saveOrder(houseOrder)            
             let orders = this.props.orders
             let storedOrderId = orders[orders.length - 1]._id
             user.reserved.push(storedOrderId)
@@ -99,8 +94,7 @@ class ReserveHouse extends Component {
             return "reserve-form flex column space-between"
         }
     }
-    changeDates = (userDates) => {
-        console.log('before setState :', userDates)
+    changeDates = (userDates) => {        
         this.setState({ ...this.state, ...userDates })
     }
     getTotalPrice = () => {
@@ -111,7 +105,7 @@ class ReserveHouse extends Component {
         // const [startDate, setStartDate] = useState(null);
         const { house } = this.props;
         return (
-            <div className={this.addReserveClass()}>
+            <div className="reserve-form flex column space-between">
                 <h3 className="reserve-form-header">Reserve Now!</h3>
                 {/* <input onChange={this.onChange} className="form-loc" value={this.state.filterBy.loc} type="text" name="location" placeholder={house.address.country + " | " + house.title}></input> */}
                 <h4 className="reserve-form-house-name">{house.address.country + " | " + house.title}</h4>

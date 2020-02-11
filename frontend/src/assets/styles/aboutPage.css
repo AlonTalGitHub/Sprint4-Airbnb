@@ -1,3 +1,22 @@
 .about-img {
     width: 100vw;
+    object-fit: cover;
+}
+
+.about-page-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 85px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.about-info-container {
+    position: absolute;
+    font-family: Robotobold;
+    font-size: 1.1rem;
+    padding-left: 20px;
+    padding-top: 20px;
 }

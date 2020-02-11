@@ -17,16 +17,13 @@ export default class RequestPreview extends Component {
 
     }
     loadUser = async (userId) => {
-        let requestingUser = await UserService.getById(userId)
-        console.log(' requestingUser: ', requestingUser)
+        let requestingUser = await UserService.getById(userId)        
         this.setState({ user: requestingUser })
     }
     render() {
         if (this.state.user) {
             return (
-                <div className="request-preview">
-                    {/* <span>{props.request._id}</span> */}
-                    {/* <button style={{'width':'100px','height':'50px'}} onClick={(ev)=>props.confirmGuest(ev,props.request)}></button> */}
+                <div className="request-preview">                   
 
                     <div className="request-preview-user-img-container requests">
                         <img src={this.state.user.imgURL} className="request-preview-user-img" />

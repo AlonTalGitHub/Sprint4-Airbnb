@@ -50,7 +50,7 @@ class MapPreview extends Component {
         // { this.blah() }
         return (
             // Important! Always set the container height explicitly
-            <div style={{ height: '80vh', width: '50%','paddingLeft': '10px' }}>
+            <div style={{ height: '80vh', width: '100%','padding': '10px' }}>
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: process.env.REACT_APP_GMAP_API_KEY, v: '3.31' }}
                     center={this.state.center}

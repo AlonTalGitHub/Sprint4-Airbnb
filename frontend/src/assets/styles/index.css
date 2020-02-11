@@ -224,41 +224,7 @@ span.nav-old-item-user-name.black {
     font-size: 1.3rem;
 }
 
-.reserve-form {
-    font-family: 'RobotoBold';
-    position: absolute;
-    width: 400px;
-    height: 420px;
-    top: 15vh;
-    margin-left: 10vw;
-    border: 1px solid rgb(48, 48, 48);
-    border-radius: 5px;
-    padding: 20px 35px;
-    font-size: 13px;
-    letter-spacing: 1px;
-    z-index: 1;
-    color: gray;
-    background-color: white;
-}
 
-button.form-btn.reserve-btn {
-    width: 300px;
-    margin-Left: calc((100% - 300px)/2);
-}
-
-.reserve-price-tag {
-    /* margin-Left: calc((100% - 70px)/2); */
-    text-align: center;
-}
-
-.reserve-price-tag-total {
-    font-weight: bold;
-    text-align: center;
-}
-
-.reserve-form-header {
-    margin-Left: calc((100% - 70px)/2);
-}
 
 .search-form>* {
     margin-top: 10px;
@@ -695,7 +661,7 @@ img.index-cover {
 @media only screen and (max-width:400px) {
     .search-form-title {
         left: 6%;
-        top: 45vh;
+        top: 42vh;
         font-size: 1.75rem;
     }
     .lists-section-container {
@@ -708,4 +674,15 @@ img.index-cover {
     .reccomended-headline {
         margin-top: 0px;
     }
+    /* .reserve-form{
+        position: absolute;
+        width: 100vw;
+        margin-left: 0px;
+        left: 0px;
+        top: 523px;
+    }
+    .main-content-text-container {
+
+        padding-top: 405px;
+    } */
 }

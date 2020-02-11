@@ -30,7 +30,7 @@ class ReviewCompose extends Component {
     loadUser = () => {
         const { _id , username, imgURL } = this.props.loggedInUser;
         const byUser = { _id , username, imgURL }
-        this.setState({ reviewToEdit: {...this.state.reviewToEdit, byUser } }, () => console.log(this.state.reviewToEdit));
+        this.setState({ reviewToEdit: {...this.state.reviewToEdit, byUser } });
     }
 
     addReview = (ev) => {

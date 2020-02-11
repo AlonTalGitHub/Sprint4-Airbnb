@@ -128,26 +128,20 @@ class ResrvedPage extends Component {
         houses: null
 
     }
-    componentDidMount() {
-        this.props.history.push("/reserved");
+    componentDidMount() {        
         this.loadReservedHouses()
         // eturn houses
     }
     loadReservedHouses = async () => {
         const orderIds = this.props.loggedInUser.reserved
-        console.log('this is ReservedPage speaking logged user is: ', this.props.loggedInUser, '\n\n', 'the reserved houses arr', this.props.loggedInUser.reserved, '\n\n')
         try {
             let storedOrders = await OrderService.getOrders({ orders: orderIds })
-            console.log('this is ReservedPage speaking,orders are: ', storedOrders, '\n')
             let housesPrms = storedOrders.map(async (storedOrder) => {
                 let house = await HouseService.get(storedOrder.houseId)
                 house.status = storedOrder.status
-                console.log('this is ReservedPage speaking, house is: ', house, '\n')
                 return house;
             })
-            let houses = await Promise.all(housesPrms)
-
-            console.log('reserve houses after promise all', houses)
+            let houses = await Promise.all(housesPrms)            
             this.setState({ houses: houses })
         }
         catch (err) {
@@ -161,8 +155,7 @@ class ResrvedPage extends Component {
 
     render() {
         const { houses } = this.state
-        if (houses && houses.length === 0) return (<div className="reservedpage-container">
-            {/* <NavBar caller={"reservedpage"}></NavBar> */}
+        if (houses && houses.length === 0) return (<div className="reservedpage-container">            
             <div className="reserved-container-none">
                 <h2 className="reservedpage">My Reserved Houses</h2>
                 <div>No reserved items to show</div>
@@ -170,8 +163,7 @@ class ResrvedPage extends Component {
         </div>)
         else {
             return (
-                <div className="reservedpage-container">
-                    {/* <NavBar caller={"reservedpage"}></NavBar> */}
+                <div className="reservedpage-container">                    
                     {(this.props.isLoading || !houses) && <Loading />}
                     {(houses) && <div className="reservedpage-content-container">
                         <h2 className="reservedpage">My Reserved Houses</h2>
