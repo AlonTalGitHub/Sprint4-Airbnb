@@ -25,8 +25,7 @@ export default function(state = initialState, action = {}) {
     // case 'USER_LOAD':
     //     console.log('userload', action.user)        
     //     return { ...state, users: action.user };
-    case 'USER_LOAD':
-        console.log('userload', action.user) 
+    case 'USER_LOAD':        
         sessionStorage.setItem('user', JSON.stringify(action.user))
         return { ...state, loggedInUser: action.user };
       default:

@@ -20,7 +20,7 @@ async function getCollection(collectionName) {
         return collection;
     }
     catch (err) {
-        console.log('db.service:eize bassa cant get collection', err)
+        console.log( err)
     }
 }
 //mongodb+srv://shayRosenthal:qS397tuQWrUSAFQx@turtlecluster1-yvyp2.mongodb.net/test?retryWrites=true&w=majority

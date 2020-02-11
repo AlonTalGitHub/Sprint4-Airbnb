@@ -31,7 +31,7 @@ class SearchForm extends Component {
     }
     onChangeCap = (diff, key) => {
         if (this.state.filterBy[key] === 1 && diff === -1) return
-        this.setState(prevState => prevState.filterBy[key] += diff, () => console.log(this.state))
+        this.setState(prevState => prevState.filterBy[key] += diff)
     }
 
     setLocation = (ev) => {
@@ -52,9 +52,7 @@ class SearchForm extends Component {
         const filterBy = { ...this.state.filterBy }
         filterBy.location = filterBy.location.toLowerCase()
         filterBy.startDate = this.state.startDate
-        filterBy.endDate = this.state.endDate
-        console.log('this is searchForm: ', filterBy)
-        // this.props.filterHouses(filterBy)       
+        filterBy.endDate = this.state.endDate             
         this.props.setFilter(filterBy)
     }
 

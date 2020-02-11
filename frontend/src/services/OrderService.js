@@ -28,8 +28,7 @@ function update(order) {
 async function save(order) {
     const addedOrder = order._id ? await HttpService.put(`/order/${order._id}`, order)
         :
-        await HttpService.post(`/order`, order);
-    console.log(addedOrder)
+        await HttpService.post(`/order`, order);    
     return addedOrder
 }
 function _makeQuerySTR(filterBy) {

@@ -11,12 +11,8 @@ import NavBar from '../cmps/NavBar';
 import Loading from '../cmps/Loading'
 
 
-class Favorites extends Component {
-
-    state = {
-        houses: null
-
-    }
+class Favorites extends Component {    
+    
     componentDidMount() {
         this.loadFavoriteHouses()        
 
@@ -29,13 +25,9 @@ class Favorites extends Component {
     }
 
 
-
     loadFavoriteHouses = async () => {
-        const favoriteIds = this.props.loggedInUser.favorites
-        console.log('favorites page favIds are', favoriteIds)
+        const favoriteIds = this.props.loggedInUser.favorites        
         this.props.loadFavorites(favoriteIds)
-
-
     }
 
     render() {
@@ -60,8 +52,7 @@ const mapStateToProps = state => {
         isLoading: state.system.isLoading
     };
 };
-const mapDispatchToProps = {
-    // AddToFavorites,
+const mapDispatchToProps = {    
     loadFavorites
 };
 

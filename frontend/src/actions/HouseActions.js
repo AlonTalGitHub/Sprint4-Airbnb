@@ -2,25 +2,6 @@ import HouseService from '../services/HouseService';
 import history from '../history'
 import { loading, doneLoading } from './SystemActions';
 
-/*
-export function loadUsers() {
-  return async dispatch => {
-    try {
-      // example for loading
-      dispatch(loading());
-      const users = await UserService.getUsers();
-      dispatch(setUsers(users));
-    } catch (err) {
-      console.log('UserActions: err in loadUsers', err);
-      // example for rerouting - after changing the store
-      // history.push('/some/path');
-    } finally {
-      dispatch(doneLoading());
-    }
-  };
-}
-
-*/
 
 
 export function filterHouses(filter) {  
@@ -140,12 +121,7 @@ function _setBestByCountry(country, houses) {
   }
 }
 
-// function _AddToFavs(houses) {
-//   return {
-//     type: 'SET_FAVS',
-//     houses
-//   }
-// }
+
 function _setFavs(houses) {
   return {
     type: 'SET_FAVS',

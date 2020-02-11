@@ -8,7 +8,6 @@ import HouseService from '../services/HouseService'
 
 import NavBar from '../cmps/NavBar'
 import DatePicker from '../cmps/DatePicker'
-// import ChatBox from '../cmps/ChatBox'
 import ReserveHouse from '../cmps/ReserveHouse.js'
 import { Link } from 'react-router-dom';
 import ReviewList from '../cmps/reviews/ReviewList';
@@ -25,8 +24,7 @@ class HouseDetails extends Component {
     }
 
     componentDidMount() {
-        const houseId = this.props.match.params.id;
-        // this.props.history.push(`/house/${houseId}`);
+        const houseId = this.props.match.params.id;        
         this.loadHouse(houseId)
     }
 
@@ -37,8 +35,7 @@ class HouseDetails extends Component {
 
     checkIfOwner = () => {
         const { loggedInUser } = this.props
-        const isOwner = (loggedInUser && loggedInUser._id === this.state.house.owner._id) ? true : false
-        console.log(isOwner)
+        const isOwner = (loggedInUser && loggedInUser._id === this.state.house.owner._id) ? true : false        
         return isOwner
     }
 
@@ -70,8 +67,7 @@ class HouseDetails extends Component {
     render() {
         const { house } = this.state
         return (
-            <React.Fragment>
-                {/* <NavBar caller={"housedetails"}></NavBar> */}
+            <React.Fragment>                
                 {(this.props.isLoading || !house) && <Loading />}
                 {(house) && <section className="housedetails-container">
                     <div className="images-container">

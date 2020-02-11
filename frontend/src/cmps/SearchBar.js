@@ -23,13 +23,12 @@ class SearchBar extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
-        this.setState({ filterBy: { ...this.props.filterBy } }, () => console.log('search bar mounting filter is', this.state.filterBy))
+        this.setState({ filterBy: { ...this.props.filterBy } })
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.filterBy !== this.props.filterBy) {
-            this.setState({ filterBy: { ...this.props.filterBy } }, () => console.log(this.state.filterBy))
+            this.setState({ filterBy: { ...this.props.filterBy } })
         }
 
     }
@@ -63,8 +62,7 @@ class SearchBar extends Component {
         }))
     }
 
-    selectedText(value) {
-        console.log('selected text')
+    selectedText(value) {        
         if (value === 'Anywhere') value = ''
         const filterBy = { ...this.state.filterBy }
         filterBy.location = value.toLowerCase()
@@ -99,7 +97,6 @@ class SearchBar extends Component {
     render() {
         const { text, suggestions, filterBy } = this.state;
         return <div className="flex column">
-            {/* <input onFocus={this.handleFocus} onChange={this.onChange} className="form-loc" value={this.props.filterBy.location} type="text" name="location" placeholder="Where?"></input> */}
             <input autoComplete="off" onChange={this.onTextChange}
                 className="form-loc" value={text} type="text" name="location" placeholder="Where?"></input>
             <div> {this.renderSuggestions()}</div>

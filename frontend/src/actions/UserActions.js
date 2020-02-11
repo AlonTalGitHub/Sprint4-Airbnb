@@ -5,15 +5,12 @@ import { loading, doneLoading } from './SystemActions';
 // THUNK
 export function loadUsers() {
   return async dispatch => {
-    try {
-      // example for loading
+    try {      
       dispatch(loading());
       const users = await UserService.getUsers();
       dispatch(setUsers(users));
     } catch (err) {
-      console.log('UserActions: err in loadUsers', err);
-      // example for rerouting - after changing the store
-      // history.push('/some/path');
+      console.log('UserActions: err in loadUsers', err);      
     } finally {
       dispatch(doneLoading());
     }
@@ -34,8 +31,7 @@ export function removeUser(userId) {
 export function getUserById(userId) {
   return async dispatch => {
     try {
-     let user = await UserService.getById(userId);
-     console.log('userActions',user)
+     let user = await UserService.getById(userId);     
       dispatch(_loadUser(user)); 
       return user 
     } catch (err) {
@@ -48,8 +44,7 @@ export function getUserById(userId) {
 export function updateUser(user) {
   return async dispatch => {
     try {
-     let updatedUser= await UserService.update(user);
-     console.log('userActions',updatedUser)
+     let updatedUser= await UserService.update(user);     
       dispatch(setUser(updatedUser));
     } catch (err) {
       console.log('UserActions: err in updateUser', err);
@@ -57,23 +52,7 @@ export function updateUser(user) {
   };
 }
 
-// export function addToFavorites(user,favoriteId){
-//   return async
-// }
-///yael update user//
-// THUNK
-// export function getUserByTurlak() {
-//   return async dispatch => {
-//     try {
-//      let user= await UserService.getUserByTurlak();
-//      console.log('userActions',user)
-//       dispatch(_loadUser(user));
-//     } catch (err) {
-//       console.log('UserActions: err in turlakking User', err);
-//     }
-//   };
-// }
-// THUNK
+
 export function login(userCreds) {
   return async dispatch => {
     const user = await UserService.login(userCreds);

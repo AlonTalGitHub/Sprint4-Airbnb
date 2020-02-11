@@ -8,8 +8,7 @@ export function doneLoading() {
 
 export function updateRoute(route) {
   return async (dispatch) => {
-    try {
-      console.log('update route action,route: ',route)
+    try {      
      await dispatch(_updateRoute(route))
     }
     catch (err) {

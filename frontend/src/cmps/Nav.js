@@ -28,17 +28,11 @@ class Nav extends Component {
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateWindowDimensions);
     }
-    componentDidUpdate(prevProps) {
-        // debugger;
-        // let navList = document.querySelector(".nav-list")
-        // navList.children[2].classList.add('push')
+    componentDidUpdate(prevProps) {        
         if (prevProps.location.pathname !== this.props.location.pathname) {
-            let path = this.props.location.pathname;
-            // console.log('nav bar update,path: ', path)
+            let path = this.props.location.pathname;            
             this.checkIfHome(path)
-        }
-        // console.log('nav update:',prevProps.currRoute)
-        // console.log('nav update:', this.props.match.path)
+        }       
     }
 
     updateWindowDimensions() {
@@ -50,8 +44,7 @@ class Nav extends Component {
         if (screenWidth <= 700) {
             let menu = !this.state.isMenuOpen
             let newState = { isMenuOpen: menu }
-            this.setState({ ...this.state, ...newState })
-            // console.log('screenWidth: ', screenWidth)
+            this.setState({ ...this.state, ...newState })            
             document.querySelector('.logo-burger').classList.toggle('open')
             navListBackground.classList.toggle('open')
             document.querySelector('.nav-list').classList.toggle('open')
@@ -61,13 +54,7 @@ class Nav extends Component {
             let searchForm = document.querySelector('.search-form');
             if (searchForm) searchForm.classList.toggle('menu-open')
         }
-        // if(navListBackground.classList.contains('open')){
-        //     let searchBar=document.querySelector('.search-bar')
-        //     if(searchBar) {
-        //         searchBar.classList.toggle('hide')
-        //     }
-        // }
-
+        
     }
     changeClassName = (node, str, action) => {
         var children = node.childNodes;
@@ -120,9 +107,7 @@ class Nav extends Component {
         }
 
     }
-    render() {
-        console.log('nav state is: ', this.state)
-        // console.log('history is: ', this.props.history.location.pathname)
+    render() {        
         return (<div className="nav-container">
             <div className="nav-list-background"></div>
             <ul className="nav-list">

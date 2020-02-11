@@ -28,10 +28,7 @@ class Login extends Component {
       imgURL: ''
     }
   };
-  componentDidMount() {
-    this.props.history.push("/login");
-
-  }
+  
   loginHandleChange = ev => {
     const { name, value } = ev.target;
     this.setState(prevState => ({
@@ -145,12 +142,10 @@ class Login extends Component {
     );
     const { loggedInUser } = this.props;
     const consoleUser = () => {
-      const { loggedInUser } = this.props;
-      console.log('user logged in: ', loggedInUser.fullName)
+      const { loggedInUser } = this.props;      
     }
     let logoutSection = (
-      <div className="login-form flex column space-between">
-        {/* {this.props.isLoading && 'Loading...'} */}
+      <div className="login-form flex column space-between">        
         <h2 onClick={consoleUser}>Welcome:  {(loggedInUser) ? loggedInUser.username : 'blah'}</h2>
         <Link to="/"><button className="form-btn login-btn">Back to Turtle House</button></Link>
         <button className="form-btn login-btn" onClick={this.props.logout}>Logout</button>
@@ -158,8 +153,7 @@ class Login extends Component {
     )
     return (
       <div className="flex column space-between">
-        {!loggedInUser && loginSection}
-        {!loggedInUser && <div className="login-question">Not a user yet ?</div>}
+        {!loggedInUser && loginSection}        
         {!loggedInUser && signupSection}
         {(loggedInUser) ? logoutSection : ''}
       </div>

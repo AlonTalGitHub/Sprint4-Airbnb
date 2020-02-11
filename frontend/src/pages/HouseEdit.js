@@ -36,10 +36,8 @@ class HouseEdit extends Component {
 
     }
 
-    componentDidMount() {
-        this.props.history.push("/house/edit");
-        if (!this.props.loggedInUser) {
-            console.log('please login')
+    componentDidMount() {        
+        if (!this.props.loggedInUser) {            
             this.props.history.push('/login')
         }
         const { id } = this.props.match.params
@@ -53,8 +51,7 @@ class HouseEdit extends Component {
     }
 
     getHouse = async (id) => {
-        const newHouse = await HouseService.get(id)
-        console.log(newHouse.address.coords)
+        const newHouse = await HouseService.get(id)        
         const addressInput = await this.getAddress(newHouse.address.coords)
         newHouse.addressInput = addressInput
         this.setState({ newHouse })
@@ -115,8 +112,7 @@ class HouseEdit extends Component {
         const user = { ...this.props.loggedInUser }
         if (!user) {
             console.log('please login')
-        }
-        // if(!this.state.newHouse.reviews) this.state.newHouse.reviews=[]
+        }        
         else {
             const owner = this.createOwner(user)
             try {
@@ -130,8 +126,8 @@ class HouseEdit extends Component {
                 await this.props.getUserById(user._id)
                 this.setState({ isModalShown: true })
             }
-            catch{
-                console.log('add house failed')
+            catch(err){
+                console.log('add house failed', err)
             }
         }
     }

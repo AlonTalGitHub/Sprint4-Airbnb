@@ -6,24 +6,15 @@ import SearchForm from '../cmps/SearchForm';
 import backgroundImage from '../assets/img/bgc.jpg'
 import HouseList from '../cmps/HouseList';
 import NavBar from '../cmps/NavBar';
-// import MapMarker from '../cmps/MapMarker'
-// import { connect } from 'react-redux';
 
-// import { loadReviews, addReview } from '../actions/ReviewActions.js';
-// import { loadUsers } from '../actions/UserActions.js';
 import { Link } from 'react-router-dom';
 import Loading from '../cmps/Loading'
 
 class Home extends Component {
   state = {};
 
-  componentDidMount() {
-    this.props.history.push("/");
-    console.log('home', this.props.filterBy)
-    console.log('welcome back to turtle house user : ', this.props.loggedInUser)
-    // debugger
+  componentDidMount() {       
     this.load()
-
   }
 
   load = async () => {
@@ -40,12 +31,10 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="home">
-        {/* <NavBar caller={"home"}></NavBar> */}
+      <div className="home">        
         {this.props.isLoading && <Loading />}
         <img className="index-cover" src={backgroundImage} />
-        <SearchForm></SearchForm>
-        {/* {this.props.houses.length&& */}
+        <SearchForm></SearchForm>        
         <section className="lists-section-container">
           <div>
             <h4 className="reccomended-headline">Most reccomended in Israel</h4>
@@ -59,8 +48,7 @@ class Home extends Component {
             <h4 className="reccomended-headline">Most reccomended in Spain</h4>
             <HouseList home="home" houses={this.props.spain}></HouseList>
           </div>
-        </section>
-        {/* /* <MapMarker/> */}
+        </section>        
       </div>
     );
   }
@@ -79,8 +67,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = {
   setFilter,
-  getBestByCountry,
-  // loadHouses,
+  getBestByCountry,  
   filterHouses
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
