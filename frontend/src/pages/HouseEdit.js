@@ -40,7 +40,6 @@ class HouseEdit extends Component {
         this.props.history.push("/house/edit");
         if (!this.props.loggedInUser) {
             console.log('please login')
-            this.props.history.push('/login')
         }
         const { id } = this.props.match.params
         if (!id) return
@@ -208,12 +207,14 @@ class HouseEdit extends Component {
         const { id } = this.props.match.params
         if (this.props.isLoading) return (
             <div>
-                
+
                 <Loading />
             </div>
         )
         else {
-            return <React.Fragment>               
+            return <React.Fragment>
+                <div className="house-edit-container">
+                    <span className="house-edit-header">Add and Edit Houses</span>
                 <form className="edit-form flex column" onSubmit={this.onSaveHouse}>
                     <input required name="country" onChange={this.onAddressChange} value={newHouse.address.country} type="text" placeholder="Country"></input>
                     <input required ref="address" onChange={this.onInputChange} name="addressInput" type="text" placeholder="Address" value={this.state.newHouse.addressInput}></input>
@@ -246,7 +247,8 @@ class HouseEdit extends Component {
                     <button onClick={this.onBackClick} className="form-btn pointer">Back To HomePage</button>
                 </div>
                 <div className={isModalShown ? 'block-screen' : 'block-screen-hidden'}></div>
-            </React.Fragment>
+                </div>
+            </React.Fragment >
         }
     }
 }
