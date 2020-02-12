@@ -1,0 +1,560 @@
+{
+  "house": [
+    {
+      "_id": "0p9o8i",
+      "title": "House on the Lake",
+      "description": "Spend an unforgettable holiday in the enchanting surroundings of the town of Cisternino (reachable from the near airports of Bari and Brindisi). Trullo Edera offers a heaven of peace and tranquillity, set in an elevated position with a stunning view. Its the perfect place if you like nature. You can stay under an olive tree reading a good book, you can have a walk in the small country streets or go to the nearest beaches. You can even easily visit any of the sights in Apulia such as the caves of Castellana, the trulli of Alberobello, the baroque cities of Lecce and Martina Franca, the excavations of Egnazia, the zoosafari of Fasano, Castel del Monte with Frederick's castle, Grottaglie famous for its ceramics, Taranto, Brindisi and Lecce museums. Prices vary on period and are to be considered included: in-outcoming cleanings, towels, sheets, water, gas, electricity.",
+      "owner": {
+        "_id": "0987",
+        "fullName": "Yael Shenker",
+        "imgURL": "https://a0.muscache.com/im/pictures/user/e23d9c03-0de7-46f9-ba5a-c62a6358ff34.jpg?aki_policy=profile_x_medium"
+      },
+      "address": {
+        "country": "Spain",
+        "coords": {
+          "lat": 41.38879,
+          "lng": 2.15899
+        }
+      },
+      "imgs": [
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/apartment-bed-bedroom-chair-271624_mldlej.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/apartment-blinds-cabinets-chairs-349749_gycx19.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/oval-mirror-near-toilet-bowl-1910472_dognwb.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579558662/white-wooden-shelf-beside-bed-2062431_nrtib1.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579613457/blue-and-gray-concrete-house-with-attic-during-twilight-186077_wx3xq6.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579613562/black-flat-screen-tv-turned-off-210265_alzyj0.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579769779/bathroom-cabinet-candles-faucet-342800_vzuiwq.jpg"
+      ],
+      "capacity": 3,
+      "price": 175,
+      "rating": 4.21,
+      "reviews": [
+        {
+          "byUser": {
+            "_id": "1234",
+            "fullName": "shay rosenthal",
+            "img": "https://assets.change.org/photos/3/tk/jh/ehtkjhxwriknips-800x450-nopad.jpg?1515932574"
+          },
+          "txt": "Amazing place",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        }
+      ]
+    },
+    {
+      "_id": "ahy546",
+      "title": "Near The Beach",
+      "description": "5 minutes walking to the beach. Enjoy the crystal blue waters and white-sand beaches of Holbox Island, off the coast of Mexico’s Yucatan Peninsula. Take a flight to Cancun and just show up! I will take car of the rest for you. We’ll visit Mosquito Beach and Coco’s Beach, witness bioluminescent plankton light up the ocean at night, see the spectacular pink lagoons known as Las Coloradas, and eat fresh ceviche. We’ll then take a boat ride on Lagartos River before traveling to the colorful city of Valladolid. We’ll eat dinner, have a small fiesta, and stay overnight in Valladolid, returning to our starting point right after. If you’d like to stay over the night before or after our adventure please follow this link for options: https://www.airbnb.com/users/1762945/listings.",
+      "owner": {
+        "_id": "0987",
+        "fullName": "Yael Shenker",
+        "imgURL": "https://a0.muscache.com/im/pictures/user/e23d9c03-0de7-46f9-ba5a-c62a6358ff34.jpg?aki_policy=profile_x_medium"
+      },
+      "address": {
+        "country": "Portugal",
+        "coords": {
+          "lat": 0,
+          "lng": 0
+        }
+      },
+      "imgs": [
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255992/Tutrtle%20house/Outside/architecture-bungalow-country-countryside-463996_aanoiy.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/black-flat-screen-tv-turned-off-210265_v9uw9d.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255612/Tutrtle%20house/livingroom/photo-of-living-room-1457842_aaaqtv.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/chopping-boards-near-oven-under-hood-2062426_updrij.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/bathroom-cabinet-candles-faucet-342800_xrhbha.jpg"
+      ],
+      "capacity": 4,
+      "price": 90,
+      "rating": 4.22,
+      "reviews": [
+        {
+          "byUser": {
+            "_id": "1234",
+            "fullName": "shay rosenthal",
+            "img": "https://assets.change.org/photos/3/tk/jh/ehtkjhxwriknips-800x450-nopad.jpg?1515932574"
+          },
+          "txt": "Amazing place",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        }
+      ]
+    },
+    {
+      "_id": "zdew6t3",
+      "title": "Dream In Toscana",
+      "description": "Quiet and peacefull house for a romantic vaction",
+      "owner": {
+        "_id": "0987",
+        "fullName": "Yael Shenker",
+        "imgURL": "https://a0.muscache.com/im/pictures/user/e23d9c03-0de7-46f9-ba5a-c62a6358ff34.jpg?aki_policy=profile_x_medium"
+      },
+      "address": {
+        "country": "Italy",
+        "coords": {
+          "lat": 0,
+          "lng": 0
+        }
+      },
+      "imgs": [
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255992/Tutrtle%20house/Outside/apartment-architecture-balcony-building-347141_tq0cyg.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/white-wooden-shelf-beside-bed-2062431_xxudde.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255613/Tutrtle%20house/livingroom/brown-wooden-center-table-584399_x1hbij.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/white-wooden-kitchen-cabinet-1599791_a9dmt4.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/white-bathroom-interior-1454804_wv7xdq.jpg"
+      ],
+      "capacity": 6,
+      "price": 100,
+      "rating": 4.77,
+      "reviews": [
+        {
+          "byUser": {
+            "_id": "1234",
+            "fullName": "shay rosenthal",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "Amazing place",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        },
+        {
+          "byUser": {
+            "_id": "123456789",
+            "fullName": "User",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "fdsfsdfdsfalontal",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        },
+        {
+          "byUser": {
+            "_id": "123456789",
+            "fullName": "User",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "cxvxcvxcvcxvcvcxvxcvxcvxcvxcvxcv",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        }
+      ]
+    },
+    {
+      "_id": "xLbLNBW",
+      "address": {
+        "country": "England"
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579347113/bathroom-cabinet-candles-faucet-342800_fhlovh.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/white-wooden-shelf-beside-bed-2062431_xxudde.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255613/Tutrtle%20house/livingroom/brown-wooden-center-table-584399_x1hbij.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/white-wooden-kitchen-cabinet-1599791_a9dmt4.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/white-bathroom-interior-1454804_wv7xdq.jpg"
+      ],
+      "title": "Central London house",
+      "description": "Cozy flat 5 minutes from Oxford str",
+      "capacity": 3,
+      "price": 100,
+      "rating": 4.56,
+      "reviews": [
+        {
+          "byUser": {
+            "_id": "1234",
+            "fullName": "shay rosenthal",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "Amazing place",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        },
+        {
+          "byUser": {
+            "_id": "123456789",
+            "fullName": "User",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "fdgdfgsfgsfg",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        },
+        {
+          "byUser": {
+            "_id": "123456789",
+            "fullName": "User",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "vcxcbxbxbvx",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        }
+      ]
+    },
+    {
+      "address": {
+        "country": "Portugal"
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579361241/architecture-bungalow-country-countryside-463996_fjlprs.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/white-wooden-shelf-beside-bed-2062431_xxudde.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255613/Tutrtle%20house/livingroom/brown-wooden-center-table-584399_x1hbij.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/white-wooden-kitchen-cabinet-1599791_a9dmt4.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/white-bathroom-interior-1454804_wv7xdq.jpg"
+      ],
+      "title": "Country side house",
+      "description": "quiet place",
+      "capacity": 3,
+      "price": 130,
+      "rating": 4.38,
+      "reviews": [
+        {
+          "byUser": {
+            "_id": "1234",
+            "fullName": "shay rosenthal",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "Amazing place",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        }
+      ],
+      "_id": "TxIbxKj"
+    },
+    {
+      "address": {
+        "country": "Germany"
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579361970/photo-of-bedroom-1454806_hssl6s.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/white-wooden-shelf-beside-bed-2062431_xxudde.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255613/Tutrtle%20house/livingroom/brown-wooden-center-table-584399_x1hbij.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/white-wooden-kitchen-cabinet-1599791_a9dmt4.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/white-bathroom-interior-1454804_wv7xdq.jpg"
+      ],
+      "title": "Cool house in Berlin",
+      "description": "The most hip neighborhood in berlin",
+      "capacity": 2,
+      "price": 180,
+      "rating": 4.67,
+      "reviews": [
+        {
+          "byUser": {
+            "_id": "1234",
+            "fullName": "shay rosenthal",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "Amazing place",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        }
+      ],
+      "_id": "uaO7QdJ"
+    },
+    {
+      "address": {
+        "country": "Germany"
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579363966/apartment-blinds-cabinets-chairs-349749_vplwix.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/white-wooden-shelf-beside-bed-2062431_xxudde.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255613/Tutrtle%20house/livingroom/brown-wooden-center-table-584399_x1hbij.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/white-wooden-kitchen-cabinet-1599791_a9dmt4.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/white-bathroom-interior-1454804_wv7xdq.jpg"
+      ],
+      "title": "The best house In Munich",
+      "description": "Quiet and central",
+      "capacity": 2,
+      "price": 122,
+      "rating": 4.87,
+      "reviews": [
+        {
+          "byUser": {
+            "_id": "1234",
+            "fullName": "shay rosenthal",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "Amazing place",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        }
+      ],
+      "_id": "en2OluO"
+    },
+    {
+      "address": {
+        "country": "Israel"
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579364666/apartment-bed-bedroom-chair-271624_vsfbgt.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255117/Tutrtle%20house/Bedrooms/white-wooden-shelf-beside-bed-2062431_xxudde.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255613/Tutrtle%20house/livingroom/brown-wooden-center-table-584399_x1hbij.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255737/Tutrtle%20house/Kitchens/white-wooden-kitchen-cabinet-1599791_a9dmt4.jpg",
+        "https://res.cloudinary.com/dnb7d7utg/image/upload/v1579255859/Tutrtle%20house/Shower/white-bathroom-interior-1454804_wv7xdq.jpg"
+      ],
+      "title": "Nice flat in Tel Aviv",
+      "description": "The flat is located 3 min fron the beach",
+      "capacity": 2,
+      "price": 100,
+      "rating": 4.85,
+      "reviews": [
+        {
+          "byUser": {
+            "_id": "1234",
+            "fullName": "shay rosenthal",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "Amazing place",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        },
+        {
+          "byUser": {
+            "_id": "123456789",
+            "fullName": "User",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "dsfdfsdf",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        },
+        {
+          "byUser": {
+            "_id": "123456789",
+            "fullName": "User",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "dfsdfdfsdfsss",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        },
+        {
+          "byUser": {
+            "_id": "123456789",
+            "fullName": "User",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        },
+        {
+          "byUser": {
+            "_id": "123456789",
+            "fullName": "User",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "xxxxxxxxxxxxxxxx",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        },
+        {
+          "byUser": {
+            "_id": "123456789",
+            "fullName": "User",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        }
+      ],
+      "_id": "-5Glkz0"
+    },
+    {
+      "address": {
+        "country": "Sweden"
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579449334/white-bathroom-interior-1454804_djppkk.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579449334/white-wooden-kitchen-cabinet-1599791_gefugq.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579449334/chopping-boards-near-oven-under-hood-2062426_n94dtk.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579449334/apartment-blinds-cabinets-chairs-349749_ox4fyx.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579449334/flat-screen-tv-1571458_yijv7h.jpg"
+      ],
+      "title": "Romantic flat with balcony",
+      "description": "The best location",
+      "capacity": 2,
+      "price": 220,
+      "rating": 4.9,
+      "reviews": [
+        {
+          "byUser": {
+            "_id": "1234",
+            "fullName": "shay rosenthal",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "Amazing place",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        }
+      ],
+      "_id": "dTA6d4F"
+    },
+    {
+      "address": {
+        "country": "Israel",
+        "coords": {
+          "lat": 32.08088,
+          "lng": 34.78057
+        }
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579639256/apartment-architecture-balcony-building-347141_ol1zud.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579639257/architecture-bungalow-country-countryside-463996_labicf.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579639256/blue-and-gray-concrete-house-with-attic-during-twilight-186077_glwlws.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579639256/bathroom-cabinet-candles-faucet-342800_psxakt.jpg"
+      ],
+      "title": "Tel Aviv Best Appartment",
+      "description": "Your home in Tel Aviv",
+      "capacity": 2,
+      "price": 130,
+      "rating": 4.78,
+      "reviews": [
+        {
+          "byUser": {
+            "_id": "1234",
+            "fullName": "shay rosenthal",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "Amazing place",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        },
+        {
+          "byUser": {
+            "_id": "123456789",
+            "fullName": "User",
+            "img": "https://assets.change.org/photos/3/tk/jh/EhtkjhXwrIKnips-800x450-noPad.jpg?1515932574"
+          },
+          "txt": "fsdfdsfdsf",
+          "rate": 4,
+          "createdAt": "2020-01-15T07:51:18.138Z"
+        }
+      ],
+      "_id": "vpsmSL4"
+    },
+    {
+      "address": {
+        "country": "Israel",
+        "coords": {
+          "lat": 32.08088,
+          "lng": 34.78057
+        }
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579687773/oval-mirror-near-toilet-bowl-1910472_udqqdo.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579687773/white-bathroom-interior-1454804_n9muyg.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579687773/white-wooden-kitchen-cabinet-1599791_ugpqlu.jpg"
+      ],
+      "title": "TLV",
+      "description": "quiet place",
+      "capacity": 2,
+      "price": 34343,
+      "_id": "X5BHDX_"
+    },
+    {
+      "address": {
+        "country": "England",
+        "coords": {
+          "lat": 51.5158263,
+          "lng": -0.1367755
+        }
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579728026/white-bathroom-interior-1454804_ry0wex.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579728026/white-wooden-kitchen-cabinet-1599791_kzjoqd.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579728032/flat-screen-tv-1571458_gtl3ys.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579728584/photo-of-bedroom-1454806_duxbi4.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579729389/white-wooden-shelf-beside-bed-2062431_viiymt.jpg"
+      ],
+      "title": "London center penthouse",
+      "description": "Enjoy an unforgettable vaction in central London",
+      "capacity": 3,
+      "price": 125,
+      "owner": {
+        "_id": "0987",
+        "fullName": "Yael Shenker",
+        "imgURL": "https://a0.muscache.com/im/pictures/user/e23d9c03-0de7-46f9-ba5a-c62a6358ff34.jpg?aki_policy=profile_x_medium"
+      },
+      "_id": "vaMUKqy"
+    },
+    {
+      "address": {
+        "country": "England",
+        "coords": {
+          "lat": 51.5163908,
+          "lng": -0.1304228
+        }
+      },
+      "imgs": [
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1580127922/white-bathroom-interior-1454804_cqkbci.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1580127922/white-wooden-kitchen-cabinet-1599791_u9qkzb.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1580127923/chopping-boards-near-oven-under-hood-2062426_cqgbfp.jpg",
+        "http://res.cloudinary.com/dnb7d7utg/image/upload/v1580127923/apartment-blinds-cabinets-chairs-349749_pxr1oc.jpg"
+      ],
+      "title": "Shopping & Chill",
+      "description": "Enjoy the center of London",
+      "capacity": 3,
+      "price": 109,
+      "reviews": [],
+      "owner": {
+        "_id": "0987",
+        "fullName": "Yael Shenker",
+        "imgURL": "https://a0.muscache.com/im/pictures/user/e23d9c03-0de7-46f9-ba5a-c62a6358ff34.jpg?aki_policy=profile_x_medium"
+      },
+      "_id": "NwfGR7I"
+    }
+  ],
+  "user": [
+    {
+      "_id": "1234",
+      "fullName": "Alon tal",
+      "userName": "alontal@gmail.com",
+      "password": "1q2w3e",
+      "isHost": false,
+      "isAdmin": false,
+      "imgURL": "http://some-img",
+      "houses": [],
+      "favorites": [
+        {
+          "address": {
+            "country": "Israel",
+            "coords": {
+              "lat": 32.08088,
+              "lng": 34.78057
+            }
+          },
+          "imgs": [
+            "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579639256/apartment-architecture-balcony-building-347141_ol1zud.jpg",
+            "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579639257/architecture-bungalow-country-countryside-463996_labicf.jpg",
+            "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579639256/blue-and-gray-concrete-house-with-attic-during-twilight-186077_glwlws.jpg",
+            "http://res.cloudinary.com/dnb7d7utg/image/upload/v1579639256/bathroom-cabinet-candles-faucet-342800_psxakt.jpg"
+          ],
+          "title": "Tel Aviv Best Appartment",
+          "description": "Your home in Tel Aviv",
+          "capacity": 2,
+          "price": 130,
+          "rating": 4.78,
+          "_id": "vpsmSL4"
+        }
+      ],
+      "reserved": [
+        {
+          "houseId": "ahy546",
+          "byUser": {
+            "_id": 1234
+          },
+          "numOfPeople": 4,
+          "createdAt": 1579725661272
+        },
+        {
+          "houseId": "ahy546",
+          "byUser": {
+            "_id": 1234
+          },
+          "numOfPeople": 2,
+          "createdAt": 1579725691112
+        }
+      ]
+    }
+  ]
+}
