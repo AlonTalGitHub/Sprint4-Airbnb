@@ -1,0 +1,57 @@
+.reserve-form{
+    position: sticky;
+    margin-left: 80px;
+    
+  }
+  .reserve-form-header {
+    margin-Left: calc((100% - 70px)/2);
+}
+.reserve-form {
+    font-family: 'RobotoBold';
+    position: sticky;
+    width: 400px;
+    height: 420px;
+    top: 15vh;
+    margin-left: 10vw;
+    border: 1px solid rgb(48, 48, 48);
+    border-radius: 5px;
+    padding: 20px 35px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    z-index: 1;
+    color: gray;
+    background-color: white;
+}
+
+
+button.form-btn.reserve-btn {
+    width: 300px;
+    margin-Left: calc((100% - 300px)/2);
+}
+
+.reserve-price-tag {
+    /* margin-Left: calc((100% - 70px)/2); */
+    text-align: center;
+}
+
+.reserve-price-tag-total {
+    font-weight: bold;
+    text-align: center;
+}
+
+
+@media only screen and (max-width:700px) {
+    .reserve-form {
+        position: absolute;
+        width: 100vw;
+        margin-left: 0px;
+        left: 0px;
+        top: 75vh;
+        padding: 20px calc((100vw - 300px)/2);
+    }
+    .main-content-text-container {
+        /* width: 100%;
+        padding-bottom: 30px; */
+        padding-top: 405px;
+    }
+}
