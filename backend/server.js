@@ -43,10 +43,16 @@ app.use('/api/user', userRoutes)
 app.use('/api/order', orderRoutes)
 
 
-
+// handle every other route with index.html, which will contain
+// a script tag to your application's JavaScript file(s).
+app.get('*', function (request, response) {
+    response.sendFile(path.resolve(__dirname, '../public', 'index.html'));
+});
 
 // const logger = require('./services/logger.service')
 const port = process.env.PORT || 3030;
 http.listen(port, () => {
+    console.log('environement var NODE_ENV: ', process.env.NODE_ENV, '\n')
+    console.log('environement vars: ', process.env)
     console.log('Server is running on port: ' + port)
 });
