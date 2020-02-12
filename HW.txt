@@ -17,3 +17,18 @@ Alon:
 reviews-mongo
 my-houses page
 
+AIzaSyCy4gHpGQ2knd-wkz1qYN0QEwQ-d-Xhjz0
+
+
+AIzaSyAn8p53vq-FNZpiqERRc0rXHhGejVaB-Bc
+
+
+    state = {
+        filterBy: {
+            numOfperson: 1,
+            location: '',
+            nightsNum:1
+        },
+        startDate: null,
+        endDate: null
+    }
