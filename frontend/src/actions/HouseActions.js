@@ -4,12 +4,13 @@ import { loading, doneLoading } from './SystemActions';
 
 
 
-export function filterHouses(filter) {  
+export function filterHouses(filter) {
   return async (dispatch) => {
     try {
       dispatch(loading());
       dispatch(_setFilter(filter))
       let houses = await HouseService.query(filter);
+      console.log('filterHouses action: ', houses)
       await dispatch(_setHouses(houses))
     } catch (err) {
       console.log('filter houses action err', err)
@@ -20,16 +21,16 @@ export function filterHouses(filter) {
     }
   }
 }
-export function getBestByCountry(filter) {  
+export function getBestByCountry(filter) {
   return async (dispatch) => {
     try {
-      let houses = await HouseService.query(filter);      
+      let houses = await HouseService.query(filter);
       dispatch(_setBestByCountry(filter.countries[0], houses))
     }
     catch (err) {
       throw (err)
     }
-    
+
   }
 }
 
@@ -73,7 +74,7 @@ export function setMyHouses(ids) {
     }
     finally {
       dispatch(doneLoading());
-    }    
+    }
   }
 }
 
@@ -89,13 +90,13 @@ export function saveHouse(house) {
   return async dispatch => {
     try {
       dispatch(loading())
-      const addedHouse = await HouseService.save(house);      
+      const addedHouse = await HouseService.save(house);
       house._id ? dispatch(_updateHouse(addedHouse)) : dispatch(_addHouse(addedHouse));
       return addedHouse
     } catch (err) {
       console.log('HouseActions: err in addHouse', err);
     }
-    finally{
+    finally {
       dispatch(doneLoading());
     }
   };
@@ -104,7 +105,7 @@ export function saveHouse(house) {
 export function deleteHouse(houseId) {
   return async (dispatch) => {
     try {
-      await HouseService.remove(houseId)      
+      await HouseService.remove(houseId)
       dispatch(_deleteHouse(houseId))
     }
     catch (err) {

@@ -7,8 +7,10 @@ const ObjectId = require('mongodb').ObjectId
 async function getHouses(req, res) {
     console.log('controller query', req.query)
     try {
-            let houses = await houseService.query(req.query)
-            res.send(houses)
+        let houses = await houseService.query(req.query)
+        if (houses.length === 0) houses = [null];
+        console.log('houses found: ', houses)
+        res.send(houses)
     }
     catch (err) {
         // console.log('Cannot get houses', err);

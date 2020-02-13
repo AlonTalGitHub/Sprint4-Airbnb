@@ -14,9 +14,11 @@ export default {
     getHouses
 }
 
-function query(filter) {    
+async function query(filter) {
     const queryStr = _createQueryStr(filter)
-    return HttpService.get(queryStr)   
+    let temp = await HttpService.get(queryStr);
+    console.log('temp: ', temp)
+    return temp;
 
 }
 function getHouses() {
@@ -25,7 +27,7 @@ function getHouses() {
 async function save(house) {
     const addedHouse = house._id ? await HttpService.put(`/house/${house._id}`, house)
         :
-        await HttpService.post(`/house`, house);    
+        await HttpService.post(`/house`, house);
     return addedHouse
 }
 
@@ -39,33 +41,33 @@ function remove(id) {
 }
 
 function _createQueryStr(filter) {
-    var querySTR = '/house'    
-       
+    var querySTR = '/house'
+
     if (filter.byId) {
         querySTR += `/${filter._id}`
     }
-    if (filter.location==='' || filter.location) {        
+    if (filter.location === '' || filter.location) {
         querySTR += `?country=${filter.location}`
-    }    
-    
-    if(filter.startDate && filter.endDate && filter.location){
+    }
+
+    if (filter.startDate && filter.endDate && filter.location) {
         querySTR += `&startDate=${filter.startDate}&endDate=${filter.endDate}`
     }
-    if(filter.numOfperson){
-        querySTR +=`&capacity=${filter.numOfperson}`
+    if (filter.numOfperson) {
+        querySTR += `&capacity=${filter.numOfperson}`
     }
     if (filter.ids) {
         const ids = filter.ids.join()
         querySTR += `?ids=${ids}`
     }
-    
+
     if (filter.countries) {
-        const countries = filter.countries.join()        
+        const countries = filter.countries.join()
         querySTR = `/house?countries=${countries}`
     }
-    if(filter.price){
-        querySTR+=`&price=${filter.price}`
-    }    
+    if (filter.price) {
+        querySTR += `&price=${filter.price}`
+    }
     return querySTR;
 }
 

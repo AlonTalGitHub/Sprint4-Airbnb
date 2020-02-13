@@ -10,8 +10,8 @@ import Loading from '../cmps/Loading'
 class HousePage extends Component {
 
 
-    componentDidMount() {      
-        
+    componentDidMount() {
+
         this.props.filterHouses(this.props.filterBy)
 
     }
@@ -23,18 +23,24 @@ class HousePage extends Component {
 
 
     render() {
-        const [house] = this.props.houses        
-        if (this.props.isLoading || !house) return (
-            <div>                
+        const [house] = this.props.houses
+        // console.log('houses page: ', this.props.houses)
+        console.log('houses page: ', house)
+        console.log('houses page load stat: ', this.props.isLoading)
+        if (this.props.isLoading || this.props.houses === []) return (
+            <div>
                 <Loading />
             </div>
         )
         else {
             return (
-                <div className="house-page-container">                    
+                <div className="house-page-container">
                     <span className="house-page-header">Houses</span>
                     {(house) && <HouseList onDeleteHouse={this.onDeleteHouse} houses={this.props.houses}
                         filterBy={this.props.filterBy} style={{ "marginTop": "150px" }}></HouseList>}
+                    {(!this.props.isLoading && house === null) && <div className="empty-houses-container">
+                        <p>Nothing to show</p>
+                    </div>}
                 </div>
             )
         }

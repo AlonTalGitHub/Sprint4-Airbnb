@@ -75,6 +75,7 @@ class ReserveHouse extends Component {
             let storedOrderId = orders[orders.length - 1]._id
             user.reserved.push(storedOrderId)
             await UserService.update(user)
+            alert('check your reserved items!')
         }
         catch (err) {
             console.log('ReserveHouse: add house failed', err)
