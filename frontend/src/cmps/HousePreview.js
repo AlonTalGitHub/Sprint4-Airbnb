@@ -11,7 +11,8 @@ let prev_next_btn_style = { 'height': '10px', 'width': '10px', 'display': 'block
 class HousePreview extends Component {
     state = {
         imgIdx: 0,
-        isFav: false
+        isFav: false,
+        numOfImages: this.props.house.imgs.length
     }
 
     componentDidMount() {
@@ -37,18 +38,18 @@ class HousePreview extends Component {
     }
     onFavClick = (event) => {
         event.preventDefault();
-        event.stopPropagation();        
+        event.stopPropagation();
         this.setState({ isFav: !this.state.isFav }, this.updateFavoriets)
     }
 
     updateFavoriets = async () => {
-        const loggedInUser = { ...this.props.loggedInUser }        
+        const loggedInUser = { ...this.props.loggedInUser }
         if (!loggedInUser) {
             console.log('Please login/signup')
         }
         else {
             let favorites = loggedInUser.favorites
-            if (this.state.isFav) {                
+            if (this.state.isFav) {
                 favorites = [...favorites, this.props.house._id]
                 loggedInUser.favorites = favorites
             }
@@ -64,6 +65,7 @@ class HousePreview extends Component {
 
 
     render() {
+        let paginationPadding = (30 * (this.state.numOfImages)) + 'px'
         return (
 
             <Link to={"/house/" + this.props.house._id}>
@@ -89,7 +91,8 @@ class HousePreview extends Component {
                                 </div>
                             </div>
                             <div className="house-preview-btn">
-                                <div className="house-preview-pagination-container">
+
+                                <div className="house-preview-pagination-container" style={{ 'left': `calc((100% - ${paginationPadding})/2)` }}>
                                     {this.props.house.imgs.map((img, index) => {
                                         if (index !== this.state.imgIdx) return <div key={index} className="house-preview-pagination-circle"></div>
                                         else return <div key={index} className="house-preview-pagination-circle-currimg"><img src={paginationTurtle} alt="" className="house-preview-pagination-turtle" /></div>

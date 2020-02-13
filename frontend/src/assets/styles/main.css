@@ -312,12 +312,13 @@
  }
 
  .house-preview-pagination-circle-currimg {
-     margin: -2px;
-     padding: 5px;
-     width: 15px;
-     height: 15px;
-     border-radius: 50%;
-     opacity: 0.8;
+    margin: 1px;
+    margin-bottom: 0px;
+    padding: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    opacity: 0.8;
  }
 
  /*background-color: #3ccc06; border:2px solid green*/
@@ -325,13 +326,13 @@
  .house-preview-pagination-container {
      bottom: 20%;
      position: absolute;
-     left: 25%;
+     /* left: 25%; */
  }
 
  .house-preview-pagination-turtle {
      position: absolute;
      top: -5px;
-     margin-left: 5px;
+     margin-left: 3px;
      width: 13%;
      height: auto;
      opacity: 1;
@@ -489,6 +490,7 @@
      width: 100%;
      height: 100%;
      border-radius: 50%;
+     object-fit: cover;
      margin-left: calc((100% - 50px)/2);
  }
 
