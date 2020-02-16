@@ -10,16 +10,19 @@ class ChatRoomPage extends Component {
         socket: socketIOClient('http://localhost:3030')
     }
     componentDidMount() {
+        document.querySelector('body').classList.add('chatPage')
         let { socket } = this.state
-        if (socket) socket.on('serverMsg', (data) =>{
+        if (socket) socket.on('serverMsg', (data) => {
             let newMessages = [...this.state.messages]
             console.log('chat here, data is: ', data)
             newMessages.push(data)
-            this.setState({ messages: newMessages }, ()=>console.log(this.state.messages))
+            this.setState({ messages: newMessages }, () => console.log(this.state.messages))
         });
         // console.log('before setState: ', this.state)
     }
-
+    componentWillUnmount() {
+        document.querySelector('body').classList.remove('chatPage')
+    }
     render() {
         return (<div className="chat-room-page-container">
             <Chat socket={this.state.socket} messages={this.state.messages} />

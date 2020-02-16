@@ -50,14 +50,50 @@ img.nav-item-user-img {
 
 .chat-input-container {
     padding-top: 20px;
+    width: 85vw;
+    display: flex;
+    flex-direction: row;
 }
+
 .overflow-scrolling {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 }
-body{
+
+body.chatPage {
     overflow: hidden;
 }
+
 li.message-preview-item {
     width: 85vw;
+}
+
+.form-btn {
+    align-self: flex-end;
+    width: 100px;
+    padding: 15px;
+    color: white;
+    background-color: #4caf50;
+    border: 0;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.05rem;
+    font-weight: bold;
+}
+
+.form-btn:focus {
+    outline: none;
+}
+
+.form-btn:hover {
+    /* color: black; */
+    background-color: #37983b;
+    cursor: pointer;
+}
+
+input.user-chat-input {
+    width: calc(100% - 100px);
+    height: 49px;
+    font-size: 2rem;
 }

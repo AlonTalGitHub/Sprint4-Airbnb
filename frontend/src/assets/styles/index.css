@@ -263,6 +263,7 @@ span.nav-old-item-user-name.black {
 .form-btn:hover {
     /* color: black; */
     background-color: #37983b;
+    cursor: pointer;
 }
 
 .form-cap-num {

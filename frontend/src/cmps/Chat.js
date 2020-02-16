@@ -26,7 +26,7 @@ class Chat extends Component {
         this.props.socket.emit('userMsg', this.state.currMessage);
     }
 
-     messagesList=()=> {
+    messagesList = () => {
         if (!this.props.messages) return (<div></div>)
         else {
             return (
@@ -44,8 +44,8 @@ class Chat extends Component {
                     {this.messagesList()}
                 </div>
                 <div className="chat-input-container">
-                    <input type="text" name="content" value={this.state.currMessage.content} onChange={this.handleMessage} />
-                    <button onClick={this.postMessage}>Send</button>
+                    <input className="user-chat-input" type="text" name="content" value={this.state.currMessage.content} onChange={this.handleMessage} />
+                    <button className="form-btn" onClick={this.postMessage}>Send</button>
                 </div>
 
             </div>
