@@ -7,8 +7,8 @@ const session = require('express-session')
 
 const app = express()
 const http = require('http').createServer(app);
-const io = require('socket.io')(http);
-
+// const socketIo = require('socket.io')(http);
+// const io = socketIo(app);
 const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const orderRoutes = require('./api/order/order.routes')
@@ -45,3 +45,18 @@ const port = process.env.PORT || 3030;
 http.listen(port, function () {
     console.log('Server is running on port: ' + port)
 });
+
+//sockets:
+const socketIo = require('socket.io')(http);
+socketIo.on('connection', function (socket) {
+    let dataReceived={}
+    console.log('new user connected')
+    socket.on('userMsg', (data) => {
+        console.log('recieved on server side: ', data)
+        dataReceived={...data}
+        socket.emit('serverMsg',dataReceived)
+        socket.broadcast.emit('serverMsg',dataReceived)
+    })
+    socket.on('disconnect', () => { console.log('user disconnected') })
+
+})

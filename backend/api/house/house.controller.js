@@ -9,7 +9,7 @@ async function getHouses(req, res) {
     try {
         let houses = await houseService.query(req.query)
         if (houses.length === 0) houses = [null];
-        console.log('houses found: ', houses)
+        // console.log('houses found: ', houses)
         res.send(houses)
     }
     catch (err) {

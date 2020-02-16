@@ -21,7 +21,7 @@ class Nav extends Component {
     componentDidMount() {
         this.updateWindowDimensions();
         let path = this.props.history.location.pathname
-        this.checkIfHome(path);
+        this.configNavDesign(path);
         window.addEventListener('resize', this.updateWindowDimensions);
     }
 
@@ -31,7 +31,7 @@ class Nav extends Component {
     componentDidUpdate(prevProps) {        
         if (prevProps.location.pathname !== this.props.location.pathname) {
             let path = this.props.location.pathname;            
-            this.checkIfHome(path)
+            this.configNavDesign(path)
         }       
     }
 
@@ -68,7 +68,7 @@ class Nav extends Component {
             if (node && node.classList && node.classList.contains(str)) node.classList.remove(str)
         }
     }
-    checkIfHome = (path, userClick = false) => {
+    configNavDesign = (path, userClick = false) => {
         if (path === '/') {
             let navContainer = document.querySelector('.nav-container')
             this.changeClassName(navContainer, 'home', 'add')
@@ -118,14 +118,15 @@ class Nav extends Component {
                     </div>
                 </li>
                 {(this.state.currPath !== '/' && !this.state.isMenuOpen) && <li className="nav-search-bar-container" id="one"><SearchBar /></li>}
-                {(this.state.currPath !== '/') && <li className={"nav-item push"} onClick={() => this.checkIfHome('/', true)}><Link to="/" className="nav-link">Home</Link></li>}
-                {this.props.loggedInUser && <li className={(this.state.currPath !== '/') ? "nav-item" : "nav-item push"} onClick={() => this.checkIfHome('/reserved', true)}><Link to="/reserved" className="nav-link" >Reserved</Link></li>}
-                {this.props.loggedInUser && <li className="nav-item" onClick={() => this.checkIfHome('/requests', true)}><Link to="/requests" className="nav-link">Requets</Link></li>}
-                {this.props.loggedInUser && <li className="nav-item" onClick={() => this.checkIfHome('/favorites', true)}><Link to="/favorites" className="nav-link">Favorites</Link></li>}
-                {this.props.loggedInUser && <li className="nav-item" onClick={() => this.checkIfHome('/house/edit', true)}><Link to="/house/edit" className="nav-link">Host</Link></li>}
-                {this.props.loggedInUser && <li className="nav-item" onClick={() => this.checkIfHome('/house/edit', true)}><Link to="/myhouses" className="nav-link">My Houses</Link></li>}
-                <li className={(!this.props.loggedInUser && (this.state.currPath === '/')) ? "nav-item push" : "nav-item"} onClick={() => this.checkIfHome('/about', true)}><Link to="/about" className="nav-link">About</Link></li>
-                <li className="nav-item" onClick={() => this.checkIfHome('/login', true)}><Link to="/login" className="nav-link">{this.profileImageRender()}</Link></li>
+                {(this.state.currPath !== '/') && <li className={"nav-item push"} onClick={() => this.configNavDesign('/', true)}><Link to="/" className="nav-link">Home</Link></li>}
+                {this.props.loggedInUser && <li className={(this.state.currPath !== '/') ? "nav-item" : "nav-item push"} onClick={() => this.configNavDesign('/reserved', true)}><Link to="/reserved" className="nav-link" >Reserved</Link></li>}
+                {this.props.loggedInUser && <li className="nav-item" onClick={() => this.configNavDesign('/requests', true)}><Link to="/requests" className="nav-link">Requets</Link></li>}
+                {this.props.loggedInUser && <li className="nav-item" onClick={() => this.configNavDesign('/favorites', true)}><Link to="/favorites" className="nav-link">Favorites</Link></li>}
+                {this.props.loggedInUser && <li className="nav-item" onClick={() => this.configNavDesign('/house/edit', true)}><Link to="/house/edit" className="nav-link">Host</Link></li>}
+                {this.props.loggedInUser && <li className="nav-item" onClick={() => this.configNavDesign('/house/edit', true)}><Link to="/myhouses" className="nav-link">My Houses</Link></li>}
+                {this.props.loggedInUser && <li className="nav-item" onClick={() => this.configNavDesign('/chat', true)}><Link to="/chat" className="nav-link">Chat</Link></li>}
+                <li className={(!this.props.loggedInUser && (this.state.currPath === '/')) ? "nav-item push" : "nav-item"} onClick={() => this.configNavDesign('/about', true)}><Link to="/about" className="nav-link">About</Link></li>
+                <li className="nav-item" onClick={() => this.configNavDesign('/login', true)}><Link to="/login" className="nav-link">{this.profileImageRender()}</Link></li>
             </ul>
 
             {((this.state.currPath === '/house') && !this.state.isMenuOpen) && <div className="nav-filter-bar-container"><FilterBar /></div>}
