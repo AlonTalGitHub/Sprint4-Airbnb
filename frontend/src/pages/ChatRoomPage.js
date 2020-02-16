@@ -7,7 +7,7 @@ import socketIOClient from "socket.io-client";
 class ChatRoomPage extends Component {
     state = {
         messages: [],
-        socket: socketIOClient(`https://turtle-house.herokuapp.com/chat:${process.env.PORT}` || 'http://localhost:3030')
+        socket: socketIOClient(`https://turtle-house.herokuapp.com`)
     }
     componentDidMount() {
         document.querySelector('body').classList.add('chatPage')
